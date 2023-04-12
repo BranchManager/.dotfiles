@@ -1,0 +1,34 @@
+/* colors */
+
+
+//{
+//  al:   #00000000;
+//  bg:   #272727FF;
+//  bga:  #383838FF;
+//  fga:  #CACACAFF;
+//  fg:   #CACACAFF;
+//  ac:   #1e88e5FF;
+// }
+// */
+
+/*{
+ al:  #00000000;
+ bg:  #D8DEE9;
+ bga: #eceff4;
+ fga: #4C566A;
+ fg:  #4C566A;
+ ac:   #1e88e5FF;
+}*/
+
+*{
+    bg:  	#181926;
+    bga:  	#181926;
+    mantle: #1e2030;
+    fga: #939ab7;
+    fg: #8087a2;
+    al:  	 	 	#181926;
+    ac: #8aadf4; //blue
+    mauve:  	 	#c6a0f6;
+    lavender: #b7bdf8;
+}
+
