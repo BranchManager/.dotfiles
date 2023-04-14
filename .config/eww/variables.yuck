@@ -1,0 +1,6 @@
+
+(defpoll cpu :interval "3s" "~/.config/eww/scripts/cpu.sh")
+;;(defpoll ram :interval "3s" "~/.config/openbox/src/eww/scripts/ram.sh ram")
+;;(defpoll temp :interval "3s" "~/.config/openbox/src/eww/scripts/temp.sh get")
+;;
+;;(defpoll disk :interval "3s" "~/.config/openbox/src/eww/scripts/disk.sh")

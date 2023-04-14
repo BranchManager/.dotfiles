@@ -1,0 +1,90 @@
+
+
+(defwidget mainbg_work []
+    
+    (box :class "the_main_bg_work" :orientation "v" :space-evenly false
+        (box :orientation "h" :space-evenly false :height 115 :width 115 :vexpand false :hexpand false :spacing 0
+          
+           
+                (cal_work)
+                (sys_monitor)
+                    
+           
+        )
+        (sern_shortcut_work)
+    
+    )
+)
+
+(defwidget cal_work []
+    (box :class "cal-box_work"
+        ;:orientation "v"
+        :space-evenly false :height 115 :width 115 :vexpand false :hexpand false
+    (calendar :class "cal_work"
+                :day calendar_day
+                :month calendar_month
+                :year calendar_year)
+    )
+)
+
+(defwidget sys_monitor []
+    (box :class "sys-monitor_work"
+            :orientation "v"
+            :space-evenly false
+            :spacing 10
+        (button :class "reddit" :height 115 :width 115
+                :onclick "code"
+                (circular-progress :class "res_mem" :value MEM_USAGE :thickness 7
+                    (label :class "res_circle_small" :text "MEM ${MEM_USAGE}%")
+                )
+        )
+
+        (button :class "reddit" :height 115 :width 115
+                :onclick "code"
+                (circular-progress :class "res_cpu" :value CPU_USAGE :thickness 7
+                    (label :class "res_circle_small" :text "CPU ${CPU_USAGE}%")
+                )
+        )
+    )
+)
+
+(defwidget sern_shortcut_work []
+    (box 
+            :orientation "h"
+            :space-evenly true
+            :spacing 5
+            :class "sern_shortcut_workcss"
+            :halign "center"
+            :valign "center"
+            :width 455
+            :height 100
+          ;( button :style "background-image: url('/home/branchmanager/Pictures/profile_pics/Branch_ManagerAvatar.jpg')" :class "prof_pic" :halign "center")
+        (button :height 20 :width 70 :style "background-image: url('/home/branchmanager/.config/eww/images/icons/notion.png'); background-color: #494d64" :class "notion" :halign "center"
+                :onclick "notion-snap &"
+                :valign "center"
+            ;(label :text "reddit" :xalign "center" :yalign "center")
+        )
+
+        (button :height 20 :width 20 :style "background-image: url('/home/branchmanager/.config/eww/images/icons/Thunderbird.svg'); background-color: #494d64" :class "notion" :halign "center"
+                :onclick "thunderbird &"
+                :valign "center"
+            ;(label :text "reddit" :xalign "center" :yalign "center")
+        )
+        (button :height 20 :width 70 :style "background-image: url('/home/branchmanager/.config/eww/images/icons/discord.svg'); background-color: #494d64" :class "notion" :halign "center"
+                :onclick "discord &"
+                :valign "center"
+            ;(label :text "reddit" :xalign "center" :yalign "center")
+        )
+
+        (button :height 20 :width 70 :style "background-image: url('/home/branchmanager/.config/eww/images/icons/github.png'); background-color: #494d64" :class "notion" :halign "center"
+                :onclick "firefox -new-tab \"https://www.github.com/branchmanager\" "
+                :valign "center"
+            ;(label :text "reddit" :xalign "center" :yalign "center")
+        )
+        (button :height 15 :width 70 :style "background-image: url('/home/branchmanager/.config/eww/images/icons/reddit.png'); background-color: #494d64" :class "notion" :halign "center"
+                :onclick "firefox -new-tab \"https://www.reddit.com\" "
+                :valign "center"
+            ;(label :text "reddit" :xalign "center" :yalign "center")
+        )
+    )
+)

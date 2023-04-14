@@ -1,0 +1,557 @@
+;(defvar usr "${HOME}" )
+;(defvar get_noti "(label :text \"hello in var\" :valign \"center\" :class \"weather_label\" )")
+;(deflisten get_noti "python3 /home/branchmanager/.config/eww/scripts/notif.py")
+(defpoll get_noti :interval "2s" "python3 /home/branchmanager/.config/eww/scripts/notif.py")
+(deflisten get_quote "python3 /home/branchmanager/.config/eww/scripts/Quote.py")
+(defvar qq "Life before death, strength before weakness, journey before destination")
+(defvar auth "-Brandon Sanderson")
+(defvar reveal0 "false")
+(defvar reveal1 "false")
+(defvar reveal2 "false")
+(defvar reveal3 "false")
+(defvar reveal4 "false")
+(defvar reveal5 "false")
+(defvar reveal6 "false")
+(defvar reveal7 "false")
+(defvar reveal8 "false")
+(defvar reveal9 "false")
+(defpoll calendar_day :interval "10h" "date '+%d'")
+(defpoll calendar_month :interval "10h" "date '+%m")
+(defpoll calendar_year :interval "10h" "date '+%Y'")
+(defpoll CPU_USAGE :interval "1s" "./scripts/test_script.sh")
+(defpoll MEM_USAGE :interval "1s" "./scripts/test_mem.sh")
+
+(defpoll cover_art_url :interval "2s" "/home/branchmanager/.config/eww/scripts/get_spot_info.sh --cover")
+(defpoll artist :interval "2s" "/home/branchmanager/.config/eww/scripts/get_spot_info.sh --artist")
+(defpoll music_title :interval "2s" "/home/branchmanager/.config/eww/scripts/get_spot_info.sh --title")
+(defpoll music_album :interval "2s" "/home/branchmanager/.config/eww/scripts/get_spot_info.sh --album")
+
+(defvar remove_var "hello")
+(defvar play_pause "懶")
+(defvar shuff_repeat_class "spotify-off")
+(defvar shuff_repeat_class2 "spotify-off") 
+(include "eww_work.yuck") 
+
+
+;(defwindow)
+(defwindow mainbg_work :stacking "fg" :focusable "false" :monitor 0 ;
+;:windowtype "dock"
+    :geometry (geometry :x 0 :y 0 :anchor "center" :width 0 :height 0)
+(mainbg_work))
+
+
+
+
+
+
+
+
+
+;(defvar get_noti "run notif")
+(defwidget user [] 
+	(box :class "genwin":orientation "v" :spacing 0 :space-evenly "false" :vexpand "false" :hexpand "false"
+		;(box :style "background-image: url('https://avatars.githubusercontent.com/u/22553102?v=4');" :class "face" :halign "center")
+		;(label :class "fullname" :halign "center" :wrap "true" :limit-width 25 :text "noah")
+        (label :class "username" :halign "center" :wrap "true" :limit-width 25 :text "jillmanager")
+		;(label :class "username" :halign "center" :wrap "true" :limit-width 2 :text "branchmanager")
+        ))
+
+(defwindow profile :stacking "fg" :focusable "true" :monitor 2 :exclusive "true"
+	    :geometry (geometry :x 150 :y 150 :width 141 :height 145)
+					(user))
+
+;; background
+(defwidget bg [] 
+	(box :class "bg")
+)
+;; background
+(defwindow background :stacking "fg" :focusable "false" :monitor 0
+	    :geometry (geometry :x 0 :y 0 :width "3440px" :height "1440px")
+					(bg))
+
+(defwindow example
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "20px"
+                               :width "90%"
+                               :height "30px"
+                               :anchor "top center")
+           :stacking "fg"
+           :reserve (struts :distance "40px" :side "top")
+           :windowtype "dock"
+           :wm-ignore false
+  "example content")
+
+
+(defwidget bully[]
+    (box :class "reddit" :vexpand "false" :hexpand "false"
+        ;(label :text "ello theh" :halign "center" ))
+    "test"))
+
+(defwindow bul :stacking "fg" :focusable "false" :monitor 0
+	    :geometry (geometry :x 700 :y 785 :width 141 :height 145)
+					(bully))
+
+
+(defwindow mainbg :stacking "fg" :focusable "false" :monitor 2 ;
+;:windowtype "dock"
+    :geometry (geometry :x 0 :y 0 :anchor "top right" :width 450 :height 1400)
+    (mainbg))
+
+(defwidget mainbg []
+    ;(revealer :transition "crossfade" :reveal showw :duration "550ms"
+        (box :class "the_main_bg" :orientation "v"
+        
+        )
+    ;)
+)
+(defwindow profile :stacking "overlay" :monitor 2 :focusable "false"
+  :geometry (geometry :x 3005 :y 10 :width 120 :height 120)
+  (profile_box))
+(defwidget profile_box []
+    (box :class "profilebox" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"
+        (box :style "background-image: url('/home/branchmanager/Pictures/profile_pics/Branch_ManagerAvatar.jpg')" :class "prof_pic" :halign "center")
+        (label :class "prof_name" :valign "center" :limit-width 25 :text "Noah")
+    )
+)
+;; reddit
+(defwindow reddit :stacking "fg" :focusable "false" :monitor 0 :windowtype "overlay"
+	    :geometry (geometry :x 0 :y 0 :width 300 :height 145 :anchor "top left")
+					(reddit))
+;x:671
+;y:785
+;width 141
+;; reddit
+(defvar showw true)
+(defvar showwe true)
+(defwidget reddit [] 
+    (eventbox :onhover "eww update showw=true" :onhoverlost "eww update showw=false"
+        (revealer :transition "slideup" :reveal showw :duration "550ms"
+                (box :class "reddit" :vexpand "false" :hexpand "false" 
+                    (label :text "ello theh" :halign "center" )
+                )
+        )
+    )
+)
+
+(defvar weatherimage "/home/branchmanager/.config/eww/images/weather_icon/01.jpg")
+(defvar weather_icon "N/A")
+(defvar temp "N/A")
+(defvar desc "N/A")
+(defvar feels "N/A")
+(defvar high "N/A")
+(defvar low "N/A")
+(defvar sunrise "N/A")
+(defvar sunset "N/A")
+(defwidget weather[]
+    (revealer :transition "crossfade" :reveal showwe :duration "550ms" 
+        (box :class "weather" 
+            :space-evenly "true"
+            :vexpand "false" 
+            :hexpand "false"
+            :style "background-image: url('${weatherimage}'); border-radius: 10px";
+            :orientation "h"
+            ;;;;;;;;;;;;;;;;;;;;;;Icon and high low;;;;;;;;;;;;;;;;;;;
+            (box :orientation "v"  :halign "center" :vexpand "false" :hexpand "false" :spacing 0
+                (box  :halign "start" :valign "end" :vexpand "false" :hexpand "false" :spacing 0
+                    (label :class "weather_icon" :text weather_icon)
+                )
+                (box :class "weather_bgtxt" :orientation "v" :valign "start" :vexpand "false" :hexpand "false" :spacing 0
+                    (label :class "test1" :text high)
+                    (label :class "test1" :text low)
+                    
+                )
+                
+                ;(label :class "weather_label" :text desc)
+                 
+            )
+            ;;;;;;;;;;;;Temperature and feels like;;;;;;;;;;;;;;;;;;;;;;;
+            (box :orientation "v" :class "weather_bgtxt" :valign "center" :halign "end" :vexpand "false" :hexpand "false" :space-evenly false :spacing 0
+                (box  :halign "center" :valign "end" :vexpand "false" :hexpand "false" :spacing 10
+                    (label :class "temp" :text temp)
+                )
+                (box :class "weather_bgtxt" :valign "start" :vexpand "false" :hexpand "false" :spacing 10
+                    (label :class "test1" :hexpand "false" :vexpand "false" :width 10 :text feels)
+                )
+                ;(label :class "weather_label" :text desc)
+                 
+            )
+            ;;;;;;;;;;;;Desc and sunrise sunset;;;;;;;;;;;;;;;;;;;;;;;
+            (box :orientation "v" :class "weather_bgtxt" :halign "end" :vexpand "false" :hexpand "false" :spacing 30
+                (box :class "weather_bgtxt" :valign "start" :vexpand "false" :hexpand "false" :spacing 0
+                    (label :class "test1" :text desc)
+                )
+                (box :class "weather_bgtxt" :orientation "v" :valign "start" :vexpand "false" :hexpand "false" :spacing 0
+                    (label :class "test1" :text sunrise)
+                    (label :class "test1" :text sunset)
+                )
+                ;(label :class "weather_label" :text desc)
+                 
+            )
+            
+        )
+        
+    )
+    
+)
+
+(defwindow weather :stacking "overlay" :monitor 2 :focusable "false" :monitor 2
+  :geometry (geometry :x 3135 :y 10 :width 295 :height 120)
+  (weather))
+;https://api.openweathermap.org/data/2.5/weather?appid=
+;(button :class "iconweb" :onclick "scripts/open_links --rd" "樓")
+
+;;;;10 pix between profile and weather;;;;;
+
+;;;;;;;;;;notification widget;;;;;;;;;;;;;;;;;;;;
+(defwidget notification []
+    
+    (box :class "notifs" 
+            ;:space-evenly "true"
+            ;:spacing 0
+            ;:vexpand "false" 
+            ;:hexpand "false"
+            ;:height 0
+            ;:width 0
+            :space-evenly "false"
+            :orientation "v"
+            ;(label :halign "start" :valign "start" :class "notification_label" :text "test3"  :width 150 )
+            (box :orientation "h" :space-evenly "false"  :height 100 :vexpand "false" 
+            :hexpand "false"
+                ;(label :class "notification_label" :text "test"  :width 150 :halign "fill ":valign "fill")
+                (box :class "notification_label" :width 50 :orientation "v" :space-evenly "false" :valign "center"
+                    (label :text "Notifications")
+                    ;(label :text "Center")
+                )
+                ;(box :orientaion "v" :height 200
+                    ;(literal :content get_quote)
+                    (Quote_of_day :q qq :author auth)
+                ;)
+                ;(Quote_of_day :q "Dont worry about a thang" :author "bob marley")
+               ;; )
+            )
+            ;(label :class "divider" :text "__________________________________________________________________________________________________________________________________________________________________________________________")
+            ;(literal :content get_noti)
+            ;(box :space-evenly "true" :vexpand "false" :orientation "h" (notifcard)(notifcard))
+            (scroll :vscroll "true"  :height 500 :width 200
+                ;(box :space-evenly "false" :orientation "v" :width 200
+                        ;(notifcard :rev "${reveal1}" :appname "spotify" :icon_path "/home/branchmanager/.config/eww/images/icons/Discord.svg" :summary "slow down" 
+                        ;:message "slow down \nForrest. - slow down" :butt "/home/branchmanager/.config/eww/scripts/toggle_fullQuote.sh reveal1" )
+                        ;(notifcard :rev "${reveal2}" :appname "discord" :icon_path "/home/branchmanager/.config/eww/images/icons/Firefox.svg" :summary "slow down" :message "slow down \nForrest. - slow down" )
+                        ;(notifcard :rev "${reveal2}" :appname "discord" :icon_path "/home/branchmanager/.config/eww/images/icons/Thunderbird.svg" :summary "slow down" :message "slow down \nForrest. - slow down" )
+                        ;(notifcard :rev "${reveal2}" :appname "discord" :icon_path "/home/branchmanager/.config/eww/images/icons/Thunderbird.svg" :summary "slow down" :message "slow down \nForrest. - slow down" )
+                        ;(notifcard :rev "${reveal2}" :appname "discord" :icon_path "/home/branchmanager/.config/eww/images/icons/bellnotif.svg" :summary "slow down" :message "slow down \nForrest. - slow down" )
+
+                        ;(notifcard :rev "${reveal2}")
+                        ;(notifcard :rev "${reveal3}")
+                        ;(notifcard :rev "${reveal4}")
+                        ;(notifcard :rev "${reveal5}")
+                        ;notifcard [ rev icon_class appname icon_path summary message]
+                        (literal :content get_noti)
+                            ;(notifcard :rev "${reveal0}" :appname "Thunderbird" :icon_path "/home/branchmanager/.config/eww/images/icons/Thunderbird.svg" :summary "acebranchmanager@gmail.com received 1 new message" :message "acebranchmanager@gmail.com received 1 new message Why are Ukrainians not pressuring Zelensky to give in to Putin if Russia is really de...? from Quora Digest" :butt "/home/branchmanager/.config/eww/scripts/toggle_fullQuote.sh reveal0" )(notifcard :rev "${reveal1}" :appname "Thunderbird" :icon_path "/home/branchmanager/.config/eww/images/icons/Thunderbird.svg" :summary "acebranchmanager@gmail.com received 1 new message" :message "acebranchmanager@gmail.com received 1 new message Testing again from Noah Branch" :butt "/home/branchmanager/.config/eww/scripts/toggle_fullQuote.sh reveal1" )
+                        
+                        ;(notifcard)
+                            ;(notifcard)
+                                ;(notifcard)
+                            ;(box :class "notifcard" :height 125 
+                            ;(label :text "hello in shell" :valign "center" :class "weather_label ")
+                            ;)
+
+                ;)
+            )
+    )
+)
+(defvar redd "false")
+;(defvar justquotes "...  ")
+;(defvar how_wide)
+(defwidget Quote_of_day [q author] 
+    (box :orientation "v" :width 255 :height 100 :vexpand "false" :space-evenly "false"
+    ;:class "quote_card" 
+        ;(transform :scale-x "200px"
+        (button :class "quote_card" :onclick "eww open full_quote" :width 200
+            (box :orientation "v" :width 200 :space-evenly "false"
+            ;(button :class "quote_card" :onclick "code"
+                (label :class "quote" :text q :limit-width 90 :wrap "true" :width 25)
+                
+          
+                
+                (label :valign "center" :text author)
+            )
+        )
+       
+        
+    )
+)
+(defwidget notifcard [ rev appname icon_path summary message butt]
+    ;[icon_path message appname summary ]
+    (button :onclick butt  :class "notifcar1"
+        (box  :height 105 :orientation "h" :space-evenly "false" :spacing 20
+        
+            (image :class "notification_bell_icon" :path icon_path :image-width 50 :image-height 50 :width 100)
+            ;(label :class "notification_bell_icon"  :width 70 :text "" :width 70 )
+            ;:style "background-image: url('/home/branchmanager/Pictures/profile_pics/Branch_ManagerAvatar.jpg')"
+            (box :height 4 :width 50 :orientation "v"
+                (label :text appname :valign "end" :class "weather_label" :xalign 0)
+                (label :xalign 0 :text "_______________________________________" :valign "start" :class "notif_label")
+            
+                (label :xalign 0 :text summary :valign "start" :limit-width 30:class "weather_label")
+                ;Note the reveal bool has to be called a specific way. since we dont want every card to reveal its full
+                ;message I have declared 10 boolean values up top for eachof the 10 notifications that may possibly be shown.
+                ;each notification will get there own reveal boolean value instance so that when it's activated
+                ;Only the one you select will activate
+                (revealer :transition "slidedown" :reveal rev :duration "1s" :vexpand "true" 
+                    (box :width 25 :orientation "vertical" :vexpand "true" :space-evenly "false"
+                        (label :text "message: " :wrap "true" :xalign 0)
+                        (label :text message :wrap "true" :xalign 0)
+                        ;(label :text "hello in shell3 the actual text" :class "weather_label")
+                    )
+                )
+            )
+        )
+    )
+   
+)
+
+;[?class summary body glyph ?glyph_class ?SL ?M ?L ?R]
+
+
+(defwindow notif_area :stacking "overlay" :monitor 2 :focusable "false" :monitor 2 
+    :geometry (geometry :x 2995 :y 140 :width 445 :height 600)
+    (notification)
+)
+
+(defwidget da_full_quote []
+    ; [q author]
+    ;(box :orientation "v" :width 255 :height "110"
+        
+    
+    (box  :class "full_quote_card_outer" :orientation "v" :width 250 :height 100
+
+        ;(label :class "quote" :text q :limit-width 60 :wrap "true")
+        ;(label :valign "center" :text author)
+        (button :class "full_quote_card" :onclick "eww close full_quote"
+        (box  :valign "center" :orientation "v" :width 250 :height 25 :space-evenly "false"
+            
+        ;(button :class "quote_card" :onclick "code"
+                (label  :text qq :wrap "true" )
+            
+            
+                (label :valign "center" :text auth)
+            )
+        )
+    )
+        
+        ;(label :class "quote" :text q :limit-width 60 :wrap "true")
+        ;(label :valign "center" :text author) )
+    
+    
+        
+    ;)
+)
+
+(defwindow profile2 :stacking "fg" :focusable "true" :monitor 2 :exclusive "true"
+	    :geometry (geometry :x 1720 :y 600 :width 141 :height 145)
+					(user))
+
+
+
+(defwindow full_quote :stacking "fg" :monitor 2 :focusable "true" :monitor 2 
+    :geometry (geometry :x 1500 :y 600 :width 300 :height 100 )
+    (da_full_quote)
+)
+
+
+(defwidget cal []
+    (box :class "cal-box"
+         :orientation "v"
+         :space-evenly false
+      (calendar :class "cal"
+                :day calendar_day
+                :month calendar_month
+                :year calendar_year)
+    )
+  )
+  
+(defwidget date []
+(box :class "date"
+        :orientation "v"
+        :space-evenly false
+    (cal)
+)
+)
+
+(defwindow date :monitor 2 :stacking "overlay"
+:geometry (geometry :x "3005px"
+                    :y "765px"
+                    :width "300px" ; automatically generated
+                    :height "50px" ; automatically generated
+                    ;:anchor "center right"
+                    )
+:wm-ignore true
+(date))
+
+(defwidget other_4 []
+    (box 
+            :orientation "h"
+            :space-evenly true
+            :spacing 5
+            :class "app-box"
+            :halign "end"
+            :valign "end"
+            :width 425
+            :height 100
+          ;( button :style "background-image: url('/home/branchmanager/Pictures/profile_pics/Branch_ManagerAvatar.jpg')" :class "prof_pic" :halign "center")
+        (button :height 20 :width 70 :style "background-image: url('/home/branchmanager/.config/eww/images/icons/notion.png'); background-color: #494d64" :class "notion" :halign "center"
+                :onclick "notion-snap &"
+                :valign "center"
+            ;(label :text "reddit" :xalign "center" :yalign "center")
+        )
+
+        (button :height 20 :width 20 :style "background-image: url('/home/branchmanager/.config/eww/images/icons/Thunderbird.svg'); background-color: #494d64" :class "notion" :halign "center"
+                :onclick "thunderbird &"
+                :valign "center"
+            ;(label :text "reddit" :xalign "center" :yalign "center")
+        )
+        (button :height 20 :width 70 :style "background-image: url('/home/branchmanager/.config/eww/images/icons/discord.svg'); background-color: #494d64" :class "notion" :halign "center"
+                :onclick "discord &"
+                :valign "center"
+            ;(label :text "reddit" :xalign "center" :yalign "center")
+        )
+
+        (button :height 20 :width 70 :style "background-image: url('/home/branchmanager/.config/eww/images/icons/github.png'); background-color: #494d64" :class "notion" :halign "center"
+                :onclick "firefox -new-tab \"https://www.github.com/branchmanager\" "
+                :valign "center"
+            ;(label :text "reddit" :xalign "center" :yalign "center")
+        )
+        (button :height 15 :width 70 :style "background-image: url('/home/branchmanager/.config/eww/images/icons/reddit.png'); background-color: #494d64" :class "notion" :halign "center"
+                :onclick "firefox -new-tab \"https://www.reddit.com\" "
+                :valign "center"
+            ;(label :text "reddit" :xalign "center" :yalign "center")
+        )
+    )
+)
+
+(defwidget spotify []
+    (box 
+            :orientation "h"
+            :space-evenly true
+            :spacing 10
+            :height 200
+            :width 425 
+            :class "date"
+          ;( button :style "background-image: url('/home/branchmanager/Pictures/profile_pics/Branch_ManagerAvatar.jpg')" :class "prof_pic" :halign "center")
+            (box :height 20 :width 77 :style "background-image: url('${cover_art_url}');"  :class "spotify-album" :halign "center"
+                
+                    :valign "center"
+                ;(label :text "reddit" :xalign "center" :yalign "center")
+                
+            )
+            (box :orientation "v"
+                :vexpeand "true"
+                :space-evenly "false"
+                :valign "center"
+                :hexpand "false" :spacing 0
+                :height 120
+                (label :class "spotify_title"  :valign "start" :text music_title :limit-width 15)
+            
+                (label :class "spotify_artist"  :text artist :limit-width 25)
+                (label :class "weather_label"  :text music_album :limit-width 25)
+                
+                (box :orientation "h" 
+                    :height 80
+                    :valign "end"
+                    :halign "center"
+                    :space-evenly "false"
+                    :spacing 30
+                    (button :onclick "playerctl -p spotify next"
+
+                        (label :class "spotify-off" :text "玲" )
+                    )
+                    (button :onclick "scripts/get_spot_info.sh --shuffle_tog"
+
+                        (label :class shuff_repeat_class :text "咽" )
+                    )
+                    (button :onclick "scripts/get_spot_info.sh --play_pause" 
+ 
+                        (label :class "spotify-play" :text play_pause )
+                    )
+                    (button :onclick "scripts/get_spot_info.sh --loop_tog"
+ 
+                        (label :class shuff_repeat_class2 :text "凌" )
+                    )
+                    (button :onclick "playerctl -p spotify next"
+
+
+                        (label :class "spotify-off" :text "怜" )
+                    )
+                )
+                
+            )
+		;(label :class "username" :halign "center" :wrap "true" :limit-width 2 :text "branchmanager")
+        
+    )
+)
+;Notes for defwidget
+; use https://github.com/Syndrizzle/hotfiles/tree/worm/.config/eww/Main/scripts this repository as reference
+;youll have to curl the cover art. asssume eww won't be able to show the http url
+;the rest you can just se tup buttons and run playerctl pause next etc
+;if you plan on showoing the progress which I dont think I do then im not sure.
+
+
+
+
+(defwindow music :monitor 2 :stacking "overlay"
+    :geometry (geometry 
+                :x "3005px"
+                :y "1155px"
+                :width "0px" ; automatically generated
+                :height "0px" ; automatically generated 
+                
+            )
+            (spotify))
+
+(defwindow other_apps :monitor 2 :stacking "overlay"
+:geometry (geometry :x "3005px"
+                    :y "1045px"
+                    :width "0px" ; automatically generated
+                    :height "0px" ; automatically generated
+                    ;:anchor "center right"
+                    :width "0px" ; automatically generated
+                    :height "0px" ; automatically generated)
+            :wm-ignore true
+            )
+            (other_4))
+
+
+
+(defwidget sys_windows []
+        (box 
+                :orientation "v"
+                :space-evenly false
+                :spacing 10
+            (button :class "reddit" :height 130 :width 115
+                    :onclick "code"
+                    (circular-progress :class "res_mem" :value MEM_USAGE :thickness 7
+                        (label :class "res_circle_small" :text "MEM ${MEM_USAGE}%")
+                    )
+            )
+
+            (button :class "reddit" :height 130 :width 115
+                    :onclick "code"
+                    (circular-progress :class "res_cpu" :value CPU_USAGE :thickness 7
+                        (label :class "res_circle_small" :text "CPU ${CPU_USAGE}%")
+                    )
+            )
+        )
+)
+      
+
+(defwindow sys_monitor :monitor 2 :stacking "overlay"
+:geometry (geometry :x "3315px"
+                    :y "765px"
+                    :width "0px" ; automatically generated
+                    :height "0px" ; automatically generated
+                    ;:anchor "center right"
+                    )
+:wm-ignore true
+(sys_windows))

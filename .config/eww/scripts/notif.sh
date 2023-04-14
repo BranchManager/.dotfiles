@@ -1,0 +1,2 @@
+echo "(notifcard)"
+echo "(notifcard)"

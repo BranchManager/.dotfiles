@@ -1,0 +1,384 @@
+
+//////////////////////////////delete above//////////////////////////////////////////
+$bg-alt: #24273a;
+
+*{
+	all: unset;
+}
+//all: revert-layer;
+/*.bg {
+	//background-image: url("images/bg.png");
+	background-color: #474D59;
+	opacity: 0.2;
+}*/
+.genwin {
+	background-color: #D46389;
+    //#2E3440;
+	border-radius: 30px;
+}
+
+.face {
+	background-size: 200px;
+	min-height: 200px;
+	min-width: 200px;
+	margin: 65px 0px 0px 0px;
+	border-radius: 100%;
+}
+
+.fullname {
+	color: #D46389;
+	font-size : 30px;
+	font-weight : bold;
+}
+
+.username {
+	color: #8FBCBB;
+    
+	font-size : 22px;
+	font-weight : bold;
+	margin : -15px 0px 0px 0px;
+}
+
+.reddit {
+	background-color: #414559 ;
+	border-radius: 7px;
+}
+
+.iconweb, .iconmail {
+	color: #FFFFFF;
+	font-family: Iosevka Nerd Font;
+	font-size : 70px;
+	font-weight : normal;
+}
+
+.the_main_bg{
+	//all: unset;
+	background-color: #181926;
+	//#24273a;
+	border-left: 3px solid #5b6078;
+}
+
+.profilebox{
+	
+	background-color: #24273a;
+	border-radius: 10%;
+}
+
+.prof_name{
+	color: #FFFFFF;
+	font-family: Iosevka Nerd Font;
+}
+
+.prof_pic{
+	border-radius: 100%;
+	background-size:75px;
+    min-height: 75px;
+    min-width: 75px;
+    margin: 20px 0px 0px 0px;
+ 
+}
+
+.weather{
+	border-radius: 15%;
+	
+}
+.weather_bgtxt{
+	color: #FFF;
+	
+}
+
+.weather_label{
+	//font-family: Iosveka Nerd Font;
+	color: #FFF;
+	//margin: 0px 20px 0px 0px;
+}
+
+.thunderbird_icon{
+	//height: 50;	
+	background-color: red;
+
+}
+.notif_label{
+	font-family: "Ubuntu Nerd Font";
+	color: #FFF;
+}
+.weather_icon{
+	color: #FFF;
+	font-size: 28px;
+}
+.temp{
+	font-family: 'Ubuntu Nerd Font';
+	color: #FFF;
+	font-size: 36px;
+}
+.notification_label{
+	color: #99d1db;
+	margin: 10px;
+	font-family: 'Ubuntu Nerd Font';
+	font-size: 24;
+}
+.test1{
+	color:#FFF;
+	font-size: 12px;
+}
+//86 = 190lbs antch
+//104 230 c & j
+
+.notifs{
+	background-color: $bg-alt;
+	border-radius: 10px;
+	margin: 10px;
+	box-shadow: 10px 5px 5px black;
+}
+.divider{
+	font-size: 4px;
+}
+.notifcard{
+	background-color: #000;
+	margin: 10px;
+	box-shadow: 10px 5px 5px pink;
+	border-radius:7px;
+	
+	//color: orange;
+}
+.notifcar1{
+	background-color: #414559;
+	margin: 10px;
+	box-shadow: 3px 3px 5px black;
+	border-radius:7px;
+	//box-shadow: #000;
+}
+.notifcar1:hover{
+	//background-color: #414559;
+	//margin: 10px;
+	box-shadow: 1px 1px 3px pink;
+	//border-radius:7px;
+	//box-shadow: #000;
+}
+.notifcar1:active{
+	//background-color: #414559;
+	//margin: 10px;
+	box-shadow: 1px 1px 0px pink;
+	//border-radius:7px;
+	//box-shadow: #000;
+}
+	//color: orange;
+
+
+.notification_bell_icon{
+	background-color: #737994;
+	border-radius: 7px;
+}
+.quote_card{
+	background-color: #414559;
+	margin: 10px;
+	box-shadow: 1px 1px 5px black;
+	border-radius:7px;
+}
+.quote_card:hover{
+	//background-color: ;
+	//box-shadow: 0px 0px 0px black;
+	box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.295);
+
+}
+.full_quote_card{
+	
+	
+	background-color: #414559;
+	//background: unset;
+	//\\\
+	//all: unset;
+	//opacity: 1.00;
+	//#414559;
+	margin: 10px 10px;
+	//background: unset;
+	box-shadow: 1px 1px 10px black;
+	border-radius:7px;
+}
+
+.full_quote_card:hover{
+	box-shadow: 0px 0px 0px black;
+}
+.full_quote_card_outer{
+	
+	
+	background-color: #181926;
+	//#24273a;
+	border: 3px solid #5b6078;
+}
+.Quote_label{
+ color: #e5c890;
+}
+
+.quote{
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.tread{
+
+	//height: 100 px;
+	box-shadow: 1px 1px 5px black;
+}
+
+.cal-box {
+	font-family: Product Sans;
+	background-color: #181926;
+	border-radius: 7px;
+	padding: 0 1rem .2rem;
+	color: #FFF;
+	//background-color: $contrastbg;
+	margin: 12px 12px 12px 12px;
+  
+	.cal {
+	  background-color: inherit;
+	  padding: .5rem .10rem 0rem;
+	  margin-left: 10px;
+  
+	  & > * {
+		border: solid 0px transparent;
+	  }
+	  
+	  &.highlight {
+		padding: 10rem;
+	  }
+	}
+  }
+
+
+.date {
+	background-color: #414559 ;
+	color: #414559;
+	border-radius: 7px;
+  }
+
+  .res_cpu {
+	color: #FD6B85;
+	background-color: #181926;
+	font-family: "Ubuntu Nerd Font";
+}
+
+.res_mem {
+	color: #B1A6EE;
+	background-color: #181926;
+	font-family: "Ubuntu Nerd Font";
+}
+
+.notion{
+	border-radius: 15%;
+	background-size:75px;
+    min-height: 70px;
+    min-width: 70px;
+	box-shadow: 3px 2px 5px black;
+   // margin: 20px 0px 0px 0px;
+ 
+}
+.app-box{
+	background-color: #b8c0e0;
+	border-radius: 7px;
+
+}
+.spotify-album {
+	background-repeat: no-repeat;
+	background-size: 130px;
+	min-height: 130px;
+	min-width: 130px;
+	margin: 0px 0px 5px 0px;
+	border-radius: 7px;
+	box-shadow: 5px 5px 5px black;
+}
+
+.spotify-play{
+	color: #FFF;
+	font-size: 40;
+}
+
+.spotify-shuffle-on{
+	color: #a6da95;
+	font-size: 20;
+
+}
+
+.spotify-off{
+	font-size: 20;
+	color: #FFF;
+
+
+}
+
+.spotify_artist{
+	font-size: 20;
+	color: #FFF;
+}
+.spotify_title{
+	font-size: 20;
+	color: #8aadf4
+}
+
+/* Work scss classes following */
+
+.the_main_bg_work{
+	//all: unset;
+	background-color:#181926;
+	//#24273a;
+	border: 3px solid #5b6078;
+	border-radius: 7px;
+	padding: 0px 0px 10px;
+}
+
+.cal-box_work {
+	font-family: Product Sans;
+	
+	//background-color: red;
+	//#181926;
+	//border-radius: 7px;
+	//padding: 0 1rem .2rem;
+	color: #FFF;
+	//border: 12px solid red;
+	//background-color: $contrastbg;
+	//margin: 12px 12px 12px 12px;
+	//border: 12px solid red;
+  
+}
+.cal_work {
+	//background-color: inherit;
+	//padding: .5rem .10rem 0rem;
+	//font-size: 2px;
+	//margin: 10px 10px 10px;
+	//border-radius: 7px;
+	//border: 12px solid red;
+	padding: .5em;
+	//0 1rem .2rem;
+	
+	//#5b6078;
+
+	/*& > * {
+	  border: solid 0px transparent;
+	}
+	
+	&.highlight {
+	  padding: 10rem;
+	}*/
+  
+}
+
+.date_work {
+	background-color: #414559 ;
+	color: #414559;
+	border-radius: 1px;
+	border: 1px solid red;
+}
+
+.sys-monitor_work {
+	//margin-top: 50px;
+	margin: 35px 10px 10px;
+	//margin: 10px;
+}
+
+.sern_shortcut_workcss {
+	background-color: #414559;
+	border-radius: 7px;
+	
+
+}

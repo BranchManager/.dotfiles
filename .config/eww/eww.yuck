@@ -1,0 +1,12 @@
+
+
+(include "vars.yuck")
+(defwindow profile :stacking "overlay" :monitor 1 :focusable "false"
+  :geometry (geometry :x 3005 :y 10 :width 120 :height 120)
+  (profile_box))
+(defwidget profile_box []
+    (box :class "profilebox" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"
+        (box :style "background-image: url('/home/branchmanager/Pictures/profile_pics/Branch_ManagerAvatar.jpg')" :class "prof_pic" :halign "center")
+        (label :class "prof_name" :valign "center" :limit-width 25 :text user)
+    )
+)   
