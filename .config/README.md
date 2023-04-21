@@ -54,11 +54,18 @@ $ chsh -s /bin/bash $USER
 4. sudo pacman -S pavucontrol
 - for volume control
 5. sudo pacman -S libnotify
+    - to use notify-send
 - to test notifications
-
+6. yay -S eww-wayland
+7. sudo pacman -S network-manager-applet
+- to easily manage network (may delete)
 
 ## Packages removed
 1. yay -R 
 
 ### used this link for git bare repository
 https://www.atlassian.com/git/tutorials/dotfiles
+
+# SSH KEY GEN
+`ssh-keygen -t rsa`
+
