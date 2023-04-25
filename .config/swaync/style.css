@@ -221,40 +221,42 @@
 
 .control-center-dnd {
   border-radius: 8px;
-  background: black;
-  border: 1px solid @accent;
+  background: @surface1;
+  border: 1px solid #7f849c;
   box-shadow: none;
 }
 
 .control-center-dnd:checked {
-  background: white;
+  color: #b4befe;
+  background: #7f849c;
 }
 
 .control-center-dnd slider {
-  background: @background;
+  color: #b4befe;
+  background: #b4befe;
   border-radius: 8px;
 }
 
 
-/* DND widget */
+
 .widget-dnd {
   margin: 8px;
-  font-size: 1.1rem;
+  
 }
 .widget-dnd > switch {
-  font-size: initial;
+  color: @base;
   border-radius: 8px;
-  background: @background;
-  border: 1px solid @accent;
+  background: @base;
   box-shadow: none;
 }
 
-/*Try these next*/
+
 .widget-dnd > switch:checked {
-  background: white
+  background: #b4befe;
 }
 .widget-dnd > switch slider {
-  background: black;
+  color: #b4befe;
+  background: @surface1;
   border-radius: 8px;
-  border: 1px solid @foreground;
+  border: 1px solid #7f849c;
 }
