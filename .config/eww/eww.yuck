@@ -9,4 +9,7 @@
   :geometry (geometry :x "1%" :y "1%" :width 120 :height 120 :anchor "top left")
   (main_box))
 
-  
+(defwidget main_box []
+  (box :type "box" :orientation "horizontal" :spacing 0
+  (profile_box)
+  (sys_windows_box)))

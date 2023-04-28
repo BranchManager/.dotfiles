@@ -42,6 +42,11 @@ $bg-alt: #24273a;
 .reddit {
 	background-color: #414559 ;
 	border-radius: 7px;
+
+}
+
+.reddit > through {
+	min-width: 100px;
 }
 
 .iconweb, .iconmail {

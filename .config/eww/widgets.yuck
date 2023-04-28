@@ -1,28 +1,28 @@
-(defwidget main_box []
+(defwidget profile_box []
   
     (box :class "profilebox" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false"
         (box :style "background-image: url('/home/branchmanager/.face/branchmanager.jpg')" :class "prof_pic" :halign "center")
         (label :class "prof_name" :valign "center" :limit-width 25 :text user)
     )
 )   
-
-(defwidget sys_windows []
+;; This is the monitor for cpu and memory usage
+(defwidget sys_windows_box []
     (box 
             :orientation "v"
             :space-evenly false
             :spacing 10
         (button :class "reddit" :height 130 :width 115
                 :onclick "code"
-                (circular-progress :class "res_mem" :value MEM_USAGE :thickness 7
+                (progress :class "res_mem" :value MEM_USAGE :orientaion "h"
                     (label :class "res_circle_small" :text "MEM ${MEM_USAGE}%")
                 )
         )
 
-        (button :class "reddit" :height 130 :width 115
-                :onclick "code"
-                (circular-progress :class "res_cpu" :value CPU_USAGE :thickness 7
-                    (label :class "res_circle_small" :text "CPU ${CPU_USAGE}%")
-                )
-        )
+        ; (button :class "reddit" :height 130 :width 115
+        ;         :onclick "code"
+        ;         (progress :class "res_cpu" :value CPU_USAGE :orientaion "h"
+        ;             (label :class "res_circle_small" :text "CPU ${CPU_USAGE}%")
+        ;         )
+        ; )
     )
 )
