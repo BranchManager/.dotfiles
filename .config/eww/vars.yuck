@@ -1,1 +1,5 @@
 (deflisten user "whoami")
+
+
+(defpoll CPU_USAGE :interval "1s" "./scripts/test_script.sh")
+(defpoll MEM_USAGE :interval "1s" "./scripts/test_mem.sh")

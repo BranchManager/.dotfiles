@@ -57,8 +57,8 @@ $ chsh -s /bin/bash $USER
     - to use notify-send
 - to test notifications
 6. yay -S eww-wayland
-7. sudo pacman -S network-manager-applet
-- to easily manage network (may delete)
+7. sudo pacman -S rofi
+
 
 ## Packages removed
 1. yay -R 
