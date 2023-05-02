@@ -39,15 +39,11 @@ $bg-alt: #24273a;
 	margin : -15px 0px 0px 0px;
 }
 
-.reddit {
-	background-color: #414559 ;
-	border-radius: 7px;
 
-}
 
-.reddit > through {
+/*.reddit > through {
 	min-width: 100px;
-}
+}*/
 
 .iconweb, .iconmail {
 	color: #FFFFFF;
@@ -258,17 +254,41 @@ $bg-alt: #24273a;
 	border-radius: 7px;
   }
 
-  .res_cpu {
+
+  
+  .res_bar .label {
+	color: #B48EAD;
+	font-size: 1.5rem;
+  }
+
+
+// scale trough{ 󰻠   󰍛   󰔄
+// 	all: unset;
+// 	background-color: #545454;
+// 	min-height: 10px;
+// 	min-width: 100px;
+// 	margin-left: 10px;
+// 	margin-right: 5px;
+// 	border-radius: 50px;
+// }
+
+  .res_mem {
 	color: #FD6B85;
 	background-color: #181926;
 	font-family: "Ubuntu Nerd Font";
+	
 }
 
-.res_mem {
-	color: #B1A6EE;
-	background-color: #181926;
-	font-family: "Ubuntu Nerd Font";
-}
+// .res_mem{
+// 	/*color: #B1A6EE;*/
+// 	/*background-color: #181926;*/
+// 	//all: unset;
+// 	background-color: white;
+// 	color: red;
+// 	//font-family: "Ubuntu Nerd Font";
+	
+	
+// }
 
 .notion{
 	border-radius: 15%;
@@ -387,3 +407,82 @@ $bg-alt: #24273a;
 	
 
 }
+
+/*******************************new eww widget stuff***************************/
+.box1 {
+	background-color: #414559 ;
+	border-radius: 7px;
+
+}
+
+.svg_monitor_icon{
+	font-size: 34px;
+	padding-right: 0px;
+	padding-left: 5px;
+	
+}
+.mem_icon{
+	font-size: 34px;
+	padding-right: 5px;
+	color: #f38ba8;
+}
+.temp_bar scale trough highlight{
+	all: unset;
+	border-radius: 4px;
+	background-color: #fab387;
+}
+
+.mem_bar scale trough highlight{
+	all: unset;
+	border-radius: 4px;
+	background-color: #eba0ac;
+}
+
+.cpu_bar scale trough highlight{
+	all: unset;
+	border-radius: 4px;
+	background-color: #f38ba8;
+}
+
+scale trough{
+
+all: unset;
+border-radius: 4px;
+margin-left: 10;
+background-color: #313244;
+min-height: 15px;
+min-width: 200px;
+font-family: "Ubuntu Nerd Font";
+
+}
+
+
+
+
+
+/********* TEST STUUFF ************/
+
+// WINDOW RELATED CSS
+
+
+  
+  // METRIC LOOKS
+//  scale trough highlight {
+// 	all: unset;
+// 	color: #000000;
+// 	background: linear-gradient(90deg, #88c0d0 0%, #81a1c1  50%, #5E81ac 100%);
+// 	border-radius: 10px;
+//   }
+//    scale trough {
+// 	all: unset;
+// 	background-color: red;
+// 	border-radius: 50px;
+// 	min-height: 10px;
+// 	min-width: 100px;
+// 	margin-left: 10px;
+// 	margin-right: 5px;
+//   }
+  
+ 
+  
+  
