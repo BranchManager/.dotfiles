@@ -142,15 +142,34 @@ window#waybar.chromium {
     border: none;
     
 }*/
-
-#custom-vpn{
-    /*background-color: #5b6078;*/
-    
-    font-size: 24px;
+#custom-swaync{
+    font-size: 40px;
     margin-right: 5px;
     /*padding: 0 5px;*/
+    margin-top: -10px;
+    margin-bottom: -10px;
+   color: #89b4fa
+}
+
+#custom-swaync button:hover{
+    background: red;
+    box-shadow: red;
+}
+#custom-vpn {
+    /*background-color: #5b6078;*/
+    
+    font-size: 40px;
+    margin-right: 5px;
+    /*padding: 0 5px;*/
+    margin-top: -10px;
+    margin-bottom: -10px;
    
     
+}
+
+#custom-vpn:hover{
+    background: red;
+    box-shadow: red;
 }
 
 #custom-brwoser button:hover {
@@ -195,11 +214,13 @@ window#waybar.chromium {
 }
 #custom-BranchMenu{
     background-color: #5b6078;
-    border-top-left-radius: 5px ;
-    font-size:20;
+   
+    font-size:30;
     color: #8aadf4;
-    margin-top:4px;
+    margin-top: -15px;
+    margin-bottom: -15px;
     padding: 0 5px;
+    
     
 }
 #clock {
@@ -266,8 +287,18 @@ label:focus {
     color: #a6da95;
     margin-right: 5px;
    /* background-color: #b7bdf8;*/
-   font-size: 24;
+   margin-top: -10px;
+   margin-bottom: -10px;
+   font-size: 40;
     
+}
+
+#network:hover {
+    background-color: red;
+    background: red;
+    box-shadow: red;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 
@@ -288,7 +319,9 @@ label:focus {
     margin-right: 5px;
    /* background-color: #b7bdf8;*/
    /* border-radius: 5px;*/
-    font-size: 24px;
+    margin-top: -10;
+    margin-bottom: -10px;
+    font-size: 40px;
    
 }
 
@@ -303,10 +336,16 @@ label:focus {
     /*background-color: #ee99a0;*/
     
    /* background-color: #b7bdf8;*/
-    font-size: 20;
-    border-radius: 5px;
+    font-size: 40;
+    /*line-height: 25px;*/
+    margin-bottom: -10px;
+    margin-top: -10px;
+    border-radius: 0px;
    
     /*color:  	#cad3f5;*/
+    
+   
+
     color: #ee99a0;
 }
 

@@ -1,50 +1,77 @@
 
 
+
 (defwidget main_box []
-    (box :class "box" :orientation "horizontal" :spacing 10 :space-evenly "false"
-    (profile_box)
-    (sys_windows_box)))
+    (box :orientation "vertical" :spacing 10 :space-evenly "false" :height 400 :width 450
+        (box :orientation "horizontal" :spacing 10 :space-evenly "false" :height 0 :width 0
+                (profile_box)
+                (sys_windows_box)
+        )
+        (flash_tools)
+    )
+)
 
 
 
 (defwidget profile_box []
-  
-    (box :class "profilebox" :orientation "v" :space-evenly "false" :vexpand "false" :hexpand "false" :width 125
-        (box :style "background-image: url('/home/branchmanager/.face/branchmanager.jpg')" :class "prof_pic" :halign "center")
-        (label :class "prof_name" :valign "center" :limit-width 25 :text user)
-    )
+    
+        (box :class "profilebox" :orientation "v" :space-evenly false :vexpand "false" :hexpand "false" :width 100 :height 0
+            (box :style "background-image: url('/home/branchmanager/.face/branchmanager.jpg')" :height 25 :class "prof_pic" :halign "center")
+            (label :class "prof_name" :valign "center" :limit-width 25 :text user)
+        )
+    
 )   
 ;; This is the monitor for cpu and memory usage
 (defwidget sys_windows_box []
     (box 
             :orientation "v"
             :space-evenly true
-            :spacing 10
+            :spacing 0
             :class "box1"
-            :width 250
+            :width 313
+            :height 30
             
-        (box :class "cpu_bar" :height 14 :width 225 :space-evenly false
+        (box :class "cpu_bar" :height 10 :width 225 :space-evenly false
             (image :class "svg_monitor_icon" :path "images/icons/cpu_icon.svg" :image-width 20)
 				
-            (scale  :value 20 :marks "no" :min 0 :max 101 :width 150 :flipped false :orientation "h")
+            (scale  :value CPU_USAGE :marks "no" :min 0 :max 101 :width 270 :flipped false :orientation "h")
         )
-        (box :class "mem_bar" :height 14 :width 225 :space-evenly false
-            ;(label :text "󰍛":class "mem_icon" :width 2)
+        (box :class "mem_bar" :height 10 :width 225 :space-evenly false
             (image :class "svg_monitor_icon" :path "images/icons/memory-solid.svg" :image-width 20)
-            (scale  :value 20 :marks "no" :min 0 :max 101 :width 150 :flipped false :orientation "h")
+            (scale  :value MEM_USAGE :marks "no" :min 0 :max 100 :width 270 :flipped false :orientation "h")
         )
-        (box :class "temp_bar" :height 14 :width 225 :space-evenly false :spacing 0
+        (box :class "temp_bar" :height 10 :width 225 :space-evenly false :spacing 0
             (image :class "svg_monitor_icon" :path "images/icons/temp_icon.svg" :image-width 20)	
-            (scale  :value 20 :marks "no" :min 0 :max 101 :width 150 :flipped false :orientation "h")
+            (scale  :value EST_TEMP :marks "no" :min 20 :max 100 :width 270 :flipped false :orientation "h")
         )
 
-        ; (button :class "reddit" :height 130 :width 115
-        ;         :onclick "code"
-        ;         (progress :class "res_cpu" :value CPU_USAGE :orientaion "h"
-        ;             (label :class "res_circle_small" :text "CPU ${CPU_USAGE}%")
-        ;         )
-        ; )
     )
+)
+
+(defwidget flash_tools []
+    (box :height 0 :width 0 :space-evenly false :hexpand false :orientation "h"
+        (box :class "box1" :height 75 :width 425 :space-evenly true :spacing 5 :hexpand false :orientation "h"
+           ;(box :class "flash_tool" :height 0 :width 0
+                (button :class "flash_tool" :onclick "./scripts/eww_network_check.sh --toggle_wifi" :height 55 :width 65 :valign "center" :halign "center"
+                    (label :text network :class "tool_label")
+                )
+            ;)
+            ;(box :class "flash_tool" :height 0 :width 0
+                (button :class "flash_tool" :onclick "./scripts/eww_bt_check.sh --open-blueman" :height 55 :width 65 :valign "center" :halign "center"
+                    (label :text "" :class BT_STATUS)
+                )
+            ;)
+                (button :class "flash_tool" :onclick "./scripts/eww_night_time.sh --toggle" :height 55 :width 65 :valign "center" :halign "center"
+                    (label :text "" :class NIGHT_MODE )
+                )
+
+                (button :class "flash_tool" :onclick "echo 'hello'" :height 55 :width 65 :valign "center" :halign "center")
+
+                (button :class "flash_tool" :onclick "echo 'hello'" :height 55 :width 65 :valign "center" :halign "center")
+        )
+        
+  )
+
 )
 
 

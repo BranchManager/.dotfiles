@@ -40,7 +40,8 @@ $ chsh -s /bin/bash $USER
     - changing terminal to kitty
         Went the the edit section => Configure custom Actions => Edit the "open Terminal here" action command from `exo-open --working-directory %f --launch TerminalEmulator` to `kitty --working-directory %f`
     - install extract archive for thunar
-        `sudo pacman -S thunar-archive-plugin`
+        `
+        sudo pacman -S thunar-archive-plugin`
 
 2. Nautilus
     - Came with default gnome configuration
@@ -58,7 +59,13 @@ $ chsh -s /bin/bash $USER
 - to test notifications
 6. yay -S eww-wayland
 7. sudo pacman -S rofi
+8. sudo pacman -S bluez-utils
+9. sudo pacman -S bluez
+10. sudo pacman -S blueman
+11. yay -S wlsunset
+12. sudo pacman -S python-pipY
 
+13. pip install shell-gpt==0.9.0
 
 ## Packages removed
 1. yay -R 
@@ -68,4 +75,7 @@ https://www.atlassian.com/git/tutorials/dotfiles
 
 # SSH KEY GEN
 `ssh-keygen -t rsa`
+
+#
+# Nvidia (with amd gpu) setup for machine learning
 

@@ -59,25 +59,14 @@ $bg-alt: #24273a;
 	border-left: 3px solid #5b6078;
 }
 
-.profilebox{
-	
-	background-color: #24273a;
-	border-radius: 10%;
-}
+
 
 .prof_name{
 	color: #FFFFFF;
 	font-family: Iosevka Nerd Font;
 }
 
-.prof_pic{
-	border-radius: 100%;
-	background-size:75px;
-    min-height: 75px;
-    min-width: 75px;
-    margin: 20px 0px 0px 0px;
- 
-}
+
 
 .weather{
 	border-radius: 15%;
@@ -409,12 +398,74 @@ $bg-alt: #24273a;
 }
 
 /*******************************new eww widget stuff***************************/
-.box1 {
-	background-color: #414559 ;
-	border-radius: 7px;
+.prof_pic{
+	border-radius: 100%;
+	background-size:55px;
+    min-height: 55px;
+    min-width: 55px;
+    margin: 20px 0px 0px 0px;
+	
+	background-position: center;
+ 
+}
+.flash_tool{
+	background-color: #24273a;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px black;
+}
+
+.tool_label{
+	font-size: 75;
+	color: #a6e3a1;
+	margin-top: -20;
+	margin-bottom: -20;
+}
+.flash_tool:active{
+	box-shadow: 0px 0px 0px black;
+}
+
+.good_morning, .night_night{
+	font-size: 70;
+	margin-top: -20;
+	margin-bottom: -20;
+}
+.good_morning{
+	color: #585b70;
 
 }
 
+.night_night{
+	color: #f9e2af;
+
+}
+
+.BT_ON, .BT_OFF{
+	font-size: 50;
+	margin-top: -20;
+	margin-bottom: -20;
+}
+
+.BT_ON {
+
+	color: #89b4fa;
+
+}
+
+.BT_OFF{
+	color: #585b70;
+}
+
+.box1 {
+	background-color:  #313244 ;
+	border-radius: 7px;
+	box-shadow: 5px 5px 5px black;
+}
+.profilebox{
+	
+	background-color: #24273a;
+	border-radius: 10%;
+	box-shadow: 5px 5px 2px black;
+}
 .svg_monitor_icon{
 	font-size: 34px;
 	padding-right: 0px;
@@ -449,7 +500,7 @@ scale trough{
 all: unset;
 border-radius: 4px;
 margin-left: 10;
-background-color: #313244;
+background-color: #45475a;
 min-height: 15px;
 min-width: 200px;
 font-family: "Ubuntu Nerd Font";

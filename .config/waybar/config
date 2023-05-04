@@ -3,12 +3,12 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 5, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "output": ["DP-5"],
+    "output": ["DP-1","DP-2","DP-3"],
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["custom/BranchMenu","wlr/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["keyboard-state","custom/vpn","pulseaudio", "network",  "custom/power","custom/BranchMenu"], 
+    "modules-right": ["keyboard-state","custom/vpn","pulseaudio", "network",  "custom/power", "custom/swaync" ], 
     //
     //, "custom/power","custom/archeww"
     // you may want these modules for laptop  "backlight", "vpn",  "sway/language", "battery", "battery#bat2",  
@@ -29,10 +29,12 @@
     //     }
     // },
     //"custom/browser", "custom/code", "custom/terminal","custom/folders","custom/spotify"
+  
     "custom/BranchMenu":{
         "format": "",
-	"on-click":"~/.config/eww/scripts/start_eww.sh"
+	    "on-click":"~/.config/eww/scripts/start_eww.sh"
     },
+
     "custom/menu": {
         "format": "",
         "on-click": "sh -c '(sleep 0.2s; rofi -show run -theme ~/.config/waybar/rofi_configs/launcher.rasi)' & disown"
@@ -59,7 +61,7 @@
         "on-click": "sh -c '(sleep 0.5s; spotify)' & disown"
     },
     "custom/power":{
-        "format": "",
+       "format": "",
         "on-click": "sh -c '(sleep 0.5s; ~/.config/waybar/rofi_configs/powermenu.sh)' & disown"
     },
     "custom/vpn": {
@@ -75,25 +77,38 @@
         "return-type": "json",
         "signal": 7
     },
+    "custom/swaync": {
+        
+        "format": "{icon}",
+        "format-icons":{
+            "true": "",
+            "false":""
+        },
+        "on-click":"swaync-client -t; sleep 1; pkill -SIGRTMIN+7 waybar",
+        "interval":2,
+        "exec": "~/.config/waybar/scripts/dnd_check.sh | jq --unbuffered --compact-output",
+        "return-type": "json",
+        "signal": 7
+    },
     "wlr/workspaces": {
          "disable-scroll": false,
          "on-click": "activate",
-         "all-outputs": true,
+         "all-outputs": false,
          "active-only":false,
          "format": "{icon}",
          "format-icons": {
-             "1": "1",
-             "2": "2",
-             "3": "3",
-             "4": "4",
-             "5": "5",
-	         "6": "6",
-	         "7": "7",
- 	         "8": "8",
-	         "9": "9",
-	         "10": "10",
+             "1":  "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
+	         "6": "",
+	         "7": "",
+ 	         "8": "",
+	         "9": "",
+	         "10": "",
              "urgent": "",
-             //"active": "T",
+             "active": "",
              "default": ""
          }
      },
@@ -206,7 +221,8 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "echo 'hello' "
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

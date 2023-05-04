@@ -1,5 +1,10 @@
 (deflisten user "whoami")
 
 (defvar test "55")
-(defpoll CPU_USAGE :interval "1s" "./scripts/test_script.sh")
-(defpoll MEM_USAGE :interval "1s" "./scripts/test_mem.sh")
+
+(defpoll NIGHT_MODE :interval "1s" "./scripts/eww_night_time.sh")
+(defpoll BT_STATUS :interval "5s" "./scripts/eww_bt_check.sh")
+(defpoll network :interval "5s" "./scripts/eww_network_check.sh")
+(defpoll CPU_USAGE :interval "1s" "./scripts/eww_cpu_usage.sh")
+(defpoll MEM_USAGE :interval "1s" "./scripts/eww_mem_usage.sh")
+(defpoll EST_TEMP :interval "1s" "./scripts/eww_temp.sh")
