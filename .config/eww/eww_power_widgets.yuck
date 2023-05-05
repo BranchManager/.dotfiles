@@ -8,28 +8,58 @@
 
 
 (defwidget power_window_box []
-    (box :height 0 :width 0 :space-evenly false :hexpand false :orientation "h"
-        (box :class "box1" :height 75 :width 425 :space-evenly true :spacing 5 :hexpand false :orientation "h"
+    (box :class "box1 ":height 0 :width 0 :space-evenly false :hexpand false :orientation "v" :spacing 10
+        (box :height 75 :width 425 :space-evenly true :spacing 5 :hexpand false :orientation "h"
           
                 (button :class "flash_tool" :onclick "./scripts/eww_network_check.sh --toggle_wifi" :height 55 :width 65 :valign "center" :halign "center"
-                    (label :text network :class "tool_label")
+                    (label :text "󰒲" :class "sleep_label" :valign "left" :halign "center")
                 )
      
                 (button :class "flash_tool" :onclick "./scripts/eww_bt_check.sh --open-blueman" :height 55 :width 65 :valign "center" :halign "center"
-                    (label :text "" :class BT_STATUS)
+                    (label :text "" :class "lock_icon" :valign "center" :halign "center")
                 )
             
                 (button :class "flash_tool" :onclick "./scripts/eww_night_time.sh --toggle" :height 55 :width 65 :valign "center" :halign "center"
-                    (label :text "" :class NIGHT_MODE )
+                    (label :text "" :class "restart_icon" :valign "center" :halign "center")
                 )
 
                 (button :class "flash_tool" :onclick "swaync-client -t" :height 55 :width 65 :valign "center" :halign "center"
-                    (label :text NOTIFICATION :class "notification_icon")
+                    (label :text "󰍃" :class "logout_icon" :valign "center" :halign "center")
                 )
 
                 (button :class "flash_tool" :onclick "echo 'hello'" :height 55 :width 65 :valign "center" :halign "center"
-                    (label :text "⏻" :class "power_icon")
+                    (label :text "⏻" :class "power_icon" :valign "center" :halign "center")
                 )
+        )
+        (revealer :transition "slidedown" :reveal reveal_power_confirmed
+            (box :height 5 :width 65 :orientation "v" :space-evenly false :spacing 15
+                (label :text "Are you Sure you want to shutdown?" :width 20 :height 20 )
+                (box :class "box1_noshadow" :height 75 :width 65 :orientation "h" :space-evenly true
+                    (button :class "flash_tool" :onclick "swaync-client -t" :height 70 :width 100 :valign "center" :halign "center"
+                        (label :text "Yes" :valign "center" :halign "center")
+                    )
+                    
+                    (button :class "flash_tool" :onclick "swaync-client -t" :height 70 :width 100 :valign "center" :halign "center"
+                        (label :text "No" :valign "center" :halign "center")
+                    )
+                )
+            )
+        
+        )
+        (revealer :transition "slidedown" :reveal reveal_power_confirmed
+            (box :class "box1_noshadow" :height 55 :width 65 :orientation "h")
+            
+        
+        )
+        (revealer :transition "slidedown" :reveal reveal_power_confirmed
+            (box :class "box1_noshadow" :height 55 :width 65 :orientation "h")
+            
+        
+        )
+        (revealer :transition "slidedown" :reveal reveal_power_confirmed
+            (box :class "box1_noshadow" :height 55 :width 65 :orientation "h")
+            
+        
         )
         
     )

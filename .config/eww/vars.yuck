@@ -1,7 +1,7 @@
 (deflisten user "whoami")
 
 (defvar test "55")
-
+(defvar reveal_power_confirmed "true")
 
 (deflisten NOTIFICATION "./scripts/eww_swaync.sh")
 (defpoll NIGHT_MODE :interval "1s" "./scripts/eww_night_time.sh")

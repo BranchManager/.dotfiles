@@ -425,7 +425,7 @@ $bg-alt: #24273a;
 }
 .power_icon{
 	color: #f38ba8;
-	font-size: 70;
+	font-size: 50;
 	margin-top: -20;
 	margin-bottom: -20;
 }
@@ -437,7 +437,7 @@ $bg-alt: #24273a;
 	margin-bottom: -20;
 }
 .good_morning, .night_night{
-	font-size: 70;
+	font-size: 50;
 	margin-top: -20;
 	margin-bottom: -20;
 }
@@ -472,6 +472,13 @@ $bg-alt: #24273a;
 	border-radius: 7px;
 	box-shadow: 5px 5px 5px black;
 }
+
+.box1_noshadow {
+	background-color:  #313244 ;
+	border-radius: 7px;
+	
+}
+
 .profilebox{
 	
 	background-color: #24273a;
@@ -518,10 +525,34 @@ min-width: 200px;
 font-family: "Ubuntu Nerd Font";
 
 }
+/********** new widget powerstuff ************/
 
+.sleep_label{
+	font-size: 50;
+	color: #a6e3a1;
+	margin-top: -20;
+	margin-bottom: -20;
+}
 
+.logout_icon{
+	color: #cba6f7;
+	font-size: 50;
+	margin-top: -20;
+	margin-bottom: -20;
+}
+.restart_icon{
+	color: #f2cdcd;
+	font-size: 50;
+	margin-top: -20;
+	margin-bottom: -20;
+}
 
-
+.lock_icon{
+	color: #89b4fa;
+	font-size: 50;
+	margin-top: -20;
+	margin-bottom: -20;
+}
 
 /********* TEST STUUFF ************/
 
