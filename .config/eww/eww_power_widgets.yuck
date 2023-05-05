@@ -31,21 +31,7 @@
                     (label :text "⏻" :class "power_icon" :valign "center" :halign "center")
                 )
         )
-        (revealer :transition "slidedown" :reveal reveal_power_confirmed
-            (box :height 5 :width 65 :orientation "v" :space-evenly false :spacing 15
-                (label :text "Are you Sure you want to shutdown?" :width 20 :height 20 )
-                (box :class "box1_noshadow" :height 75 :width 65 :orientation "h" :space-evenly true
-                    (button :class "flash_tool" :onclick "swaync-client -t" :height 70 :width 100 :valign "center" :halign "center"
-                        (label :text "Yes" :valign "center" :halign "center")
-                    )
-                    
-                    (button :class "flash_tool" :onclick "swaync-client -t" :height 70 :width 100 :valign "center" :halign "center"
-                        (label :text "No" :valign "center" :halign "center")
-                    )
-                )
-            )
-        
-        )
+        (yes_n_no :script "test")
         (revealer :transition "slidedown" :reveal reveal_power_confirmed
             (box :class "box1_noshadow" :height 55 :width 65 :orientation "h")
             
@@ -63,4 +49,23 @@
         )
         
     )
+)
+
+(defwidget yes_n_no [script]
+    (revealer :transition "slidedown" :reveal reveal_power_confirmed
+            (box :height 5 :width 65 :orientation "v" :space-evenly false :spacing 15
+                (label :text "Are you Sure you want to shutdown?" :width 20 :height 20 )
+                (box :class "box1_noshadow" :height 75 :width 65 :orientation "h" :space-evenly true
+                    (button :class "flash_tool" :onclick "swaync-client -t" :height 70 :width 100 :valign "center" :halign "center"
+                        (label :text "Yes" :valign "center" :halign "center")
+                    )
+                    
+                    (button :class "flash_tool" :onclick "swaync-client -t" :height 70 :width 100 :valign "center" :halign "center"
+                        (label :text "No" :valign "center" :halign "center")
+                    )
+                )
+            )
+        
+        )
+
 )
