@@ -1,5 +1,6 @@
 (include "vars.yuck")
 (include "widgets.yuck")
+(include "eww_power_widgets.yuck")
 (include "eww0.yuck")
 (include "eww1.yuck")
 (include "eww2.yuck")

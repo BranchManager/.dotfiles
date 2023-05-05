@@ -2,6 +2,8 @@
 
 (defvar test "55")
 
+
+(deflisten NOTIFICATION "./scripts/eww_swaync.sh")
 (defpoll NIGHT_MODE :interval "1s" "./scripts/eww_night_time.sh")
 (defpoll BT_STATUS :interval "5s" "./scripts/eww_bt_check.sh")
 (defpoll network :interval "5s" "./scripts/eww_network_check.sh")

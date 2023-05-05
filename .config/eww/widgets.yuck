@@ -51,26 +51,29 @@
 (defwidget flash_tools []
     (box :height 0 :width 0 :space-evenly false :hexpand false :orientation "h"
         (box :class "box1" :height 75 :width 425 :space-evenly true :spacing 5 :hexpand false :orientation "h"
-           ;(box :class "flash_tool" :height 0 :width 0
+          
                 (button :class "flash_tool" :onclick "./scripts/eww_network_check.sh --toggle_wifi" :height 55 :width 65 :valign "center" :halign "center"
                     (label :text network :class "tool_label")
                 )
-            ;)
-            ;(box :class "flash_tool" :height 0 :width 0
+     
                 (button :class "flash_tool" :onclick "./scripts/eww_bt_check.sh --open-blueman" :height 55 :width 65 :valign "center" :halign "center"
                     (label :text "" :class BT_STATUS)
                 )
-            ;)
+            
                 (button :class "flash_tool" :onclick "./scripts/eww_night_time.sh --toggle" :height 55 :width 65 :valign "center" :halign "center"
                     (label :text "" :class NIGHT_MODE )
                 )
 
-                (button :class "flash_tool" :onclick "echo 'hello'" :height 55 :width 65 :valign "center" :halign "center")
+                (button :class "flash_tool" :onclick "swaync-client -t" :height 55 :width 65 :valign "center" :halign "center"
+                    (label :text NOTIFICATION :class "notification_icon")
+                )
 
-                (button :class "flash_tool" :onclick "echo 'hello'" :height 55 :width 65 :valign "center" :halign "center")
+                (button :class "flash_tool" :onclick "echo 'hello'" :height 55 :width 65 :valign "center" :halign "center"
+                    (label :text "⏻" :class "power_icon")
+                )
         )
         
-  )
+    )
 
 )
 
