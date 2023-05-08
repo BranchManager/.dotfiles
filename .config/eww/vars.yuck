@@ -1,7 +1,15 @@
 (deflisten user "whoami")
 
 (defvar test "55")
-(defvar reveal_power_confirmed "true")
+(defvar reveal_power_confirmed "false")
+(defvar set_reveal_true "eww update reveal_power_confirmed=\"true\"")
+(defvar set_reveal_false "eww update reveal_power_confirmed=\"false\"")
+(defvar power_off "power off")
+(defvar log_out "logout")
+(defvar reboot "reboot")
+(defvar lock "lock")
+(defvar suspend "suspend system")
+;(defvar suspend "systemctl suspend")
 
 (deflisten NOTIFICATION "./scripts/eww_swaync.sh")
 (defpoll NIGHT_MODE :interval "1s" "./scripts/eww_night_time.sh")
@@ -10,3 +18,9 @@
 (defpoll CPU_USAGE :interval "1s" "./scripts/eww_cpu_usage.sh")
 (defpoll MEM_USAGE :interval "1s" "./scripts/eww_mem_usage.sh")
 (defpoll EST_TEMP :interval "1s" "./scripts/eww_temp.sh")
+
+(defpoll calendar_day :interval "10h" "date '+%d'")
+(defpoll calendar_month :interval "10h" "date '+%m")
+(defpoll calendar_year :interval "10h" "date '+%Y'")
+(defpoll hour :interval "1s" "date '+%H:'")
+(defpoll minute :interval "1s" "date '+%M'")

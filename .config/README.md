@@ -63,7 +63,9 @@ $ chsh -s /bin/bash $USER
 9. sudo pacman -S bluez
 10. sudo pacman -S blueman
 11. yay -S wlsunset
-12. sudo pacman -S python-pipY
+12. sudo pacman -S python-pip
+13. sudo yay -S ttf-ubuntu-nerd
+14. sudo pacman -S swaybg
 
 13. pip install shell-gpt==0.9.0
 

@@ -32,7 +32,7 @@
   
     "custom/BranchMenu":{
         "format": "",
-	    "on-click":"~/.config/eww/scripts/start_eww.sh"
+	    "on-click":"~/.config/eww/scripts/start_eww.sh --start-end"
     },
 
     "custom/menu": {
@@ -84,7 +84,7 @@
             "true": "",
             "false":""
         },
-        "on-click":"swaync-client -t; sleep 1; pkill -SIGRTMIN+7 waybar",
+        "on-click":"~/.config/waybar/scripts/launch_swaync.sh",
         "interval":2,
         "exec": "~/.config/waybar/scripts/dnd_check.sh | jq --unbuffered --compact-output",
         "return-type": "json",

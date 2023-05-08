@@ -1,3 +1,5 @@
+(defvar the_script "echo \"nothing\"")
+(defvar the_option "nothing")
 (defwidget power_box []
     (box :orientation "vertical" :spacing 10 :space-evenly "false" :height 400 :width 450
         (box :orientation "horizontal" :spacing 10 :space-evenly "false" :height 0 :width 0
@@ -11,7 +13,8 @@
     (box :class "box1 ":height 0 :width 0 :space-evenly false :hexpand false :orientation "v" :spacing 10
         (box :height 75 :width 425 :space-evenly true :spacing 5 :hexpand false :orientation "h"
           
-                (button :class "flash_tool" :onclick "./scripts/eww_network_check.sh --toggle_wifi" :height 55 :width 65 :valign "center" :halign "center"
+                (button :class "flash_tool" :onclick "${set_reveal_true} & eww update the_script=\"eww close-all & systemctl suspend\" & eww update the_option=\"${suspend}\""  
+                        :height 55 :width 65 :valign "center" :halign "center"
                     (label :text "󰒲" :class "sleep_label" :valign "left" :halign "center")
                 )
      
@@ -19,21 +22,24 @@
                     (label :text "" :class "lock_icon" :valign "center" :halign "center")
                 )
             
-                (button :class "flash_tool" :onclick "./scripts/eww_night_time.sh --toggle" :height 55 :width 65 :valign "center" :halign "center"
+                (button :class "flash_tool" :onclick "${set_reveal_true} & eww update the_script=\"systemctl reboot\" & eww update the_option=\"${reboot}\""  
+                        :height 55 :width 65 :valign "center" :halign "center"
                     (label :text "" :class "restart_icon" :valign "center" :halign "center")
                 )
 
-                (button :class "flash_tool" :onclick "swaync-client -t" :height 55 :width 65 :valign "center" :halign "center"
+                (button :class "flash_tool" :onclick "${set_reveal_true} & eww update the_script=\"loginctl kill-user $(whoami)\" & eww update the_option=\"${log_out}\""  
+                        :height 55 :width 65 :valign "center" :halign "center"
                     (label :text "󰍃" :class "logout_icon" :valign "center" :halign "center")
                 )
 
-                (button :class "flash_tool" :onclick "echo 'hello'" :height 55 :width 65 :valign "center" :halign "center"
+                (button :class "flash_tool" :onclick "${set_reveal_true} & eww update the_script=\"shutdown now\" & eww update the_option=\"${power_off}\"" 
+                        :height 55 :width 65 :valign "center" :halign "center"
                     (label :text "⏻" :class "power_icon" :valign "center" :halign "center")
                 )
         )
         
-        (revealer :transition "slidedown" :reveal reveal_power_confirmed
-            (yes_n_no :script "test" :revealed reveal_power_confirmed)
+        (revealer :transition "slidedown" :reveal reveal_power_confirmed 
+            (yes_n_no :script the_script :revealed reveal_power_confirmed :option the_option)
         )
 
        
@@ -41,17 +47,17 @@
     )
 )
 
-
+    ;option
     ;(revealer :transition "slidedown" :reveal reveal_power_confirmed
-(defwidget yes_n_no [script revealed]
+(defwidget yes_n_no [script revealed ?option]
             (box :height 5 :width 65 :orientation "v" :space-evenly false :spacing 0
-                (label :text "Are you Sure you want to shutdown?" :width 20 :height 20 )
+                (label :text "Are you Sure you want to ${option} ?" :width 20 :height 20 )
                 (box :class "box1_noshadow" :height 95 :width 65 :orientation "h" :space-evenly true
-                    (button :class "flash_tool" :onclick "swaync-client -t" :height 70 :width 100 :valign "center" :halign "center"
+                    (button :class "flash_tool" :onclick script :height 70 :width 100 :valign "center" :halign "center"
                         (label :text "Yes" :valign "center" :halign "center")
                     )
                     
-                    (button :class "flash_tool" :onclick "swaync-client -t" :height 70 :width 100 :valign "center" :halign "center"
+                    (button :class "flash_tool" :onclick "${set_reveal_false} & ./scripts/start_eww.sh --powe-close" :height 70 :width 100 :valign "center" :halign "center"
                         (label :text "No" :valign "center" :halign "center")
                     )
                 )

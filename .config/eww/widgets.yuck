@@ -2,12 +2,15 @@
 
 
 (defwidget main_box []
-    (box :orientation "vertical" :spacing 10 :space-evenly "false" :height 400 :width 450
+    (box :orientation "vertical" :spacing 10 :space-evenly "false" :height 400 :width 600
         (box :orientation "horizontal" :spacing 10 :space-evenly "false" :height 0 :width 0
                 (profile_box)
                 (sys_windows_box)
         )
         (flash_tools)
+       
+            (date)
+       ; )
     )
 )
 
@@ -68,7 +71,7 @@
                     (label :text NOTIFICATION :class "notification_icon")
                 )
 
-                (button :class "flash_tool" :onclick "echo 'hello'" :height 55 :width 65 :valign "center" :halign "center"
+                (button :class "flash_tool" :onclick "./scripts/start_eww.sh --power" :height 55 :width 65 :valign "center" :halign "center"
                     (label :text "⏻" :class "power_icon")
                 )
         )
@@ -77,6 +80,65 @@
 
 )
 
+(defwidget date []
+    ;(box :orientation "horizontal" :spacing 10 :space-evenly "false" :height 0 :width 0
+    (box :orientation "h"
+        :space-evenly false
+        :spacing 10
+        
+        :width 600
+        :height 100
+        (box :class "date"
+            :orientation "v"
+            :space-evenly false
+            :width 30
+            :hexpand false
+            :hexpand false
+            (box :class "cal-box"
+                :orientation "v"
+                :space-evenly false
+                :width 250
+                :height 180
+            
+                (calendar :class "cal"
+                            :day calendar_day
+                            :month calendar_month
+                            :year calendar_year
+                            :width 150
+                            :hexpand false
+                            :vexpand false
+                )
+            )
+        )
+        (box :orientation "v" :space-evenly true :spacing 10 :width 175
+            (box :valign "center" :halign "start"
+                (label :text hour  :class "time")
+            )
+            (box :valign "center" :halign "end"
+               
+                (label :text minute :class "time")
+            )
+        )
+        
+    )
+
+)
+(defwidget cal []
+    (box :class "cal-box"
+         :orientation "v"
+         :space-evenly false
+         :width 300
+         
+        (calendar :class "cal"
+                    :day calendar_day
+                    :month calendar_month
+                    :year calendar_year
+                    :width 150
+                    :hexpand false
+                    :vexpand false
+        )
+    )
+  )
 
 (defwidget metric [label value onchange]
     (box :orientation "h" :class "metric" :space-evenly false
