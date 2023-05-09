@@ -18,7 +18,7 @@ player_status="$(playerctl -p spotify status)"
 
 case $1 in
 	--cover)
-		artlink="$(playerctl metadata -p spotify mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
+		artlink="$(playerctl metadata -p spotifyd mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
 
 
 		current_link=$(cat $link_path)

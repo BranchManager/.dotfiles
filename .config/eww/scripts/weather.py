@@ -1,3 +1,4 @@
+
 from geopy.geocoders import Nominatim
 import geocoder
 import requests
@@ -24,6 +25,7 @@ class weather_class:
         self.sunrise=None
         self.sunset=None
         self.icon=None
+        self.key=None
     def readable_time(self, time):
         #ts = int(sttime)
         from_zone = tzs.gettz('UTC')
@@ -75,20 +77,21 @@ class weather_class:
         self.max_tmp = self.kel_to_far(data['main']['temp_max'])
         self.sunrise = self.readable_time(data['sys']['sunrise'])
         self.sunset = self.readable_time(data['sys']['sunset'])
+        print(data['name'])
 
 
     def getwheather_json(self,key,long,lat):
-        print(key)
+       
         url="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+long+"&appid="+key
-        print(url)
+       
         response = requests.get(url)
         weather_json = response.json()
-        #print(weather_json.text)
+        
         
         json.dump(weather_json, sys.stdout, indent=4)
         return weather_json
     def get_location(self):
-        Nomi_locator = Nominatim(user_agent="My App")
+        Nomi_locator = Nominatim(user_agent="My app")
 
         my_location= geocoder.ip('me')
 
@@ -98,11 +101,23 @@ class weather_class:
 
         place = Nomi_locator.reverse(f"{latitude}, {longitude}")
         return [longitude,latitude, place]
+    
+    def set_key(self):
+        print("setting key")
+        with open('/home/branchmanager/.config/.secrets_n_keys', 'r') as file:
+            for line in file:
+                if line.startswith('openweathermap'):
+                    key = line.split(':')[1]
+                    print(key)
+
+
         
 if __name__ == "__main__":
 
     weather = weather_class()
     long,lat,place = weather.get_location()
+    weather.set_key()
+   
     weather_json = weather.getwheather_json("9bc07b0b7bd82f5562869cd04e598393",str(long),str(lat))
     weather.set_important(weather_json)
     weather.set_temp()

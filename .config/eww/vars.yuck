@@ -10,6 +10,7 @@
 (defvar lock "lock")
 (defvar suspend "suspend system")
 ;(defvar suspend "systemctl suspend")
+(defpoll cover_art_url :interval "2s" "/home/branchmanager/.config/eww/scripts/get_spot_info.sh --cover")
 
 (deflisten NOTIFICATION "./scripts/eww_swaync.sh")
 (defpoll NIGHT_MODE :interval "1s" "./scripts/eww_night_time.sh")
@@ -24,3 +25,9 @@
 (defpoll calendar_year :interval "10h" "date '+%Y'")
 (defpoll hour :interval "1s" "date '+%H:'")
 (defpoll minute :interval "1s" "date '+%M'")
+
+(defvar weather_icon "N/A")
+(defvar desc "N/A")
+(defvar temp "N/A")
+(defvar location "N/A")
+

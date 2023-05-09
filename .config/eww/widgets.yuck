@@ -2,14 +2,17 @@
 
 
 (defwidget main_box []
-    (box :orientation "vertical" :spacing 10 :space-evenly "false" :height 400 :width 600
+    (box :orientation "vertical" :spacing 10 :space-evenly "false" :height 400 :width 0
         (box :orientation "horizontal" :spacing 10 :space-evenly "false" :height 0 :width 0
                 (profile_box)
                 (sys_windows_box)
         )
         (flash_tools)
-       
-            (date)
+        (date)
+        (box :orientation "h" :spacing 10 :space-evenly false :height 50 :width 50
+            (weather)
+            (media)
+        )
        ; )
     )
 )
@@ -31,21 +34,21 @@
             :space-evenly true
             :spacing 0
             :class "box1"
-            :width 313
+            :width 290
             :height 30
             
         (box :class "cpu_bar" :height 10 :width 225 :space-evenly false
             (image :class "svg_monitor_icon" :path "images/icons/cpu_icon.svg" :image-width 20)
 				
-            (scale  :value CPU_USAGE :marks "no" :min 0 :max 101 :width 270 :flipped false :orientation "h")
+            (scale  :value CPU_USAGE :marks "no" :min 0 :max 101 :width 250 :flipped false :orientation "h")
         )
         (box :class "mem_bar" :height 10 :width 225 :space-evenly false
             (image :class "svg_monitor_icon" :path "images/icons/memory-solid.svg" :image-width 20)
-            (scale  :value MEM_USAGE :marks "no" :min 0 :max 100 :width 270 :flipped false :orientation "h")
+            (scale  :value MEM_USAGE :marks "no" :min 0 :max 100 :width 250 :flipped false :orientation "h")
         )
         (box :class "temp_bar" :height 10 :width 225 :space-evenly false :spacing 0
             (image :class "svg_monitor_icon" :path "images/icons/temp_icon.svg" :image-width 20)	
-            (scale  :value EST_TEMP :marks "no" :min 20 :max 100 :width 270 :flipped false :orientation "h")
+            (scale  :value EST_TEMP :marks "no" :min 20 :max 100 :width 250 :flipped false :orientation "h")
         )
 
     )
@@ -53,7 +56,7 @@
 
 (defwidget flash_tools []
     (box :height 0 :width 0 :space-evenly false :hexpand false :orientation "h"
-        (box :class "box1" :height 75 :width 425 :space-evenly true :spacing 5 :hexpand false :orientation "h"
+        (box :class "box1" :height 75 :width 400 :space-evenly true :spacing 5 :hexpand false :orientation "h"
           
                 (button :class "flash_tool" :onclick "./scripts/eww_network_check.sh --toggle_wifi" :height 55 :width 65 :valign "center" :halign "center"
                     (label :text network :class "tool_label")
@@ -79,6 +82,34 @@
     )
 
 )
+(defwidget weather [] 
+    (box :class "box1" :width 125 :height 0 :orientation "v" :space-evenly false :spacing 10
+        (box :orientation "h" :height 0 :space-evenly true :spacing 20 :valign "center"
+            
+            ;(label :valign "center" :text weather_icon :class "weather_icon" :hexpand false)
+            (label :halign "end" :text temp :class "weather_temp" :valign "end" :hexpand false :yalign "end")
+            ;(box :width 50 :height 100 :space-evenly false :orientation "v"
+            (label :halign "start" :text weather_icon :class "weather_icon" :hexpand false)
+           
+           
+        )
+       
+        (label :valign "end" :text desc :class "weather_desc" :wrap true)
+ 
+    )
+)
+(defwidget media [] 
+    (box :class "box1" :width 200 :height 100 :orientation "h" :space-evenly false
+        (box :orientation "h"  :style "background-image: url('${cover_art_url}');" :class "spotify-album-art"
+            
+             (label :text " hello" :class "weather_temp")
+            ; (box :width 50 :height 100 :space-evenly false :orientation "v"
+            ; (label :text "Warner Robins and the dealeo are here to save the day with other stuff" :class "weather_location" :width 1 :wrap true)
+         )
+        
+         (box :width)
+    )
+)
 
 (defwidget date []
     ;(box :orientation "horizontal" :spacing 10 :space-evenly "false" :height 0 :width 0
@@ -86,7 +117,7 @@
         :space-evenly false
         :spacing 10
         
-        :width 600
+        :width 400
         :height 100
         (box :class "date"
             :orientation "v"
@@ -114,7 +145,7 @@
             (box :valign "center" :halign "start"
                 (label :text hour  :class "time")
             )
-            (box :valign "center" :halign "end"
+            (box :valign "center" :halign "center"
                
                 (label :text minute :class "time")
             )
@@ -146,5 +177,5 @@
       (scale :min 0 :max 101 :active {onchange != ""} :value value :onchange onchange)))
 
 (defwidget sys[]
-(box :class "cpu" :orientation "v" :space-evenly false :halign "center" :valign "center"
-    (metric :label "﬙" :value 66 :onchange "")))
+    (box :class "cpu" :orientation "v" :space-evenly false :halign "center" :valign "center"
+        (metric :label "﬙" :value 66 :onchange "")))

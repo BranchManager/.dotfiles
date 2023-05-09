@@ -66,7 +66,16 @@ $ chsh -s /bin/bash $USER
 12. sudo pacman -S python-pip
 13. sudo yay -S ttf-ubuntu-nerd
 14. sudo pacman -S swaybg
-
+15. pip3 install python-dateutil
+16. pip3 install geocoder
+17. pip3 install geopy
+18. yay -S spotify-tui
+19. yay -S spotifyd
+ - enable spotifyd service
+    ```
+    $ systemctl --user enable spotifyd.service
+    ```
+20. yay -S icat   (for viewing imagies in terminal)
 13. pip install shell-gpt==0.9.0
 
 ## Packages removed

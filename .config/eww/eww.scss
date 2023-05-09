@@ -92,10 +92,7 @@ $bg-alt: #24273a;
 	font-family: "Ubuntu Nerd Font";
 	color: #FFF;
 }
-.weather_icon{
-	color: #FFF;
-	font-size: 28px;
-}
+
 .temp{
 	font-family: 'Ubuntu Nerd Font';
 	color: #FFF;
@@ -216,7 +213,7 @@ $bg-alt: #24273a;
 
 
 .date {
-	background-color: #414559 ;
+	background-color: #313244  ;
 	color: #414559;
 	border-radius: 7px;
 	box-shadow: 5px 5px 5px black;
@@ -272,15 +269,7 @@ $bg-alt: #24273a;
 	border-radius: 7px;
 
 }
-.spotify-album {
-	background-repeat: no-repeat;
-	background-size: 130px;
-	min-height: 130px;
-	min-width: 130px;
-	margin: 0px 0px 5px 0px;
-	border-radius: 7px;
-	box-shadow: 5px 5px 5px black;
-}
+
 
 .spotify-play{
 	color: #FFF;
@@ -402,7 +391,16 @@ $bg-alt: #24273a;
 		}
 	  }
 }
-
+.spotify-album-art {
+	
+	background-position: center;
+	background-size: cover;
+	min-height: 130px;
+	min-width: 230px;
+	/*margin: 0px 0px 5px 0px;*/
+	border-radius: 7px;
+	/*box-shadow: 5px 5px 5px black;*/
+}
 .prof_pic{
 	border-radius: 100%;
 	background-size:55px;
@@ -518,6 +516,33 @@ $bg-alt: #24273a;
 	border-radius: 4px;
 	background-color: #f38ba8;
 }
+.weather_location{
+	font-size: 10;
+	padding-left: 5px;
+}
+
+.weather_desc{
+	font-size: 14;
+	padding-left: 10px;
+}
+.weather_icon{
+	color: #FFF;
+	font-size: 34px;
+	font-family: "Ubuntu Nerd Font";
+	padding-left: 0px;
+}
+
+.weather_temp{
+	font-size: 30;
+	color: #FFF;
+	margin-top: 0px;
+	font-family: "Ubuntu Nerd Font";
+	/*margin-bottom: -5;*/
+	/*margin-left: 5;*/
+	
+
+}
+
 
 scale trough{
 
@@ -533,7 +558,7 @@ font-family: "Ubuntu Nerd Font";
 
 .time {
 	font-family: "Ubuntu Nerd Font";
-	font-size: 90;
+	font-size: 80;
 	color: #cdd6f4;
 	margin-top: -20;
 	margin-bottom: -20;
