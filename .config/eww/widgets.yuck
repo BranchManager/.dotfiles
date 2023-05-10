@@ -107,7 +107,26 @@
             ; (label :text "Warner Robins and the dealeo are here to save the day with other stuff" :class "weather_location" :width 1 :wrap true)
          )
         
-         (box :width)
+         (box :class "box1" :orientation "v" :space-evenly false :width 20
+           (eventbox :class "spotify_progress_bar" :vexpand true
+                (scale :flipped true
+                
+                :orientation "v"
+                :height 50
+                :width 2 ;remove this to take of some side of the supposed bar we created.
+                :value 90
+                :min 0
+                :max 100
+                
+                
+                
+                    
+                )
+           )    
+          
+            
+         
+       )
     )
 )
 

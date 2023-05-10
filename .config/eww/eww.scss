@@ -516,6 +516,24 @@ $bg-alt: #24273a;
 	border-radius: 4px;
 	background-color: #f38ba8;
 }
+.spotify_progress_bar scale trough highlight{
+	all: unset;
+	border-radius: 4px;
+	background-color: red;
+}
+
+.spotify_progress_bar scale trough {
+	all: unset;
+	border-radius: 4px;
+	
+	margin: 2px;
+	background-color: #45475a;
+	min-height: 100px;
+	min-width: 12px;
+	font-family: "Ubuntu Nerd Font";
+
+ }
+
 .weather_location{
 	font-size: 10;
 	padding-left: 5px;
