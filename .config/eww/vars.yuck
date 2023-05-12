@@ -9,10 +9,12 @@
 (defvar reboot "reboot")
 (defvar lock "lock")
 (defvar suspend "suspend system")
+(defvar output " ")
 ;(defvar artist "No artist either")
 ;(defvar title "No songs playing currently")
 ;(defvar suspend "systemctl suspend")
 ;(defpoll spotify_volume :interval "1s" "/home/branchmanager/.config/eww/scripts/get_spot_info.sh --volume")
+
 (defvar play_pause "")
 ;(defpoll play_pause :interval "1s" "/home/branchmanager/.config/eww/scripts/get_spot_info.sh --play_pause")
 (defpoll artist :interval "1s" "/home/branchmanager/.config/eww/scripts/get_spot_info.sh --artist")

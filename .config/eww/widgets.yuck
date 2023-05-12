@@ -253,8 +253,15 @@
 
 
 (defwidget GPT [] 
-    (box :orientation "v" :vexpand true :hexpand true :height 70 :width 100
-        (input :value "hello")
+    (box :class "box1" :orientation "v" :vexpand true :height 100 :width 400 :halign "start" :spacing 0 :valign "end" :evenly-spaced true
+        
+        ;(box  :orientation "v" :vexpand false :hexpand false :height 0 :width 60
+
+            (input :value "hello" :class "search_bar" :height 10 :valign "center" :vexpand true :onaccept "./scripts/test.sh")
+       ; )
+        ;(box :class "GPT-inner_box" :height 100 :width 100 :orientation "v" :space-evenly false :vexpand false :hexpand false
+           (label :text output :xalign 0 :class "GPT-inner-box" :height 0 :width 395 :halign "center" :valign "center" :vexpand true :wrap true)
+       ; )
     )
 )
 
