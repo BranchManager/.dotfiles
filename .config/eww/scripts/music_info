@@ -74,6 +74,8 @@ get_cover() {
 }
 
 ## Execute accordingly
+
+
 if [[ "$1" == "--song" ]]; then
 	get_song
 elif [[ "$1" == "--artist" ]]; then
