@@ -104,7 +104,7 @@ case $1 in
 
 	--title)
 		
-		if [ $player_status == "No players found" ]; then
+		if [ "$player_status" == "No players found" ]; then
 			echo "Spotify not playing"
 		else
 			title="$(playerctl metadata -p $player --format '{{ title }}')"
@@ -119,7 +119,7 @@ case $1 in
 	
 	--play_pause)
 		if [ "$player_status" == "Playing" ] || [ "$player_status" == "Paused" ] ; then 
-			echo "test"
+			
 			if [ "$player_status" == "Playing" ]; then
 					
 					playerctl -p $player pause

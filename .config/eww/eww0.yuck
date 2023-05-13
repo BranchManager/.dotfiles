@@ -5,3 +5,7 @@
 (defwindow main_0_power :stacking "overlay" :monitor 0 :focusable "true"
 :geometry (geometry :x "1%" :y "1%" :width 120 :height 120 :anchor "center")
 (power_box))
+
+  (defwindow main_0_vol :stacking "overlay" :monitor 0 :focusable "false"
+  :geometry (geometry :x "1%" :y "1%" :width 0 :height 0 :anchor "right center")
+  (volume_bar))

@@ -59,6 +59,8 @@ isopen=$( eww windows | grep main | grep *main )
 
 if [ "$1" = "--start-end" ]
 then
+
+        #if ther eis nothing in this variable then start opening shit
     if [ -z "$isopen" ] 
     then
         focused_array=($(hyprctl monitors | grep -e ID -e focused))
@@ -74,12 +76,17 @@ then
                 eww_monitor="main_"
                 monitor_num="${focused_array[$i-2]:0:1}"
                 eww_monitor+=$((monitor_num))
+                eww update anim_open_ostg=true &
                 python3 ~/.config/eww/scripts/weather.py & eww open $eww_monitor &
+                eww update rev_ostg=true &
             fi
         done
     
     
     else
+        eww update anim_open_ostg=false &
+        eww update rev_ostg=false &
+        sleep 0.4
         eww close-all
     fi
 fi

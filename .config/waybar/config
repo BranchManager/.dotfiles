@@ -62,7 +62,7 @@
     },
     "custom/power":{
        "format": "",
-        "on-click": "sh -c '(sleep 0.5s; ~/.config/waybar/rofi_configs/powermenu.sh)' & disown"
+        "on-click": "sh -c '(sleep 0.5s; ~/.config/eww/scripts/start_eww.sh --powe-close)' & disown"
     },
     "custom/vpn": {
         /*Note that to change the class of this you will have to add it to the output of vpn_check.sh's json output see the waybar documentation*/

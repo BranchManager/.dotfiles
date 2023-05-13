@@ -21,14 +21,17 @@
 }*/
 
 *{
-    bg:  	#181926;
-    bga:  	#181926;
-    mantle: #1e2030;
+    bg:  #11111b;
+    /*#181926;*/
+    bga:  	#585b70;
+    /*#181926;*/
+    mantle: #1e1e2e;
+     /*#1e2030;*/
     fga: #939ab7;
     fg: #8087a2;
     al:  	 	 	#181926;
     ac: #8aadf4; //blue
-    mauve:  	 	#c6a0f6;
-    lavender: #b7bdf8;
+    mauve:  	 	#1e1e2e;
+    lavender: #363a4f;
 }
 

@@ -1,3 +1,5 @@
+# This README is a work in progress 
+
 # OS distro is Manjaro
 _____________________________________________________________
 # Color Theme
@@ -102,6 +104,14 @@ $ chsh -s /bin/bash $USER
 - cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf.d/
 28. pip3 install pybrainyquote
 - for the quote widget
+29. yay -S swaylock
+30. yay l-S swayidle
+31. sudo -S grim
+- for screenshots in wayland
+32. pacman -S slurp 
+- used with grim to select region for screen shots.
+33. pacman -R xdg-desktop-portal-gnome
+- remove this package for hyprland
 
 ## Packages removed
 1. yay -R 

@@ -25,10 +25,11 @@ window {
     transparency:                   "real";
     background-color:               @bg;
     text-color:                     @fg;
-	border:							4px 4px 4px 4px;
+	border:							0px 0px 0px 0px;
+    box-shadow:                     10px 5px 5px;
 	border-color:					@ac;
     border-radius:                  0px;
-	width:							600px;
+	width:							1000px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -40,6 +41,7 @@ prompt {
 	padding: 						2px 0px 0px 4px;
 	background-color: 				@al;
 	text-color: 					@fg;
+    margin:                         0px -2px 0px 0;
 	font:							"feather 12";
 }
 
@@ -50,20 +52,24 @@ entry {
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    "Search...";
-	padding: 						2px 0px 0px 6px;
+	padding: 						5px 0px 0px 5px;
     blink:                          true;
+    
 }
 
 inputbar {
 	children: 						[ prompt, entry ];
-    background-color:               @bga;
+    background-color:               @bg;
+    /*@bga;*/
     text-color:                     @fg;
     expand:                         false;
-	border:							0px;
+	border-bottom:							100px;
     border-radius:                  0px;
-	border-color:					@ac;
+	border-color:					@bga;
+    /*@ac;*/
     margin:                         0px;
     padding:                        8px;
+     border-radius: 5px;
 }
 
 listview {
