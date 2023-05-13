@@ -2,7 +2,7 @@
 
 
 (defwidget main_box []
-    (box :orientation "vertical" :spacing 10 :space-evenly "false" :height 400 :width 0
+    (box :class "outer_most_box":orientation "vertical" :spacing 10 :space-evenly false :height 400 :width 0 :vexpand true
         (box :orientation "horizontal" :spacing 10 :space-evenly "false" :height 0 :width 0
                 (profile_box)
                 (sys_windows_box)
@@ -13,9 +13,10 @@
             (weather)
             (media)
         )
-        (box :spacing 0 :space-evenly false :height 0 :width 0
+       ;(box :spacing 0 :space-evenly false :height 0 :width 0
             (GPT)
-        )
+            (quote_of_the_day)
+        ;)
        ; )
     )
 )
@@ -37,21 +38,21 @@
             :space-evenly true
             :spacing 0
             :class "box1"
-            :width 290
+            :width 225
             :height 30
             
         (box :class "cpu_bar" :height 10 :width 225 :space-evenly false
             (image :class "svg_monitor_icon" :path "images/icons/cpu_icon.svg" :image-width 20)
 				
-            (scale  :value CPU_USAGE :marks "no" :min 0 :max 101 :width 250 :flipped false :orientation "h")
+            (scale  :value CPU_USAGE :marks "no" :min 0 :max 101 :width 225 :flipped false :orientation "h")
         )
-        (box :class "mem_bar" :height 10 :width 225 :space-evenly false
+        (box :class "mem_bar" :height 10 :width 190 :space-evenly false
             (image :class "svg_monitor_icon" :path "images/icons/memory-solid.svg" :image-width 20)
-            (scale  :value MEM_USAGE :marks "no" :min 0 :max 100 :width 250 :flipped false :orientation "h")
+            (scale  :value MEM_USAGE :marks "no" :min 0 :max 100 :width 225 :flipped false :orientation "h")
         )
-        (box :class "temp_bar" :height 10 :width 225 :space-evenly false :spacing 0
+        (box :class "temp_bar" :height 10 :width 265 :space-evenly false :spacing 0
             (image :class "svg_monitor_icon" :path "images/icons/temp_icon.svg" :image-width 20)	
-            (scale  :value EST_TEMP :marks "no" :min 20 :max 100 :width 250 :flipped false :orientation "h")
+            (scale  :value EST_TEMP :marks "no" :min 20 :max 100 :width 225 :flipped false :orientation "h")
         )
 
     )
@@ -59,7 +60,7 @@
 
 (defwidget flash_tools []
     (box :height 0 :width 0 :space-evenly false :hexpand false :orientation "h"
-        (box :class "box1" :height 75 :width 400 :space-evenly true :spacing 5 :hexpand false :orientation "h"
+        (box :class "box1" :height 75 :width 375 :space-evenly true :spacing 5 :hexpand false :orientation "h"
           
                 (button :class "flash_tool" :onclick "./scripts/eww_network_check.sh --toggle_wifi" :height 55 :width 65 :valign "center" :halign "center"
                     (label :text network :class "tool_label")
@@ -86,30 +87,30 @@
 
 )
 (defwidget weather [] 
-    (box :class "box1" :width 125 :height 0 :orientation "v" :space-evenly false :spacing 10
-        (box :orientation "h" :height 0 :space-evenly true :spacing 20 :valign "center"
+    (box :class "box1" :width 115 :height 0 :orientation "v" :space-evenly false :spacing 30
+        (box :orientation "h" :height 0 :space-evenly true :spacing 10 :valign "center"
             
             ;(label :valign "center" :text weather_icon :class "weather_icon" :hexpand false)
-            (label :halign "end" :text temp :class "weather_temp" :valign "end" :hexpand false :yalign "end")
+            (label :halign "end" :text temp :class "weather_temp" :valign "end" :hexpand false )
             ;(box :width 50 :height 100 :space-evenly false :orientation "v"
             (label :halign "center" :text weather_icon :class "weather_icon" :hexpand false)
            
            
         )
        
-        (label :valign "end" :text desc :class "weather_desc" :wrap true)
+        (label :valign "center" :text desc :class "weather_desc" :width 25 :wrap true)
  
     )
 )
 (defwidget media [] 
     (box :class "box1" :width 200 :height 0 :orientation "h" :space-evenly false
-        (box :orientation "h" :style "background-image: url('${cover_art_url}'); " :class "spotify-album-art"
+        (box :orientation "h" :style "background-image: url('${cover_art_url}');  " :class "spotify-album-art"
             (box :orientation "v"  :class "spotify_box_tint"  :space-evenly false
                 (box :orientation "v" :space-evenly false :spacing 0 :halign "start"
                     (label :text title :class "spotify_song" :limit-width 25 :halign "start")
                     (label :text artist :class "spotify_artist" :limit-width 25 :halign "start")
                 )
-                (eventbox :class "spotify_progress_bar" :vexpand true :valign "end" :space-evenly false :spacing 0 
+                (eventbox :class "spotify_progress_bar" :vexpand true :valign "end" 
                     (scale :flipped false
                     
                     :orientation "h"
@@ -124,7 +125,7 @@
                         
                     )
             ) 
-            (box :class "spotify-buttons" :orientation "h" :space-evenly false :spacing 0 :height 0 :width 200 :halign "center" :hexpand true
+            (box :orientation "h" :space-evenly false :spacing 0 :height 0 :width 200 :halign "center" :hexpand true
             
                     
                     (box :orientation "h" :space-evenly false :spacing 5 :width 0 :halign "false" :hexpand false :halign "start" :hexpand true
@@ -197,14 +198,14 @@
         :space-evenly false
         :spacing 10
         
-        :width 400
+        :width 382
         :height 100
         (box :class "date"
             :orientation "v"
             :space-evenly false
             :width 30
             :hexpand false
-            :hexpand false
+           
             (box :class "cal-box"
                 :orientation "v"
                 :space-evenly false
@@ -221,7 +222,7 @@
                 )
             )
         )
-        (box :orientation "v" :space-evenly true :spacing 10 :width 175
+        (box :orientation "v" :space-evenly true :spacing 10 :width 120
             (box :valign "center" :halign "start"
                 (label :text hour  :class "time")
             )
@@ -253,18 +254,32 @@
 
 
 (defwidget GPT [] 
-    (box :class "box1" :orientation "v" :vexpand true :height 100 :width 400 :halign "start" :spacing 0 :valign "end" :evenly-spaced true
+    (box :class "box1" :orientation "v" :vexpand true :height 0 :width 50 :halign "start" :spacing 10 :valign "center" :space-evenly false
         
-        ;(box  :orientation "v" :vexpand false :hexpand false :height 0 :width 60
+        (box  :orientation "h" :vexpand true :hexpand false :height 0 :width 60 :space-evenly false :spacing 0
 
-            (input :value "hello" :class "search_bar" :height 10 :valign "center" :vexpand true :onaccept "./scripts/test.sh")
-       ; )
-        ;(box :class "GPT-inner_box" :height 100 :width 100 :orientation "v" :space-evenly false :vexpand false :hexpand false
-           (label :text output :xalign 0 :class "GPT-inner-box" :height 0 :width 395 :halign "center" :valign "center" :vexpand true :wrap true)
+            (input :value gpt_placeholder :class searchbar_class :height 10 :width 323 :valign "start" :vexpand true 
+                    :onchange "eww update searchbar_class=\"search_bar_active\"" :onaccept "./scripts/eww_gpt.sh \"{}\""
+            )
+            (button :onclick "./scripts/eww_gpt.sh clear" :width 45 :height 36  :valign "center" :class "clear_button"
+                (label :text "Clear" )
+            )
+        )
+            (revealer :transition "slidedown" :reveal show_gpt
+                (scroll :hscroll true :width 378 :height 200 :class "GPT-inner-box"
+                    (label :text output :xalign 0 :yalign 0 :class "GPT-inner-box" :height 100 :width 368 :halign "center" :valign "center" :vexpand true :wrap true)
+                )
+            )
        ; )
     )
 )
-
+(defwidget quote_of_the_day []
+    (box :class "quote" :height 100 :width 20 :spcae-evenly true :orientation "v"
+        (label :text qq :width 20 :wrap true)
+        (label :text "󰜥  ${auth} 󰜥" :width 20 :wrap true :class "author")
+    
+    )
+)
 (defwidget metric [label value onchange]
     (box :orientation "h" :class "metric" :space-evenly false
       (box :class "label" label)

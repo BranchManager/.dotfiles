@@ -11,7 +11,7 @@ from dateutil import tz as tzs
 
 
 class weather_class:
-    icon_dict =  {'11d':'', '09d':'', '10d':'', '13d':'', '50d':'', '01d':'', '01n':'', '02d':'', '02n':'','03d':'摒','03n':'摒','04d':'','04n':''}
+    icon_dict =  {'11d':'', '09d':'', '10d':'', '10n':'','13d':'', '50d':'', '01d':'', '01n':'', '02d':'', '02n':'','03d':'摒','03n':'摒','04d':'','04n':''}
 
     #11d thunderstorm,  09d: drizzle uses rain image, 10d:rain ,13d: snow 50d: unclear weather/atmosphere conditions 01d: sunshine 01n: moon 03* scattered clouds 04*;overcast
     def __init__(self):

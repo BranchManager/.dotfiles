@@ -197,11 +197,12 @@ $bg-alt: #24273a;
  color: #e5c890;
 }
 
-.quote{
-	margin-top: 5px;
-	margin-right: 5px;
-	margin-left: 5px;
-}
+// .quote{
+// 	margin-top: 5px;
+// 	margin-right: 5px;
+// 	margin-left: 5px;
+
+// }
 
 .tread{
 
@@ -398,7 +399,7 @@ $bg-alt: #24273a;
 }
 
 .spotify-album-art {
-	
+	all:unset;
 	background-position: center;
 	
 	background-size: cover;
@@ -480,6 +481,7 @@ $bg-alt: #24273a;
 }
 
 .box1 {
+	all:unset;
 	background-color:  #313244 ;
 	border-radius: 7px;
 	box-shadow: 5px 5px 5px black;
@@ -556,6 +558,7 @@ $bg-alt: #24273a;
 	background-color: red;
 }
 .spotify_box_tint{
+	border-radius: 7px;
 	background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
 }
 
@@ -613,7 +616,7 @@ $bg-alt: #24273a;
 }
 .weather_icon{
 	color: #FFF;
-	font-size: 34px;
+	font-size: 24px;
 	font-family: "Ubuntu Nerd Font";
 	padding-left: 0px;
 }
@@ -637,7 +640,7 @@ border-radius: 4px;
 margin-left: 10;
 background-color: #45475a;
 min-height: 15px;
-min-width: 200px;
+min-width: 50px;
 font-family: "Ubuntu Nerd Font";
 
 }
@@ -650,19 +653,63 @@ font-family: "Ubuntu Nerd Font";
 	margin-bottom: -20;
 }
 
+
 /**GPT-stuff**/
+.clear_button{
+	background-color: #89dceb;
+	border-radius: 7px;
+	margin: 7px 7px 0px 0px;
+	padding: 5px 7px 7px 5px;
+	box-shadow: 3px 2px 2px black;
+	font-family: "Iosevka Nerd Font";
+}
+
+.clear_button:active{
+	box-shadow: 0px 0px 0px black;
+}
 .search_bar{
+	color:  	#6c7086;
 	background-color:#45475a;
 	border-radius: 7px;
 	margin: 7px 7px 0px 7px;
 	padding: 5px 7px 7px 5px;
+	font-family: "Iosevka Nerd Font";
 
+}
+.search_bar_active{
+	color:  	#6c7086;
+	background-color:#45475a;
+	border-radius: 7px;
+	margin: 7px 7px 0px 7px;
+	padding: 5px 7px 7px 5px;
+	color: #cdd6f4;
+	font-family: "Iosevka Nerd Font";
 }
 .GPT-inner-box{
 	background-color: #181926;
 	border-radius: 7px;
 	padding: 7px 7px 7px 7px;
 	margin: 0px 7px 7px 7px;
+}
+.GPT-inner-box-scroll{
+	background-color: #181926;
+	border-radius: 7px;
+	
+}
+
+.quote {
+	background-color: #1e1e2e;
+	border-radius: 7px;
+	margin-top: 5px;
+	color: #cdd6f4;
+	font-family: "Iosevka Nerd Font";
+	padding: 7px;
+}
+
+.author{
+	color: #cdd6f4;
+	font-weight: bold;
+	font-family: "Iosevka Nerd Font";
 }
 /********** new widget powerstuff ************/
 
@@ -692,7 +739,15 @@ font-family: "Ubuntu Nerd Font";
 	margin-top: -20;
 	margin-bottom: -20;
 }
-
+.outer_most_box{
+	all: unset;
+	background-color: #11111b;
+	box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+	
+	border-radius: 7px;
+	padding: 15px 15px 15px 15px;
+	margin: 10px 20px 20px 10px;
+}
 /********* TEST STUUFF ************/
 
 // WINDOW RELATED CSS

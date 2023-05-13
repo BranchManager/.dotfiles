@@ -69,14 +69,39 @@ $ chsh -s /bin/bash $USER
 15. pip3 install python-dateutil
 16. pip3 install geocoder
 17. pip3 install geopy
-18. yay -S spotify-tui
-19. yay -S spotifyd
+18. spicetify-cli
+19. yay -S spicetify-themes-git
+- Before applying Spicetify, you need to gain write permission on Spotify files, by running command:
+    ```
+    sudo chmod a+wr /opt/spotify
+    sudo chmod a+wr /opt/spotify/Apps -R
+    ```
+- Then, run command to apply the new theme:
+    ```
+    cd "$(dirname "$(spicetify -c)")/Themes/Dribbblish"
+    spicetify config current_theme Dribbblish color_scheme base
+    spicetify config inject_css 1 replace_colors 1 overwrite_assets inject_theme_js 1
+    spicetify apply
+    ```
+20. suod pacman -S bc
+- needed for the spotify bar widget to work
+21. yay -S spotify-tui
+22. yay -S spotifyd
  - enable spotifyd service
     ```
     $ systemctl --user enable spotifyd.service
     ```
-20. yay -S icat   (for viewing imagies in terminal)
-13. pip install shell-gpt==0.9.0
+23. yay -S icat   (for viewing imagies in terminal)
+24. yay -S catppuccin-gtk-theme-mocha catppuccin-gtk-theme-macchiato catppuccin-gtk-theme-frappe catppuccin-gtk-theme-latte
+- catpuccin for gtk theme
+25. pip install shell-gpt==0.9.0
+- I had to modify my path in order for this to work by adding ~/.local/bin to my path
+26. pacman -Syu sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 
+27. yay -S sddm-thme-corners-git
+- mkdir /etc/sddm.conf.d
+- cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf.d/
+28. pip3 install pybrainyquote
+- for the quote widget
 
 ## Packages removed
 1. yay -R 

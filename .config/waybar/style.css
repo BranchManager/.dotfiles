@@ -5,12 +5,12 @@
 }
 
 window#waybar {
-    background-color: #24273a;/*rgba(43, 48, 59, 0.5);*/
+    background-color:  	#11111b;/*rgba(43, 48, 59, 0.5);*/
     /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
-    border-bottom: 3px solid #5b6078;
+    border-bottom: 3px solid #313244;
 }
 
 window#waybar.hidden {
@@ -156,7 +156,7 @@ window#waybar.chromium {
     box-shadow: red;
 }
 #custom-vpn {
-    /*background-color: #5b6078;*/
+    /*background-color: #313244;*/
     
     font-size: 40px;
     margin-right: 5px;
@@ -177,7 +177,7 @@ window#waybar.chromium {
     box-shadow: inset 0 -3px #ffffff;
 }
 #custom-terminal{
-    /*background-color: #5b6078;*/
+    /*background-color: #313244;*/
     color:  #cad3f5;
     font-size: 20;
     padding-left: 0px;
@@ -186,7 +186,7 @@ window#waybar.chromium {
 }
 
 #custom-folders{
-    /*background-color: #5b6078;*/
+    /*background-color: #313244;*/
     color:  #eed49f;
     font-size: 20;
     padding-right: 10px;
@@ -195,7 +195,7 @@ window#waybar.chromium {
     
 }
 #custom-spotify{
-    /*background-color: #5b6078;*/
+    /*background-color: #313244;*/
     color:  #a6da95;
     font-size: 20;
     padding-right: 10px;
@@ -205,7 +205,7 @@ window#waybar.chromium {
 }
 
 #custom-menu{
-    /*background-color: #5b6078;*/
+    /*background-color: #313244;*/
     color:  #cad3f5;
     border-top-right-radius: 20%;
     font-size: 24;
@@ -213,7 +213,7 @@ window#waybar.chromium {
     
 }
 #custom-BranchMenu{
-    background-color: #5b6078;
+    background-color: #313244;
    
     font-size:30;
     color: #8aadf4;

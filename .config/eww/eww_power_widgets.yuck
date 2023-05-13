@@ -15,7 +15,7 @@
           
                 (button :class "flash_tool" :onclick "${set_reveal_true} & eww update the_script=\"eww close-all & systemctl suspend\" & eww update the_option=\"${suspend}\""  
                         :height 55 :width 65 :valign "center" :halign "center"
-                    (label :text "󰒲" :class "sleep_label" :valign "left" :halign "center")
+                    (label :text "󰒲" :class "sleep_label" :halign "center")
                 )
      
                 (button :class "flash_tool" :onclick "./scripts/eww_bt_check.sh --open-blueman" :height 55 :width 65 :valign "center" :halign "center"

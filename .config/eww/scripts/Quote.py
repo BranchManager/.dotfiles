@@ -31,5 +31,7 @@ else:
 #print("(Quote_of_day :q \""+Quoteasis+ "\" :author \"-" + author +"\" )")
 subp.run(["eww","update","qq="+Quoteasis])
 subp.run(["eww","update","auth="+author])
+#print(Quoteasis)
+#print(author)
 file = open("/home/branchmanager/.config/eww/scripts/quote_of_theDay.txt","w")
 file.write(Orig_Quote)

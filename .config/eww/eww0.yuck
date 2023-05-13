@@ -2,6 +2,6 @@
   :geometry (geometry :x "1%" :y "1%" :width 120 :height 120 :anchor "top left")
   (main_box))
 
-(defwindow main_0_power :stacking "overlay" :monitor 0 :focusable "false"
+(defwindow main_0_power :stacking "overlay" :monitor 0 :focusable "true"
 :geometry (geometry :x "1%" :y "1%" :width 120 :height 120 :anchor "center")
 (power_box))

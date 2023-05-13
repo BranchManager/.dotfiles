@@ -49,12 +49,16 @@ fi
 #echo $1
 
 
-player=$(playerctl -l | grep  -w spotify)
-if [[ -z "$player" ]]; then
-	player=$(playerctl -l | grep spotifyd)
-fi
+# player=$(playerctl -l | grep  -w spotify)
+# if [[ -z "$player" ]]; then
+# 	player=$(playerctl -l | grep spotifyd)
+# fi
 
-player_status="$(playerctl -p $player status)"
+
+#echo $player
+player="spotify"
+player_status="$(playerctl -p $player status 2>&1)"
+#echo "player status at beginning: $player_status"
 
 #echo $player
 #echo $player_status
@@ -65,38 +69,42 @@ player_status="$(playerctl -p $player status)"
 case $1 in
 	--cover)
 
-	if [ $player_status == "Stopped" ] ||  [$player_status == "No players found" ]; then
-		eww update play_pause=
-		echo $place_holder_img
-	else
-		artlink="$(playerctl metadata -p spotifyd mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
-
-
-		current_link=$(cat $link_path)
-		#echo $current_link
-		#echo $artlink
-		if [ "$current_link" == "$artlink" ]; then
-			#echo "the same"
-			#echo $current_link
-			echo $tmp_cover_path
+		if [ "$player_status" == "Stopped" ] ||  [ "$player_status" == "No players found" ]; then
+			eww update play_pause=
+			echo $place_holder_img
 		else
-			#echo "they dont"
-			echo $artlink > $link_path
-			curl -s "$artlink" --output $tmp_cover_path;
-			echo $artlink
-		fi
-	fi;;
+			artlink="$(playerctl metadata -p $player mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
+
+
+			current_link=$(cat $link_path)
+			#echo $current_link
+			#echo $artlink
+			if [ "$current_link" == "$artlink" ]; then
+				#echo "the same"
+				#echo $current_link
+				echo $tmp_cover_path
+			else
+				#echo "they dont"
+				echo $artlink > $link_path
+				curl -s "$artlink" --output $tmp_cover_path;
+				echo $artlink
+			fi
+		fi;;
 	--next)
 		playerctl -p $player next;;
 	--prev)
 		playerctl -p $player previous;;
 	--artist)
-		artist="$(playerctl metadata -p $player --format '{{ artist }}')"
-		echo $artist;;
+		if [ "$player_status" != "No players found" ]; then
+			artist="$(playerctl metadata -p $player --format '{{ artist }}')"
+			echo $artist
+		else
+			echo "No Artist either"
+		fi;;
 
 	--title)
 		
-		if [ -z "$player_status" ]; then
+		if [ $player_status == "No players found" ]; then
 			echo "Spotify not playing"
 		else
 			title="$(playerctl metadata -p $player --format '{{ title }}')"
@@ -159,44 +167,65 @@ case $1 in
 			
 		fi;;
 	--loop_status)
-		loop="$(playerctl -p $player loop)"
-		
-		if [ "$loop" == "None" ]; then
-		
+		if [ "$player_status" != "No players found" ]; then
+			loop="$(playerctl -p $player loop)"
+			
+			if [ "$loop" == "None" ]; then
+			
+				echo "spotify_repeat_off"
+				#eww update shuff_repeat_class2=spotify-shuffle-on
+			elif  [ "$loop" == "Playlist" ] || [ "$loop" == "Track" ]; then
+				echo "spotify_repeat_on"
+			fi
+		else
 			echo "spotify_repeat_off"
-			#eww update shuff_repeat_class2=spotify-shuffle-on
-		elif  [ "$loop" == "Playlist" ] || [ "$loop" == "Track" ]; then
-			echo "spotify_repeat_on"
-		fi;;
+		fi ;;
 	--progress)
-		progress="$(playerctl -p $player position $2)"
-		echo $progress;;
+		if [ "$player_status" != "No players found" ]; then
+			progress="$(playerctl -p $player position $2)"
+			echo $progress
+		else
+			echo "1"
+		fi ;;
 	--length)
-		time="$(playerctl -p $player metadata --format '{{ duration(mpris:length) }}')"
-		seconds=$(convert_time_to_seconds "$time")
-		
-		# echo "Secondss: $secondss"
-		echo $seconds;;
+		if [ "$player_status" != "No players found" ]; then
+			time="$(playerctl -p $player metadata --format '{{ duration(mpris:length) }}')"
+			seconds=$(convert_time_to_seconds "$time")
+			
+			# echo "Secondss: $secondss"
+			echo $seconds
+		else
+			echo "100"
+		fi;;
 	--position)
-		time="$(playerctl -p $player position)"
-		length="$(playerctl -p $player metadata --format '{{ duration(mpris:length) }}')"
-		end_time=$(convert_time_to_seconds "$length")
-		# result=$(awk "BEGIN {printf \"%.2f\", $time/$lenth*100}")
-		# final_result=$(awk "BEGIN {printf \"%d\", $result*100}")
-		result=$(echo "scale=2; $time / $end_time" | bc)
-		final_result=$(echo "scale=0; $result * 100" | bc)
-		# echo "end_time: $end_time"
-		# echo $((time/end_time*100));;
-		echo $time;;
+		if [ "$player_status" != "No players found" ]; then
+			time="$(playerctl -p $player position)"
+			length="$(playerctl -p $player metadata --format '{{ duration(mpris:length) }}')"
+			end_time=$(convert_time_to_seconds "$length")
+			# result=$(awk "BEGIN {printf \"%.2f\", $time/$lenth*100}")
+			# final_result=$(awk "BEGIN {printf \"%d\", $result*100}")
+			result=$(echo "scale=2; $time / $end_time" | bc)
+			final_result=$(echo "scale=0; $result * 100" | bc)
+			# echo "end_time: $end_time"
+			# echo $((time/end_time*100));;
+			echo $time
+		else
+			echo "1"
+		fi;;
 	--volume)
 		volume="$(playerctl -p $player volume "0.$2")"
 		#playerctl -p spotify volume "0.$1"
 		echo $volume;;
 	--duration)
-		length="$(playerctl -p $player metadata --format '{{ duration(mpris:length) }}')"
-		played="$(playerctl -p $player metadata --format '{{ duration(position) }}')"
-		duration="$played/$length"
-		echo $duration;;
+		if [ "$player_status" != "" ] && [ "$player_status" != "No players found" ]; then
+			
+			length="$(playerctl -p $player metadata --format '{{ duration(mpris:length) }}')"
+			played="$(playerctl -p $player metadata --format '{{ duration(position) }}')"
+			duration="$played/$length"
+			echo $duration
+		else
+			echo "Nothing playing"
+		fi;;
 	
 esac
 # 凌
