@@ -18,4 +18,4 @@
 # 	--fade-in 1.1 \
 # 	 --text-color 8caaee
 swaylock \
-	--image ~/Pictures/guy_on_abike_anime.jpg
+	--image ~/Pictures/guy_on_abike_anime.jpg -f
