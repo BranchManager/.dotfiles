@@ -4,30 +4,30 @@
     /*font-size: 13px;*/
 }
 
-window#waybar {
+/* window#waybar {
     background-color:  	#11111b;
-    
+     */
     /*rgba(43, 48, 59, 0.5);*/
     /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
 
 
-    color: #ffffff;
+    /* color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
     border-bottom: 3px solid #313244;
-    
-}
+     
+}*/
 
-/* window#waybar {
+window#waybar {
     background-color: transparent;
-} */
+} 
 
-/* window#waybar > box {
-    border-radius: 8px;
-    margin: 4px 8px 8px 8px;
-    background-color: rgba(32, 32, 32, 0.75);
-    box-shadow: 4px 4px 2px 1px #101010;
-} */
+window#waybar > box {
+    /*border-radius: 8px;*/
+    margin: 0px 0px 15px 0px;
+    background-color: #11111b;
+    box-shadow: 1px 4px 5px 0.5px #101010;
+}
 
 window#waybar.hidden {
     opacity: 0.2;

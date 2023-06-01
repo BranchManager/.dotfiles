@@ -112,6 +112,8 @@ $ chsh -s /bin/bash $USER
 - used with grim to select region for screen shots.
 33. pacman -R xdg-desktop-portal-gnome
 - remove this package for hyprland
+34. pacman -R libva-vdpau-driver
+- remove this package for manjaro if I want to run OBS
 
 ## Packages removed
 1. yay -R 
