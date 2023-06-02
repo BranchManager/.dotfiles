@@ -114,13 +114,13 @@ window#waybar.chromium {
 #workspaces {
     /*margin: 0 4px;*/
     font-size: 12px;
-    margin-bottom: 6px;
-    margin-top:1px;
-    margin-left: 6px;
+    margin-bottom: 0px;
+    margin-top:0px;
+    margin-left: 0px;
     /*background-color: #b7bdf8;*/
-    background-color: #181825;
+    background-color: #24273a;
     border-radius: 30px;
-    padding: 0px 5px;
+    padding: 0px 4px 0px 0px;
     /*min-width: 100px*/
    
 }
@@ -159,12 +159,21 @@ window#waybar.chromium {
     
 }*/
 #custom-swaync{
-    font-size: 40px;
+    font-size: 34px;
     margin-right: 5px;
     /*padding: 0 5px;*/
     margin-top: -10px;
     margin-bottom: -10px;
    color: #89b4fa
+}
+
+window.DP-1 #custom-swaync{
+    font-size: 34px;
+    margin-right: 5px;
+    /*padding: 0 5px;*/
+    margin-top: -10px;
+    margin-bottom: -10px;
+   color: orange;
 }
 
 #custom-swaync button:hover{
@@ -174,7 +183,7 @@ window#waybar.chromium {
 #custom-vpn {
     /*background-color: #313244;*/
     
-    font-size: 40px;
+    font-size: 34px;
     margin-right: 5px;
     /*padding: 0 5px;*/
     margin-top: -10px;
@@ -229,10 +238,10 @@ window#waybar.chromium {
     
 }
 #custom-BranchMenu{
-    background-color: #313244;
    
-    font-size:30;
-    color: #8aadf4;
+   
+    font-size:34;
+    color: #a6e3a1;
     margin-top: -15px;
     margin-bottom: -15px;
     padding: 0 5px;
@@ -305,7 +314,7 @@ label:focus {
    /* background-color: #b7bdf8;*/
    margin-top: -10px;
    margin-bottom: -10px;
-   font-size: 40;
+   font-size: 34px;
     
 }
 
@@ -337,7 +346,7 @@ label:focus {
    /* border-radius: 5px;*/
     margin-top: -10;
     margin-bottom: -10px;
-    font-size: 40px;
+    font-size: 30px;
    
 }
 
@@ -349,10 +358,11 @@ label:focus {
 
 #custom-power{
     
-    /*background-color: #ee99a0;*/
+    
+    background-size: 20px;
     
    /* background-color: #b7bdf8;*/
-    font-size: 40;
+    font-size: 30px;
     /*line-height: 25px;*/
     margin-bottom: -10px;
     margin-top: -10px;

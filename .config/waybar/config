@@ -4,6 +4,7 @@
     "height": 5, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "output": [
+        "DP-1", 
         "DP-2",
         "DP-3"
     ],
@@ -45,7 +46,7 @@
     // },
     //"custom/browser", "custom/code", "custom/terminal","custom/folders","custom/spotify"
     "custom/BranchMenu": {
-        "format": "",
+        "format": "",
         "on-click": "~/.config/eww/scripts/start_eww.sh --start-end"
     },
     "custom/menu": {
@@ -302,7 +303,7 @@
 {
     // "layer": "top", // Waybar at top layer
     "position": "right", // Waybar position (top|bottom|left|right)
-    "height": 1000, // Waybar height (to be removed for auto height)
+    "height": 1080, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "output": [
         "DP-1",
@@ -311,7 +312,7 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "custom/BranchMenu",
+       
         "wlr/workspaces"
     ],
     
