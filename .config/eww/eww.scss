@@ -18,11 +18,12 @@ $bg-alt: #24273a;
 	padding: 0 0rem .2rem;
 	color: #FFF;
 	//background-color: $contrastbg;
-	margin: 12px 12px 12px 12px;
+	margin: 12px 0px 12px 0px;
   
 	.cal {
 		background-color: inherit;
 		padding: .2rem 0rem 0rem;
+		border-radius: 7px;
 		margin-left: 0px;
 		  
 		& > * {
@@ -149,6 +150,7 @@ $bg-alt: #24273a;
 	background-color: #24273a;
 	border-radius: 10%;
 	box-shadow: 5px 5px 2px black;
+	font-size: 12px;
 }
 .svg_monitor_icon{
 	font-size: 34px;

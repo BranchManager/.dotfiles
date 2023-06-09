@@ -18,14 +18,14 @@ author = author.replace("\n","")
 #Quoteasis = "Life before death, strength before weakness, journey before destination."
 #print(len(Quoteasis))
 Orig_Quote = Quoteasis
-if len(Quoteasis) > 51:
-    Quoteasis = "  "+Quoteasis +"  "
-    #[0:60]
-    #quotes = "...  "
+# if len(Quoteasis) > 51:
+#     Quoteasis = Quoteasis
+#     #[0:60]
+#     #quotes = "...  "
   
-    #print(Quoteasis) the limit was 51
-else:
-    Quoteasis = "  "+Quoteasis+"  "
+#     #print(Quoteasis) the limit was 51
+# else:
+#    Quoteasis = Quoteasis
 
 
 #print("(Quote_of_day :q \""+Quoteasis+ "\" :author \"-" + author +"\" )")

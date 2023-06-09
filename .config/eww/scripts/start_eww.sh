@@ -78,6 +78,7 @@ then
                 eww_monitor+=$((monitor_num))
                 eww update anim_open_ostg=true &
                 python3 ~/.config/eww/scripts/weather.py & eww open $eww_monitor &
+                python3 ~/.config/eww/scripts/eww_Quote.py
                 eww update rev_ostg=true &
             fi
         done
