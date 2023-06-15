@@ -20,6 +20,20 @@
 ;(defvar title "No songs playing currently")
 ;(defvar suspend "systemctl suspend")
 ;(defpoll spotify_volume :interval "1s" "/home/branchmanager/.config/eww/scripts/get_spot_info.sh --volume")
+
+(defvar show_todo1 "false")
+(defvar show_todo2 "false")
+(defvar todo_header1 "Waiting for Notion ...")
+(defvar todo_header2 "Waiting for Notion ...")
+(defvar todo1-1 "nothing to do...yet")
+(defvar todo1-2 " ")
+(defvar todo2-1 "nothing to do...yet")
+(defvar todo2-2 " ")
+(defvar duedate11 "")
+(defvar duedate12 "")
+(defvar duedate21 "")
+(defvar duedate22 "")
+
 (defvar show_gpt "false")
 (defvar play_pause "")
 (defvar searchbar_class "search_bar")
@@ -54,4 +68,6 @@
 (defvar desc "yeah you wish")
 (defvar temp "65°")
 (defvar location "yeah you wish")
+
+
 

@@ -63,6 +63,7 @@ then
         #if ther eis nothing in this variable then start opening shit
     if [ -z "$isopen" ] 
     then
+        #for loop grabs monitor thats currently in focus using the hyprland tools
         focused_array=($(hyprctl monitors | grep -e ID -e focused))
 
         len="${#focused_array[@]}"
@@ -76,9 +77,14 @@ then
                 eww_monitor="main_"
                 monitor_num="${focused_array[$i-2]:0:1}"
                 eww_monitor+=$((monitor_num))
-                eww update anim_open_ostg=true &
-                python3 ~/.config/eww/scripts/weather.py & eww open $eww_monitor &
+                eww update anim_open_ostg=true & #this is for the slide out animation
+                eww open $eww_monitor &
+                python3 ~/.config/eww/scripts/notion_test.py &
+                python3 ~/.config/eww/scripts/weather.py & 
+                echo "WE finally got here"
+                
                 python3 ~/.config/eww/scripts/eww_Quote.py
+                echo "WE finally got here 2"
                 eww update rev_ostg=true &
             fi
         done

@@ -3,30 +3,36 @@
 
 (defwidget main_box []
     (box :class "dash-window"
-    :orientation "v"
-    :space-evenly false
-    (box :class "outer_most_box":orientation "vertical" :spacing 10 :space-evenly false :height 400 :width 0 :vexpand true
-        :style  "
-        ${anim_open_ostg ? 'transition: 200ms cubic-bezier(0.05, 0.7, 0.1, 1);' : 'transition: 150ms cubic-bezier(0.3, 0, 0.8, 0.15);'}
-        ${rev_ostg ? '' : 'margin-left: -533px; margin-right: 533px;'}
-        "
-
-        (box :orientation "horizontal" :spacing 10 :space-evenly "false" :height 0 :width 0
-                (profile_box)
-                (sys_windows_box)
-        )
-        (flash_tools)
-        (date)
-        (box :orientation "h" :spacing 10 :space-evenly false :height 0 :width 50
-            (weather)
-            (media)
-        )
-       ;(box :spacing 0 :space-evenly false :height 0 :width 0
+        :orientation "v"
+        :space-evenly false
+        (box :class "outer_most_box":orientation "vertical" :spacing 10 :space-evenly false :height 400 :width 0 :vexpand true
+            ; :style  "
+            ; ${anim_open_ostg ? 'transition: 200ms cubic-bezier(0.05, 0.7, 0.1, 1);' : 'transition: 50ms cubic-bezier(0.3, 0, 0.8, 0.15);'}
+            ; ${rev_ostg ? '' : 'margin-left: -533px; margin-right: 533px;'}
+            ; "
+            
+            (box :orientation "horizontal" :spacing 10 :space-evenly "false" :height 0 :width 0
+                    (profile_box)
+                    (sys_windows_box)
+            )
+            (flash_tools)
+            (date)
+            (box :orientation "h" :spacing 10 :space-evenly false :height 0 :width 50
+                (weather)
+                (media)
+            )
             (GPT)
+                (revealer :transition "slidedown" :reveal show_todo1
+                    (TO_DO)
+                    
+                )
+                (revealer :transition "slidedown" :reveal show_todo2
+                    (TO_DO2)
+                    
+                )
             (quote_of_the_day)
-        ;)
-       ; )
-    )
+        
+        )
     )
 )
 
@@ -276,6 +282,53 @@
        ; )
     )
 )
+(defwidget TO_DO []
+    
+    (box :class "todo" :height 0 :width 0 :space-evenly false :orientation "h" :spacing 0
+        (box :height 0 :width 275 :spcae-evenly false :orientation "v" :spacing 0
+            (box :height 0 :width 0 :space-evenly false :orientation "h" :valign "start"
+                (label :text "TO DO: " :width 0 :wrap true  :halign "start")
+                (label :text todo_header1 :limit-width 25 :show_truncated true :width 0 :wrap true :class "author" )
+            )
+            ;(box :height 0 :width 0 :space-evenly false :orientation "v" :valign "start" :spacing 0
+                (label :text "-      ${todo1-1}" :limit-width 30 :show_truncated true :width 0 :wrap true  :valign "start" :xalign 0)
+                (label :text "-      ${todo1-2}" :limit-width 30 :show_truncated true :width 0 :wrap true :valign "end" :xalign 0)
+           ;)
+            
+
+        )
+        (box :height 0 :width 0 :space-evenly true :orientation "v"
+            (label :text "Due date: " :width 1 :wrap true  :valign "start")
+            (label :text duedate11 :width 1 :wrap true  :valign "center")
+            (label :text duedate12 :width 1 :wrap true  :valign "end")
+
+        )
+    )
+)
+(defwidget TO_DO2 []
+    
+    (box :class "todo" :height 0 :width 0 :space-evenly false :orientation "h" :spacing 0
+        (box :height 0 :width 275 :spcae-evenly false :orientation "v" :spacing 0
+            (box :height 0 :width 0 :space-evenly false :orientation "h" :valign "start"
+                (label :text "TO DO: " :width 0 :wrap true  :halign "start")
+                (label :text todo_header2 :limit-width 25 :show_truncated true :width 0 :wrap true :class "author" )
+            )
+            ;(box :height 0 :width 0 :space-evenly false :orientation "v" :valign "start" :spacing 0
+                (label :text "-      ${todo2-1}" :limit-width 30 :show_truncated true :width 0 :wrap true  :valign "start" :xalign 0)
+                (label :text "-      ${todo2-2}" :limit-width 30 :show_truncated true :width 0 :wrap true :valign "end" :xalign 0)
+           ;)
+            
+
+        )
+        (box :height 0 :width 0 :space-evenly true :orientation "v"
+            (label :text "Due date: " :width 1 :wrap true :limit-width 20 :show_truncated true :valign "start")
+            (label :text duedate21 :width 1 :wrap true  :valign "center")
+            (label :text duedate22 :width 1 :wrap true  :valign "end")
+
+        )
+    )
+)
+
 (defwidget quote_of_the_day []
     (box :class "quote" :height 100 :width 20 :spcae-evenly true :orientation "v"
         (label :text qq :width 20 :wrap true  :halign "center")
