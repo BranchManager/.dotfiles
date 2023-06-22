@@ -126,4 +126,20 @@ https://www.atlassian.com/git/tutorials/dotfiles
 
 #
 # Nvidia (with amd gpu) setup for machine learning
+## Below are commands I used to install cuda and cudnn for nvidia gpu while using amd gpu for display
+I do not remember what order I did these in and in some cases I not sure if they are needed. I am just listing them here for reference.
+```bash
+$pacman -S nvidia-dkms nvidia-utils 
+$pacman -S cuda cudnn
+```
+I was missing linux headers so I installed them with
+```bash
+$pacman -S linux-headers
+```
+**_NOTE:_** I installd the linux-headers associated with 63. However typically you would install the header versions associated with the kernel version you are running. 
+You can check the kernel version with
+```bash 
+$uname -r
+```
 
+Since I was using an amd gpu for display I had to remove the `61-gdm-rules` file for GDM. I was having issues where it wasn't showing all of my wayland desktop environments.

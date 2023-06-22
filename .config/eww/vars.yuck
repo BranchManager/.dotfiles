@@ -10,6 +10,7 @@
 (defvar lock "lock")
 (defvar suspend "suspend system")
 (defvar output " ")
+
 (defvar gpt_placeholder "Ask me...")
 (defvar qq " The purpose of a storyteller is not to tell you how to think, but to give you questions to think upon.")
 (defvar auth "Brandon Sanderson")

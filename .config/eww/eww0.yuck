@@ -1,3 +1,4 @@
+;as of 6/21/23 this is the 1080p monitor config
 (defwindow main_0 :stacking "overlay" :monitor 0 :focusable "false"
   :geometry (geometry :x "1%" :y "1%" :width 120 :height 120 :anchor "top left")
   (main_box))

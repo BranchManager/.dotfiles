@@ -18,7 +18,8 @@
                     (label :text "󰒲" :class "sleep_label" :halign "center")
                 )
      
-                (button :class "flash_tool" :onclick "./scripts/eww_bt_check.sh --open-blueman" :height 55 :width 65 :valign "center" :halign "center"
+                (button :class "flash_tool" :onclick "${set_reveal_true} & eww update the_script=\"~/.config/waybar/swaylock_min.sh\" & eww update the_option=\"${lock}\""
+                 :height 55 :width 65 :valign "center" :halign "center"
                     (label :text "" :class "lock_icon" :valign "center" :halign "center")
                 )
             
