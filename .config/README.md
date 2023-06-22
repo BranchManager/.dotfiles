@@ -129,9 +129,11 @@ https://www.atlassian.com/git/tutorials/dotfiles
 ## Below are commands I used to install cuda and cudnn for nvidia gpu while using amd gpu for display
 I do not remember what order I did these in and in some cases I not sure if they are needed. I am just listing them here for reference.
 ```bash
-$pacman -S nvidia-dkms nvidia-utils 
+$pacman -S nvidia-dkms nvidia-utils cuda-toolkit 
 $pacman -S cuda cudnn
 ```
+I was missing 530.41.03. I have this in my notes but do not remember what this references. I think it was a driver version.
+```bash
 I was missing linux headers so I installed them with
 ```bash
 $pacman -S linux-headers
@@ -141,5 +143,10 @@ You can check the kernel version with
 ```bash 
 $uname -r
 ```
-
 Since I was using an amd gpu for display I had to remove the `61-gdm-rules` file for GDM. I was having issues where it wasn't showing all of my wayland desktop environments.
+
+You can use the following to make sure cuda drivers have been set up correctly:
+```bash
+/opt/cuda/extras/demo_suite/deviceQuery
+```
+It should list your nvidia gpu and some CUDA information.
