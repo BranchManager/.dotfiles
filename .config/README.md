@@ -1,13 +1,136 @@
 # This README is a work in progress 
 
-# OS distro is Manjaro
+# OS distro is Manjaro 
+
 _____________________________________________________________
 # Color Theme
+**_NOTE:_** Things may need to be done according to  what distor you have. I also started with a wayland gnome environent and then switched to hyprland so some things may be different.
+
 Catpuccin
 # Winodw manager
-### Hyprland
-install method has moved to the pacman community repository
-### Apps using color scheme
+## Hyprland
+`yay -S hyprland`
+
+# Change shell
+Since I am on manjaro and it uses zsh by default in gnome I changed it to bash using
+~~~
+$ chsh -s /bin/bash $USER
+~~~
+
+
+## Packages downloaded
+1. What I installed with pacman
+```bash
+sudo pacman -S tailscale pavucontrol libnotify rofi bluez-utils bluez blueman python-pip swaybg bc sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 slurp jq thunar thunar-archive-plugin
+```
+2. What I installed with yay
+```bash
+yay -S xdg-desktop-portal-hyprland-git waybar-hyprland-git eww-wayland wlsunset ttf-ubuntu-nerd spicetify-themes-git catppuccin-gtk-theme-mocha catppuccin-gtk-theme-macchiato catppuccin-gtk-theme-frappe catppuccin-gtk-theme-latte icat sddm-thme-corners-git swaylock swayidle grim
+```
+3. What I installed with pip
+```bash 
+pip3 install python-dateutil geocoder geopy pybrainyquote
+```
+4. what I removed
+```bash 
+pacman -R xdg-desktop-portal-gnome libva-vdpau-driver
+```
+<details>
+<summary> Details on what I installed </summary>
+
+1. yay -S xdg-desktop-portal-hyprland-git
+2. yay -S waybar-hyprland-git
+    - what I installed to get waybar to work properly on hyprland
+3. sudo pacman -S tailscale
+    - additional sign in required with `sudo systemctl start tailscaled `
+    - to use tailescale in way bar sqript you need jq `sudo pacman -S jq`
+4. sudo pacman -S pavucontrol
+    - for volume control
+5. sudo pacman -S libnotify
+    - to use notify-send
+    - to test notifications
+6. yay -S eww-wayland
+ - for eww widgets
+7. sudo pacman -S rofi
+8. sudo pacman -S bluez-utils
+9. sudo pacman -S bluez
+10. sudo pacman -S blueman
+    - the above three are for bluetooth
+11. yay -S wlsunset
+    - for night light
+12. sudo pacman -S python-pip
+13. sudo yay -S ttf-ubuntu-nerd
+    - installed fonts and icons
+14. sudo pacman -S swaybg
+    - for background image
+15. pip3 install python-dateutil
+16. pip3 install geocoder
+17. pip3 install geopy
+    - the above three for weather widget
+
+18. spicetify-cli
+19. yay -S spicetify-themes-git
+    - for spotify theme
+    - Before applying Spicetify, you need to gain write permission on Spotify files, by running command:
+        ```
+        sudo chmod a+wr /opt/spotify
+        sudo chmod a+wr /opt/spotify/Apps -R
+        ```
+    - Then, run command to apply the new theme:
+        ```
+        cd "$(dirname "$(spicetify -c)")/Themes/Dribbblish"
+        spicetify config current_theme Dribbblish color_scheme base
+        spicetify config inject_css 1 replace_colors 1 overwrite_assets inject_theme_js 1
+        spicetify apply
+        ```
+20. sudo pacman -S bc
+    - needed for the spotify bar widget to work
+
+    - enable spotifyd service
+        ```
+        $ systemctl --user enable spotifyd.service
+        ```
+23. yay -S icat   (for viewing imagies in terminal)
+24. yay -S catppuccin-gtk-theme-mocha catppuccin-gtk-theme-macchiato catppuccin-gtk-theme-frappe catppuccin-gtk-theme-latte
+    - catpuccin for gtk theme
+25. pip install shell-gpt==0.9.0
+    - I had to modify my path in order for this to work by adding ~/.local/bin to my path
+    - this is for my eww chat gpt widget
+26. pacman -Syu sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 
+27. yay -S sddm-thme-corners-git
+    - this is for the sddm theme
+    - mkdir /etc/sddm.conf.d
+    - cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf.d/
+28. pip3 install pybrainyquote
+- for the quote widget
+29. yay -S swaylock
+30. yay l-S swayidle
+
+31. sudo -S grim
+32. pacman -S slurp 
+    - the above two are for screen shots
+    - used with grim to select region for screen shots.
+33. pacman -R xdg-desktop-portal-gnome
+- remove this package for hyprland
+34. pacman -R libva-vdpau-driver
+- remove this package for manjaro if I want to run OBS
+35. 1. sudo Pacman -S thunar
+    - install thunar
+    - changing terminal to kitty
+        Went the the edit section => Configure custom Actions => Edit the "open Terminal here" action command from `exo-open --working-directory %f --launch TerminalEmulator` to `kitty --working-directory %f`
+    - install extract archive for thunar
+        `
+        sudo pacman -S thunar-archive-plugin`
+    - I also use Nautilus as an alternative file manager
+</details>
+
+# Used this link for git bare repository
+https://www.atlassian.com/git/tutorials/dotfiles
+
+# SSH KEY GEN
+`ssh-keygen -t rsa`
+
+# Apps using color scheme
 1. Vscode
     - Download Extenstion
 2. Firefox
@@ -27,104 +150,7 @@ install method has moved to the pacman community repository
         - Then use `gnome-tweaks` to set the back ground theme.
     Note: may be wise to backup original configuration. Also may need to log out and back in
 
-# Change shell
-Since I am on manjaro and it uses zsh by default in gnome I changed it to bash using
-~~~
-$ chsh -s /bin/bash $USER
-~~~
-
-# File Manager
-1. Main File Manager
-    - thunar
-    ~~~
-    $ Pacman -S Thunar
-    ~~~
-    - changing terminal to kitty
-        Went the the edit section => Configure custom Actions => Edit the "open Terminal here" action command from `exo-open --working-directory %f --launch TerminalEmulator` to `kitty --working-directory %f`
-    - install extract archive for thunar
-        `
-        sudo pacman -S thunar-archive-plugin`
-
-2. Nautilus
-    - Came with default gnome configuration
-
-## Other packages downloaded
-1. yay -S xdg-desktop-portal-hyprland-git
-2. yay -S waybar-hyprland-git
-3. sudo pacman -S tailscale
-    - additional sign in required with `sudo systemctl start tailscaled `
-    - to use tailescale in way bar sqript you need jq `sudo pacman -S jq`
-4. sudo pacman -S pavucontrol
-- for volume control
-5. sudo pacman -S libnotify
-    - to use notify-send
-- to test notifications
-6. yay -S eww-wayland
-7. sudo pacman -S rofi
-8. sudo pacman -S bluez-utils
-9. sudo pacman -S bluez
-10. sudo pacman -S blueman
-11. yay -S wlsunset
-12. sudo pacman -S python-pip
-13. sudo yay -S ttf-ubuntu-nerd
-14. sudo pacman -S swaybg
-15. pip3 install python-dateutil
-16. pip3 install geocoder
-17. pip3 install geopy
-18. spicetify-cli
-19. yay -S spicetify-themes-git
-- Before applying Spicetify, you need to gain write permission on Spotify files, by running command:
-    ```
-    sudo chmod a+wr /opt/spotify
-    sudo chmod a+wr /opt/spotify/Apps -R
-    ```
-- Then, run command to apply the new theme:
-    ```
-    cd "$(dirname "$(spicetify -c)")/Themes/Dribbblish"
-    spicetify config current_theme Dribbblish color_scheme base
-    spicetify config inject_css 1 replace_colors 1 overwrite_assets inject_theme_js 1
-    spicetify apply
-    ```
-20. suod pacman -S bc
-- needed for the spotify bar widget to work
-21. yay -S spotify-tui
-22. yay -S spotifyd
- - enable spotifyd service
-    ```
-    $ systemctl --user enable spotifyd.service
-    ```
-23. yay -S icat   (for viewing imagies in terminal)
-24. yay -S catppuccin-gtk-theme-mocha catppuccin-gtk-theme-macchiato catppuccin-gtk-theme-frappe catppuccin-gtk-theme-latte
-- catpuccin for gtk theme
-25. pip install shell-gpt==0.9.0
-- I had to modify my path in order for this to work by adding ~/.local/bin to my path
-26. pacman -Syu sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 
-27. yay -S sddm-thme-corners-git
-- mkdir /etc/sddm.conf.d
-- cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf.d/
-28. pip3 install pybrainyquote
-- for the quote widget
-29. yay -S swaylock
-30. yay l-S swayidle
-31. sudo -S grim
-- for screenshots in wayland
-32. pacman -S slurp 
-- used with grim to select region for screen shots.
-33. pacman -R xdg-desktop-portal-gnome
-- remove this package for hyprland
-34. pacman -R libva-vdpau-driver
-- remove this package for manjaro if I want to run OBS
-
-## Packages removed
-1. yay -R 
-
-### used this link for git bare repository
-https://www.atlassian.com/git/tutorials/dotfiles
-
-# SSH KEY GEN
-`ssh-keygen -t rsa`
-
-#
+_____________________________________________________________
 # Nvidia (with amd gpu) setup for machine learning
 ## Below are commands I used to install cuda and cudnn for nvidia gpu while using amd gpu for display
 I do not remember what order I did these in and in some cases I not sure if they are needed. I am just listing them here for reference.
@@ -135,6 +161,7 @@ $pacman -S cuda cudnn
 I was missing 530.41.03. I have this in my notes but do not remember what this references. I think it was a driver version.
 ```bash
 I was missing linux headers so I installed them with
+```
 ```bash
 $pacman -S linux-headers
 ```
