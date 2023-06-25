@@ -44,13 +44,14 @@ $bg-alt: #24273a;
 }
 .spotify_repeat_on,.spotify_shuff_on {
 	color: #a6da95;
-	font-size: 24;
+	padding-right: 24px;
+	font-size: 12;
 	margin-top: -20px;
 	margin-bottom: -20px;
 }
 .spotify_repeat_off,.spotify_shuff_off {
 	color: #cdd6f4;
-	font-size: 24;
+	font-size: 12;
 	margin-top: -20px;
 	margin-bottom: -20px;
 }
@@ -85,7 +86,7 @@ $bg-alt: #24273a;
 }
 
 .tool_label{
-	font-size: 75;
+	font-size: 50;
 	color: #a6e3a1;
 	margin-top: -20;
 	margin-bottom: -20;
@@ -95,14 +96,14 @@ $bg-alt: #24273a;
 }
 .power_icon{
 	color: #f38ba8;
-	font-size: 50;
+	font-size: 40;
 	margin-top: -20;
 	margin-bottom: -20;
 }
 
 .notification_icon{
 	color: #cba6f7;
-	font-size: 70;
+	font-size: 50;
 	margin-top: -20;
 	margin-bottom: -20;
 }
@@ -188,23 +189,29 @@ $bg-alt: #24273a;
 	background-color: #f38ba8;
 }
 .spotify_play_pause{
-	font-size: 24px;
+	font-size: 18px;
 	color: #cdd6f4;
+	padding-right: 5px;
+	padding-left: 5px;
 	margin-top: -20;
 	margin-bottom: -20;
 	
 }
 .spotify_next_prev{
-	font-size: 34px;
+	font-size: 18px;
+	padding-right: 5px;
+	padding-left: 10px;
 	color: #cdd6f4;
 	margin-top: -20;
 	margin-bottom: -20;
 }
 .spotify_icon{
-	font-size: 27px;
+	font-size: 20px;
 	color: #a6e3a1;
 	margin-top: -20;
 	margin-bottom: -20;
+	margin-left: -9px;
+	padding-right: 5px;
 	
 }
 .spotify_duration{

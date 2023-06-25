@@ -78,7 +78,7 @@
         (box :class "box1" :height 75 :width 375 :space-evenly true :spacing 5 :hexpand false :orientation "h"
           
                 (button :class "flash_tool" :onclick "./scripts/eww_network_check.sh --toggle_wifi" :height 55 :width 65 :valign "center" :halign "center"
-                    (label :text network :class "tool_label")
+                    (label :text network :class "tool_label" :xalign 0.3 :yalign 0.5)
                 )
      
                 (button :class "flash_tool" :onclick "./scripts/eww_bt_check.sh --open-blueman" :height 55 :width 65 :valign "center" :halign "center"
@@ -94,7 +94,7 @@
                 )
 
                 (button :class "flash_tool" :onclick "./scripts/start_eww.sh --power" :height 55 :width 65 :valign "center" :halign "center"
-                    (label :text "⏻" :class "power_icon")
+                    (label :text "⏻" :class "power_icon" :xalign 0.4 :yalign 0.5)
                 )
         )
         
