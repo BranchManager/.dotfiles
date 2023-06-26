@@ -33,7 +33,7 @@ pip3 install python-dateutil geocoder geopy pybrainyquote
 ```
 4. what I removed
 ```bash 
-pacman -R xdg-desktop-portal-gnome libva-vdpau-driver
+pacman -R xdg-desktop-portal-gnome libva-vdpau-driver tumbler
 ```
 <details>
 <summary> Details on what I installed </summary>
@@ -114,7 +114,7 @@ pacman -R xdg-desktop-portal-gnome libva-vdpau-driver
 - remove this package for hyprland
 34. pacman -R libva-vdpau-driver
 - remove this package for manjaro if I want to run OBS
-35. 1. sudo Pacman -S thunar
+35. 1. sudo Pacman -S thunar tumbler
     - install thunar
     - changing terminal to kitty
         Went the the edit section => Configure custom Actions => Edit the "open Terminal here" action command from `exo-open --working-directory %f --launch TerminalEmulator` to `kitty --working-directory %f`
@@ -122,6 +122,7 @@ pacman -R xdg-desktop-portal-gnome libva-vdpau-driver
         `
         sudo pacman -S thunar-archive-plugin`
     - I also use Nautilus as an alternative file manager
+    - tumbler is used a plugin to view picture thumbnails in thunar
 </details>
 
 # Used this link for git bare repository

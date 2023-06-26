@@ -38,7 +38,7 @@ function open_eww_vol(){
         
             eww_monitor="main_"
             monitor_num="${focused_array[$i-2]:0:1}"
-            eww_monitor+=$((monitor_num))
+            eww_monitor+=$((monitor_num - 1))
             eww_monitor+="_vol"
             echo "This the monitor"
             echo "$eww_monitor"

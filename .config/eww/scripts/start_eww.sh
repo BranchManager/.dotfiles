@@ -15,7 +15,7 @@ if [ "$1" = "--power" ]; then
           
             eww_monitor="main_"
             monitor_num="${focused_array[$i-2]:0:1}"
-            eww_monitor+=$((monitor_num))
+            eww_monitor+=$((monitor_num - 1))
             eww_monitor+="_power"
             eww open $eww_monitor 
         fi
@@ -45,7 +45,7 @@ if [ "$1" = "--powe-close" ]; then
             
                 eww_monitor="main_"
                 monitor_num="${focused_array[$i-2]:0:1}"
-                eww_monitor+=$((monitor_num))
+                eww_monitor+=$((monitor_num - 1))
                 eww_monitor+="_power"
                 eww open $eww_monitor
             fi
@@ -76,8 +76,11 @@ then
             
                 eww_monitor="main_"
                 monitor_num="${focused_array[$i-2]:0:1}"
-                eww_monitor+=$((monitor_num))
+                eww_monitor+=$((monitor_num - 1))
                 eww update anim_open_ostg=true & #this is for the slide out animation
+                #echo "THE MONITOR WE ARE OPENING and number"
+                #echo $eww_monitor
+                # echo $monitor_num
                 eww open $eww_monitor &
                 python3 ~/.config/eww/scripts/notion_test.py &
                 python3 ~/.config/eww/scripts/weather.py & 

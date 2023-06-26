@@ -1,8 +1,11 @@
+ 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+   
     /*font-size: 13px;*/
 }
+
 
 /* window#waybar {
     background-color:  	#11111b;
@@ -117,7 +120,7 @@ window#waybar.chromium {
 #window,
 #workspaces {
     /*margin: 0 4px;*/
-    font-size: 12px;
+    font-size: 10px;
     margin-bottom: 0px;
     margin-top:0px;
     margin-left: 0px;
@@ -154,8 +157,8 @@ window#waybar.chromium {
 }
 
 #custom-swaync{
-    font-size: 34px;
-    margin-right: 5px;
+    font-size:18px;
+    margin-right: 10px;
     /*padding: 0 5px;*/
     margin-top: -10px;
     margin-bottom: -10px;
@@ -169,7 +172,7 @@ window#waybar.chromium {
 #custom-vpn {
     /*background-color: #313244;*/
     
-    font-size: 34px;
+    font-size: 18px;
     margin-right: 5px;
     /*padding: 0 5px;*/
     margin-top: -10px;
@@ -226,11 +229,11 @@ window#waybar.chromium {
 #custom-BranchMenu{
    
    
-    font-size:34;
+    font-size: 18px;
     color: #a6e3a1;
     margin-top: -15px;
     margin-bottom: -15px;
-    padding: 0 5px;
+    padding: 0 9px;
     
     
 }
@@ -300,7 +303,7 @@ label:focus {
    /* background-color: #b7bdf8;*/
    margin-top: -10px;
    margin-bottom: -10px;
-   font-size: 34px;
+   font-size: 18px;
     
 }
 
@@ -332,7 +335,7 @@ label:focus {
    /* border-radius: 5px;*/
     margin-top: -10;
     margin-bottom: -10px;
-    font-size: 30px;
+    font-size: 20px;
    
 }
 
@@ -348,11 +351,13 @@ label:focus {
     background-size: 20px;
     
    /* background-color: #b7bdf8;*/
-    font-size: 30px;
+    font-size: 18px;
     /*line-height: 25px;*/
     margin-bottom: -10px;
     margin-top: -10px;
     border-radius: 0px;
+    margin-right: 10px;
+    
    
     /*color:  	#cad3f5;*/
     
