@@ -4,6 +4,7 @@ swayidle -w  \
 	timeout 900 '~/.config/waybar/swaylock_min.sh' \
 	resume 'hyprctl dispatch dpms on'\
 	timeout 3600 'systemctl suspend' \
+	resume 'hyprctl dispatch dpms on'\
 	#
 	#timeout 10 '/home/branchmanager/.config/waybar/swaylock_after_id
 

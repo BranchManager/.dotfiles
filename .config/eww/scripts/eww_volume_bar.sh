@@ -21,7 +21,7 @@ function close_vol_bar {
     eww close main_0_vol
     eww close main_1_vol
     eww close main_2_vol
-    
+    eww 
 
 }
 function open_eww_vol(){
@@ -38,7 +38,7 @@ function open_eww_vol(){
         
             eww_monitor="main_"
             monitor_num="${focused_array[$i-2]:0:1}"
-            eww_monitor+=$((monitor_num - 1))
+            eww_monitor+=$((monitor_num))
             eww_monitor+="_vol"
             echo "This the monitor"
             echo "$eww_monitor"
