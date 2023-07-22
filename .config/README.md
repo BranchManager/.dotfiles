@@ -21,7 +21,7 @@ $ chsh -s /bin/bash $USER
 ## Packages downloaded
 1. What I installed with pacman
 ```bash
-sudo pacman -S tailscale pavucontrol libnotify rofi bluez-utils bluez blueman python-pip swaybg bc sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 slurp jq thunar thunar-archive-plugin
+sudo pacman -S tailscale pavucontrol libnotify rofi bluez-utils bluez blueman python-pip swaybg bc sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 slurp jq thunar thunar-archive-plugin kitty
 ```
 2. What I installed with yay
 ```bash
@@ -123,6 +123,8 @@ pacman -R xdg-desktop-portal-gnome libva-vdpau-driver tumbler
         sudo pacman -S thunar-archive-plugin`
     - I also use Nautilus as an alternative file manager
     - tumbler is used a plugin to view picture thumbnails in thunar
+36. sudo pacman -S kitty
+- terminal of choice
 </details>
 
 # Used this link for git bare repository
