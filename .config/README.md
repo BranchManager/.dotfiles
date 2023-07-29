@@ -21,7 +21,7 @@ $ chsh -s /bin/bash $USER
 ## Packages downloaded
 1. What I installed with pacman
 ```bash
-sudo pacman -S tailscale pavucontrol libnotify rofi bluez-utils bluez blueman python-pip swaybg bc sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 slurp jq thunar thunar-archive-plugin
+sudo pacman -S tailscale pavucontrol libnotify rofi bluez-utils bluez blueman python-pip swaybg bc sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 slurp jq thunar thunar-archive-plugin ccid opensc pkgconf
 ```
 2. What I installed with yay
 ```bash
@@ -123,8 +123,27 @@ pacman -R xdg-desktop-portal-gnome libva-vdpau-driver tumbler
         sudo pacman -S thunar-archive-plugin`
     - I also use Nautilus as an alternative file manager
     - tumbler is used a plugin to view picture thumbnails in thunar
+36. sudo pacman -S ccid opensc
+    - for smart card reader CAC auth
+37. sudo pacman -S pkgconf
+    - for installing allot of the AUR packages
 </details>
 
+# Minecraft play (not listed above)
+    1. minecraft-launcher
+    2. yay -S minecraft-launcher
+    3. pacman -S corectrl
+    4. create a script with the following
+        ```
+        #!/bin/bash
+        /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+        corectrl &
+        minecraft-launcher
+       ```
+        - I use corectrl to control my gpu fan speed
+        - I use polkit-gnome-authentication-agent-1 to allow me to use my smart card for authentication for corectrl
+    5. cMove the script to a PATH directory and modify the minecraft /usr/share/applications/minecraft-launcher.desktop to use the script
+        
 # Used this link for git bare repository
 https://www.atlassian.com/git/tutorials/dotfiles
 

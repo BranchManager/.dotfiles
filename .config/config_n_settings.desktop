@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Hyprland WM settings
+Exec=open_settings.sh
+Icon=/home/branchamanager/Pictures/my_desktop_icons/hyprland.png
