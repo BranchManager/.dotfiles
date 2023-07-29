@@ -21,7 +21,11 @@ $ chsh -s /bin/bash $USER
 ## Packages downloaded
 1. What I installed with pacman
 ```bash
+<<<<<<< HEAD
 sudo pacman -S tailscale pavucontrol libnotify rofi bluez-utils bluez blueman python-pip swaybg bc sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 slurp jq thunar thunar-archive-plugin ccid opensc pkgconf
+=======
+sudo pacman -S tailscale pavucontrol libnotify rofi bluez-utils bluez blueman python-pip swaybg bc sddm qt5-graphicaleffects qt5-svg qt5-quickcontrols2 slurp jq thunar thunar-archive-plugin kitty
+>>>>>>> ab4e326f5cac6fe184be5d61ed887e3bf51dd0cd
 ```
 2. What I installed with yay
 ```bash
@@ -123,10 +127,15 @@ pacman -R xdg-desktop-portal-gnome libva-vdpau-driver tumbler
         sudo pacman -S thunar-archive-plugin`
     - I also use Nautilus as an alternative file manager
     - tumbler is used a plugin to view picture thumbnails in thunar
+<<<<<<< HEAD
 36. sudo pacman -S ccid opensc
     - for smart card reader CAC auth
 37. sudo pacman -S pkgconf
     - for installing allot of the AUR packages
+=======
+36. sudo pacman -S kitty
+- terminal of choice
+>>>>>>> ab4e326f5cac6fe184be5d61ed887e3bf51dd0cd
 </details>
 
 # Minecraft play (not listed above)
