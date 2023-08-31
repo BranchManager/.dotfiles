@@ -200,3 +200,18 @@ You can use the following to make sure cuda drivers have been set up correctly:
 /opt/cuda/extras/demo_suite/deviceQuery
 ```
 It should list your nvidia gpu and some CUDA information.
+
+
+# on Fedora
+
+```
+$ sudo dnf install akmod-nvidia
+$ sudo dnf install xorg-x11-drv-nvidia-cuda
+```
+
+
+### Setting Fonts
+
+Download fonts from https://github.com/ryanoasis/nerd-fonts#patched-fonts
+then extract the folder, move or cp foler to /usr/share/fonts
+then fc-cache -f -v
