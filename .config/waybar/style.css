@@ -2,6 +2,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    min-height: 0px;
    
     /*font-size: 13px;*/
 }
@@ -55,35 +56,29 @@ window#waybar.chromium {
     border: none;
 }
 
-#workspaces button {
+/* #workspaces button {
     padding: 0 5px;
     background-color: transparent;
     color: #ffffff;
-    /* Use box-shadow instead of border so the text isn't offset */
+   
     box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each workspace name */
+   
     border: none;
-    /*border-radius: 0;*/
-    /*min-width: 24px;*/
+  
     padding-bottom: 0px;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
+ https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect ?*/
+/*#workspaces button:hover {
     background-color: rgba(0, 0, 0, 0.2);
-    /*box-shadow: inset 0 -3px #ffffff;*/
+   
 }
 
 #workspaces button.active {
    
-    /*margin: 2px;*/ /*0 6px 0;*/
-    /*background-color: #ddddff;*/
-    /*background-color: #45475a;*/
+   
     color: #7f849c;
-    /*min-width: 24px;*/
-    /* Use box-shadow instead of border so the text isn't offset */
-/*    box-shadow: inset 0 -3px transparent;*/
-    /* border-radius: 0px; */
+
    
 }
 
@@ -94,6 +89,42 @@ window#waybar.chromium {
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
+} */
+
+#workspaces {
+	background: #0c0e0f;
+    border: solid 0px #cdd6f4;
+    min-height: 0px;
+    font-size: 2px;
+   
+}
+#workspaces button {
+    padding-top: 0px;
+    margin-top: 0px;
+    min-width: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    border-radius: 16px;
+    color: #2f354a;
+    background-color: #2f354a;
+    transition: all 0.3s ease-in-out;
+}
+#workspaces button.active {
+    color: #cdd6f4;
+    background-color: #cdd6f4;
+    border-radius: 16px;
+    min-height: 0px;;
+    min-width: 20px;
+    background-size: 100% 100%;
+    transition: all 0.3s ease-in-out;
+}
+#workspaces button:hover {
+	background-color: #cdd6f4;
+	color: #cdd6f4;
+	border-radius: 16px;
+  min-width: 35px;
+  background-size: 100% 100%;
 }
 
 #mode {
@@ -117,20 +148,20 @@ window#waybar.chromium {
     color: #ffffff;
 }
 
-#window,
-#workspaces {
-    /*margin: 0 4px;*/
+#workspaces, 
+#window {
+    
     font-size: 10px;
     margin-bottom: 0px;
     margin-top:0px;
     margin-left: 0px;
-    /*background-color: #b7bdf8;*/
+   
     background-color: #24273a;
     border-radius: 30px;
-    padding: 0px 4px 0px 0px;
-    /*min-width: 100px*/
+    padding: 4px 1px 4px 1px;
+  
    
-}
+} 
 
 /* If workspaces is the leftmost module, omit left margin */
 /*.modules-left > widget:first-child > #workspaces {

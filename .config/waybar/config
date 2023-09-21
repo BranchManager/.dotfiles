@@ -12,7 +12,7 @@
     // Choose the order of the modules
     "modules-left": [
         "custom/BranchMenu",
-        "wlr/workspaces"
+        "hyprland/workspaces"
     ],
     "modules-center": [
         "clock"
@@ -102,28 +102,43 @@
         "return-type": "json",
         "signal": 7
     },
-    "wlr/workspaces": {
-        "disable-scroll": false,
-        "on-click": "activate",
-        "all-outputs": false,
+    // "hyprland/workspaces": {
+    //     "disable-scroll": false,
+    //     "on-click": "activate",
+    //     "all-outputs": false,
+    //     "active-only": false,
+    //     "format": "{icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "6": "",
+    //         "7": "",
+    //         "8": "",
+    //         "9": "",
+    //         "10": "",
+    //         "urgent": "",
+    //         "active": "",
+    //         "default": ""
+    //     }
+    // },
+    "hyprland/workspaces": {
         "active-only": false,
+        "all-outputs": false,
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
         "format": "{icon}",
+        "on-click": "activate",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "urgent": "",
-            "active": "",
-            "default": ""
-        }
-    },
+          "urgent": "",
+          "active": "",
+          "default": ""
+        },
+        "sort-by-number": true,
+      },
     /*"keyboard-state": {
         "numlock": true,
         "capslock": true,
