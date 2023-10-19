@@ -209,9 +209,53 @@ $ sudo dnf install akmod-nvidia
 $ sudo dnf install xorg-x11-drv-nvidia-cuda
 ```
 
+# On Fedora dotfile setup
+```
+$ sudo dnf install wlsunset
+```
 
 ### Setting Fonts
 
 Download fonts from https://github.com/ryanoasis/nerd-fonts#patched-fonts
 then extract the folder, move or cp foler to /usr/share/fonts
 then fc-cache -f -v
+
+## setting up stable diffusion
+
+### for controlnet extension
+- download the contol_sd15_canny.pth,depth.pth,openpose.pth,and scribble.pth form hugging face.
+- install the extension by going to https://github.com/Mikubill/sd-webui-controlnet copy the url (the one listed), paste into Extensions-> install from url -> URL for extnsion git repository.
+    - the actual controlNet repo (dont use with webui) https://github.com/lllyasviel/ControlNet
+- then after hitting install go to Extensions->Installed->hit aply and restart UI.
+
+- then mv the .pth file to ..stable-diffusion-webui/extensions/sd-webui-controlnet/models
+
+## adding tail scale
+
+- add tailscale repository and install tailscale
+```
+sudo dnf config-manager --add-repo https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+sudo dnf install tailscale
+```
+
+- use systemctl to enable and start the service 
+```
+sudo systemctl enable --now tailscaled
+```
+
+- Connect your machine to your Tailscale network and authenticate in your browser
+```
+sudo tailscale up
+```
+
+fin your tailscale IPv4 address by running
+```
+tailscale ip -4
+```
+
+## Creating a conda env corerctly
+
+You need to make sure you specify the python version or it wont really crate the env when you ttry to run "conda activate xyz".
+```
+conda create -n name_of_env python=3.11
+```
