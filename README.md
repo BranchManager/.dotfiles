@@ -2,7 +2,7 @@
 # preview of my desktop
 ![desktop](https://github.com/BranchManager/.dotfiles/blob/main/Pictures/desktop_showcase.png)
 
-# OS distro is Manjaro 
+# For Manjaro 
 
 _____________________________________________________________
 # Color Theme
@@ -201,8 +201,12 @@ You can use the following to make sure cuda drivers have been set up correctly:
 ```
 It should list your nvidia gpu and some CUDA information.
 
+# Monitor issue
+There is some issue where the monitors will switch inregaruds to eww. when this happens I just change the numbers eww#.yuck file to the right number. you should see what I am talking about when you open the file. For example main_1 and the corresponding variable may sway to main_2 and main_2 to main_1
+
 
 # on Fedora
+________________________________________________________________________________________________________________________
 
 ```
 $ sudo dnf install akmod-nvidia
