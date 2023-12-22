@@ -217,6 +217,17 @@ $ sudo dnf install xorg-x11-drv-nvidia-cuda
 ```
 $ sudo dnf install wlsunset
 ```
+## open tablet driver
+```
+wget https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest/download/OpenTabletDriver.rpm
+sudo dnf indtall ./OpentabletDriver.rpm
+```
+
+### to enable daemon for opentablet driver (if on wm gnome seems to have it automatically activated)
+```
+systemctl --user start opentabletdriver.service 
+```
+
 
 ### Setting Fonts
 
