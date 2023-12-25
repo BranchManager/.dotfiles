@@ -208,15 +208,45 @@ There is some issue where the monitors will switch inregaruds to eww. when this 
 # on Fedora
 ________________________________________________________________________________________________________________________
 
+### make a folder where git repositories are stored
+```bash
+$ mkdir utils
 ```
+
+```bash
 $ sudo dnf install akmod-nvidia
 $ sudo dnf install xorg-x11-drv-nvidia-cuda
 ```
 
-# On Fedora dotfile setup
+## Installed package on Fedora and rust
+```bash
+$ sudo dnf -y install tailscale pavucontrol libnotify rofi bluez blueman sddm waybar slurp opensc pkgconf swaylock wlsunset swaylock install gtk3-install gtk-layer-shell-devel pango-devel gdk-pixbuf2-devel cairo-devel libgcc gcc glibc-devel pkgconf opensc && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
-$ sudo dnf install wlsunset
+
+## you probably won't need these but you could possibly need these needed them in arch
+```bash
+sudo dnf install qt5-svg qt5-qtgraphicaleffects thunar thunar-archive-plugin
 ```
+
+# Installing Eww on Fedora
+```bash
+$ sudo dnf -y install gtk3-install gtk-layer-shell-devel pango-devel gdk-pixbuf2-devel cairo-devel libgcc glibc-devel
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+git clone https://github.com/elkowar/eww
+cd eww
+cargo build --release --no-default-features --features=wayland
+cd target/release
+chmod +x ./eww
+```
+
+
+
+```bash
+sudo pacman -S bluez-utils??? python-pip swaybg  qt5-svg qt5-quickcontrols2 thunar thunar-archive-plugin ccid opensc pkgconf
+```
+
 ## open tablet driver
 ```
 wget https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest/download/OpenTabletDriver.rpm
@@ -230,6 +260,15 @@ systemctl --user start opentabletdriver.service
 
 
 ### Setting Fonts
+
+```
+$ sudo dnf copr enable peterwu/iosevka
+$ sudo dnf search iosevka
+$ sudo dnf install {font_of_choice}
+```
+curl -s 'https://api.github.com/repos/be5invis/Iosevka/releases/latest' | jq -r ".assets[] | .browser_download_url" | grep ttf-iosevka | xargs -n 1 curl -L -O --fail --silent --show-error
+then fc-cache -f -v
+fc-cache -f -v
 
 Download fonts from https://github.com/ryanoasis/nerd-fonts#patched-fonts
 then extract the folder, move or cp foler to /usr/share/fonts
