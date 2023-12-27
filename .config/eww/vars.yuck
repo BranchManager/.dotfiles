@@ -1,4 +1,5 @@
 (deflisten user "whoami")
+(defvar home_dir "/home/branchmanagerlt")
 
 (defvar test "55")
 (defvar reveal_power_confirmed "false")

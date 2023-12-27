@@ -1,11 +1,17 @@
 
 #!/usr/bin/bash
-tmp_dir="/home/branchmanager/.config/eww/images/icons/tmp_art"
-place_holder_img="/home/branchmanager/.config/eww/images/icons/spotify_placeholder/warm_sunset.jpg"
+
+#For laptop use this home_dir
+home_dir="/home/branchmanager"
+#echo $home_dir"/.config/eww/images/icons/tmp_art"
+tmp_dir=$home_dir"/.config/eww/images/icons/tmp_art"
+place_holder_img=$home_dir"/.config/eww/images/icons/spotify_placeholder/warm_sunset.jpg"
+#tmp_dir="/home/branchmanager/.config/eww/images/icons/tmp_art"
+#place_holder_img="/home/branchmanager/.config/eww/images/icons/spotify_placeholder/warm_sunset.jpg"
 
 tmp_cover_path=$tmp_dir/cover.png
 
-link_path="/home/branchmanager/.config/eww/images/icons/tmp_art/link.txt"
+link_path=$home_dir"/.config/eww/images/icons/tmp_art/link.txt"
 #!/bin/bash
 
 convert_time_to_seconds () {
