@@ -220,17 +220,59 @@ $ sudo dnf install xorg-x11-drv-nvidia-cuda
 
 ## Installed package on Fedora and rust
 ```bash
-$ sudo dnf -y install tailscale pavucontrol libnotify rofi bluez blueman sddm waybar slurp opensc pkgconf swaylock wlsunset swaylock install gtk3-install gtk-layer-shell-devel pango-devel gdk-pixbuf2-devel cairo-devel libgcc gcc glibc-devel pkgconf opensc && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo dnf -y install tailscale dmenu pavucontrol libnotify rofi bluez blueman sddm waybar slurp opensc pkgconf swaylock wlsunset swaylock install gtk3-install gtk-layer-shell-devel file-devel pango-devel gdk-pixbuf2-devel cairo-devel libgcc gcc glibc-devel pkgconf opensc libwebp-devel gcc-c++ wayland-protocols-devel cmake ninja-build && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
+### Installing swaync
+```bash
+dnf copr enable erikreider/SwayNotificationCenter
+dnf install SwayNotificationCenter
+```
+S
+### Installing spotify
+To install Spotify using Snap:
+
+Install Snap using DNF:
+```bash
+sudo dnf install snapd
+```
+Either log out and back in again, or restart your system, to ensure snap’s paths are updated correctly.
+
+To enable classic snap support, enter the following to create a symbolic link between /var/lib/snapd/snap and /snap:
+
+```bash
+sudo ln -s /var/lib/snapd/snap /snap
+```
+Install spotify, simply use the following command:
+
+```bash
+snap install spotify
+```
+Click on the Spotify icon in the applications list.
+
+### Installing Hyprpaper
+```bash
+#the below dependencies should be installed using the above installs
+sudo dnf install wayland-devel wayland-protocols-devel pango-devel cairo-devel file-devel libglvnd-devel libglvnd-core-devel libjpeg-turbo-devel libwebp-devel gcc-c++
+git clone git@github.com:hyprwm/hyprpaper.git
+sudo mv ./build/hyprpaper /usr/bin/
+
+```
+
+
 
 ## you probably won't need these but you could possibly need these needed them in arch
 ```bash
 sudo dnf install qt5-svg qt5-qtgraphicaleffects thunar thunar-archive-plugin
 ```
+### Installing Rofi wifi menu
+```bash
+cd utls
+git clone git@github.com:ericmurphyxyz/rofi-wifi-menu.git
+```
 
 # Installing Eww on Fedora
 ```bash
-$ sudo dnf -y install gtk3-install gtk-layer-shell-devel pango-devel gdk-pixbuf2-devel cairo-devel libgcc glibc-devel
+sudo dnf -y install gtk3-install gtk-layer-shell-devel pango-devel gdk-pixbuf2-devel cairo-devel libgcc glibc-devel
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -260,19 +302,16 @@ systemctl --user start opentabletdriver.service
 
 
 ### Setting Fonts
+Download fonts from https://www.nerdfonts.com/font-downloads
+Then extract folder. Then move folder to /usr/share/fonts then run fc-cache -f -v
 
 ```
-$ sudo dnf copr enable peterwu/iosevka
-$ sudo dnf search iosevka
-$ sudo dnf install {font_of_choice}
+$ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Iosevka.zip
+$ sudo unzip Iosevka.zip 
+$ sudo mv -r Iosevka /usr/share/fonts/Iosevka
+$ sudo fc-cache -f -v
 ```
-curl -s 'https://api.github.com/repos/be5invis/Iosevka/releases/latest' | jq -r ".assets[] | .browser_download_url" | grep ttf-iosevka | xargs -n 1 curl -L -O --fail --silent --show-error
-then fc-cache -f -v
-fc-cache -f -v
 
-Download fonts from https://github.com/ryanoasis/nerd-fonts#patched-fonts
-then extract the folder, move or cp foler to /usr/share/fonts
-then fc-cache -f -v
 
 ## setting up stable diffusion
 
