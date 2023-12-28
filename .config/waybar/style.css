@@ -95,7 +95,7 @@ window#waybar.chromium {
 	background: #0c0e0f;
     border: solid 0px #cdd6f4;
     min-height: 0px;
-    font-size: 2px;
+    color: red;
    
 }
 #workspaces button {
@@ -109,6 +109,8 @@ window#waybar.chromium {
     color: #2f354a;
     background-color: #2f354a;
     transition: all 0.3s ease-in-out;
+
+    color: red;
 }
 #workspaces button.active {
     color: #cdd6f4;
@@ -118,6 +120,8 @@ window#waybar.chromium {
     min-width: 20px;
     background-size: 100% 100%;
     transition: all 0.3s ease-in-out;
+
+    color: red;
 }
 #workspaces button:hover {
 	background-color: #cdd6f4;
@@ -125,6 +129,9 @@ window#waybar.chromium {
 	border-radius: 16px;
   min-width: 35px;
   background-size: 100% 100%;
+  
+  color: red;
+
 }
 
 #mode {
