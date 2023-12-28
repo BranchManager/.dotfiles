@@ -1,0 +1,278 @@
+[{
+    //THIS IS THE LAPTOP SETUP link
+    //________________________________________________________
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 6, // Waybar height (to be removed for auto height)
+    
+
+    //This output is for the laptop set up
+    "output": [
+        "eDP-1"
+    ],
+    // Gaps between modules (4px)
+    "spacing": 4, 
+
+    // Choose the order of the modules
+    "modules-left": [
+        "custom/BranchMenu",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+   
+
+    //use this for laptop
+    "modules-right": [
+       "keyboard-state",
+        "custom/vpn",
+        "pulseaudio",
+        "network",
+        "custom/power",
+        "custom/swaync",
+        "battery"
+    ],
+   
+    //"custom/browser", "custom/code", "custom/terminal","custom/folders","custom/spotify"
+    "custom/BranchMenu": {
+        "format": "",
+        "on-click": "~/.config/eww/scripts/start_eww.sh --start-end"
+    },
+    "custom/menu": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.2s; rofi -show run -theme ~/.config/waybar/rofi_configs/launcher.rasi)' & disown"
+    },
+    "custom/browser": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.2s; MOZ_ENABLE_WAYLAND=1 firefox)' & disown"
+    },
+    "custom/code": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.2s; code --enable-features=UseOzonePlatform --ozone-platform=wayland)' & disown"
+    },
+    "custom/terminal": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.5s; kitty)' & disown"
+    },
+    "custom/folders": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.2s; thunar)' & disown"
+    },
+    "custom/spotify": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.5s; spotify)' & disown"
+    },
+    "custom/power": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.5s; ~/.config/eww/scripts/start_eww.sh --powe-close)' & disown"
+    },
+    "custom/vpn": {
+        /*Note that to change the class of this you will have to add it to the output of vpn_check.sh's json output see the waybar documentation*/
+        "format": "{icon}",
+        "format-icons": {
+            "-": "",
+            "discon": ""
+        },
+        "on-click": "~/.config/waybar/scripts/vpn_toggle.sh; sleep 1; pkill -SIGRTMIN+7 waybar",
+        "interval": 20,
+        "exec": "~/.config/waybar/scripts/vpn_check.sh | jq --unbuffered --compact-output",
+        "return-type": "json",
+        "signal": 7
+    },
+    "custom/swaync": {
+        "format": "{icon}",
+        "format-icons": {
+            "true": "",
+            "false": ""
+        },
+        "on-click": "~/.config/waybar/scripts/launch_swaync.sh",
+        "interval": 2,
+        "exec": "~/.config/waybar/scripts/dnd_check.sh | jq --unbuffered --compact-output",
+        "return-type": "json",
+        "signal": 7
+    },
+    
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": false,
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+          "urgent": "",
+          "active": "",
+          "default": ""
+        },
+        "sort-by-number": true,
+      },
+          
+    "keyboard-state": {
+        "numlock": false,
+        "capslock": true,
+        "format": "{icon}",
+        "format-icons": {
+            "locked": "󰘲",
+            "unlocked": "r"
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "America/New_York",
+        "format": "{:%A %b %e %Y %I:%M %p}",
+        //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%h:%M:%S}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 40,
+            "critical": 20
+        },
+        "format": "{icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        //"format-alt": "{time} {icon}",
+        "tooltip-format":"{time} {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        // 󰖩"interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "    ",
+        "format-ethernet": "󰈀",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) 󰈂",
+        "format-disconnected": "Disconnected ⚠",
+        //"format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "/home/branchmanager/utls/rofi-wifi-menu/rofi-wifi-menu.sh"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}",
+        //{format_source},
+        //"format-bluetooth": "{volume}% {icon}",
+        // {format_source}",
+        //"format-bluetooth-muted": " {icon}",
+        //{format_source}",
+        //"format-muted": " {format_source}",
+        /*"format-source": "{volume}% ",
+        "format-source-muted": "",*/
+        "format-icons": {
+            /*"headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",*/
+            "default": [
+                "󰝟",
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "sh -c '(sleep 0.2s; pavucontrol)' & disown"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    }
+}]
+
+//Next monitor
+
+

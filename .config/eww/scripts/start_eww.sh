@@ -55,7 +55,7 @@ if [ "$1" = "--powe-close" ]; then
 fi
 
 
-isopen=$( eww windows | grep main | grep *main )
+isopen=$( eww active-windows | grep main | sed 's/^.*: //' )
 
 if [ "$1" = "--start-end" ]
 then
@@ -63,6 +63,9 @@ then
         #if ther eis nothing in this variable then start opening shit
     if [ -z "$isopen" ] 
     then
+
+        echo $isopen 
+        echo "we here"
         #for loop grabs monitor thats currently in focus using the hyprland tools
         focused_array=($(hyprctl monitors | grep -e ID -e focused))
 

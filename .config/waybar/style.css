@@ -1,7 +1,7 @@
  
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: Iosevka, Roboto, Helvetica, Arial, sans-serif;
     min-height: 0px;
    
     /*font-size: 13px;*/
@@ -283,14 +283,22 @@ window#waybar.chromium {
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+    
+    font-size: 24px;
+    color: #a6da95;
+    margin-top: -10px;
+    margin-bottom: -15px;
+    margin-right: 20px;
+    padding: 0 0 5px 0px;
+}
+#battery.warnings {
+    background-color: #f0932b;
 }
 
-#battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+#battery.critical {
+    background-color: #eb4d4b;
 }
+
 
 @keyframes blink {
     to {
@@ -334,6 +342,21 @@ label:focus {
     background-color: #2980b9;
 }
 
+#network.wifi{
+    background: rgba(0,0,0,0.0);
+    color: #a6da95;
+    margin-right: 5px;
+   /* background-color: #b7bdf8;*/
+   background-image: url("/home/branchmanager/Downloads/download.svg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 20px 20px; 
+   margin-top: -10px;
+   margin-bottom: -10px;
+   font-size: 18px;
+    
+}
+
 #network.ethernet{
     background: rgba(0,0,0,0.0);
     color: #a6da95;
@@ -368,7 +391,7 @@ label:focus {
 
 #pulseaudio {
     color: #c6a0f6;
-    margin-right: 5px;
+    margin-right: 8px;
    /* background-color: #b7bdf8;*/
    /* border-radius: 5px;*/
     margin-top: -10;
