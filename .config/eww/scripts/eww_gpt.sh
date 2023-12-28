@@ -1,8 +1,12 @@
 #!/bin/bash
 
+key=$(cat ~/.config/.openai_key)
+export OPENAI_API_KEY=$key
+
 run_gpt(){
 
     output=$(sgpt "$1")
+    echo $output
     eww update output="$output"
     
 }

@@ -212,23 +212,39 @@ ________________________________________________________________________________
 ```bash
 $ mkdir utils
 ```
-
+## what I installed for cuda
 ```bash
 $ sudo dnf install akmod-nvidia
 $ sudo dnf install xorg-x11-drv-nvidia-cuda
 ```
 
-## Installed package on Fedora and rust
+## Installed packages and dependencies on Fedora and rust
 ```bash
 sudo dnf -y install tailscale dmenu pavucontrol libnotify rofi bluez blueman sddm waybar slurp opensc pkgconf swaylock wlsunset swaylock install gtk3-install gtk-layer-shell-devel file-devel pango-devel gdk-pixbuf2-devel cairo-devel libgcc gcc glibc-devel pkgconf opensc libwebp-devel gcc-c++ wayland-protocols-devel cmake ninja-build && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+pip install geopy
+pip install pybrainyquote
+pip install geocoder
 ```
-### Installing swaync
+## for the weather widget
+for the weather widget to work put your key in
+~/.config/.openewather_key
+
+## Installing sgpt
+Needed for eww gpt widget
+```bash
+wget https://github.com/tbckr/sgpt/releases/download/v2.10.0/sgpt-2.10.0-1.x86_64.rpm
+sudo dnf install sgpt-2.10.0-1.x86_64
+```
+create folder called .openai_key in .config folder and put your open ai key in there
+
+## Installing swaync
 ```bash
 dnf copr enable erikreider/SwayNotificationCenter
 dnf install SwayNotificationCenter
 ```
-S
-### Installing spotify
+
+## Installing spotify
 To install Spotify using Snap:
 
 Install Snap using DNF:
@@ -249,7 +265,7 @@ snap install spotify
 ```
 Click on the Spotify icon in the applications list.
 
-### Installing Hyprpaper
+## Installing Hyprpaper
 ```bash
 #the below dependencies should be installed using the above installs
 sudo dnf install wayland-devel wayland-protocols-devel pango-devel cairo-devel file-devel libglvnd-devel libglvnd-core-devel libjpeg-turbo-devel libwebp-devel gcc-c++
@@ -259,23 +275,18 @@ sudo mv ./build/hyprpaper /usr/bin/
 ```
 
 
-
-## you probably won't need these but you could possibly need these needed them in arch
-```bash
-sudo dnf install qt5-svg qt5-qtgraphicaleffects thunar thunar-archive-plugin
-```
-### Installing Rofi wifi menu
+## Installing Rofi wifi menu
 ```bash
 cd utls
 git clone git@github.com:ericmurphyxyz/rofi-wifi-menu.git
 ```
 
-# Installing Eww on Fedora
+## Installing Eww on Fedora
 ```bash
 sudo dnf -y install gtk3-install gtk-layer-shell-devel pango-devel gdk-pixbuf2-devel cairo-devel libgcc glibc-devel
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
+#youll need to restart terminal here 
 git clone https://github.com/elkowar/eww
 cd eww
 cargo build --release --no-default-features --features=wayland
@@ -294,14 +305,13 @@ sudo pacman -S bluez-utils??? python-pip swaybg  qt5-svg qt5-quickcontrols2 thun
 wget https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest/download/OpenTabletDriver.rpm
 sudo dnf indtall ./OpentabletDriver.rpm
 ```
-
-### to enable daemon for opentablet driver (if on wm gnome seems to have it automatically activated)
+to enable daemon for opentablet driver (if on wm gnome seems to have it automatically activated)
 ```
 systemctl --user start opentabletdriver.service 
 ```
 
 
-### Setting Fonts
+## Setting Fonts
 Download fonts from https://www.nerdfonts.com/font-downloads
 Then extract folder. Then move folder to /usr/share/fonts then run fc-cache -f -v
 
@@ -345,8 +355,13 @@ fin your tailscale IPv4 address by running
 ```
 tailscale ip -4
 ```
+## setting up Conda
 
-## Creating a conda env corerctly
+### Deactivating the conda base env
+```bash
+conda config --set auto_activate_base false
+```
+### Creating a conda env corerctly
 
 You need to make sure you specify the python version or it wont really crate the env when you ttry to run "conda activate xyz".
 ```

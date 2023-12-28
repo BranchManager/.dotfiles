@@ -109,8 +109,9 @@ window#waybar.chromium {
     color: #2f354a;
     background-color: #2f354a;
     transition: all 0.3s ease-in-out;
+    padding-top: 5px;
+    color: #cdd6f4;
 
-    color: red;
 }
 #workspaces button.active {
     color: #cdd6f4;
@@ -121,7 +122,7 @@ window#waybar.chromium {
     background-size: 100% 100%;
     transition: all 0.3s ease-in-out;
 
-    color: red;
+    /*color: red;*/
 }
 #workspaces button:hover {
 	background-color: #cdd6f4;
@@ -129,8 +130,6 @@ window#waybar.chromium {
 	border-radius: 16px;
   min-width: 35px;
   background-size: 100% 100%;
-  
-  color: red;
 
 }
 

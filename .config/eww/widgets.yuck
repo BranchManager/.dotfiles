@@ -5,7 +5,7 @@
     (box :class "dash-window"
         :orientation "v"
         :space-evenly false
-        (box :class "outer_most_box":orientation "vertical" :spacing 10 :space-evenly false :height 400 :width 0 :vexpand true
+        (box :class "outer_most_box" :orientation "vertical" :spacing 10 :space-evenly false :height 400 :width 0 :vexpand true
             ; :style  "
             ; ${anim_open_ostg ? 'transition: 200ms cubic-bezier(0.05, 0.7, 0.1, 1);' : 'transition: 50ms cubic-bezier(0.3, 0, 0.8, 0.15);'}
             ; ${rev_ostg ? '' : 'margin-left: -533px; margin-right: 533px;'}

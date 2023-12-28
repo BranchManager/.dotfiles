@@ -104,11 +104,11 @@ class weather_class:
     
     def set_key(self):
         print("setting key")
-        with open('/home/branchmanager/.config/.secrets_n_keys', 'r') as file:
-            for line in file:
-                if line.startswith('openweathermap'):
-                    key = line.split(':')[1]
-                    print(key)
+        with open('/home/branchmanager/.config/.openweather_key', 'r') as file:
+            # for line in file:
+            #     if line.startswith('openweather
+            key = file.readline()
+            print(key)
 
 
         

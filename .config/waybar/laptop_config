@@ -1,5 +1,5 @@
 [{
-    //THIS IS THE Desktop SETUP link
+    //THIS IS THE LAPTOP SETUP link
     //________________________________________________________
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 6, // Waybar height (to be removed for auto height)
@@ -103,11 +103,6 @@
         "format": "{icon}",
         "on-click": "activate",
         "format-icons": {
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
           "urgent": "",
           "active": "",
           "default": ""
