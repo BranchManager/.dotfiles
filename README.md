@@ -212,11 +212,40 @@ ________________________________________________________________________________
 ```bash
 $ mkdir utils
 ```
-## what I installed for cuda
+## what I installed for cuda (this is for blender too)
 ```bash
 $ sudo dnf install akmod-nvidia
 $ sudo dnf install xorg-x11-drv-nvidia-cuda
 ```
+(below is mainly for blender)
+then wait a minute or two until modinfo -F version nvidia gives a non-error output (which I didn't have)
+
+Then, reboot so that Nvidia drivers will take effect over Nouveau. Then, (From RPM cuda fusion howto page):
+```bash
+sudo dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora35/x86_64/cuda-fedora35.repo
+sudo dnf clean all
+sudo dnf module disable nvidia-driver
+sudo dnf -y install cuda
+```
+The 35 in first line is intentional. Also, the module disable line does not disable your existing akmod nvidia driver that you just installed, but rather prevents the next line from installing Nvidia's dkms driver over your existing driver.
+
+After this, /usr/local/cuda/bin/nvcc will be available, but if you try to run it on a .cu file, it will complain that "gcc 12 is not supported".
+
+to get it working on blender what I did was run blender with the following:
+```bash
+CYCLES_CUDA_EXTRA_CFLAGS="-ccbin gcc -allow-unsupported-compiler" blender
+```
+alternatively you may be able to set this in your bash_profile file.
+
+### for blender to use rocm-hip this sis assuming you have the rpm package and not the flatpack package
+```bash
+sudo dnf install rocm-hop
+```
+For some reason this will break on hyprland when you try to open blender settings but on gnome you may habe better luck
+
+
+
+### for blender with CUDA
 
 ## Installed packages and dependencies on Fedora and rust
 ```bash
