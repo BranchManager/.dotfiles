@@ -235,7 +235,9 @@ to get it working on blender what I did was run blender with the following:
 ```bash
 CYCLES_CUDA_EXTRA_CFLAGS="-ccbin gcc -allow-unsupported-compiler" blender
 ```
-alternatively you may be able to set this in your bash_profile file.
+alternatively you may be able to set this in your bash_profile or you can set the the hyprland conf file (*neither worked for me) so I made a wrapper script and edited the blender.desktop file to use the wrapper script in my .local/bins
+
+sources for about: https://unix.stackexchange.com/questions/716248/how-do-i-use-cuda-toolkit-nvcc-11-7-1-on-fedora-36, https://docs.blender.org/manual/en/latest/render/cycles/gpu_rendering.html
 
 ### for blender to use rocm-hip this sis assuming you have the rpm package and not the flatpack package
 ```bash
