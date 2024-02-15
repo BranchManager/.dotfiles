@@ -26,6 +26,7 @@
 
     //use this for laptop
     "modules-right": [
+        "tray",
        "keyboard-state",
         "custom/vpn",
         "pulseaudio",
@@ -34,7 +35,10 @@
         "custom/swaync",
         "battery"
     ],
-   
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
     //"custom/browser", "custom/code", "custom/terminal","custom/folders","custom/spotify"
     "custom/BranchMenu": {
         "format": "",
