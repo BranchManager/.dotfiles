@@ -278,6 +278,31 @@ fin your tailscale IPv4 address by running
 ```
 tailscale ip -4
 ```
+### How to set up discord
+1. Download the tar file from discords home page for linux
+2. extract and move folder to the /opt dir or use the below command which will extract it to the opt folder
+```bash
+sudo tar -xvzf discord-0.0.27.tar.gz -C /opt
+```
+3. Then create a symboic link
+```bash
+sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
+```
+4. move or copy the .desktop file from the /opt/discord/discord.desktop to the /usr/share/applications/ dir and have the file look like:
+```
+[Desktop Entry]
+Name=Discord
+StartupWMClass=discord
+Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
+GenericName=Internet Messenger
+Exec=/usr/bin/Discord <-----
+Icon=/opt/Discord/discord.png <-----
+Type=Application
+Categories=Network;InstantMessaging;
+Path=/usr/bin
+```
+
+So now when you have to update discord you just repeat steps one and extract using 2
 ## Setting up Conda
 
 ### Deactivating the conda base env
