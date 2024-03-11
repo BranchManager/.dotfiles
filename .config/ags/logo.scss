@@ -1,0 +1,156 @@
+* { all : unset; }
+/*$mocha_crust: #11111b;
+$macchiato_base: #24273a;*/
+
+/*
+mocha_crust: #11111b;
+macchiato_base: #24273a;
+*/ 
+
+.fedora_icon{
+    font-size: 20px;
+    padding: 5px;
+}
+ /*.my_bar{
+    
+    padding-bottom: 50px;
+
+ }*/
+ .my_widget_box{
+    background-color: red;
+    
+    /*padding-top: 100px;*/
+ }
+
+ .profile_name{
+      font-size: 12px;
+      font-weight: bold;
+      /*padding: 0;
+      margin: 0;*/
+      /*padding-top: 3;*/
+ }
+.profile_box{
+   /*background-color: $macchiato_base;*/
+   background-color: #24273a;
+   border-radius: 10px;
+   padding: 5px;
+   box-shadow: 5px 5px 2px black;
+}
+ .profile_image{
+    background-size: 90px 80px;
+    background-image: url('/home/branchmanager/Pictures/profile_pic/blackguy_anime.jpg');
+    background-repeat: no-repeat;
+    border-radius: 10px; 
+    min-height: 80px; 
+    min-width: 80px;
+ }
+ .position {
+    padding: 0;
+    margin-bottom: .3em;
+}
+ /*.my_slider trough{
+      
+    background-color: blue;
+    min-width: 10px; 
+    min-height: 20px;
+    font-size: 20px;
+ }*/
+/***************************** system monitor bar ******************************/
+ .my_slider trough{
+   background-color: #45475a;
+   border-radius: 5px;
+   min-height: 14px;
+   background-size: 15%;
+ }
+
+ /*.my_slider highlight{
+    background-color: red; 
+ 
+    min-width: 20px; 
+    font-size: 20px;
+ }*/
+.my_slider{
+
+   min-height: 14px;
+   border-radius: 0px;
+   min-height: 14px;
+   min-width: 230px;
+
+}
+.my_slider progress{
+ 
+   min-height: 14px;
+   border-radius: 5px;
+   min-height: 14px;
+
+}
+ .my_slider_cpu progress{
+    background-color: rgb(4, 165, 229); 
+    
+ }
+
+ .my_slider_ram progress{
+   background-color: #81c8be;
+ }
+
+ .my_slider_gpu  progress{
+   background-color: #8aadf4;
+}
+
+.my_slider_cpu_temp progress{
+   background-color: #209fb5;
+}	
+
+ /*.my_slider slider{
+  
+    all: unset;
+    
+ }*/
+
+.system_bar_icon_cpu_temp{
+   margin-left: -10px;
+   margin-bottom: -15px;
+   
+}
+
+ .system_monitor_bar_box{
+   min-width: 200px; 
+   background-color: #313244;
+   padding: 8px;
+   margin-left: 10px;
+   border-radius: 10px;
+}
+
+.system_bar_icon_gpu{
+   font-size: 20px;
+   padding-right: 2px; 
+   margin-left: -2px;
+   
+}
+.system_bar_icon_ram{
+   font-size: 20px;
+   margin-left: -5px;
+   margin-bottom: -15px;
+   
+}
+
+.system_bar_icon_cpu{
+   font-size: 12px;
+   margin-bottom: -15px;
+   padding-right: 7px;
+   
+}
+/**************************** Main Background *********************************/
+.main_background{
+   /*background-color: black;*/
+   /*padding-top: 100px;*/
+   all: unset;
+   padding: 10px;
+   border-radius: 10px;
+   margin: 10px 20px 20px 10px;
+   background-color: #11111b;
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+}
+
+
+
