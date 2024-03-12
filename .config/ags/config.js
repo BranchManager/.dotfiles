@@ -1,5 +1,5 @@
 
-import system_monitors from './system_monitor.js'
+import {system_monitors, drive_monitor } from './system_monitor.js'
 
 
 const myVariable = Variable(0)
@@ -49,16 +49,6 @@ function create_my_bar(monitor = 0){
  
 }
 
-// const user_name = Widget.Label({
-//     vpack: 'center',
-//     className: 'profile_name',
-//     label: Utils.exec('whoami'),
-// })
-
-// const myLabel_first = Widget.Label({
-//     label: cpu.bind().as(cpu => `CPU: ${cpu}%`),
-// })
-
 
 
 const Profile_box = () => Widget.Box({
@@ -97,7 +87,7 @@ const widget_revelead_box = Widget.Revealer({
     child: Widget.Box({
         vertical: true,
         className: 'main_background',
-        children: [profile_and_sysmonitors(),]
+        children: [profile_and_sysmonitors(),drive_monitor()]
     })
 
 })
@@ -108,8 +98,7 @@ function widget_box(monitor = 0){
     anchor: ['top', ],
     name: "monitor" + monitor.toString(),
     layer: 'overlay',
-  //css: `background-color: rgba(255, 255, 255, 1.0);`,
-    
+
     //The main invisible box
     child: Widget.Box({
         //spacing: 100,
@@ -119,21 +108,9 @@ function widget_box(monitor = 0){
         hpack: "start",
         //main box that contains the revealed box we need the padding to be thin so i twont interfere with the main windows
         css: `background-color: rgba(0,0,0,0); padding: 0.1px;`,
-        //className: 'my_widget_box1',
-        
-        //className: 'my_box',  
-        // children: [
-        //     //This box just extends the invisibility of the parent box but enables us to have padding form the top bar and the monitor edge
-        //     Widget.Box({
-        //         css: `background-color: red; padding: 20px;`,
-        //         //child: widget_revelead_box,
-        //     }),
-        // ]
+      
+        //chang the below to a function and change the variable to a functin to have it appear on multiple monitors
         child: widget_revelead_box,
-            //NetworkIndicator(),
-            //Widget.Label({ label: date.bind() }),
-
-        
 
     })  //Widget.Label({ label: date.bind() })
 })}

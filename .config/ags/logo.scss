@@ -140,6 +140,34 @@ macchiato_base: #24273a;
    padding-right: 7px;
    
 }
+
+.system_harddrive_icon{
+   font-size: 20px;
+   margin: -35px;
+   padding-top: 15px;
+   margin-right: -10px;
+   /*margin-bottom: 10;*/
+   
+}
+
+.harddrive_circular_progress{
+   font-size: 6px; 
+   color: #7287fd;
+   margin-left: 10px;
+   background-color: #45475a;
+   
+}
+
+.system_monitor_harddrive_box{
+   min-width: 200px; 
+   padding-left:300px;
+   background-color: #313244;
+   padding: 8px;
+   margin-left: 0px;
+   border-radius: 10px;
+   margin-top: 10px;
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+}
 /**************************** Main Background *********************************/
 .main_background{
    /*background-color: black;*/
