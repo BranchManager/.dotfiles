@@ -60,22 +60,30 @@ var Memory = Utils.exec('amdgpu_top -d').split('\n')
 const gpu = Variable(0, {
     poll: [2000,get_gpu_temp],
 })
-/******df -h **/
+/**************************************Get drive space********************** */
+// returns the two biggest drives moounted on the system
+//may need to eventually take into account flash drives
 const drive_space = () => {
 
     let devices = {}
     let device_keys = []
+    //get each line of mounted drives
     var df = Utils.exec('df -h').split('\n')
+    //only get the lines with dev in them
     var dev_lines = df.filter(line => line.includes('dev'))
+    //remove the lines with loop in them
     var dev_wo_loop = dev_lines.filter(line => !line.includes('loop'))
+    //iterate through the lines and get the drive info
     for (var i = 0; i < dev_wo_loop.length; i++){
+        //This will grab the device name ie where it is mounted and the size
         var device_info = dev_wo_loop[i].split(/\s+/)
         var size = device_info[1]
         
+        //make sure that the drive is an actual drive and not a flash drive or something else
         if (parseFloat(size.match(/\d+/)) > 100 && size.includes('G')){
-            
-            var device = device_info[0]
-            //var size = device_info[1]
+            //get the device name without the dev/ part
+            var device = device_info[0].split('/').slice(-1)
+            //make sure that the device is not already in the list
             if (!device_keys.includes(device)){
                 var used = device_info[2]
                 var available = device_info[3]
@@ -83,91 +91,61 @@ const drive_space = () => {
                 device_keys.push(device)
                 var new_device = {'device': device, 'size': size, 'used': used, 
                 'available': available, 'used_percentages': used_percentages}   
-    
-                     //var root_space = root.replace('%','')
-                console.log("The root space is")
-                console.log(device)
-                // console.log(size)
-                // console.log(used)
-                // console.log(available)
-                // console.log(used_percentages)
-                // console.log("End of device")
+
             
-                devices[i] = new_device
+                devices[device] = new_device
             }
 
         }
 
    
     }
-    // console.log("The dev lines are")
-    // console.log(devices[0])
 
-    // var root_space = root.split(/\s+/)[4]
-    // var root_space = root_space.replace('%','')
-    // return root_space / 100
-    // console.log("The devices in function are")
-    // console.log(devices)
     return devices
 
 }
-
-drive_space()
-console.log("drive space called and ended")
-
+// This fucntion just dynamically creates the widgets for the drive space
 function make_drive_space_widgets(){
    var devices = drive_space()
     var device_widgets = []
-    // console.log("The device widgets are here")
-    // console.log(Object.keys(devices).length)
+
     for (var i = 0; i < Object.keys(devices).length; i++){
-        var key = Object.keys(devices)[i];
-        // console.log("device " + key);
-        // console.log(devices[key]);
-        //console.log(typeof )
-        console.log("The key is")
-        console.log(devices)
-        console.log(Object.keys(devices).length)
-        device_widgets.push(Widget.Box({
-            vertical: false,
-            spacing: 10,
-            children: [
-            
-                //Widget.Label({css:'font-size: 40px;', label: "hello"}),
-                //latte-lavender
-                Widget.Icon({
-                    size: 120,
-                    className: 'system_harddrive_icon',
-                    icon: '/home/branchmanager/.config/ags/assets/latte-lavender-harddrive.svg',
-                }),
+        if (i < 2){
+            var key = Object.keys(devices)[i];
+ 
+            device_widgets.push(Widget.Box({
+                vertical: false,
+                spacing: 10,
+                children: [
                 
-                Widget.Box({
-                    vertical: true,
-                    css: 'margin-right: -10px; margin-left: -40px;',
-                    children: [Widget.Label({xalign: 0, label:"Dev: " + devices[key].device}),
-                    Widget.Separator({css:'font-size: 50px', orientation: 1}),
-                    Widget.Label({ xalign: 0, label: "Used: " + devices[key].used}),
-                    Widget.Label({xalign:0, justification: 'left', label: "Avail: " + devices[key].available}),]
+                    Widget.Icon({
+                        size: 120,
+                        className: 'system_harddrive_icon',
+                        icon: '/home/branchmanager/.config/ags/assets/latte-lavender-harddrive.svg',
+                    }),
+                    
+                    Widget.Box({
+                        vertical: true,
+                        css: 'margin-right: -10px; margin-left: -40px;',
+                        children: [Widget.Label({xalign: 0, maxWidthChars:14, label:"Dev:" + devices[key].device}),
+                        Widget.Separator({css:'font-size: 50px', orientation: 1}),
+                        Widget.Label({ className: 'harddrive_labels', xalign: 0, label: "Used: " + devices[key].used}),
+                        Widget.Label({xalign:0, justification: 'left', label: "Avail: " + devices[key].available}),]
 
-                }),Widget.CircularProgress({
-                    rounded: true,
-                    startAt: 0.75,
-                    className: 'harddrive_circular_progress',
-                    value: devices[key].used_percentages.replace('%','') / 100,
-                }),
+                    }),Widget.CircularProgress({
+                        rounded: true,
+                        startAt: 0.75,
+                        className: 'harddrive_circular_progress',
+                        value: devices[key].used_percentages.replace('%','') / 100,
+                    }),
 
 
-                // Widget.Label({label: devices[key].used}),
-                // Widget.Label({label: devices[key].available}),
-                //Widget.ProgressBar({
-                //    value: parseFloat(devices[i].used_percentages.replace('%','')) / 100
-                //})
-            ]
+                ]
 
-        }))
-    }
-    // console.log("The device widgets are")
-    // console.log(device_widgets)
+            }))
+        }
+    }   
+
     return device_widgets
 }
 

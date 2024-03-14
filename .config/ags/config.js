@@ -1,5 +1,7 @@
 
+import {bluetooth_box, bluetooth_button, quicksettings_reveal } from './bluetooth_functionality.js'
 import {system_monitors, drive_monitor } from './system_monitor.js'
+
 
 
 const myVariable = Variable(0)
@@ -7,6 +9,7 @@ App.addIcons(`${App.configDir}/assets`)
 App.applyCss(`${App.configDir}/logo.scss`)
 const network = await Service.import('network')
 console.log(`${App.configDir}`)
+
 
 
 
@@ -72,6 +75,26 @@ const Profile_box = () => Widget.Box({
 
     ]
 })
+const quicksettings_main_box = Widget.Box({
+    vertical: true,
+    className: 'quicksettings_main_box',
+    children: [Widget.Box({
+        vertical: false,
+        
+            children: [bluetooth_button()]
+        }),
+        /*revealer*/
+        Widget.Revealer({
+            revealChild: quicksettings_reveal, //self.revealChild,
+            child: Widget.Box({
+                className: 'quicksettingstest',
+            })
+                
+        })
+    ],
+   //children: [],
+})
+
 const profile_and_sysmonitors = () => Widget.Box({
     vertical: false,
     spacing: 5,
@@ -87,10 +110,12 @@ const widget_revelead_box = Widget.Revealer({
     child: Widget.Box({
         vertical: true,
         className: 'main_background',
-        children: [profile_and_sysmonitors(),drive_monitor()]
+        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box],
     })
 
 })
+
+
 function widget_box(monitor = 0){
 //const widget_box = (monitor = 2) => 
     return Widget.Window({
