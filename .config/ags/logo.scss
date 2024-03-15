@@ -175,11 +175,39 @@ macchiato_base: #24273a;
    margin-right: 5px;
 }
 /***************************** quick settings bar ******************************/
-.quicksettingstest{
+.quicksettingstest {
    background-color: white;
    min-height: 500px;
+   min-width: 100px;
    margin: 5px;
    border-radius: 10px;
+}
+
+.quick_setting_button_box:active{
+
+   box-shadow: 0px 0px 0px;
+}
+
+.quick_setting_button_box:hover{
+   background-color: #949cbb;
+
+}
+/************************************ bluetooth ********************************/
+.bluetooth_toggle_slider slider{
+   background-color: #e6e9ef;
+   min-height: 20px;
+   
+   min-width: 20px;
+   border-radius: 10px;
+}
+
+.bluetooth_toggle_slider {
+   background-color: #232634;
+   min-height: 1px;
+   min-width: 1px;
+   border-radius: 10px;
+   font-size: 0px;
+   margin: 5px;   
 }
 
 .quicksettings_main_box{
@@ -199,15 +227,15 @@ macchiato_base: #24273a;
 
 }
 
-.quick_setting_button_box:active{
+.bluetooth_devices_box{
 
-   box-shadow: 0px 0px 0px;
+   background-color: #51576d;
+   border-radius: 10px;
+   min-height: 200px;
+   min-width: 200px;
+   margin: 5px;
 }
 
-.quick_setting_button_box:hover{
-   background-color: #949cbb;
-
-}
 
 .bluetooth_button_icon_nobt{
    margin-bottom: -35px;
@@ -215,6 +243,14 @@ macchiato_base: #24273a;
    margin-right: -15px;
    
 }
+
+.bluetooth_device_header{
+   background-color: white;
+   border-radius: ;
+   color:#11111b;
+  
+}
+
 .bluetooth_deactive{
    
    

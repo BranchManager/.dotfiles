@@ -4,7 +4,7 @@ const Mainloop = imports.mainloop;
 const bluetooth_icon_on = '/home/branchmanager/.config/ags/assets/lattet-blue-bluetooth.svg'
 const bluetooth_icon_off = '/home/branchmanager/.config/ags/assets/frappe-crust-no-bluetooth.svg'
 
-export var quicksettings_reveal = true;
+var quicksettings_reveal = false;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, s));
@@ -20,7 +20,8 @@ function check_blue(){
     //bluetooth.enabled = false
     //Utils.exec("systemctl status bluetooth")
     var enables = '';
-    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, (enables) => {
+    var enabled = false;
+    //GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, (enables) => {
    //bluetooth.toggle()
         console.log("bluetooth enabled")
         console.log(bluetooth.enabled)
@@ -28,6 +29,9 @@ function check_blue(){
             
             console.log('bluetooth true')
             enables = 'bluetooth'
+            //
+            enables = bluetooth_icon_on
+            enabled = true;
             //Mainloop.quit();
             
         }else{
@@ -35,36 +39,82 @@ function check_blue(){
             console.log('bluetooth false')
             enables = 'bluetooth_disabled'
             //Mainloop.quit();
+            enables = bluetooth_icon_off
+            enabled = false;
+           // Mainloop.quit();
         }
-        Mainloop.quit();
+        //Mainloop.quit();
     
-    });
-    Mainloop.run();
+   //});
+    //Mainloop.run();
 
-    return enables
+    return [enables, enabled]
 }
 
 // check_blue()
 // check_blue()
 function reveal_func(){
     quicksettings_reveal = false;
-    console.log('reveal function')
+    console.log('reveal_func');
+    if (bluetooth_revealer.revealChild) {
+        bluetooth_revealer.revealChild = false;
+        console.log('revealChild set to false');
+        console.log(bluetooth_revealer.revealChild)
+    } else {
+       bluetooth_revealer.revealChild = true;
+        console.log('revealChild set to true');
+        console.log(bluetooth_revealer.revealChild)
+    }
 }
+
+const header = Widget.Label({className: 'bluetooth_device_header', label: 'Bluetooth',})
+export var bluetooth_revealer = 
+    
+    Widget.Revealer({
+    revealChild: false, //self.revealChild,
+    child: Widget.Box({
+        vertical: true,
+        children: [Widget.Box({
+           //className: 'quicksettingstest',
+           hpack: 'end',
+            vertical: false,
+            child: Widget.Switch({
+                hpack: 'end',
+                active: check_blue()[1],
+                className: 'bluetooth_toggle_slider',
+                onActivate: () =>{bluetooth.toggle()},
+            })
+
+        }),
+        Widget.Box({
+            vertical: true,
+            className: 'bluetooth_devices_box',
+            children: [header,]
+        }),]
+        
+    })
+        
+})
+
+
+
 let name = 'bluetoot'
 export const bluetooth_button = () => Widget.Button({
     className: 'quick_setting_button_box',
     //spacing: 10,
-    onClicked: () => reveal_func(),
+    onClicked: () => reveal_func(),//= !quicksettings_reveal,
     child: Widget.Icon({
        //"#414559" no bt
         className: 'bluetooth_button_icon_nobt',
        size: 90,
        //icon: '/home/branchmanager/.config/ags/assets/frappe-crust-no-bluetooth.svg',
-       icon: '/home/branchmanager/.config/ags/assets/lattet-blue-bluetooth.svg',
-       icon: Utils.watch(bluetooth_icon_off, bluetooth, () => { 
+       //icon: '/home/branchmanager/.config/ags/assets/lattet-blue-bluetooth.svg',
+       icon: Utils.watch(check_blue()[0], bluetooth, () => { 
             if(bluetooth.enabled)
+                //console.log('bluetooth enabled')
                 return bluetooth_icon_on
             if(!bluetooth.enabled)
+                //console.log('bluetooth disabled')
                 return bluetooth_icon_off
             
             return '/home/branchmanager/.config/ags/assets/latte-lavender-harddrive.svg'
@@ -80,21 +130,6 @@ export const bluetooth_button = () => Widget.Button({
  })
 
 export function bluetooth_box(){
-    // return Widget.Box({
-    //     vertical: false,
-    //     spacing: 0,
-    //     children: [
-    //         Widget.Label({
-    //             label:'bluetooth',
-    //             setup: (self) => {Utils.execAsync(['python3','/home/branchmanager/.config/ags/bluetoothpyu.py'])
-    //             .then((output) => self.label = output)},
-    //                 //,
-    //                 //(output) => self.label = output)},
-    //         }),
-    //     ]
-    // })
-
-
 
         return Widget.Box({
         vertical: false,

@@ -1,8 +1,8 @@
 
-import {bluetooth_box, bluetooth_button, quicksettings_reveal } from './bluetooth_functionality.js'
+import {bluetooth_box, bluetooth_button, bluetooth_revealer} from './bluetooth_functionality.js'
 import {system_monitors, drive_monitor } from './system_monitor.js'
 
-
+var btr = true;
 
 const myVariable = Variable(0)
 App.addIcons(`${App.configDir}/assets`)
@@ -51,7 +51,9 @@ function create_my_bar(monitor = 0){
 
  
 }
-
+function set_reveal(){
+    btr = false;
+}
 
 
 const Profile_box = () => Widget.Box({
@@ -84,13 +86,8 @@ const quicksettings_main_box = Widget.Box({
             children: [bluetooth_button()]
         }),
         /*revealer*/
-        Widget.Revealer({
-            revealChild: quicksettings_reveal, //self.revealChild,
-            child: Widget.Box({
-                className: 'quicksettingstest',
-            })
-                
-        })
+        bluetooth_revealer,
+        
     ],
    //children: [],
 })
