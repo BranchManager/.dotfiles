@@ -85,8 +85,8 @@ const quicksettings_main_box = Widget.Box({
         
             children: [bluetooth_button()]
         }),
-        /*revealer*/
-        bluetooth_revealer,
+        /*revealer*/ //TODO : remove bluetooth_box it is for testing
+        bluetooth_revealer,bluetooth_box(),
         
     ],
    //children: [],

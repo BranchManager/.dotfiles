@@ -230,10 +230,13 @@ macchiato_base: #24273a;
 .bluetooth_devices_box{
 
    background-color: #51576d;
-   border-radius: 10px;
-   min-height: 200px;
+
+   /*This is so that the Devices header box is flush with this one
+   and the border radius is not rounded on the top  */
+   border-radius: 0px 0px 10px 10px; 
+   /*min-height: 200px;*/
    min-width: 200px;
-   margin: 5px;
+   margin: 0px 5px 5px 5px;
 }
 
 
@@ -245,15 +248,55 @@ macchiato_base: #24273a;
 }
 
 .bluetooth_device_header{
-   background-color: white;
-   border-radius: ;
-   color:#11111b;
+   background-color: #949cbb;
+   border-radius: 10px 10px 0px 0px;
+   color:#4c4f69;
+   min-width: 200px;
+   margin: 5px 5px 0px 5px;
+   
   
 }
 
-.bluetooth_deactive{
+.device0{
+   color: blue;
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
    
-   
+}
+.device1{
+   color: red;
+}
+.bluetooth_device_connected_false{
+   min-height: 10px;
+   min-width: 10px;
+   background-color: #a5adcb	;
+   border-radius: 50px;
+   /*box-shadow: 5px 1px 7px rgba(30, 102, 245, 0.9), 1px 7px 7px rgba(30, 102, 245, 0.8);*/
+   margin: 5px;
+}
+
+.bluetooth_device_connected_true{
+   min-height: 10px;
+   min-width: 10px;
+   background-color: #1e66f5	;
+   border-radius: 50px;
+   /*box-shadow: 5px 1px 7px rgba(30, 102, 245, 0.9), 1px 7px 7px rgba(30, 102, 245, 0.8);*/
+   margin: 5px;
+}
+.device_background_1{
+   background-color: #24273a;
+   /*margin: 0px 0px 5px 0px;*/
+}
+.device_label_len{
+   min-width: 332px;
+}
+.device_is_bottom{
+   border-radius: 0px 0px 10px 0px;
+
+}
+
+.device_icon_is_bottom{
+   border-radius: 0px 0px 0px 10px;
+
 }
 /**************************** Main Background *********************************/
 .main_background{
