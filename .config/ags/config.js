@@ -1,5 +1,5 @@
 
-import {bluetooth_box, bluetooth_button, bluetooth_revealer} from './bluetooth_functionality.js'
+import { bluetooth_button, bluetooth_revealer} from './bluetooth_functionality.js'
 import {system_monitors, drive_monitor } from './system_monitor.js'
 
 var btr = true;
@@ -86,7 +86,7 @@ const quicksettings_main_box = Widget.Box({
             children: [bluetooth_button()]
         }),
         /*revealer*/ //TODO : remove bluetooth_box it is for testing
-        bluetooth_revealer,bluetooth_box(),
+        bluetooth_revealer,
         
     ],
    //children: [],
