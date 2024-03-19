@@ -145,6 +145,7 @@ export const bluetooth_button = () => Widget.Button({
        size: 90,
 
        // This wathces the state of bluetooth and changes the icon accordingly
+       //utils.watch will set the icon to the initial value which is the return value of the check_blue function
        icon: Utils.watch(check_blue()[0], bluetooth, () => { 
             if(bluetooth.enabled)
                 return bluetooth_icon_on

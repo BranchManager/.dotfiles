@@ -79,8 +79,7 @@ function make_device_box(button_class, button_label, ssid, connection,sec){
             Utils.execAsync('nmcli dev wifi connect ' + ssid + ' password ' + password )
                 .then(val => {password_revealer.child.text = "Connected!"; print(val + password)})
                 .catch(val =>{password_revealer.child.text = val; print(val)})    
-            // print("this is the value")
-            // print(val)
+  
         }else{
             //TODO: Test this probably never going to be used
             
@@ -93,21 +92,13 @@ function make_device_box(button_class, button_label, ssid, connection,sec){
         Widget.Entry({
             className: 'wifi_password_entry_box',
             placeholder_text: return_placeholder_text(),
-            //() => {
-            //     if(sec == 'WPA2' || sec == 'WPA3' || sec == 'WPA' || sec == 'WEP'){
-            //         return 'Enter Wifi Password'
-            //     }else{
-            //         return 'No password needed, hit Enter to connect'
-            //     }
-            // },
-                visibility: true,
-            //text: 'initial text',
-            onAccept: ({text,placeholder_text}) => connect_to_wifi_device(placeholder_text,ssid,text,sec)//print('nmcli dev wifi connect' + ssid + ' password \"' + text + '\"')
+  
+            visibility: true,
+
+            onAccept: ({text,placeholder_text}) => connect_to_wifi_device(placeholder_text,ssid,text,sec)
+         
         })
-        // Widget.Label({
-        //     css: 'padding-right: 5px; color: #cad3f5', 
-        //     label: 'password'
-        // })
+
     })
     return Widget.Box({ vertical: true, children: [
         Widget.Box({ vertical: false, children: [
@@ -118,7 +109,7 @@ function make_device_box(button_class, button_label, ssid, connection,sec){
                 
                 onClicked: () => {
                     if (button_label == 'Connect'){
-                        print("This is the connected status **************************************************  8888")
+                        print("This is the connected status: ")
                         print(connection)
                         password_revealer.revealChild = true
                     }else{
