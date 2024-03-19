@@ -21,10 +21,25 @@ const ram = Variable(0, {
 })
 
 function get_cpu_temp(){
-    var cpu_temp = Utils.exec('sensors').split('\n')
-         //.find(line => line.includes('Tccd1'))
-        //.split(/\s+/)[1]
-        // .match(/\d+/)[0];
+
+    try{
+        var cpu_temp = Utils.exec('sensors').split('\n')
+            .find(line => line.includes('Tccd1'))
+            .split(/\s+/)[1]
+            .match(/\d+/)[0];
+    }catch{
+        //console.error('No cpu temp detected with Tccd1, trying Tctl')
+        try{
+            var cpu_temp = Utils.exec('sensors').split('\n')
+                .find(line => line.includes('Package id 0'))
+                .split(/\s+/)[3]
+                .match(/\d+/)[0];
+            
+        }catch{
+            var cpu_temp = 100
+            console.error('No cpu temp detected with ')
+        }
+    }
  
     return parseInt(cpu_temp) / cpu_temp_threshold
    
