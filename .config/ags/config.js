@@ -2,7 +2,10 @@
 import { bluetooth_button, bluetooth_revealer} from './bluetooth_functionality.js'
 import {system_monitors, drive_monitor } from './system_monitor.js'
 import { NetworkIndicator,network_revealer } from './network_functionality.js';
-
+const GLib = imports.gi.GLib;
+let currentDirectory = GLib.get_current_dir();
+console.log("this is the current directory");
+console.log(currentDirectory);
 var btr = true;
 
 const myVariable = Variable(0)
@@ -157,8 +160,8 @@ function fedora_icon(){
         name: 'fedora',
         visible: true,
         className: 'fedora_icon',
-        icon: '/home/branchmanager/.config/ags/assets/fedora-symbolic.svg',
-        css: 'color: green;',
+        icon: 'fedora-symbolic',
+        //css: 'color: green;',
     })
 }
 

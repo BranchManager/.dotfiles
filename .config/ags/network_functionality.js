@@ -10,6 +10,9 @@ const GLib = imports.gi.GLib;
 var network_quicksettings_reveal = false;
 var device_list;
 
+console.log("This is the network connectivity")
+console.log(network.connectivity)
+
 // This function will reveal or close the wifi section depending wheere it is called from
 //For example if bluetooth calls this function then it will close the wifi section
 export function network_reveal_func(is_other_app_calling_me){
@@ -37,9 +40,22 @@ export function network_reveal_func(is_other_app_calling_me){
     }
 }
 
-const WiredIndicator = () => Widget.Icon({
-    icon: network.wired.bind('icon_name'),
+const WiredIndicator = () => Widget.Box({
+    className: 'wifi_quick_setting_button_box',
+    //onClicked: () => network_reveal_func(false),
+    child: Widget.Icon({
+        size: 50,
+        icon: network.wired.bind('icon_name'),
+    }),
+
+    
 })
+
+
+// Widget.Icon({
+//     icon: network.wired.bind('icon_name'),
+    
+// })
 
 const WifiIndicator = () => Widget.Button({
     className: 'wifi_quick_setting_button_box',
@@ -188,7 +204,7 @@ function get_access_points(){
 
 const wifi_access_points = Widget.Box({
     vertical: true,
-    hpack: 'endy',
+    //hpack: 'endy',
     hexpand: true,
     vpack: 'center',
     className: 'accesspoints_forground_box',

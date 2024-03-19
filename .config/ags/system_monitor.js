@@ -1,4 +1,6 @@
 const GLib = imports.gi.GLib;
+
+
 const divide = ([total, free]) => free / total
 const cpu_temp_threshold = 85
 
@@ -20,9 +22,9 @@ const ram = Variable(0, {
 
 function get_cpu_temp(){
     var cpu_temp = Utils.exec('sensors').split('\n')
-        .find(line => line.includes('Tccd1'))
-        .split(/\s+/)[1]
-        .match(/\d+/)[0];
+         //.find(line => line.includes('Tccd1'))
+        //.split(/\s+/)[1]
+        // .match(/\d+/)[0];
  
     return parseInt(cpu_temp) / cpu_temp_threshold
    
@@ -80,7 +82,7 @@ const drive_space = () => {
         var size = device_info[1]
         
         //make sure that the drive is an actual drive and not a flash drive or something else
-        if (parseFloat(size.match(/\d+/)) > 100 && size.includes('G')){
+        if ((parseFloat(size.match(/\d+/)) > 100 && size.includes('G'))|| size.includes('T')){
             //get the device name without the dev/ part
             var device = device_info[0].split('/').slice(-1)
             //make sure that the device is not already in the list
@@ -121,7 +123,7 @@ function make_drive_space_widgets(){
                     Widget.Icon({
                         size: 120,
                         className: 'system_harddrive_icon',
-                        icon: '/home/branchmanager/.config/ags/assets/latte-lavender-harddrive.svg',
+                        icon: 'latte-lavender-harddrive',
                     }),
                     
                     Widget.Box({
@@ -165,7 +167,7 @@ const cpu_monitor = () => Widget.Box({
             size: 20,
             classNames:['system_bar_icon_cpu'],
             css: 'margin-top: -10px; ',
-            icon: '/home/branchmanager/.config/ags/assets/noun-cpu-72043.svg',
+            icon: 'noun-cpu-72043',
 
         }),
         Widget.ProgressBar({
@@ -192,7 +194,7 @@ const ram_monitor = () => Widget.Box({
             size: 30,
             classNames:['system_bar_icon_ram'],
             css: 'margin-top: -10px; ',
-            icon: '/home/branchmanager/.config/ags/assets/Frappe_teal_ram.svg',
+            icon: 'Frappe_teal_ram',
 
         }),
         Widget.ProgressBar({
@@ -218,7 +220,7 @@ const cpu_temp_monitor = () => Widget.Box({
             size: 35,
             classNames:['system_bar_icon_cpu_temp'],
             css: 'margin-top: -10px; ',
-            icon: '/home/branchmanager/.config/ags/assets/Latte_saphire_thermometer.svg',
+            icon: 'Latte_saphire_thermometer',
 
         }),
         Widget.ProgressBar({
@@ -245,7 +247,7 @@ const gpu_monitor = () => Widget.Box({
             size: 25,
             className: 'system_bar_icon_gpu',
             css: 'margin-top: -5px; ',
-            icon: '/home/branchmanager/.config/ags/assets/macchiato_blue_gpu.svg',
+            icon: 'macchiato_blue_gpu',
 
         }),
         Widget.ProgressBar({

@@ -1,5 +1,5 @@
-var blue_light_filter_off = '/home/branchmanager/.config/ags/assets/frappe-crust-moon.svg'
-var blue_light_filter_on = '/home/branchmanager/.config/ags/assets/machiato_yellow_moon.svg'
+var blue_light_filter_off = '/home/noah/.config/ags/assets/frappe-crust-moon.svg'
+var blue_light_filter_on = '/home/noah/.config/ags/assets/machiato_yellow_moon.svg'
 function check_filter(){
     whats_running = Utils.exec('ps -x | grep -c wlsunset')
     if (parseInt(whats_running) > 1){
