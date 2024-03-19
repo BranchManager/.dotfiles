@@ -192,6 +192,64 @@ macchiato_base: #24273a;
    background-color: #949cbb;
 
 }
+/************************************ wifi ********************************/
+.wifi_password_entry_box{
+   background-color: #232634;
+}
+.device_box{
+   margin: 2px;
+}
+.wifi_connected{
+   background-color: #a6da95	;
+   padding: 1px 5px;
+   margin: 2px;
+   border-radius: 10px;
+   color: #6e738d;
+}
+
+.wifi_not_connected{
+   background-color: #eed49f;
+   padding: 1px 5px;
+   margin: 2px;
+   border-radius: 10px;
+   color: #6e738d;
+
+}
+.accesspoints_background_box{
+   background-color: #949cbb;
+   min-width: 200px;
+   margin: 5px;
+   margin-top: 0px;
+   border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px;
+   /*min-height: 200px;&*/
+
+}
+.accesspoints_forground_box{
+   background-color: #45475a;
+   border-radius: 10px;
+   margin: 10px;
+}
+.wifi_quick_setting_button_box:active{
+
+   box-shadow: 0px 0px 0px;
+}
+.wifi_quick_setting_button_box:hover{
+   background-color: #949cbb;
+
+}
+
+.wifi_quick_setting_button_box{
+   min-height: 50px;
+   min-width: 50px;
+   background-color: #45475a;
+   transition: background-color 0.2s linear;
+   border-radius: 10px;
+   margin: 5px;
+   padding: 5px;
+   box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.1), 1px 7px 7px rgba(0, 0, 0, 0.3);
+
+}
 /************************************ bluetooth ********************************/
 .bluetooth_toggle_slider slider{
    background-color: #e6e9ef;
@@ -207,7 +265,7 @@ macchiato_base: #24273a;
    min-width: 1px;
    border-radius: 10px;
    font-size: 0px;
-   /*margin: 5px;   */
+   margin: 5px;   
 }
 
 .quicksettings_main_box{

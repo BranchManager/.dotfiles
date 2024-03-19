@@ -1,6 +1,7 @@
 /*
 *This file handle the bluetooth functionality of the Branch Manager Desktop Environment
 */
+import {network_reveal_func } from "./network_functionality.js";
 const bluetooth = await Service.import('bluetooth')
 const bluetooth_icon_on = '/home/branchmanager/.config/ags/assets/lattet-blue-bluetooth.svg'
 const bluetooth_icon_off = '/home/branchmanager/.config/ags/assets/frappe-crust-no-bluetooth.svg'
@@ -31,15 +32,22 @@ function check_blue(){
 }
 
 // This is used to reveal the bluetooth devices and the switches
-function reveal_func(){
-    quicksettings_reveal = false;
-    console.log('reveal_func');
-    if (bluetooth_revealer.revealChild) {
+export function bluetooth_reveal_func(is_other_app_calling_mell){
+
+    if (is_other_app_calling_mell){
         bluetooth_revealer.revealChild = false;
+        
+    } else if (!is_other_app_calling_mell){
+        network_reveal_func(true);
+        quicksettings_reveal = false;
+        console.log('reveal_func');
+        if (bluetooth_revealer.revealChild) {
+            bluetooth_revealer.revealChild = false;
 
-    } else {
-       bluetooth_revealer.revealChild = true;
+        } else {
+        bluetooth_revealer.revealChild = true;
 
+        }
     }
 }
 
@@ -93,6 +101,7 @@ export var bluetooth_revealer =
             //This setup will loop through all the devices that have been paired and display them
             setup: self => self.hook(bluetooth, self => {
 
+                //item is the index of the device in the list
                 self.children = bluetooth.devices.map(({ icon_name, name,connected },item) => Widget.Box([
 
                     //The icon ofr one of the devices (To be honest I do not know whwere the icon is coming from) I got this some of 
@@ -130,7 +139,7 @@ export var bluetooth_revealer =
 // This is the main bluetooth button that reveal all the devices and the switch
 export const bluetooth_button = () => Widget.Button({
     className: 'quick_setting_button_box',
-    onClicked: () => reveal_func(),
+    onClicked: () => bluetooth_reveal_func(false),
     child: Widget.Icon({
         className: 'bluetooth_button_icon_nobt',
        size: 90,

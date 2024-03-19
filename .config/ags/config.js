@@ -1,29 +1,20 @@
 
 import { bluetooth_button, bluetooth_revealer} from './bluetooth_functionality.js'
 import {system_monitors, drive_monitor } from './system_monitor.js'
+import { NetworkIndicator,network_revealer } from './network_functionality.js';
 
 var btr = true;
 
 const myVariable = Variable(0)
 App.addIcons(`${App.configDir}/assets`)
 App.applyCss(`${App.configDir}/logo.scss`)
-const network = await Service.import('network')
+//const network = await Service.import('network')
 console.log(`${App.configDir}`)
 
 
 
 
 
-const WiredIndicator = () => Widget.Icon({
-    icon: network.wired.bind('icon_name'),
-})
-
-const NetworkIndicator = () => Widget.Stack({
-  
-    name: 'network',
-    children: {'child1': WiredIndicator()},
-    shown: network.bind('primary').as(p => p),
-})
 
 
 const new_date = Widget.Label().poll(1000, label => label.label = Utils.exec('date -d now +"%A %b %d %Y %l:%M%p %Z"'))
@@ -34,7 +25,7 @@ function create_my_bar(monitor = 0){
         
         startWidget: fedora_button(),
         centerWidget: new_date, //Widget.Label({ label: count.toString()}),
-        endWidget: NetworkIndicator(),
+        //endWidget: NetworkIndicator(),
         
 
     })
@@ -83,10 +74,10 @@ const quicksettings_main_box = Widget.Box({
     children: [Widget.Box({
         vertical: false,
         
-            children: [bluetooth_button()]
+            children: [bluetooth_button(), NetworkIndicator()],
         }),
         /*revealer*/ //TODO : remove bluetooth_box it is for testing
-        bluetooth_revealer,
+        bluetooth_revealer,network_revealer,
         
     ],
    //children: [],
@@ -120,6 +111,7 @@ function widget_box(monitor = 0){
     anchor: ['top', ],
     name: "monitor" + monitor.toString(),
     layer: 'overlay',
+    keymode: 'on-demand',
 
     //The main invisible box
     child: Widget.Box({
