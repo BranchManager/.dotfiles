@@ -16,7 +16,7 @@ export function network_reveal_func(is_other_app_calling_me){
 
     if (is_other_app_calling_me){
         network_revealer.revealChild = false;
-        //wifi_devices.stopPoll()
+      
         
     //if the network is calling this function then reveal the section
     //and get a list of access points
@@ -145,19 +145,16 @@ function get_access_points(){
 
 
     console.log("ACCESS PPOINTS")
-    // print(typeof network.wifi.accessPoints)
-    // print(Object.keys(network.wifi.accessPoints))
-    // print(typeof network.wifi.accessPoints[0])
-    // print("SCANNING")
-    print(typeof network.wifi.scan())
+
+  
     var wifi_icon = ''
     var device_array = []
+    //get the list of wifi devices
     device_list = Utils.exec('nmcli dev wifi list')
     var device_list_lines = device_list.split('\n')
     netwot.value = [Widget.Label({css: 'color: black', label: 'loading...'})]
+
     for (var i = 0; i < device_list_lines.length; i++){
-        
-        //if(device_info[0] == '*'){
         if (i != 0 ){
             var device_info = device_list_lines[i].split(/\s+/)
             if (device_info[2] != '--'){
@@ -170,6 +167,7 @@ function get_access_points(){
                 else
                     wifi_icon = '󰤨'
 
+                    //For each device make a box with the all the device info and functionallity
                 if (device_info[0] == '*'){
                     var connected_device = make_device_box('wifi_connected','Disconnect',device_info[2],wifi_icon,device_info[9])
                 }else{
@@ -186,21 +184,11 @@ function get_access_points(){
 
         }
     }
+    //for some reason I have to use a timeout to get the value to update so we wait 100ms
     GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
         
-                
-        print(device_array.length)
-        print('device_info')
-        //print(make_device_box())
-        //netwot.value = [Widget.Label({css: 'color: black', label:'we got some device info'})]
-        // if (device_array.length == 0){
-        //     netwot.value = make_device_box('No wifi in range','or','wifi','is','disabled')
-        // }
-        netwot.value = device_array//[make_device_box(),make_device_box()]
-        //[Widget.Label({css: 'color: black', label:'we got some device info'}),Widget.Label({css: 'color: black', label:'we got some device info'})]//device_array//[connected_device]
+        netwot.value = device_array
 
-        print(device_array)
-        print([1,2,3])
     });
   
 
@@ -217,6 +205,8 @@ const wifi_access_points = Widget.Box({
 
 
 })
+
+// This export is the revealer under the quick settings widget
 export var network_revealer = Widget.Revealer({
     revealChild: false, 
     child: Widget.Box({
@@ -227,7 +217,7 @@ export var network_revealer = Widget.Revealer({
             hpack: 'end',
              vertical: false,
              child: Widget.Switch({
-                 active: false, //check_blue()[1],
+                 active: false, 
                  className: 'bluetooth_toggle_slider',
                 onActivate: () =>{network.toggleWifi()},
              })
@@ -249,7 +239,7 @@ export var network_revealer = Widget.Revealer({
     }),
 
 })
-
+// This is the main export determining whether we are using wired or wifi
 export const NetworkIndicator = () => Widget.Stack({
   
     name: 'network',
