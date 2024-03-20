@@ -3,6 +3,7 @@ import { bluetooth_button, bluetooth_revealer} from './bluetooth_functionality.j
 import {system_monitors, drive_monitor } from './system_monitor.js'
 import { NetworkIndicator,network_revealer } from './network_functionality.js';
 import {bluelightfilter_button} from './bluelight_filter.js'
+import  NotificationPopups  from "./notificationPopups.js"
 
 const GLib = imports.gi.GLib;
 let currentDirectory = GLib.get_current_dir();
@@ -166,9 +167,25 @@ function fedora_icon(){
         //css: 'color: green;',
     })
 }
+Utils.timeout(100, () => Utils.notify({
+    summary: "Notification Popup Example",
+    iconName: "info-symbolic",
+    body: "Lorem ipsum dolor sit amet, qui minim labore adipisicing "
+        + "minim sint cillum sint consectetur cupidatat.",
+    actions: {
+        "Cool": () => print("pressed Cool"),
+    },
+}))
+
 
 App.config({windows: [create_my_bar(2)]})
 App.config({windows: [create_my_bar(1)]})
 //App.config({windows: [widget_box(1)]})
 App.config({windows: [widget_box(0)]})
+App.config({
+    //style: App.configDir + "/style.css",
+    windows: [
+        NotificationPopups,
+    ],
+})
 // App.config({windows: [widget_box(2)]})
