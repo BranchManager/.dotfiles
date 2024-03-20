@@ -20,46 +20,12 @@ check_filter()
 export const bluelightfilter_button = () => Widget.Button({
     className: 'quick_setting_button_box',
     onClicked: () => BluelightFilterService.toggle(),
-    child: Widget.Label({
-
-        label:  BluelightFilterService.bind('running')
+    child: Widget.Icon({
+        size: 50,
+        className: 'blue_light_filter_box',
+        css: 'color: black;',
+        icon:  BluelightFilterService.bind('icon')
     })
         
         
-        // Utils.watch(check_filter(), BluelightFilterService, () => { 
-        //             if(BluelightFilterService.running ==  "on")
-        //                 return bluetooth_icon_on
-        //             if(!BluelightFilterService.running == "off")
-        //                 return bluetooth_icon_off
-        //             // Not sure of lthis return statement will ever return, maybe if the machine does not have bluetooth
-        //             return bluetooth_icon_off
-        //         })
-        
-        //     })
-        
-        
-        
-        
-        
-        //BluelightFilterService.bind('screen-changed')
-  
-    
-    // Widget.Icon({
-    //     className: 'bluetooth_button_icon_nobt',
-    //    size: 90,
-
-    //    // This wathces the state of bluetooth and changes the icon accordingly
-    //    icon: BluelightFilterService.bind('screen-changed')
-       
-    // //    Utils.watch(check_filter(), BluelightFilterService, () => { 
-    // //         if(BluelightFilterService.running ==  "on")
-    // //             return bluetooth_icon_on
-    // //         if(!BluelightFilterService.running == "off")
-    // //             return bluetooth_icon_off
-    // //         // Not sure of lthis return statement will ever return, maybe if the machine does not have bluetooth
-    // //         return bluetooth_icon_off
-    // //     })
-
-    // })
-    
  })

@@ -1,18 +1,9 @@
 #!/bin/bash
 
+#This file just checks if the wlsunset is running or not
+#If it is running, it returns "on" else "off"
+# using ps in the js code results in some type of environment error
 whats_running=$(ps -x | grep -c wlsunset)
-echo $whats_running
-
-# if [ "$#" != 0 ] && [ $1 == "--toggle" ]
-# then
-#     if [ $whats_running -gt 1 ]
-#     then
-#         killall wlsunset
-#     else
-#         wlsunset -l 33.9 -L -89.3
-#     fi
-# fi
-
 
 
 if [ $whats_running -gt 1 ]
