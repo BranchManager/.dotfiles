@@ -9,6 +9,7 @@ function check_filter(){
     if (BluelightFilterService.running == "on"){
         console.log("filter running")
         return blue_light_filter_on
+ 
     }else{
         console.log("filter not running")
         return blue_light_filter_off
