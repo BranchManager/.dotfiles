@@ -4,10 +4,15 @@ class BluelightFilterService extends Service {
         this,
 
         {'it-changed': ['string']},
-       {'running': ['string', 'rw']}
+       {'running': ['string', 'rw'],
+        'icon': ['string', 'rw']
+        }
       )
     }
-    #running = Utils.exec('/home/branchmanager/.config/ags/scripts/blue_light_filter.sh')
+    #running = Utils.exec('/home/noah/.config/ags/scripts/blue_light_filter.sh')
+
+    #icon_off = 'crust-moon'
+    #icon_on = 'yellow-moon'
 //parseInt(Utils.exec('ps -x | grep -c wlsunset'))
 
     get running(){
@@ -52,15 +57,17 @@ class BluelightFilterService extends Service {
 
     #onChange(){
 
-        Utils.execAsync('/home/branchmanager/.config/ags/scripts/blue_light_filter.sh').then(val => {this.#running = val; print("this 3 value is " + val)}).catch(err => {print("this 3 error is " + err)})
+        Utils.execAsync('/home/noah/.config/ags/scripts/blue_light_filter.sh').then(val => {this.#running = val; print("this 3 value is " + val)}).catch(err => {print("this 3 error is " + err)})
         console.log('this is the running')
         console.log(Utils.exec('ps -x | grep -c wlsunset'))
+
         this.emit('changed')
         //this.changed('changed', this.#running)
         this.notify('running')
 
         this.emit('it-changed', this.#running)
     }
+    
     connect(event = 'changed', callback) {
         return super.connect(event, callback);
 

@@ -15,18 +15,9 @@ echo $whats_running
 
 
 
-<<<<<<< Updated upstream
 if [ $whats_running -gt 1 ]
 then
     echo "on"
 else
     echo "off"
 fi
-=======
-# if [ $whats_running -gt 1 ]
-# then
-#     echo "night_night"
-# else
-#     echo "good_morning"
-# fi
->>>>>>> Stashed changes

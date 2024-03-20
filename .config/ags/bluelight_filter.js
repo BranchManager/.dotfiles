@@ -22,16 +22,20 @@ export const bluelightfilter_button = () => Widget.Button({
     onClicked: () => BluelightFilterService.toggle(),
     child: Widget.Label({
 
-        label:  Utils.watch(check_filter(), BluelightFilterService, () => { 
-                    if(BluelightFilterService.running ==  "on")
-                        return bluetooth_icon_on
-                    if(!BluelightFilterService.running == "off")
-                        return bluetooth_icon_off
-                    // Not sure of lthis return statement will ever return, maybe if the machine does not have bluetooth
-                    return bluetooth_icon_off
-                })
+        label:  BluelightFilterService.bind('running')
+    })
         
-            })
+        
+        // Utils.watch(check_filter(), BluelightFilterService, () => { 
+        //             if(BluelightFilterService.running ==  "on")
+        //                 return bluetooth_icon_on
+        //             if(!BluelightFilterService.running == "off")
+        //                 return bluetooth_icon_off
+        //             // Not sure of lthis return statement will ever return, maybe if the machine does not have bluetooth
+        //             return bluetooth_icon_off
+        //         })
+        
+        //     })
         
         
         
