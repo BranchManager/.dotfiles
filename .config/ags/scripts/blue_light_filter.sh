@@ -16,7 +16,7 @@ fi
 
 if [ $whats_running -gt 1 ]
 then
-    echo "night_night"
+    echo "on"
 else
-    echo "good_morning"
+    echo "off"
 fi

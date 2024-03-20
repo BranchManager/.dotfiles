@@ -3,8 +3,8 @@
 */
 import {network_reveal_func } from "./network_functionality.js";
 const bluetooth = await Service.import('bluetooth')
-const bluetooth_icon_on = '/home/noah/.config/ags/assets/lattet-blue-bluetooth.svg'
-const bluetooth_icon_off = '/home/noah/.config/ags/assets/frappe-crust-no-bluetooth.svg'
+const bluetooth_icon_on = 'lattet-blue-bluetooth'
+const bluetooth_icon_off = 'frappe-crust-no-bluetooth'
 
 var quicksettings_reveal = false;
 

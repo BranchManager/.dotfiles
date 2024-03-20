@@ -1,12 +1,14 @@
+
+
 class BluelightFilterService extends Service {
     static {
       Service.register(
         this,
-        {'enabled': ['string']}
-       // {'string': ['string', 'rw']}
+        {'it-changed': ['string']},
+       {'running': ['string', 'rw']}
       )
     }
-    #running = Utils.exec('ps -x | grep -c wlsunset')
+    #running = Utils.exec('/home/branchmanager/.config/ags/scripts/blue_light_filter.sh')
 
     get running(){
         return this.#running
@@ -15,21 +17,44 @@ class BluelightFilterService extends Service {
     constructor(){
         super()
 
-        
+        this.#onChange()
     }
 
     toggle(){
-        if (this.#running > 1){
-            Utils.exec('killall wlsunset')
-            this.#running = 1
+        if (this.#running == "on"){
+            print('killing wlsunset')
+            print(this.#running)
+            this.#running = "off"
+            this.changed('running')
+            Utils.execAsync('killall wlsunset').then(val => {print("this value is " + val)}).catch(err => {print("this error is " + err)})
+            
+            
+            
+
         }else{
-            Utils.exec('wlsunset -l 33.9 -L -89.3')
+            print('starting wlsunset')
+            print(this.#running)
+            this.#running = "on"
+            this.changed('running')
+            Utils.execAsync('wlsunset -l 33.9 -L -89.3 &').then(val => {print("this 2 value is " + val)}).catch(err => {print("this2  error is " + err)})
+            
         }
     }
 
     #onChange(){
-        this.#running = Utils.exec('ps -x | grep -c wlsunset')
+        Utils.execAsync('/home/branchmanager/.config/ags/scripts/blue_light_filter.sh').then(val => {this.#running = val; print("this 3 value is " + val)}).catch(err => {print("this 3 error is " + err)})
+        
+        this.emit('changed')
+        //this.changed('changed', this.#running)
+        this.notify('running')
+
+        this.emit('it-changed', this.#running)
+    }
+    connect(event = 'changed', callback) {
+        return super.connect(event, callback);
     }
 
 }
+
+export default new BluelightFilterService
 
