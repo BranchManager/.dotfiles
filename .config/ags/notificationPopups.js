@@ -11,6 +11,8 @@ function Notification(notification) {
     //css: `background-image: url('/home/noah/.config/ags/assets/macchiato_blue_gpu.svg')`
   })
 
+  
+
   const AppName = Widget.Label({
     className: 'appname',
     label: notification.appName.toUpperCase(),
@@ -41,31 +43,46 @@ function Notification(notification) {
     hexpand: true
   })
 
-  return Widget.EventBox({
-    onPrimaryClick: () => notification.dismiss(),
-    child: Widget.Box({
-      className: `notification ${notification.urgency}`,
-      spacing: 8,
-      children: [
-        Icon,
-        Widget.Box({
-          className: 'meta',
-          vertical: true,
-          spacing: 4,
-          children: [
-            AppName,
-            Widget.Box({
-              vertical: true,
-              children: [
-                Summary,
-                Body
-              ]
+    var main_eventbox =  Widget.Revealer({
+        revealChild: true,
+        transition: "slide_right",
+        transitionDuration: 7000,
+        child: Widget.EventBox({
+                onPrimaryClick: dissmissme(this),//() => notification.dismiss(),
+                child: Widget.Box({
+                className: `notification ${notification.urgency}`,
+                spacing: 8,
+                children: [
+                    Icon,
+                    Widget.Box({
+                    className: 'meta',
+                    vertical: true,
+                    spacing: 4,
+                    children: [
+                        AppName,
+                        Widget.Box({
+                        vertical: true,
+                        children: [
+                            Summary,
+                            Body
+                        ]
+                        })
+                    ]
+                    })
+                ]
+                })
             })
-          ]
-        })
-      ]
+    
     })
-  })
+    function dissmissme(self){
+        print('dismissed')
+        print(main_eventbox)
+        main_eventbox.revealChild = false
+        print('dismissed')
+        print(self)
+        notification.dismiss()
+    }
+    return main_eventbox
 }
 
 function Notifications() {
@@ -81,7 +98,13 @@ export default Widget.Window({
   name: 'notifications',
   anchor: ['top', 'right'],
   child: Widget.Box({
+
     css: `padding: 0.1px`,
-    child: Notifications()
+    child: Widget.Revealer({
+        revealChild: true,
+        transition: "slide_left",
+        transitionDuration: 7000,
+        child: Notifications()
+    })
   })
 })
