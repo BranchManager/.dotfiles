@@ -13,7 +13,7 @@ class BluelightFilterService extends Service {
         }
       )
     }
-    #running = Utils.exec('/home/noah/.config/ags/scripts/blue_light_filter.sh')
+    #running = Utils.exec(`${App.configDir}/scripts/blue_light_filter.sh`)
 
     #icon_off = 'frappe-crust-moon'
     #icon_on = 'machiato_yellow_moon'

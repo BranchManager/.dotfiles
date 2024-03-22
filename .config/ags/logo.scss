@@ -376,18 +376,35 @@ macchiato_base: #24273a;
 
 
 /*************************Notifications **********************************/
-.notification_popups{
-   background-color: #11111b;
+.primary_popup_background{
+   /*background-color: #11111b;*/
+  background-color: #45475a;
+   margin:  15px; /*the space around the box*/
+   padding: 5px; /*the grey padding around the box*/
    min-width: 300px;
+   border-radius: 10px;
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+}
+.secondary_popup_background{
+   /*min-width: 200px;
+   min-height: 50px;*/
+   min-width: 400px;
+   border-radius: 10px;
+   background-color: #11111b;
+   
 }
 
+.appname_notification{
+   color:#b7bdf8;
+   font-weight: bold;
+}
 .summary{
-   color: black;
+   color: #eff1f5;
 }
 
 .body{
 
-   color: black;
+   color: #eff1f5;
 
 }
 
