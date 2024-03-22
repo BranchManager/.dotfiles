@@ -80,26 +80,30 @@ function get_notification_icon(dnd, num_of_notifs){
     print("this is the number of notifications")
     print(NotificationService.notifications.length)
     
-    if (dnd){
-        return Widget.Box({
+    
+    if (num_of_notifs > 0){
 
-            vertical: false,
-            children: [
-            Widget.Label({
-                className: 'notification_label_dnd',
-                yalign: 0,
-                label: String(num_of_notifs),
-            }),    
-            Widget.Icon({
-                className: 'notification_icon_dnd',
-                size: 50,
-                icon: 'Frappe-crust-dnd',
-            }),
+        if (dnd){
+            return Widget.Box({
+    
+                vertical: false,
+                children: [
+                Widget.Label({
+                    className: 'notification_label_dnd',
+                    yalign: 0,
+                    label: String(num_of_notifs),
+                }),    
+                Widget.Icon({
+                    className: 'notification_icon_dnd',
+                    size: 50,
+                    icon: 'Frappe-crust-dnd',
+                }),
+                
+                ]
+            })
+        } else{
             
-            ]
-        })
-    }else if (num_of_notifs > 0){
-        return Widget.Box({
+            return Widget.Box({
                 
                 vertical: false,
                 children: [
@@ -116,18 +120,35 @@ function get_notification_icon(dnd, num_of_notifs){
                 
                 ]
             })
-    }else{
-        return Widget.Box({
-                    
-                    vertical: false,
-                    children: [Widget.Label({
-                        label: 'notifications_off',
-                    }),
-                    Widget.Label({
-                        label: String(num_of_notifs),
-                    }),
-                    ]
-                })
+        }
+    }else{ //we have no notifications so just show the icon
+        if (dnd){
+            print("we are in the dnd section no notifications")
+            return Widget.Box({
+    
+                vertical: false,
+                child: Widget.Icon({
+                    //className: 'notification_icon_dnd',
+                    size: 50,
+                    icon: 'Frappe-crust-dnd',
+                }),
+                
+                
+            })
+        }
+        else{
+            return Widget.Box({
+    
+                vertical: false,
+                child: Widget.Icon({
+                    //className: 'notification_icon',
+                    size: 100,
+                    icon: 'Frappe-Sky-notification',
+                }),
+                
+                
+            })
+        }
     }
 
 }
@@ -139,7 +160,7 @@ function test_func(){
 export const Notification_button = () => Widget.Button({
     className: 'quick_setting_button_box',
     onClicked: () => notification_reveal_func(false),//print("reveal notifications"), //bluetooth_reveal_func(false),
-    child:  Utils.watch(get_notification_icon(NotificationService.dnd, NotificationService.notifications.length), NotificationService, () => {
+    child:  Utils.watch(get_notification_icon(NotificationService.dnd, NotificationService.dnd), NotificationService, () => {
         return get_notification_icon(NotificationService.dnd, NotificationService.notifications.length)
     })
     
