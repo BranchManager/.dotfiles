@@ -4,7 +4,7 @@
 import { bluetooth_reveal_func } from "./bluetooth_functionality.js";
 const network = await Service.import('network')
 const bluetooth = await Service.import('bluetooth')
-const netwot = Variable([Widget.Label({label: 'no devices detected'})])
+const devices = Variable([Widget.Label({label: 'no devices detected'})]) //devices changes besed on the devices detected
 const GLib = imports.gi.GLib;
 
 var network_quicksettings_reveal = false;
@@ -159,7 +159,7 @@ function get_access_points(){
     //get the list of wifi devices
     device_list = Utils.exec('nmcli dev wifi list')
     var device_list_lines = device_list.split('\n')
-    netwot.value = [Widget.Label({css: 'color: black', label: 'loading...'})]
+    devices.value = [Widget.Label({css: 'color: black', label: 'loading...'})]
 
     for (var i = 0; i < device_list_lines.length; i++){
         if (i != 0 ){
@@ -194,7 +194,7 @@ function get_access_points(){
     //for some reason I have to use a timeout to get the value to update so we wait 100ms
     GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
         
-        netwot.value = device_array
+        devices.value = device_array
 
     });
   
@@ -208,7 +208,7 @@ const wifi_access_points = Widget.Box({
     hexpand: true,
     vpack: 'center',
     className: 'accesspoints_forground_box',
-    children: netwot.bind()
+    children: devices.bind()
 
 
 })

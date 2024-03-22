@@ -415,3 +415,53 @@ macchiato_base: #24273a;
    min-width: 100px;
    min-height: 100px;
 }
+
+.notification_label{
+   color: #99d1db;
+   font-weight: bold;
+   /*margin-top: 3px;
+   margin-left: -14px;*/
+   padding-left: 5px;
+   margin-right: -7px;
+}
+
+.notification_label_dnd{
+   color: #99d1db;
+   font-weight: bold;
+   padding-left: 5px;
+   margin-right: -7px;
+   
+   
+}
+
+.notification_icon_dnd{
+   padding-right: 7px;
+   padding-left: 7px;
+  
+}
+.notification_icon{
+   padding: 7px;
+   margin-left: -3px;
+   margin-bottom: -5px;
+}
+
+.notification_clear_button {
+   background-color: #4c4f69;
+   border-radius: 5px;
+   /*padding: 5px;*/
+   padding-left: 3px;
+   padding-right: 3px;
+   margin: 5px;
+   transition: background-color 0.2s linear;
+}
+
+.notification_clear_button:hover{
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   background-color: #949cbb;
+
+}
+
+.notification_clear_button:active{
+
+   box-shadow: 0px 0px 0px;
+}

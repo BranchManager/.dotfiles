@@ -5,6 +5,7 @@ import { NetworkIndicator,network_revealer } from './network_functionality.js';
 import {bluelightfilter_button} from './bluelight_filter.js'
 //import  NotificationPopups  from "./notificationPopups.js"
 import NotificationPopups from "./Notifications/aylurspopups__redo.js"
+import {Notification_button, notification_revealer} from "./Notifications/Notification_Center.js"
 
 const GLib = imports.gi.GLib;
 let currentDirectory = GLib.get_current_dir();
@@ -81,10 +82,10 @@ const quicksettings_main_box = Widget.Box({
     children: [Widget.Box({
         vertical: false,
         
-            children: [bluetooth_button(), NetworkIndicator(), bluelightfilter_button()],
+            children: [bluetooth_button(), NetworkIndicator(), bluelightfilter_button(), Notification_button()],
         }),
         /*revealer*/ //TODO : remove bluetooth_box it is for testing
-        bluetooth_revealer,network_revealer,
+        bluetooth_revealer,network_revealer,notification_revealer,
         
     ],
    //children: [],
