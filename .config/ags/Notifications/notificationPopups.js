@@ -5,6 +5,8 @@ print("ags config dir")
 print(App.configDir)
 export default function Notification(notification) {
 
+  
+
   function dissmissme(){
     print('dismissed')
     print(main_eventbox)
@@ -12,6 +14,7 @@ export default function Notification(notification) {
     print('dismissed')
     //print(self)
     notification.dismiss()
+    //notification.close()
   }
 
   function determine_icon(){
@@ -32,14 +35,24 @@ export default function Notification(notification) {
     //css: `background-image: url('/home/noah/.config/ags/assets/macchiato_blue_gpu.svg')`
   })
 
-  
+  const actionsbox = Widget.EventBox({
+    child: Widget.Box({
+        children: notification.actions.map(action => Widget.Button({
+          on_clicked: () => {notification.invoke(action.id);},
+          className: "notif_action_button",
+          child: Widget.Label(action.label),
+        })),
+
+    })
+  })
+
 
   const AppName = Widget.Label({
     className: 'appname_notification',
     label: notification.appName.toUpperCase(),
     truncate: 'end',
     justification: 'left',
-    maxWidthChars: 16,
+    maxWidthChars: 24,
     xalign: 0
   })
 
@@ -54,7 +67,7 @@ export default function Notification(notification) {
   })
 
   const Body = Widget.Label({
-    className: 'body',
+    className: 'notification_body',
     label: `- ${notification.body}`,
     justification: 'left',
     maxWidthChars: 24,
@@ -64,6 +77,19 @@ export default function Notification(notification) {
     wrap: true,
     useMarkup: true,
     hexpand: false
+  })
+
+  const close_button = Widget.Button({
+     hpack: 'end',
+    hexpand: true,
+     vpack: 'start',
+    // vexpand: true,
+    className: 'notification_close_button',
+    onPrimaryClick: () => notification.close(),
+    child: Widget.Label({
+      label: 'x',
+      className: 'notification_close_button_label'
+    })
   })
     
     const main_eventbox =  
@@ -88,11 +114,16 @@ export default function Notification(notification) {
                           Summary,
                           Body
                       ]
-                      })
+                      }),
+                      actionsbox
+                    
                   ]
-                  })
+                  }),
+                  close_button
               ]
-              })
+              }),
+
+            
       })
     })
     

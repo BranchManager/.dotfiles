@@ -170,6 +170,7 @@ function fedora_icon(){
     })
 }
 Utils.timeout(100, () => Utils.notify({
+    appName: "Branch Managers",
     summary: "Branch Managers Dots",
     iconName: "info-symbolic",
     body: "Lorem ipsum dolor sit amet, qui minim labore adipisicing "
@@ -183,11 +184,11 @@ Utils.timeout(100, () => Utils.notify({
 App.config({windows: [create_my_bar(2)]})
 App.config({windows: [create_my_bar(1)]})
 //App.config({windows: [widget_box(1)]})
-App.config({windows: [widget_box(0)]})
+App.config({windows: [widget_box(2)]})
 App.config({
     //style: App.configDir + "/style.css",
     windows: [
-        NotificationPopups(0),
+        NotificationPopups(2),
     ],
 })
 // App.config({windows: [widget_box(2)]})

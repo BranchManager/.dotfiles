@@ -1,6 +1,7 @@
 /*
 *This file handle the bluetooth functionality of the Branch Manager Desktop Environment
 */
+import { notification_reveal_func } from "./Notifications/Notification_Center.js";
 import {network_reveal_func } from "./network_functionality.js";
 const bluetooth = await Service.import('bluetooth')
 const bluetooth_icon_on = 'lattet-blue-bluetooth'
@@ -39,6 +40,7 @@ export function bluetooth_reveal_func(is_other_app_calling_mell){
         
     } else if (!is_other_app_calling_mell){
         network_reveal_func(true);
+        notification_reveal_func(true);
         quicksettings_reveal = false;
         console.log('reveal_func');
         if (bluetooth_revealer.revealChild) {

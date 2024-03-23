@@ -2,6 +2,7 @@
 * This file is responsible for the network functionality of the widget
 */
 import { bluetooth_reveal_func } from "./bluetooth_functionality.js";
+import { notification_reveal_func } from "./Notifications/Notification_Center.js";
 const network = await Service.import('network')
 const bluetooth = await Service.import('bluetooth')
 const devices = Variable([Widget.Label({label: 'no devices detected'})]) //devices changes besed on the devices detected
@@ -26,6 +27,7 @@ export function network_reveal_func(is_other_app_calling_me){
     }else if (!is_other_app_calling_me){
         // close other drop down menus if network is activating its drop down menu
         bluetooth_reveal_func(true);
+        notification_reveal_func(true);
 
         get_access_points()
         network_quicksettings_reveal = false;

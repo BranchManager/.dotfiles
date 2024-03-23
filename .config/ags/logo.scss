@@ -382,19 +382,21 @@ macchiato_base: #24273a;
    margin:  15px; /*the space around the box*/
    padding: 5px; /*the grey padding around the box*/
    min-width: 300px;
+   min-height: 50px;
    border-radius: 10px;
    box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
 }
 .secondary_popup_background{
    /*min-width: 200px;
    min-height: 50px;*/
-   min-width: 400px;
+   min-width: 325px;
    border-radius: 10px;
    background-color: #11111b;
    
 }
 
 .appname_notification{
+   font-size: 14px;
    color:#b7bdf8;
    font-weight: bold;
 }
@@ -402,9 +404,10 @@ macchiato_base: #24273a;
    color: #eff1f5;
 }
 
-.body{
+.notification_body{
 
    color: #eff1f5;
+   font-size: 12px;
 
 }
 
@@ -421,25 +424,36 @@ macchiato_base: #24273a;
    font-weight: bold;
    /*margin-top: 3px;
    margin-left: -14px;*/
-   padding-left: 5px;
+   /*padding-left: 5px;*/
+   margin-left: 10px;
    margin-right: -7px;
 }
 
 .notification_label_dnd{
    color: #99d1db;
    font-weight: bold;
-   padding-left: 5px;
-   margin-right: -7px;
+   padding-left: 10px;
+   margin-right: -3px;
    
    
 }
 
 .notification_icon_dnd{
    padding-right: 7px;
-   padding-left: 7px;
+   /*padding-left: 7px;*/
   
 }
 .notification_icon{
+   padding: 7px;
+   margin-left: -3px;
+   margin-bottom: -5px;
+}
+.notification_icon_dnd_none{
+   padding-right: 7px;
+   padding-left: 11px;
+  
+}
+.notification_icon_none{
    padding: 7px;
    margin-left: -3px;
    margin-bottom: -5px;
@@ -464,4 +478,60 @@ macchiato_base: #24273a;
 .notification_clear_button:active{
 
    box-shadow: 0px 0px 0px;
+}
+
+.notification_center_box_background{
+   background-color: #6e738d;
+   min-width: 200px;
+   margin: 5px;
+   margin-top: 0px;
+   border-radius: 10px;
+   border-radius: 10px;
+}
+
+.notif_action_button{
+   background-color: #4c4f69;
+   border-radius: 5px;
+   /*padding: 5px;*/
+   padding-left: 3px;
+   padding-right: 3px;
+   margin: 5px;
+   transition: background-color 0.2s linear;
+}
+
+.notif_action_button:hover{
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   background-color: #949cbb;
+}
+
+.notif_action_button:active{
+
+   box-shadow: 0px 0px 0px;
+}
+
+.notification_close_button{
+   background-color: #e64553;
+   border-radius: 5px;
+   padding-left: 5px;
+   padding-right: 5px;
+   margin: 5px;
+   transition: background-color 0.2s linear;
+
+}
+
+.notification_close_button:hover{
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   background-color: #e78284;
+}
+
+.notification_close_button:active{
+
+   box-shadow: 0px 0px 0px;
+}
+
+.notification_close_button_label{
+   font-size: 24;
+   font-weight: bold;
+   margin-top: -5px;
+   margin-bottom: -3px;
 }
