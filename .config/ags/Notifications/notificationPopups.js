@@ -1,5 +1,6 @@
 const NotificationsService = await Service.import('notifications')
 
+//how long the notification will be displayed
 NotificationsService.popupTimeout = 7000
 print("ags config dir")
 print(App.configDir)
@@ -10,11 +11,11 @@ export default function Notification(notification) {
   function dissmissme(){
     print('dismissed')
     print(main_eventbox)
-    //main_eventbox.revealChild = false
+    
     print('dismissed')
-    //print(self)
+    
     notification.dismiss()
-    //notification.close()
+  
   }
 
   function determine_icon(){
@@ -22,6 +23,8 @@ export default function Notification(notification) {
       print("The Icon is here bish")
       print(notification.Icon)
       return `background-image: url("${notification.image}")`
+    }else if(notification.urgency == "critical"){
+      return `background-image: url("${App.configDir + '/assets/frappe-red-important-notification.svg'}")`
     }else{
       return `background-image: url("${App.configDir + '/assets/Frappe-Sky-notification.svg'}")`
     }
@@ -29,12 +32,12 @@ export default function Notification(notification) {
 
   const Icon = Widget.Box({
     className: 'icon',
-    //css: `background-image: url("${notification.image ?? App.configDir + '/assets/frappe-crust-moon.svg'}")`
+    
     css: determine_icon()
-    //`background-image: url("${notification.Icon ?? App.configDir + '/assets/macchiato_blue_gpu.svg'}")` //does not work ?
-    //css: `background-image: url('/home/noah/.config/ags/assets/macchiato_blue_gpu.svg')`
+ 
   })
 
+  //get all the actions to the notification and add them as a button
   const actionsbox = Widget.EventBox({
     child: Widget.Box({
         children: notification.actions.map(action => Widget.Button({
@@ -96,9 +99,9 @@ export default function Notification(notification) {
     Widget.Box({ 
       className: 'primary_popup_background',
         child: Widget.EventBox({
-              onPrimaryClick: () => dissmissme(),//() => notification.dismiss(),
+              onPrimaryClick: () => dissmissme(),
               child: Widget.Box({
-              className: 'secondary_popup_background',//`notification ${notification.urgency}`,
+              className: 'secondary_popup_background',
               spacing: 8,
               children: [
                   Icon,
@@ -128,37 +131,8 @@ export default function Notification(notification) {
     })
     
     
-    //})
     return main_eventbox
     
-   //return main_eventbox
+
 }
 
-
-
-// function Notifications() {
-//   return Widget.Box({
-//     //className: 'notification_popups',
-//     vertical: true,
-//     spacing: 4,
-//     children: NotificationsService.bind('popups').as(popups => popups.map(Notification))
-//   })
-// }
-
-// export default Widget.Window({
-//   name: 'notifications',
-//   anchor: ['top', 'right'],
-//   child: 
-//   Widget.Box({
-
-//   css: `padding: 0.1px`,
-//     //child: Widget.Revealer({
-//         //revealChild: true,
-//         //transition: "slide_left",
-//         //transitionDuration: 7000,
-//         child:  Widget.Box({
-//           child: Notifications()
-//         })
-//     //})
-//   })
-// })

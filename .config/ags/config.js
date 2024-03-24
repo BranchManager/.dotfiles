@@ -3,6 +3,7 @@ import { bluetooth_button, bluetooth_revealer} from './bluetooth_functionality.j
 import {system_monitors, drive_monitor } from './system_monitor.js'
 import { NetworkIndicator,network_revealer } from './network_functionality.js';
 import {bluelightfilter_button} from './bluelight_filter.js'
+import {  Audio_button, main_volume } from "./audio.js";
 //import  NotificationPopups  from "./notificationPopups.js"
 import NotificationPopups from "./Notifications/aylurspopups__redo.js"
 import {Notification_button, notification_revealer} from "./Notifications/Notification_Center.js"
@@ -82,7 +83,7 @@ const quicksettings_main_box = Widget.Box({
     children: [Widget.Box({
         vertical: false,
         
-            children: [bluetooth_button(), NetworkIndicator(), bluelightfilter_button(), Notification_button()],
+            children: [bluetooth_button(), NetworkIndicator(), bluelightfilter_button(), Notification_button(), Audio_button()],
         }),
         /*revealer*/ //TODO : remove bluetooth_box it is for testing
         bluetooth_revealer,network_revealer,notification_revealer,
@@ -102,11 +103,13 @@ const widget_revelead_box = Widget.Revealer({
     transition: 'slide_right',
     name: 'revealed_box',
     transitionDuration: 300,
+    
     //This box just extends the invisibility of the parent box but enables us to have padding form the top bar and the monitor edge
     child: Widget.Box({
+        
         vertical: true,
         className: 'main_background',
-        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box],
+        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box,main_volume()],
     })
 
 })

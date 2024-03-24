@@ -530,8 +530,55 @@ macchiato_base: #24273a;
 }
 
 .notification_close_button_label{
-   font-size: 24;
+   font-size: 24px;
    font-weight: bold;
    margin-top: -5px;
    margin-bottom: -3px;
+}
+/*****************************Volume ********************************/
+.audio_button_icon{
+   padding: 5px;
+   padding-left: 6px;
+   padding-right: 6px;
+   color: #8aadf4;
+}
+
+.audio_button_icon_muted{
+   padding: 5px;
+   padding-left: 6px;
+   padding-right: 6px;
+   color: #232634
+}
+.audio_main_slider{
+   min-width: 200px;
+}
+
+/*.audio_main_slider trough slider{
+ */
+.audio_main_slider slider{
+   background-color: white;
+   min-height: 12px;
+   min-width: 12px;
+   border-radius: 5px;
+}
+.audio_main_slider trough{
+   background-color: #232634;
+   min-height: 8px;
+   min-width: 8px;
+   border-radius: 5px;
+}
+.audio_main_slider highlight{
+   background-color: #a6d189;
+   /*min-height: 8px;
+   min-width: 8px;*/
+   border-radius: 5px;
+}
+
+.main_volume_background{
+   background-color: #45475a;
+   min-width: 200px;
+   min-height: 25px;
+   border-radius: 5px;
+   margin-top: 10px;
+   /*margin: 2px;*/
 }
