@@ -79,9 +79,11 @@ const Profile_box = () => Widget.Box({
 })
 const quicksettings_main_box = Widget.Box({
     vertical: true,
+    
     className: 'quicksettings_main_box',
     children: [Widget.Box({
         vertical: false,
+        hpack: 'center',
         
             children: [bluetooth_button(), NetworkIndicator(), bluelightfilter_button(), Notification_button(), Audio_button()],
         }),
