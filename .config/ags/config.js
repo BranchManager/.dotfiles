@@ -4,6 +4,8 @@ import {system_monitors, drive_monitor } from './system_monitor.js'
 import { NetworkIndicator,network_revealer } from './network_functionality.js';
 import {bluelightfilter_button} from './bluelight_filter.js'
 import {  Audio_button, main_volume_and_mic_sliders,audio_revealer } from "./audio.js";
+import { Calender_and_clock } from './calendar.js';
+
 //import  NotificationPopups  from "./notificationPopups.js"
 import NotificationPopups from "./Notifications/aylurspopups__redo.js"
 import {Notification_button, notification_revealer} from "./Notifications/Notification_Center.js"
@@ -111,7 +113,7 @@ const widget_revelead_box = Widget.Revealer({
         
         vertical: true,
         className: 'main_background',
-        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box],
+        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box, Calender_and_clock()],
     })
 
 })
