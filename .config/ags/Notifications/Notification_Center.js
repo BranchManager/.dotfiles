@@ -2,6 +2,7 @@ const NotificationService = await Service.import('notifications')
 import Notification_maker from "./notificationPopups.js"
 import {network_reveal_func } from "../network_functionality.js";
 import {bluetooth_reveal_func } from "../bluetooth_functionality.js";
+import {  audio_reveal_func } from "../audio.js";
 
 export function notification_reveal_func(is_other_app_calling_mell){
 
@@ -12,16 +13,12 @@ export function notification_reveal_func(is_other_app_calling_mell){
 
         network_reveal_func(true);
         bluetooth_reveal_func(true);
+        audio_reveal_func(true);
 
         //quicksettings_reveal = false;
         console.log('reveal_func');
-        if (notification_revealer.revealChild) {
-            notification_revealer.revealChild = false;
-
-        } else {
-        notification_revealer.revealChild = true;
-
-        }
+        notification_revealer.revealChild = !notification_revealer.revealChild
+        
     }
 }
 function NoNotification() {

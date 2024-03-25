@@ -8,7 +8,9 @@ $macchiato_base: #24273a;*/
 mocha_crust: #11111b;
 macchiato_base: #24273a;
 */ 
-
+.tooltip{
+   background-color: #11111b;
+}
 .fedora_icon{
     font-size: 20px;
     padding: 5px;
@@ -189,7 +191,8 @@ macchiato_base: #24273a;
 }
 
 .quick_setting_button_box:hover{
-   background-color: #949cbb;
+   /*background-color: #949cbb;*/
+   background-color: #737994;
 
 }
 /************************************ wifi ********************************/
@@ -553,8 +556,9 @@ macchiato_base: #24273a;
    min-width: 200px;
 }
 
-/*.audio_main_slider trough slider{
- */
+.audio_main_slider {
+   min-width: 200px;
+}
 .audio_main_slider slider{
    background-color: white;
    min-height: 12px;
@@ -563,22 +567,88 @@ macchiato_base: #24273a;
 }
 .audio_main_slider trough{
    background-color: #232634;
-   min-height: 8px;
-   min-width: 8px;
+   min-width: 320px;
+   /*min-height: 8px;*/
+   
    border-radius: 5px;
 }
 .audio_main_slider highlight{
    background-color: #a6d189;
-   /*min-height: 8px;
-   min-width: 8px;*/
+   min-height: 8px;
+   /*min-width: 8px;*/
    border-radius: 5px;
+   
 }
 
 .main_volume_background{
-   background-color: #45475a;
+   /*background-color: #45475a;*/
    min-width: 200px;
    min-height: 25px;
    border-radius: 5px;
-   margin-top: 10px;
+
+
    /*margin: 2px;*/
+}
+
+.volume_label{
+   font-size: 24;
+   margin-left: 10px;
+   margin-top: 3px;
+}
+
+.volume_revealer_box{
+   background-color: #737994;
+   margin: 7px;
+   border-radius: 5px;
+}
+
+.sep{
+   background-color: #292c3c;
+   min-width: 150px;
+   min-height: 1px;
+   margin-right: 30px;
+   /*margin-left: 30px;*/
+}
+
+.volume_active_sink{
+   background-color: #a6da95;
+   min-width: 20px;
+   padding-right: 5px;
+   border-radius: 3px;
+}
+
+.volume_unactive_sink{
+   min-width: 20px;
+   padding-right: 5px;
+   transition: background-color 0.2s linear;
+   
+   background-color: #292c3c;
+}
+
+.volume_unactive_sink:hover{
+   background-color: #949cbb;
+}
+
+.volume_unactive_sink:active{
+   background-color: #292c3c;
+   transition: background-color 0.0s linear;
+}
+.pavucontrol_box{
+   background-color: #45475a;
+   border-top-left-radius: 3px;
+   min-width: 20px;
+   padding-right: 5px;
+   /*margin-top: 3px;
+   margin-right: 5px;*/
+   transition: background-color 0.2s linear;
+   /*box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);*/
+}
+
+.pavucontrol_box:hover{
+   background-color: #949cbb;
+}
+
+.pavucontrol_box:active{
+   background-color: #45475a;
+   transition: background-color 0.0s linear;
 }

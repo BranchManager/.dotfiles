@@ -3,6 +3,7 @@
 */
 import { notification_reveal_func } from "./Notifications/Notification_Center.js";
 import {network_reveal_func } from "./network_functionality.js";
+import {  audio_reveal_func } from "./audio.js";
 const bluetooth = await Service.import('bluetooth')
 const bluetooth_icon_on = 'lattet-blue-bluetooth'
 const bluetooth_icon_off = 'frappe-crust-no-bluetooth'
@@ -33,23 +34,26 @@ function check_blue(){
 }
 
 // This is used to reveal the bluetooth devices and the switches
-export function bluetooth_reveal_func(is_other_app_calling_mell){
+export function bluetooth_reveal_func(is_other_app_calling_me){
 
-    if (is_other_app_calling_mell){
+    if (is_other_app_calling_me){
         bluetooth_revealer.revealChild = false;
         
-    } else if (!is_other_app_calling_mell){
+    } else if (!is_other_app_calling_me){
         network_reveal_func(true);
         notification_reveal_func(true);
+        audio_reveal_func(true);
         quicksettings_reveal = false;
         console.log('reveal_func');
-        if (bluetooth_revealer.revealChild) {
-            bluetooth_revealer.revealChild = false;
+        bluetooth_revealer.revealChild = !bluetooth_revealer.revealChild
 
-        } else {
-        bluetooth_revealer.revealChild = true;
+        // if (bluetooth_revealer.revealChild) {
+        //     bluetooth_revealer.revealChild = false;
 
-        }
+        // } else {
+        // bluetooth_revealer.revealChild = true;
+
+        // }
     }
 }
 

@@ -3,7 +3,7 @@ import { bluetooth_button, bluetooth_revealer} from './bluetooth_functionality.j
 import {system_monitors, drive_monitor } from './system_monitor.js'
 import { NetworkIndicator,network_revealer } from './network_functionality.js';
 import {bluelightfilter_button} from './bluelight_filter.js'
-import {  Audio_button, main_volume } from "./audio.js";
+import {  Audio_button, main_volume_and_mic_sliders,audio_revealer } from "./audio.js";
 //import  NotificationPopups  from "./notificationPopups.js"
 import NotificationPopups from "./Notifications/aylurspopups__redo.js"
 import {Notification_button, notification_revealer} from "./Notifications/Notification_Center.js"
@@ -86,7 +86,7 @@ const quicksettings_main_box = Widget.Box({
             children: [bluetooth_button(), NetworkIndicator(), bluelightfilter_button(), Notification_button(), Audio_button()],
         }),
         /*revealer*/ //TODO : remove bluetooth_box it is for testing
-        bluetooth_revealer,network_revealer,notification_revealer,
+        main_volume_and_mic_sliders(),bluetooth_revealer,network_revealer,notification_revealer,audio_revealer,
         
     ],
    //children: [],
@@ -109,7 +109,7 @@ const widget_revelead_box = Widget.Revealer({
         
         vertical: true,
         className: 'main_background',
-        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box,main_volume()],
+        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box],
     })
 
 })

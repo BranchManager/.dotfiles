@@ -3,7 +3,8 @@
 */
 import { bluetooth_reveal_func } from "./bluetooth_functionality.js";
 import { notification_reveal_func } from "./Notifications/Notification_Center.js";
-//import { SinkSelector } from "./audio.js";
+import {  audio_reveal_func } from "./audio.js";
+
 const network = await Service.import('network')
 const bluetooth = await Service.import('bluetooth')
 const devices = Variable([Widget.Label({label: 'no devices detected'})]) //devices changes besed on the devices detected
@@ -29,17 +30,19 @@ export function network_reveal_func(is_other_app_calling_me){
         // close other drop down menus if network is activating its drop down menu
         bluetooth_reveal_func(true);
         notification_reveal_func(true);
+        audio_reveal_func(true)
 
         get_access_points()
         network_quicksettings_reveal = false;
         console.log('reveal_func');
-        if (network_revealer.revealChild) {
-            network_revealer.revealChild = false;
+        network_revealer.revealChild = !network_revealer.revealChild
+        // if (network_revealer.revealChild) {
+        //     network_revealer.revealChild = false;
 
-        } else {
-            network_revealer.revealChild = true;
+        // } else {
+        //     network_revealer.revealChild = true;
 
-        }
+        // }
     }
 }
 
@@ -178,16 +181,17 @@ function get_access_points(){
                     wifi_icon = '󰤨'
 
                     //For each device make a box with the all the device info and functionallity
+                    //the Star here means that it us currently connected
                 if (device_info[0] == '*'){
                     var connected_device = make_device_box('wifi_connected','Disconnect',device_info[2],wifi_icon,device_info[9])
                 }else{
-                    
+                    //else the device is not connected and we want to show a button that says connect
 
                     var connected_device = make_device_box('wifi_not_connected','Connect',device_info[2],wifi_icon,device_info[9])
                     print(Widget.Label({css: 'color: black', label: device_info[0]}))
                 }
 
-                device_array.push(connected_device)
+                device_array.push(connected_device) //adding a device to the array so that it can show up in the box
  
             }
 
@@ -211,7 +215,7 @@ const wifi_access_points = Widget.Box({
     hexpand: true,
     vpack: 'center',
     className: 'accesspoints_forground_box',
-    children: devices.bind()
+    children: devices.bind()  //This variable will change dynamically
 
 
 })
