@@ -5,6 +5,7 @@ import { NetworkIndicator,network_revealer } from './network_functionality.js';
 import {bluelightfilter_button} from './bluelight_filter.js'
 import {  Audio_button, main_volume_and_mic_sliders,audio_revealer } from "./audio.js";
 import { Calender_and_clock } from './calendar.js';
+import {weather, get_weather} from './weather.js'
 
 //import  NotificationPopups  from "./notificationPopups.js"
 import NotificationPopups from "./Notifications/aylurspopups__redo.js"
@@ -18,6 +19,7 @@ var btr = true;
 
 const myVariable = Variable(0)
 App.addIcons(`${App.configDir}/assets`)
+App.addIcons(`${App.configDir}/assets/weather_icons`)
 App.applyCss(`${App.configDir}/logo.scss`)
 //const network = await Service.import('network')
 console.log(`${App.configDir}`)
@@ -96,6 +98,13 @@ const quicksettings_main_box = Widget.Box({
    //children: [],
 })
 
+const weather_and_mpris = () => Widget.Box({
+    vertical: false,
+    spacing: 5,
+    children: [weather()],
+
+})
+
 const profile_and_sysmonitors = () => Widget.Box({
     vertical: false,
     spacing: 5,
@@ -113,7 +122,7 @@ const widget_revelead_box = Widget.Revealer({
         
         vertical: true,
         className: 'main_background',
-        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box, Calender_and_clock()],
+        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box, Calender_and_clock(), weather_and_mpris()],
     })
 
 })
@@ -157,6 +166,7 @@ function fedora_button(){
                 console.log(widget_revelead_box.revealChild)
             } else {
                 widget_revelead_box.revealChild = true;
+                get_weather();
                 console.log('revealChild set to true');
                 console.log(widget_revelead_box.revealChild)
             }
