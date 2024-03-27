@@ -20,6 +20,7 @@ class weather_class:
                    '10n':'rain',
                    '13d':'snow', 
                    '50d':'misty', 
+                   '50n':'misty',
                    '01d':'sunshine', 
                    '01n':'moonshine', 
                    '02d':'few_clouds', 
@@ -158,13 +159,15 @@ if __name__ == "__main__":
 
     weather = weather_class()
     long,lat,place = weather.get_location()
+    city = place.address.split(",")[1]
+   
     key = weather.set_key()
     weather_json = weather.getwheather_json(key,str(long),str(lat))
     # weather_json = weather.getwheather_json("9bc07b0b7bd82f5562869cd04e598393",str(long),str(lat))
     weather.set_important(weather_json)
     #print("rain_shower")
     temp_array = weather.set_temp()
-    print(temp_array[0] + " " + temp_array[1] + " " + temp_array[2] + " " + temp_array[3] + " " + temp_array[4]+ " " + temp_array[5] + " " + temp_array[6])
+    print(temp_array[0] + ";" + temp_array[1] + ";" + temp_array[2] + ";" + temp_array[3] + ";" + temp_array[4]+ ";" + temp_array[5] + ";" + temp_array[6] + ";" + city)
     #print(temp_array[6].strip())
 
   

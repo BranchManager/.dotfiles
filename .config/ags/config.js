@@ -6,6 +6,7 @@ import {bluelightfilter_button} from './bluelight_filter.js'
 import {  Audio_button, main_volume_and_mic_sliders,audio_revealer } from "./audio.js";
 import { Calender_and_clock } from './calendar.js';
 import {weather, get_weather} from './weather.js'
+import { media } from './mpris.js';
 
 //import  NotificationPopups  from "./notificationPopups.js"
 import NotificationPopups from "./Notifications/aylurspopups__redo.js"
@@ -101,7 +102,7 @@ const quicksettings_main_box = Widget.Box({
 const weather_and_mpris = () => Widget.Box({
     vertical: false,
     spacing: 5,
-    children: [weather()],
+    children: [weather(), media()],
 
 })
 
