@@ -741,7 +741,7 @@ macchiato_base: #24273a;
 	
 	background-size: cover;
 	min-height: 150px;
-	min-width: 230px;
+	min-width: 220px;
 }
 .player_tint{
    background-color: rgba(0, 0, 0, 0.5); 
@@ -768,4 +768,32 @@ macchiato_base: #24273a;
 
 .player scale.position slider {
    all: unset;
+}
+
+.media_volume_box{
+   background-color: #45475a;
+   min-width: 10px;
+   min-height: 50px;
+   
+}
+
+.player_volume_slider slider{
+   background-color: white;
+   min-height: 12px;
+   min-width: 12px;
+   border-radius: 5px;
+}
+.player_volume_slider trough{
+   background-color: #232634;
+   min-width: 2px;
+   /*min-height: 8px;*/
+   
+   border-radius: 5px;
+}
+.player_volume_slider highlight{
+   background-color: #a6d189;
+   min-height: 100px;
+   /*min-width: 8px;*/
+   border-radius: 5px;
+   
 }

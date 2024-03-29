@@ -117,50 +117,76 @@ function Player(player) {
         child: Widget.Icon(NEXT_ICON),
     })
 
-    return Widget.Box(
-        { class_name: "player",
-        css: player.bind("cover_path").transform(p => `
-            background-image: url('${p}');
-        `),
-         },
-        //img,
-        Widget.Box(
-            {
-                className: "player_tint",
-                vertical: true,
-                hexpand: true,
-                vexpand: true,
-            },
-            Widget.Box({
-                vertical: false,
+    const volume = Widget.Slider({
+        class_name: "player_volume_slider",
+        draw_value: false,
+        vertical: true,
+        on_change: ({ value }) => player.volume = value,
+        visible: players.as(p => p.volume > 0),
+        value: player.bind("volume"),
+    //     setup: self => {
+    //         const update = () => {
+    //             self.visible = player.volume > 0
+    //         }
+    //         self.hook(player, update)
+    //         self.poll(1000, update)
+    //     },
+    })
 
-                children: [Widget.Box({
-                    vertical:true,
-                    
-                    children:[
-                        title,
-                        //icon,
-                        artist,
-                    ]
-                }),
-                icon,
-                
-                ]
-            }),
-        //     artist,
-            Widget.Box({ vexpand: true }),
-            positionSlider,
-            Widget.CenterBox({
-                start_widget: positionLabel,
-                center_widget: Widget.Box([
-                    prev,
-                    playPause,
-                    next,
-                ]),
-                end_widget: lengthLabel,
-            }),
-         ),
-    )
+    return Widget.Box({
+    
+        children: [
+            Widget.Box(
+                { class_name: "player",
+                    vertical: false,
+                    css: player.bind("cover_path").transform(p => `
+                        background-image: url('${p}');
+                    `),
+                },
+                //img,
+                Widget.Box(
+                    {
+                        className: "player_tint",
+                        vertical: true,
+                        hexpand: true,
+                        vexpand: true,
+                    },
+                    Widget.Box({
+                        vertical: false,
+
+                        children: [Widget.Box({
+                            vertical:true,
+                            
+                            children:[
+                                title,
+                                //icon,
+                                artist,
+                            ]
+                        }),
+                        icon,
+                        
+                        ]
+                    }),
+                //     artist,
+                    Widget.Box({ vexpand: true }),
+                    positionSlider,
+                    Widget.CenterBox({
+                        start_widget: positionLabel,
+                        center_widget: Widget.Box([
+                            prev,
+                            playPause,
+                            next,
+                        ]),
+                        end_widget: lengthLabel,
+                    }),
+                )
+            ),Widget.Box({
+                vertical:true,
+                className: "media_volume_box",
+                child: volume
+            })
+        ]
+    })
 }
 
 export function media() {
