@@ -144,7 +144,7 @@ export var audio_revealer = Widget.Revealer({
                     Widget.Separator({className:'sep', orientation:0}),
                     Widget.Box({
                         vertical: true,
-                        children: audio.bind("speakers").as(a => a.map((item) => SinkItem(item,true))),//a => a.map(SinkItem)),//a => a.map((item) => SinkItem(item,true))),
+                        children: audio.bind("speakers").as(a => a.map((item) => SinkItem(item,true))),//a => a.map(SinkItem)),
                     }),
                 ]
             }),
