@@ -1,18 +1,22 @@
 
-//These values change using get_weather() function which gets executed when the widget is slid out
+/*
+* This script is used to get the weather data from the weather.py script and display it on the widget
+*/
 var temp = Variable("")
 var forcast_icon = Variable("")
 var location = Variable("")
 var sunrise = Variable("")
 var sunset = Variable("")
+
+//This calls the weather.py script and gets the weather data
 export function get_weather(){
-    //var temp = ""
+    
     Utils.execAsync(['python3', `${App.configDir}/scripts/weather.py`, '1'])
     .then((res) => {
         var forcast;
       
         forcast = res.split(";")
-        console.log(forcast)
+       
         temp.value = forcast[0]
         forcast_icon.value = forcast[6]; 
         location.value = forcast[7]
@@ -31,8 +35,7 @@ export function get_weather(){
         sunrise.value = sr 
         sunset.value = ss 
 
-        
-        console.log(temp.value)
+
 
     })
     .catch((err) => {console.log("ERRRRRRRRR");console.log(err)})
@@ -97,7 +100,7 @@ export const weather = () => Widget.Box({
                 vpack: 'start',
                 visible: true,
                 css: 'font-size: 80px; color: green; opacity: 0.5; margin-top: -10px; margin-bottom: 21px;',
-                icon: forcast_icon.bind()//'windy-strong-svgrepo-com'
+                icon: forcast_icon.bind()
 
             }),Widget.Label({
                 vexpand:true, 
@@ -106,7 +109,7 @@ export const weather = () => Widget.Box({
                 vpack: 'center',
                 css: 'font-size: 44px; margin-top: 10px; margin-bottom: 10px;',
                 justification: 'center',
-                label: temp.bind() ,//"60"
+                label: temp.bind() ,
             }),
         ]
 

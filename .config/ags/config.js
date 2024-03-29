@@ -7,6 +7,7 @@ import {  Audio_button, main_volume_and_mic_sliders,audio_revealer } from "./aud
 import { Calender_and_clock } from './calendar.js';
 import {weather, get_weather} from './weather.js'
 import { get_quote_of_the_day,quote_of_the_day } from './quote_of_the_day.js';
+import { media } from './media.js';
 
 //import  NotificationPopups  from "./notificationPopups.js"
 import NotificationPopups from "./Notifications/aylurspopups__redo.js"
@@ -123,7 +124,7 @@ const widget_revelead_box = Widget.Revealer({
         
         vertical: true,
         className: 'main_background',
-        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box, Calender_and_clock(), weather_and_qotd()],
+        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box, Calender_and_clock(), weather_and_qotd(),media()],
     })
 
 })

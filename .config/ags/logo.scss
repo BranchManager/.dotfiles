@@ -732,3 +732,40 @@ macchiato_base: #24273a;
    margin-left: 10px;
 
  }
+
+ /****************************** Mpris ********************************/
+.player{
+   all:unset;
+   background-color: rgba(0, 0, 0, 0.5); 
+	background-position: center;
+	
+	background-size: cover;
+	min-height: 150px;
+	min-width: 230px;
+}
+.player_tint{
+   background-color: rgba(0, 0, 0, 0.5); 
+}
+
+ .mpris_img{
+
+   min-height: 60px;
+   min-width: 60px;
+ }
+
+ .player scale.position {
+   padding: 0;
+   margin-bottom: .3em;
+}
+
+.player scale.position trough {
+   min-height: 8px;
+}
+
+.player scale.position highlight {
+   background-color: red;
+}
+
+.player scale.position slider {
+   all: unset;
+}
