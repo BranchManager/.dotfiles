@@ -591,7 +591,7 @@ macchiato_base: #24273a;
 }
 
 .volume_label{
-   font-size: 24;
+   font-size: 24px;
    margin-left: 10px;
    margin-top: 3px;
 }
@@ -694,18 +694,41 @@ macchiato_base: #24273a;
 
  .weather_main_box{
    background-color: #45475a;
-   min-width: 110px;
-   min-height: 140px;
+   min-width: 70px;
+   min-height: 120px;
+   border-radius: 10px;
+   margin-top: 10px;
+  /* margin-right: 7px;*/
+
+ }
+ /****************************** Quote of the day ********************************/
+
+ .quote_of_the_day_main_box{
+   background-color:  #1e1e2e;
+   min-width: 250px;
+   min-height: 90px;
    border-radius: 10px;
    margin-top: 10px;
 
  }
 
- .mpris_main_box{
-   background-color: #45475a;
-   min-width: 240px;
-   min-height: 110px;
-   border-radius: 10px;
+
+ .qotd{
+   font-size: 16px;
    margin-top: 10px;
+ }
+
+ .author{
+   font-size: 16px;
+   font-weight: bold;
+   margin-bottom: 10px;
+ }
+
+ .quote_separator{
+   background-color: whitesmoke;
+   min-width: 150px;
+   min-height: 1px;
+   margin-right: 10px;
+   margin-left: 10px;
 
  }

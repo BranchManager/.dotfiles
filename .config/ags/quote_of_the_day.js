@@ -1,31 +1,64 @@
 
+var author =  Variable("Brandon Sanderson")
+var quote = Variable("The purpose of a storyteller is not to tell you how to think, but to give you questions to think upon.")
 
-
-export const media = () => Widget.Box({
-    className: 'mpris_main_box',
-    child: Widget.Overlay({
-        overlays:[
-            Widget.Icon({
-                vexpand:true, 
-                hexpand:true,
-                hpack: 'center', 
-            
-                visible: true,
-                css: 'font-size: 70px; color: green; opacity: 0.5;',
-                icon: 'nothere'//'windy-strong-svgrepo-com'
-            }),Widget.Label({
-                vexpand:true, 
-                hexpand:true,
-                hpack: 'center', 
-                vpack: 'center',
-                css: 'font-size: 12px;',
-                wrap: true,
-                justification: 'center',
-                label: "is is most likely caused by not destroying a Clutter actor or Gtk+ widget with ::destroy signals connected, but can also be caused by using the destroy(), dispose(), or remove() vfuncs. Because it would crash the application, it has been blocked and the JS callback not invoked." ,//"60"
-            }),
-        ]
-
+export function get_quote_of_the_day(){
+    Utils.execAsync(['python3', `${App.configDir}/scripts/get_quote.py`])
+    .then((res) => {
+       
+        console.log("getting tewmp******************");
+        var qotd = res.split(";")
+        console.log(qotd)
+        quote.value = qotd[0]
+        author.value = qotd[1]
     })
+    .catch((err) => {console.log("ERRRRRRRRR");console.log(err)})
+    return quote
+}
+
+export const quote_of_the_day = () => Widget.Box({
+    className: 'quote_of_the_day_main_box',
+    //vexpand: true,
+    hexpand: false,
+    vertical: true,
+   children: [
+        Widget.Label({
+            vpack: 'start',
+           
+            vexpand: true,
+            //justify: 'center',
+            className: 'qotd',
+            label: 'Quote of the day',
+        }),
+        Widget.Separator({
+            className: "quote_separator",
+            orientation: 0,
+           
+        }),
+        Widget.Label({
+            vpack: 'center',
+           
+            vexpand: true,
+            hpack: 'center',
+            hexpand: false,
+            justification: 'center',
+            
+            wrap: true,
+            
+            maxWidthChars: 24,
+            lines: 3,
+            truncate: 'end',
+            label: quote.bind(), //quote_of_the_day.bind(),
+        }),
+        Widget.Label({
+            vpack: 'end',
+           
+            vexpand: true,
+            //justification: 'center',
+            className: 'author',
+            label: author.bind(), //quote_of_the_day_author.bind(),
+        }),
+   ]
 })
 
 // const mpris = await Service.import("mpris")

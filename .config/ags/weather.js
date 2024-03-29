@@ -3,17 +3,35 @@
 var temp = Variable("")
 var forcast_icon = Variable("")
 var location = Variable("")
+var sunrise = Variable("")
+var sunset = Variable("")
 export function get_weather(){
     //var temp = ""
     Utils.execAsync(['python3', `${App.configDir}/scripts/weather.py`, '1'])
     .then((res) => {
         var forcast;
-        console.log("getting tewmp******************");
+      
         forcast = res.split(";")
         console.log(forcast)
         temp.value = forcast[0]
         forcast_icon.value = forcast[6]; 
         location.value = forcast[7]
+
+        var ss = forcast[4]
+        var sr = forcast[5]
+
+        if (ss.charAt(0) === '0') { //remove leading 0
+            ss = ss.slice(1);
+        }
+
+        if (sr.charAt(0) === '0') {
+            sr = sr.slice(1);
+        }
+        
+        sunrise.value = sr 
+        sunset.value = ss 
+
+        
         console.log(temp.value)
 
     })
@@ -25,15 +43,15 @@ const sunrise_box = Widget.Box({
     vertical: true,
     hpack: 'start',
     hexpand: true,
-    css: 'min-width: 70px;',
+    css: 'min-width: 50px;',
     children:[
         Widget.Label({
             label: '',
-            css: 'font-size: 36px; margin-right: 10px;',
+            css: 'font-size: 36px; margin-right: 10px;margin-top: -20px; margin-bottom: -13px;',
         }),
         Widget.Label({
-            label: '6:00 AM',
-            css: 'font-size: 16px;',
+            label: sunrise.bind(),
+            css: 'font-size: 12px;',
         }),
     ]
 
@@ -43,15 +61,15 @@ const sunset_box = Widget.Box({
     vertical: true,
     hpack: 'end',
     hexpand: true,
-    css: 'min-width: 70px;',
+    css: 'min-width: 50px;',
     children:[
         Widget.Label({
             label: '',
-            css: 'font-size: 36px; margin-right: 10px; ',
+            css: 'font-size: 36px; margin-right: 10px; margin-top: -20px; margin-bottom: -13px;',
         }),
         Widget.Label({
-            label: '6:00 PM',
-            css: 'font-size: 16px;',
+            label: sunset.bind(),
+            css: 'font-size: 12px;',
         }),
     ]
 })
@@ -65,7 +83,7 @@ export const weather = () => Widget.Box({
         hpack: 'center', 
         vpack: 'start',
         visible: true,
-        css: 'font-size: 16px; margin-bottom: -50px;margin-top: -25px;',
+        css: 'font-size: 16px;margin-top: 0px;',
         label: location.bind()
     
         }),
@@ -78,7 +96,7 @@ export const weather = () => Widget.Box({
                 hpack: 'center', 
                 vpack: 'start',
                 visible: true,
-                css: 'font-size: 80px; color: green; opacity: 0.5; margin-top: 10px;',
+                css: 'font-size: 80px; color: green; opacity: 0.5; margin-top: -10px; margin-bottom: 21px;',
                 icon: forcast_icon.bind()//'windy-strong-svgrepo-com'
 
             }),Widget.Label({
@@ -86,7 +104,7 @@ export const weather = () => Widget.Box({
                 hexpand:true,
                 hpack: 'center', 
                 vpack: 'center',
-                css: 'font-size: 44px; margin-top: 20px;',
+                css: 'font-size: 44px; margin-top: 10px; margin-bottom: 10px;',
                 justification: 'center',
                 label: temp.bind() ,//"60"
             }),
@@ -94,7 +112,7 @@ export const weather = () => Widget.Box({
 
     }),
     Widget.Box({
-        hpack: 'end',
+        vpack: 'end',
         hexpand: true,
         vertical: false,
         children:[

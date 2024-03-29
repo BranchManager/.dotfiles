@@ -6,7 +6,7 @@ import {bluelightfilter_button} from './bluelight_filter.js'
 import {  Audio_button, main_volume_and_mic_sliders,audio_revealer } from "./audio.js";
 import { Calender_and_clock } from './calendar.js';
 import {weather, get_weather} from './weather.js'
-import { media } from './mpris.js';
+import { get_quote_of_the_day,quote_of_the_day } from './quote_of_the_day.js';
 
 //import  NotificationPopups  from "./notificationPopups.js"
 import NotificationPopups from "./Notifications/aylurspopups__redo.js"
@@ -99,10 +99,10 @@ const quicksettings_main_box = Widget.Box({
    //children: [],
 })
 
-const weather_and_mpris = () => Widget.Box({
+const weather_and_qotd = () => Widget.Box({
     vertical: false,
     spacing: 5,
-    children: [weather(), media()],
+    children: [weather(),quote_of_the_day()],
 
 })
 
@@ -123,7 +123,7 @@ const widget_revelead_box = Widget.Revealer({
         
         vertical: true,
         className: 'main_background',
-        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box, Calender_and_clock(), weather_and_mpris()],
+        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box, Calender_and_clock(), weather_and_qotd()],
     })
 
 })
@@ -168,6 +168,7 @@ function fedora_button(){
             } else {
                 widget_revelead_box.revealChild = true;
                 get_weather();
+                get_quote_of_the_day()
                 console.log('revealChild set to true');
                 console.log(widget_revelead_box.revealChild)
             }
