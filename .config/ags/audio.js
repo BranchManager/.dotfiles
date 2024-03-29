@@ -29,12 +29,13 @@ function SinkItem(stream,is_speaker){
         var device_type;
         
         //This if statment establishing if we are dealing with speakers or microphones
-        if(is_speaker){
-            device_type = audio.speaker
-        }else{
-            device_type = audio.microphone
+        // if(is_speaker){
+        //     device_type = audio.speaker
+        // }else{
+        //     device_type = audio.microphone
         
-        }
+        // }
+        device_type = audio.speaker
         if (stream.name == device_type.name){
             
             //If the stream name is the same as the device type name then we are going to return a checkmark
@@ -50,7 +51,11 @@ function SinkItem(stream,is_speaker){
                 }else{
                     self.child.label = "-"
                     self.className = "volume_unactive_sink"
-                    self.onClicked = () => device_type = stream
+                    self.onClicked = () => {
+                        if(is_speaker)
+                            audio.speaker = stream
+                        else
+                            audio.microphone = stream}
                 }
             })
             
@@ -72,7 +77,12 @@ function SinkItem(stream,is_speaker){
                 }else{
                     self.child.label = "-"
                     self.className = "volume_unactive_sink"
-                    self.onClicked = () => device_type = stream
+                    self.onClicked = () => {
+                        if(is_speaker)
+                            audio.speaker = stream
+                        else
+                            audio.microphone = stream
+                    }
                 }
             })
             
@@ -134,7 +144,7 @@ export var audio_revealer = Widget.Revealer({
                     Widget.Separator({className:'sep', orientation:0}),
                     Widget.Box({
                         vertical: true,
-                        children: audio.bind("speakers").as(a => a.map((item) => SinkItem(item,true))),
+                        children: audio.bind("speakers").as(a => a.map((item) => SinkItem(item,true))),//a => a.map(SinkItem)),//a => a.map((item) => SinkItem(item,true))),
                     }),
                 ]
             }),

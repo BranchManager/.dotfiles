@@ -7,7 +7,7 @@ import json
 import sys
 import subprocess as subp
 from datetime import datetime, timezone
-import pytz
+#import pytz
 from dateutil import tz as tzs
 
 #make sure key is in .confog/.keys

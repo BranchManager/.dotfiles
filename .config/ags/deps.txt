@@ -1,0 +1,2 @@
+geopy from python
+openwheather api key in ~/.keys formated like "openwheather:<api-key>"
