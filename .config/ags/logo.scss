@@ -738,10 +738,12 @@ macchiato_base: #24273a;
    all:unset;
    background-color: rgba(0, 0, 0, 0.5); 
 	background-position: center;
-	
+	margin-top: 10px;
 	background-size: cover;
 	min-height: 150px;
 	min-width: 220px;
+   border-top-left-radius: 5px;
+   border-bottom-left-radius: 5px;
 }
 .player_tint{
    background-color: rgba(0, 0, 0, 0.5); 
@@ -759,11 +761,18 @@ macchiato_base: #24273a;
 }
 
 .player scale.position trough {
-   min-height: 8px;
+   min-height: 12px;
+   background-color: #45475a;
+   margin-right: 5px;
+   margin-left: 5px;
+   border-radius: 5px;
 }
 
 .player scale.position highlight {
-   background-color: red;
+   background-color:  	#ed8796;
+
+   border-radius: 5px;
+   
 }
 
 .player scale.position slider {
@@ -771,29 +780,42 @@ macchiato_base: #24273a;
 }
 
 .media_volume_box{
+   margin-top: 10px;
    background-color: #45475a;
-   min-width: 10px;
+   min-width: 30px;
    min-height: 50px;
+   border-radius: 5px;
+
+
    
 }
 
 .player_volume_slider slider{
    background-color: white;
-   min-height: 12px;
-   min-width: 12px;
+   min-height: 0px;
+   min-width: 0px;
    border-radius: 5px;
 }
 .player_volume_slider trough{
    background-color: #232634;
-   min-width: 2px;
+   min-width: 10px;
+   min-height: 150px;
+   margin-top: 5px;
+   margin-bottom: 5px;
    /*min-height: 8px;*/
    
    border-radius: 5px;
 }
 .player_volume_slider highlight{
-   background-color: #a6d189;
-   min-height: 100px;
+   background-color: #ca9ee6;
+   min-width: 10px;
+   min-height: 1px;
    /*min-width: 8px;*/
    border-radius: 5px;
    
+}
+
+.artist{
+   font-size: 18px;
+   font-weight: bold;
 }

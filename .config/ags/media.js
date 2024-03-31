@@ -27,7 +27,9 @@ function Player(player) {
 
     const title = Widget.Label({
         class_name: "title",
-        wrap: true,
+        //wrap: true,
+        truncate: 'end',
+        maxWidthChars: 40,
         hpack: "start",
         label: player.bind("track_title"),
     })
@@ -105,6 +107,20 @@ function Player(player) {
         }),
     })
 
+    const shuffle = Widget.Button({
+        class_name: "shuffle",
+        on_clicked: () => player.shuffle(),
+        visible: Utils.watch(player.shuffle != null, player,() =>{
+            if (player.shuffle_status != null){
+                return true
+            }else{
+                return false
+            }
+        }),//player.bind("shuffle_status"),
+        child: Widget.Icon({icon: "media-playlist-shuffle-symbolic"}),
+    })
+
+
     const prev = Widget.Button({
         on_clicked: () => player.previous(),
         visible: player.bind("can_go_prev"),
@@ -120,17 +136,18 @@ function Player(player) {
     const volume = Widget.Slider({
         class_name: "player_volume_slider",
         draw_value: false,
+        inverted: true,
         vertical: true,
         on_change: ({ value }) => player.volume = value,
-        visible: players.as(p => p.volume > 0),
+        visible: players.as(p => p.volume >= 0),
         value: player.bind("volume"),
-    //     setup: self => {
-    //         const update = () => {
-    //             self.visible = player.volume > 0
-    //         }
-    //         self.hook(player, update)
-    //         self.poll(1000, update)
-    //     },
+        setup: self => {
+            const update = () => {
+                self.visible = player.volume >= 0
+            }
+            self.hook(player, update)
+            //self.poll(1000, update)
+        },
     })
 
     return Widget.Box({
@@ -176,6 +193,7 @@ function Player(player) {
                             prev,
                             playPause,
                             next,
+                            shuffle,
                         ]),
                         end_widget: lengthLabel,
                     }),
@@ -183,7 +201,8 @@ function Player(player) {
             ),Widget.Box({
                 vertical:true,
                 className: "media_volume_box",
-                child: volume
+                child: volume,
+                //visible: players.as(p => p.volume >= 0),
             })
         ]
     })
