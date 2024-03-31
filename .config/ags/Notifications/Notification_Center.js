@@ -3,17 +3,21 @@ import Notification_maker from "./notificationPopups.js"
 import {network_reveal_func } from "../network_functionality.js";
 import {bluetooth_reveal_func } from "../bluetooth_functionality.js";
 import {  audio_reveal_func } from "../audio.js";
+import { bottom_revelaer } from "../config.js";
 
 export function notification_reveal_func(is_other_app_calling_mell){
 
     if (is_other_app_calling_mell){
         notification_revealer.revealChild = false;
+        bottom_revelaer.revealChild = true;
+
         
     } else if (!is_other_app_calling_mell){
 
         network_reveal_func(true);
         bluetooth_reveal_func(true);
         audio_reveal_func(true);
+        bottom_revelaer.revealChild = !bottom_revelaer.revealChild;
 
         //quicksettings_reveal = false;
         console.log('reveal_func');
@@ -55,14 +59,7 @@ export const notification_revealer = Widget.Revealer({
         //hpack: 'end',
         vertical: true,
         children: [
-            // Widget.Box({
-            //     hpack: 'start',
-            //     child: Widget.Button({
-            //         //className: 'notification_clear_button',
-            //         label: 'Clear All notifications',
-            //         onClicked: () => NotificationService.clear(),
-            //     }),
-            // }),
+      
             
             Widget.CenterBox({
            
@@ -103,7 +100,7 @@ export const notification_revealer = Widget.Revealer({
             child: Widget.Scrollable({
                 vscroll: 'always',
                 hscroll: 'never',
-                css: 'min-height: 400px;',
+                css: 'min-height: 600px;',
                 
                     child: Widget.Box({
                         vertical: true,

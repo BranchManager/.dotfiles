@@ -17,6 +17,8 @@ function lengthStr(length) {
 
 /** @param {import('types/service/mpris').MprisPlayer} player */
 function Player(player) {
+    
+
     const img = Widget.Box({
         class_name: "mpris_img",
         vpack: "start",
@@ -79,10 +81,12 @@ function Player(player) {
 
     const icon = Widget.Icon({ //TODO: ADD CORRECT ICONS
         //class_name: "icon",
+        margin: 5,
         hexpand: true,
         vexpand: true,
         hpack: "end",
         vpack: "start",
+        size: 25,
         tooltip_text: player.identity || "",
         icon: player.bind("entry").transform(entry => {
             const name = `${entry}-symbolic`
@@ -97,6 +101,7 @@ function Player(player) {
         on_clicked: () => player.playPause(),
         visible: player.bind("can_play"),
         child: Widget.Icon({
+            size: 25,
             icon: player.bind("play_back_status").transform(s => {
                 switch (s) {
                     case "Playing": return PAUSE_ICON
@@ -107,30 +112,77 @@ function Player(player) {
         }),
     })
 
+    const loop = Widget.Button({
+        class_name: "shuffle",
+        on_clicked: () => player.loop(),
+        visible: Utils.watch(player.loopStatus != null, player,() =>{
+            if (player.loopStatus != null){
+                return true
+            }else{
+                return false
+            }
+        }),//player.bind("shuffle_status"),
+        child: Widget.Icon({
+            class_name: Utils.watch(player.loopStatus == "Track"?"loop-track" : player.loopStatus == "Playlist" ? "loop-playlist-album":"", player, () => {
+                print("loop status n shit")
+                print(player.loopStatus)
+                var classname
+                //var classname = player.loopStatus ? "":"None" ? "loop-track":"Track" ? "loop-playlist-album":"Playlist"
+                if(player.loopStatus == "None"){
+                    classname = ""
+                }else if(player.loopStatus == "Track"){
+                    classname = "loop-track"
+                }else{
+                    classname = "loop-playlist-album"
+                }
+                print(classname)
+                return classname
+            }),
+            icon: "media-playlist-repeat-symbolic"
+        }),
+    })
+
     const shuffle = Widget.Button({
         class_name: "shuffle",
         on_clicked: () => player.shuffle(),
-        visible: Utils.watch(player.shuffle != null, player,() =>{
+        visible: Utils.watch(player.shuffleStatus != null, player,() =>{
             if (player.shuffle_status != null){
                 return true
             }else{
                 return false
             }
         }),//player.bind("shuffle_status"),
-        child: Widget.Icon({icon: "media-playlist-shuffle-symbolic"}),
+        child: Widget.Icon({
+            class_name: Utils.watch(player.shuffleStatus ? "shuffle-enabled" : "", player, () => {
+                if (player.shuffleStatus == true)
+                    return "shuffle-enabled"
+                else{
+                    return ""
+                }
+            }),
+            icon: "media-playlist-shuffle-symbolic"
+        }),
     })
 
 
     const prev = Widget.Button({
         on_clicked: () => player.previous(),
+        css: "padding-left: 5px;",
         visible: player.bind("can_go_prev"),
-        child: Widget.Icon(PREV_ICON),
+        child: Widget.Icon({
+            icon:PREV_ICON,
+            size:20,
+        }),
     })
 
     const next = Widget.Button({
         on_clicked: () => player.next(),
+        css: "padding-right: 5px;",
         visible: player.bind("can_go_next"),
-        child: Widget.Icon(NEXT_ICON),
+        child: Widget.Icon({
+            size:20,
+            icon:NEXT_ICON
+        }),
     })
 
     const volume = Widget.Slider({
@@ -139,12 +191,15 @@ function Player(player) {
         inverted: true,
         vertical: true,
         on_change: ({ value }) => player.volume = value,
-        visible: players.as(p => p.volume >= 0),
+        visible: player.volume >= 0,//players.as(p => p.volume >= 0),
         value: player.bind("volume"),
         setup: self => {
             const update = () => {
                 self.visible = player.volume >= 0
             }
+            console.log("volume")
+            console.log(player.volume)
+            console.log(player.name)
             self.hook(player, update)
             //self.poll(1000, update)
         },
@@ -190,6 +245,7 @@ function Player(player) {
                     Widget.CenterBox({
                         start_widget: positionLabel,
                         center_widget: Widget.Box([
+                            loop,
                             prev,
                             playPause,
                             next,
@@ -199,10 +255,19 @@ function Player(player) {
                     }),
                 )
             ),Widget.Box({
+                //visible: false,//player.volume >= 0,
                 vertical:true,
-                className: "media_volume_box",
+                className: player.volume >= 0 ? "media_volume_box":"", //if we can interact with the volume slider, we want to show the box
                 child: volume,
                 //visible: players.as(p => p.volume >= 0),
+                setup: self => {
+                    
+                    console.log("volume2")
+                    console.log(player.volume)
+                    console.log(player.name)
+                    //self.hook(player, update)
+                    //self.poll(1000, update)
+                },
             })
         ]
     })

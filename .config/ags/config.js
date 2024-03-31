@@ -113,6 +113,14 @@ const profile_and_sysmonitors = () => Widget.Box({
     children: [Profile_box(), system_monitors()],
 })
 // Reveeals the entire box
+export const bottom_revelaer = Widget.Revealer({
+    revealChild: true,
+    transition: 'slide_down',
+    child: Widget.Box({
+        vertical: true,
+        children: [ Calender_and_clock(), weather_and_qotd(),media()]
+    })
+})
 const widget_revelead_box = Widget.Revealer({
     revealChild: true,
     transition: 'slide_right',
@@ -124,10 +132,12 @@ const widget_revelead_box = Widget.Revealer({
         
         vertical: true,
         className: 'main_background',
-        children: [profile_and_sysmonitors(),drive_monitor(), quicksettings_main_box, Calender_and_clock(), weather_and_qotd(),media()],
+        children: [profile_and_sysmonitors(),drive_monitor(),quicksettings_main_box,bottom_revelaer],
     })
 
 })
+
+
 
 
 function widget_box(monitor = 0){
