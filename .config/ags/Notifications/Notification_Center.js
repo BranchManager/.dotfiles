@@ -3,7 +3,7 @@ import Notification_maker from "./notificationPopups.js"
 import {network_reveal_func } from "../network_functionality.js";
 import {bluetooth_reveal_func } from "../bluetooth_functionality.js";
 import {  audio_reveal_func } from "../audio.js";
-import { bottom_revelaer } from "../config.js";
+import { bottom_revealer } from "../Bar/MainWidget.js";
 
 export function notification_reveal_func(is_other_app_calling_mell){
 
@@ -17,7 +17,7 @@ export function notification_reveal_func(is_other_app_calling_mell){
         network_reveal_func(true);
         bluetooth_reveal_func(true);
         audio_reveal_func(true);
-        bottom_revelaer.revealChild = !bottom_revelaer.revealChild;
+        bottom_revealer.revealChild = !bottom_revealer.revealChild;
 
         //quicksettings_reveal = false;
         console.log('reveal_func');

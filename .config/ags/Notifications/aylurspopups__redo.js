@@ -15,7 +15,7 @@ function Animated(id) {
     const widget = Notification_maker(n)
 
     const inner = Widget.Revealer({
-        transition: "slide_left",
+        transition: "slide_right",
         transition_duration: 500,
         child: widget,
     })
@@ -27,7 +27,7 @@ function Animated(id) {
     })
 
     const box = Widget.Box({
-        hpack: "end",
+        hpack: "start",
         child: outer,
     })
 
@@ -86,7 +86,7 @@ function PopupList() {
 export default (monitor) => Widget.Window({
     monitor,
     name: `notifications${monitor}`,
-    anchor: ['top','right'], //position.bind(),
+    anchor: ['top','left'], //position.bind(),
     class_name: "notifications",
     child: Widget.Box({
         css: "padding: 2px;",

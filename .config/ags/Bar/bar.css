@@ -1,0 +1,85 @@
+*{ 
+    font-family: "Ubuntu Nerd Font";
+}
+/****************************************main bar****************************************/
+/**************************************Workspace****************************************/
+
+.main-box{
+    margin: 0px 0px 14px 0px;
+    background-color: #11111b;
+    box-shadow: 1px 4px 5px 0.5px #101010;
+}
+
+.workspace_indicator{
+    background-color: red;
+    min-height: 12px;
+}
+
+.workspace {
+    background-color: blue;
+}
+
+.active{
+   all: unset;
+    background-color: #cdd6f4;
+    color: #292c3c;
+    border-radius: 16px;
+    min-width: 35px;
+    margin-left: 2px;
+    margin-right: 2px;
+    transition: all 0.3s ease-in-out;
+
+    font-family: "Ubuntu Nerd Font";
+
+}
+.unactive{
+
+    
+    background-color: #45475a;
+    color: #292c3c;
+    border-radius: 16px;
+    margin-left: 2px;
+    margin-right: 2px;
+    min-width: 25px;
+    transition: all 0.3s ease-in-out;
+    font-family: "Ubuntu Nerd Font";
+    
+}
+
+.unactive:hover{
+    background-color: #b7bdf8;
+    min-width: 42px;
+    transition: all 0.3s ease-in-out;
+}
+
+.workspace_box{
+    /*background-color: #2f354a;*/
+   background-color: #292c3c;
+   margin: 3px;
+   border-radius: 16px;
+    padding: 3px;
+    /*min-width: 50px;*/
+}
+/**************************************Date****************************************/
+.BarDate{
+    font-size: 18px;
+}
+
+/**************************************Fedora Icon****************************************/
+.fedora_icon{
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 0px;
+    color: #89b4fa;
+}
+
+.fedora_icon:hover{
+    color: #b4befe
+}
+
+/**************************************Tray Icon****************************************/
+.tray_icon{
+    min-width: 50px;
+    min-height: 20px;
+    background-color: red;
+}
