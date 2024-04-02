@@ -1,6 +1,6 @@
-*{ 
+/*{ 
     font-family: "Ubuntu Nerd Font";
-}
+}*/
 /****************************************main bar****************************************/
 /**************************************Workspace****************************************/
 
@@ -8,6 +8,7 @@
     margin: 0px 0px 14px 0px;
     background-color: #11111b;
     box-shadow: 1px 4px 5px 0.5px #101010;
+    font-family: "Ubuntu Nerd Font";
 }
 
 .workspace_indicator{
@@ -58,11 +59,14 @@
    margin: 3px;
    border-radius: 16px;
     padding: 3px;
+    font-family: "Ubuntu Nerd Font";
     /*min-width: 50px;*/
 }
 /**************************************Date****************************************/
 .BarDate{
     font-size: 18px;
+    font-family: "Ubuntu Nerd Font";
+   
 }
 
 /**************************************Fedora Icon****************************************/
