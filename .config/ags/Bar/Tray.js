@@ -1,14 +1,39 @@
 const systemtray = await Service.import('systemtray')
+import Gdk from "gi://Gdk"
 
-/** @param {import('types/service/systemtray').TrayItem} item */
+//@param {import('types/service/systemtray').TrayItem} item
 const SysTrayItem = item => Widget.Button({
-    className: 'tray_icon',
-    child: Widget.Icon().bind('icon', item, 'icon'),
-    tooltipMarkup: item.bind('tooltip_markup'),
-    onPrimaryClick: (_, event) => item.activate(event),
-    onSecondaryClick: (_, event) => item.openMenu(event),
+    class_name: "tray_icon",
+    child: Widget.Icon({ icon: item.bind("icon") }),
+    tooltip_markup: item.bind("tooltip_markup"),
+    setup: self => {
+        const menu = item.menu
+        if (!menu)
+            return
+
+        console.log("THE MENU IS: ")
+        console.log(item.title)
+        console.log(item.icon)
+        const id = item.menu?.connect("popped-up", () => {
+            self.toggleClassName("active")
+            menu.connect("notify::visible", () => {
+                self.toggleClassName("active", menu.visible)
+            })
+            menu.disconnect(id)
+        })
+
+        if (id)
+            self.connect("destroy", () => item.menu?.disconnect(id))
+    },
+
+    on_primary_click: btn => item.menu?.popup_at_widget(
+        btn, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, null),
+
+    on_secondary_click: btn => item.menu?.popup_at_widget(
+        btn, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, null),
 });
 
-export const sysTray = Widget.Box({
-    children: systemtray.bind('items').as(i =>{ i.map(SysTrayItem); console.log("The TRAY");console.log(i);})
+export const sysTray = () => Widget.Box({
+    className: "traybox",
+    children: systemtray.bind('items').as(i =>i.map(SysTrayItem))
 })

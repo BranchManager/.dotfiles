@@ -45,7 +45,7 @@ export function create_my_bar(monitor = 0){
         
         startWidget: main_icon_and_workspaces(monitor),//create_workspace_indicator(monitor),
         centerWidget: new_date(), //Widget.Label({ label: count.toString()}),
-        endWidget: sysTray,//fedora_button(),
+        endWidget: sysTray(),//fedora_button(),
         //endWidget: NetworkIndicator(),
         
 

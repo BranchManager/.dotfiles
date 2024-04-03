@@ -9,6 +9,7 @@
     background-color: #11111b;
     box-shadow: 1px 4px 5px 0.5px #101010;
     font-family: "Ubuntu Nerd Font";
+    /*margin-top: -10px;*/
 }
 
 .workspace_indicator{
@@ -84,6 +85,14 @@
 /**************************************Tray Icon****************************************/
 .tray_icon{
     min-width: 50px;
-    min-height: 20px;
+    min-height: 50px;
+    font-size: 20px;
     background-color: red;
+}
+
+.tray_box{
+    min-width: 50px;
+    min-height: 50px;
+    font-size: 20px;
+    background-color: white;
 }
