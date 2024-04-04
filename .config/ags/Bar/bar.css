@@ -153,6 +153,8 @@
     transition: all 0.1s ease-in-out;
     
 }
+
+/**************************************Power Button****************************************/
 .power_button{
     margin: 2px;
     padding-left: 6px;
@@ -171,3 +173,55 @@
     transition: all 0.1s ease-in-out;
     
 }
+
+.quick_setting_power_button{
+    min-height: 60px;
+    min-width: 60px;
+    background-color: #45475a;
+    transition: background-color 0.2s linear;
+    border-radius: 10px;
+    margin: 3px;
+    box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.1), 1px 7px 7px rgba(0, 0, 0, 0.3);
+ 
+ }
+
+ .quick_setting_power_button:active{
+
+    box-shadow: 0px 0px 0px;
+ }
+ 
+ .quick_setting_power_button:hover{
+    /*background-color: #949cbb;*/
+    background-color: #737994;
+ 
+ }
+
+ .quick_setting_power_button_yn{
+    min-height: 30px;
+    min-width: 60px;
+    background-color: #45475a;
+    transition: background-color 0.2s linear;
+    border-radius: 10px;
+    margin: 3px;
+    box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.1), 1px 7px 7px rgba(0, 0, 0, 0.3);
+ 
+ }
+
+ .quick_setting_power_butto_tn:active{
+
+    box-shadow: 0px 0px 0px;
+ }
+ 
+ .quick_setting_power_button_yn:hover{
+    /*background-color: #949cbb;*/
+    background-color: #737994;
+ 
+ }
+
+ .power_prompt{
+    font-weight: bold;
+    font-size: 14px;
+ }
+
+
+

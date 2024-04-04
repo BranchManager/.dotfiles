@@ -1,9 +1,12 @@
+// This is the button on the bar that has the icons for volume, notifications, and network status
+//it is a button that when clicked will reveal the main_widget
 const network = await Service.import('network')
 const audio = await Service.import('audio')
 const NotificationService = await Service.import('notifications')
 import { main_widget } from './MainWidget.js';
 import { get_weather} from '../weather.js'
 import { get_quote_of_the_day } from '../quote_of_the_day.js';
+import { power_widget, get_uptime } from '../power_menu.js';
 
 //export function WidgetButton() {
 const volume_indicator = Widget.Icon({
@@ -122,7 +125,11 @@ export const WidgetButton = () => Widget.Box({
     }),
     Widget.Button({
         className: 'power_button',
-        child: Widget.Icon({icon: 'power-red', size: 20})
+        child: Widget.Icon({icon: 'power-red', size: 20}),
+        onClicked: () => {
+            get_uptime(),
+           power_widget.revealChild = !power_widget.revealChild
+        }
     })]
 })
   
