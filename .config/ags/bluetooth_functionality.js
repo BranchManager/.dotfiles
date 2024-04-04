@@ -7,6 +7,7 @@ import {  audio_reveal_func } from "./audio.js";
 const bluetooth = await Service.import('bluetooth')
 const bluetooth_icon_on = 'lattet-blue-bluetooth'
 const bluetooth_icon_off = 'frappe-crust-no-bluetooth'
+import { bottom_reveal_func, bottom_revealer } from "./Bar/MainWidget.js"
 
 var quicksettings_reveal = false;
 
@@ -40,11 +41,14 @@ export function bluetooth_reveal_func(is_other_app_calling_me){
         bluetooth_revealer.revealChild = false;
         
     } else if (!is_other_app_calling_me){
+        bottom_revealer.revealChild = true;
         network_reveal_func(true);
         notification_reveal_func(true);
         audio_reveal_func(true);
         quicksettings_reveal = false;
         console.log('reveal_func');
+        //bottom_revealer.revealChild = true;
+        bottom_reveal_func(true);
         bluetooth_revealer.revealChild = !bluetooth_revealer.revealChild
 
         // if (bluetooth_revealer.revealChild) {

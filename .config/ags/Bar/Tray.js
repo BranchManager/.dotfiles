@@ -4,7 +4,7 @@ import Gdk from "gi://Gdk"
 //@param {import('types/service/systemtray').TrayItem} item
 const SysTrayItem = item => Widget.Button({
     class_name: "tray_icon",
-    child: Widget.Icon({ icon: item.bind("icon") }),
+    child: Widget.Icon({ size: 25,icon: item.bind("icon") }),
     tooltip_markup: item.bind("tooltip_markup"),
     setup: self => {
         const menu = item.menu
@@ -15,9 +15,10 @@ const SysTrayItem = item => Widget.Button({
         console.log(item.title)
         console.log(item.icon)
         const id = item.menu?.connect("popped-up", () => {
-            self.toggleClassName("active")
+            menu.className = "active_menu"
+            self.toggleClassName("active_menu")
             menu.connect("notify::visible", () => {
-                self.toggleClassName("active", menu.visible)
+                self.toggleClassName("active_menu", menu.visible)
             })
             menu.disconnect(id)
         })

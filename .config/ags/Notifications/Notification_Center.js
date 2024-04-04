@@ -3,25 +3,33 @@ import Notification_maker from "./notificationPopups.js"
 import {network_reveal_func } from "../network_functionality.js";
 import {bluetooth_reveal_func } from "../bluetooth_functionality.js";
 import {  audio_reveal_func } from "../audio.js";
-import { bottom_revealer } from "../Bar/MainWidget.js";
+import { bottom_revealer, bottom_reveal_func } from "../Bar/MainWidget.js";
 
 export function notification_reveal_func(is_other_app_calling_mell){
 
     if (is_other_app_calling_mell){
         notification_revealer.revealChild = false;
-        bottom_revelaer.revealChild = true;
+        //bottom_revelaer.revealChild = true;
+        bottom_reveal_func(true);
 
         
     } else if (!is_other_app_calling_mell){
-
+        var reveal;
         network_reveal_func(true);
         bluetooth_reveal_func(true);
         audio_reveal_func(true);
-        bottom_revealer.revealChild = !bottom_revealer.revealChild;
+
+        //This function is diffferent, the parameter here is whether to reveal the bottom_revealer or not
+        //where as above the parameter is determining what function is calling the reveal function
+        //bottom_reveal_func(false);
+        //bottom_revealer.revealChild = !bottom_revealer.revealChild;
 
         //quicksettings_reveal = false;
         console.log('reveal_func');
-        notification_revealer.revealChild = !notification_revealer.revealChild
+        reveal = !notification_revealer.revealChild
+        console.log(reveal)
+        bottom_reveal_func(!reveal)
+        notification_revealer.revealChild = reveal
         
     }
 }

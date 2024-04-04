@@ -79,7 +79,20 @@ const quicksettings_main_box = Widget.Box({
 // })
 // }
 
+export function bottom_reveal_func(reveal){
+    // if (bottom_revealer.revealChild){
+    //     bottom_revealer.revealChild = false;
+    // }else{
+    //     bottom_revealer.revealChild = true;
+    // }
+    bottom_revealer.revealChild = reveal;
+    console.log('bottom_reveal_func')
+    console.log(bottom_revealer.revealChild)
+    console.log(bottom_revealer.name)
+}
+
 export const bottom_revealer = Widget.Revealer({
+    name: 'test_revealer',
     revealChild: true,
     transition: 'slide_down',
     child: Widget.Box({
@@ -111,7 +124,7 @@ export const bottom_revealer = Widget.Revealer({
 // }
 
 export const main_widget = Widget.Revealer({
-    revealChild: true,
+    revealChild: false,
     transition: 'slide_left',
     name: 'revealed_box',
     transitionDuration: 300,
