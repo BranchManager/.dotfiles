@@ -1,18 +1,44 @@
 
 const { query } = await Service.import("applications")
-import {rev} from './vars.js'
+//import {rev} from './vars.js'
 const WINDOW_NAME = "applauncher"
 
+const rev = Variable(false)
+const keymode = Variable("on-demand")
+//thus function gets called in the shell like: ags -r "myfunc(true)" but handles the open and close of lthe launcher
+globalThis.on_close_launcher = (open) => {
+    console.log("global var")
+   
+
+    if(open){
+        keymode.value = "exclusive"
+        App.openWindow("launcherr")
+        Utils.timeout(500, () =>{
+            rev.value = true
+            print(rev.value)
+
+        })
+        
+    }else{
+        keymode.value = "non"
+        rev.value = false
+        App.closeWindow("launcherr")
+        print(rev.value)
+    }
+}
 
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
 const AppItem = app => Widget.Button({
     className: "app_item",
+
+    //if we click on an app to open
     on_clicked: () => {
         App.closeWindow(WINDOW_NAME)
         app.launch()
-        App.getWindow("launcherr").keymode = 'none'
-        launcher_revealer.revealChild = false
-        App.closeWindow("launcherr")
+        // App.getWindow("launcherr").keymode = 'none'
+        // launcher_revealer.revealChild = false
+        // App.closeWindow("launcherr")
+        on_close_launcher(false)
 
     },
     attribute: { app },
@@ -52,6 +78,8 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
         list.children = applications
     }
 
+
+
     // search entry
     const entry = Widget.Box({
     
@@ -70,14 +98,15 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
                     // make sure we only consider visible (searched for) applications
                     const results = applications.filter((item) => item.visible);
                         if (results[0]) {
-                            App.toggleWindow(WINDOW_NAME)
+                            //App.toggleWindow(WINDOW_NAME)
                             print("THIS IS THE APP LAUNCHED")
                             print(applications[0].attribute.app.name)
                             print(results[0].attribute.app.name)
                             results[0].attribute.app.launch()
-                            App.getWindow("launcherr").keymode = 'none'
-                            launcher_revealer.revealChild = false
-                            App.closeWindow("launcherr")
+                            // App.getWindow("launcherr").keymode = 'none'
+                            // launcher_revealer.revealChild = false
+                            // App.closeWindow("launcherr")
+                            on_close_launcher(false)
                             //applications[0].attribute.app.launch()
                         }
                 },
@@ -123,8 +152,8 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
 
 export const launcher_revealer = Widget.Revealer({
-    revealChild: true ,//true,
-    transitionDuration: 1000,
+    revealChild: rev.bind(),
+    transitionDuration: 500,
     transition: 'slide_right',
     child: Widget.Box({
         
@@ -147,7 +176,7 @@ export function applauncher_box(monitor = 0){
         anchor: ['left' ],
         name: "launcherr", //+ monitor.toString(),
         layer: 'overlay',
-        keymode: 'on-demand',
+        keymode: keymode.bind(),
         
     
         //The main invisible box
@@ -167,10 +196,11 @@ export function applauncher_box(monitor = 0){
         setup: self => self.keybind("Escape", () => {
             print("REVEALER")
             print(launcher_revealer.revealChild)
-            print(rev.bind())
-            launcher_revealer.revealChild = false;
-            self.keymode = 'none'
-           App.closeWindow("launcherr")
+            
+            //launcher_revealer.revealChild = false;
+            //self.keymode = 'none'
+           
+            on_close_launcher(false)
            
            
         })
