@@ -67,7 +67,14 @@ function fedora_button(){
         child: fedora_icon(),
         hexpand: false,
         
-    })
+    }).hook(App, (self,windowName,visible) => {
+
+        self.onClicked = () => {
+            print("THE NAME OF THE WINDOW")
+            print(windowName)
+        }
+
+    }, 'window-toggled')
 }
 
 function fedora_icon(){
