@@ -215,6 +215,7 @@
  .quick_setting_power_button_yn:hover{
     /*background-color: #949cbb;*/
     background-color: #737994;
+    transition: background-color 0.2s linear;
  
  }
 

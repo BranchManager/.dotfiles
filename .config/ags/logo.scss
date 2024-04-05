@@ -373,6 +373,17 @@ macchiato_base: #24273a;
    box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
 }
 
+.alt_main_background{
+   /*background-color: black;*/
+   /*padding-top: 100px;*/
+   all: unset;
+   padding: 10px;
+   border-radius: 10px;
+   margin: 10px 20px 20px 10px;
+   background-color: #11111b;
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+}
+
 
 
 /*************************Notifications **********************************/
@@ -837,4 +848,95 @@ macchiato_base: #24273a;
 
 
 
+/****************************** Launcher ********************************/
+.search_icon{
+   font-size: 24;
+   background-color: #494d64;
+   min-width: 35px;
+   /*margin: 5px;*/
+   padding-right: 5px;
+   border-top-left-radius:5px ;
+   border-bottom-left-radius:5px ;
+   margin-right: 5px;
+   margin-left: 5px;
+}
 
+.launch_header{
+   background-color: #494d64;
+   min-width: 400px;
+
+   /*min-height: 200px;*/
+}
+
+.launcher_input{
+   background-color: #6e738d;
+   padding-left: 5px;
+   border-top-right-radius:5px ;
+   border-bottom-right-radius:5px ;
+   margin-right: 5px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+}
+
+.launcher_list{
+   background-color: #6e738d;
+   
+   margin: 5px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   border-radius: 5px;
+   min-width: 320px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+}
+
+.app_item{
+   background-color: #494d64;
+   padding-left: 5px;
+   /*margin: 5px;*/
+   margin-left: 5px;
+   margin-right: 5px;
+   border-radius: 5px;
+   min-width: 320px;
+   min-height: 65px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+}
+
+.app_item:hover{
+   background-color:#b7bdf8;
+   
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+  
+  
+}
+
+.app_item:active{
+   background-color: #b7bdf8;
+  
+   transition: all 0.0s linear;
+   box-shadow: 0px 0px 0px black;
+  
+}
+
+
+.app{
+   background-color: red;
+   min-height: 50px;
+   min-width: 50px;
+}
+
+.apps{
+   background-color: black;
+   min-height: 300px;
+   min-width: 50px;
+}
+
+.app{
+   background-color: pink;
+   min-height: 50px;
+   min-width: 50px;
+}
