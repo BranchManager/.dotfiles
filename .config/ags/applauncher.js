@@ -1,6 +1,8 @@
 
 const { query } = await Service.import("applications")
+import {rev} from './vars.js'
 const WINDOW_NAME = "applauncher"
+
 
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
 const AppItem = app => Widget.Button({
@@ -10,6 +12,8 @@ const AppItem = app => Widget.Button({
         app.launch()
         App.getWindow("launcherr").keymode = 'none'
         launcher_revealer.revealChild = false
+        App.closeWindow("launcherr")
+
     },
     attribute: { app },
     child: Widget.Box({
@@ -73,6 +77,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
                             results[0].attribute.app.launch()
                             App.getWindow("launcherr").keymode = 'none'
                             launcher_revealer.revealChild = false
+                            App.closeWindow("launcherr")
                             //applications[0].attribute.app.launch()
                         }
                 },
@@ -117,8 +122,9 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 // there needs to be only one instance
 
 
-const launcher_revealer = Widget.Revealer({
-    revealChild: true,
+export const launcher_revealer = Widget.Revealer({
+    revealChild: true ,//true,
+    transitionDuration: 1000,
     transition: 'slide_right',
     child: Widget.Box({
         
@@ -142,6 +148,7 @@ export function applauncher_box(monitor = 0){
         name: "launcherr", //+ monitor.toString(),
         layer: 'overlay',
         keymode: 'on-demand',
+        
     
         //The main invisible box
         child: Widget.Box({
@@ -158,10 +165,15 @@ export function applauncher_box(monitor = 0){
     
         }) , //Widget.Label({ label: date.bind() })
         setup: self => self.keybind("Escape", () => {
-           // App.closeWindow("launcherr" + monitor.toString(),)
-           launcher_revealer.revealChild = false;
-           self.keymode = 'none'
-        }),
+            print("REVEALER")
+            print(launcher_revealer.revealChild)
+            print(rev.bind())
+            launcher_revealer.revealChild = false;
+            self.keymode = 'none'
+           App.closeWindow("launcherr")
+           
+           
+        })
     })
 }
 

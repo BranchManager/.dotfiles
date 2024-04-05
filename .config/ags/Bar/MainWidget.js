@@ -1,4 +1,4 @@
-App.addIcons(`${App.configDir}/assets`)
+
 App.addIcons(`${App.configDir}/assets/weather_icons`)
 App.applyCss(`${App.configDir}/logo.scss`)
 
@@ -127,7 +127,7 @@ export const main_widget = Widget.Revealer({
     revealChild: false,
     transition: 'slide_left',
     name: 'revealed_box',
-    transitionDuration: 300,
+    transitionDuration: 200,
     
     //This box just extends the invisibility of the parent box but enables us to have padding form the top bar and the monitor edge
     child: Widget.Box({

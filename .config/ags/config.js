@@ -71,7 +71,11 @@ App.config({windows: [create_my_bar(2)]})
 App.config({windows: [create_my_bar(0)]})
 App.config({windows: [create_my_bar(1)]})
 //App.config({windows: [power_box(2)]})
-App.config({windows: [applauncher_box(2)]})
+App.config({windows: [applauncher_box(2)],
+    closeWindowDelay: {
+        "launcherr": 2000,
+    },
+})
 
 //App.config({windows: [widget_box(1)]})
 App.config({windows: [widget_box(2)]})
