@@ -70,7 +70,7 @@
    
 }
 
-/**************************************Fedora Icon****************************************/
+/**************************************Fedora Icon/ button****************************************/
 .fedora_icon{
     font-size: 20px;
     margin-left: 5px;
@@ -78,10 +78,53 @@
     color: #89b4fa;
 }
 
-.fedora_icon:hover{
+/*.fedora_icon:hover{
     color: #b4befe
+}*/
+.fedora_button{
+    margin:1px;
+    transition: all 0.3s ease-in-out;
+   padding-right: 3px;
+    
+}
+.fedora_button:hover{
+    background-color: #5c5f77;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 1px 1px 5px -3px rgba(140, 170, 238, 0.5), 1px 1px 5px -3px rgba(140, 170, 238, 0.8);
+
+}
+.fedora_button:active{
+    background-color: #7f849c;
+    border-radius: 5px;
+    transition: all 0.1s ease-in-out;
+    box-shadow: 0px 0px 0px 0px
+    
 }
 
+/**************************************Ai icon****************************************/
+.ai_button{
+    
+    transition: all 0.3s ease-in-out;
+   padding: 5px;
+   margin-left: -2px;
+    
+}
+.ai_button:hover{
+    background-color: #5c5f77;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 1px 1px 5px -3px rgba(186, 187, 241, 0.5), 1px 1px 5px -3px rgba(186, 187, 241, 0.8);
+
+}
+
+.ai_button:active{
+    background-color: #7f849c;
+    border-radius: 5px;
+    transition: all 0.1s ease-in-out;
+    box-shadow: 0px 0px 0px 0px
+    
+}
 /**************************************Tray Icon****************************************/
 .tray_icon{
     /*min-width: 50px;
@@ -215,7 +258,6 @@
  .quick_setting_power_button_yn:hover{
     /*background-color: #949cbb;*/
     background-color: #737994;
-    transition: background-color 0.2s linear;
  
  }
 
@@ -223,6 +265,8 @@
     font-weight: bold;
     font-size: 14px;
  }
+
+ 
 
 
 

@@ -848,9 +848,9 @@ macchiato_base: #24273a;
 
 
 
-/****************************** Launcher ********************************/
+/****************************** Launcher/ gpt ********************************/
 .search_icon{
-   font-size: 24;
+   font-size: 24px;
    background-color: #494d64;
    min-width: 35px;
    /*margin: 5px;*/
@@ -885,11 +885,23 @@ macchiato_base: #24273a;
    padding-top: 5px;
    padding-bottom: 5px;
    border-radius: 5px;
-   min-width: 320px;
+   min-width: 400px;
    /*padding-left: 10px;*/
    /*min-height: 35px;*/
 }
 
+.convo_box{
+   background-color: #6e738d;
+   
+   margin: 5px;
+   /*padding-top: 5px;
+   padding-bottom: 5px;*/
+   border-radius: 5px;
+   min-width: 400px;
+   min-height: 1000px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+}
 .app_item{
    background-color: #494d64;
    padding-left: 5px;
@@ -897,7 +909,7 @@ macchiato_base: #24273a;
    margin-left: 5px;
    margin-right: 5px;
    border-radius: 5px;
-   min-width: 320px;
+   min-width: 400px;
    min-height: 65px;
    /*padding-left: 10px;*/
    /*min-height: 35px;*/
@@ -939,4 +951,79 @@ macchiato_base: #24273a;
    background-color: pink;
    min-height: 50px;
    min-width: 50px;
+}
+
+.gpt_response{
+   background-color:#232634;
+   padding-left: 2px;
+   
+   margin: 2px;
+   margin-left: 5px;
+   margin-right: 5px;
+   border-radius: 5px;
+   min-width: 400px;
+   min-height: 65px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+}
+
+.gpt_query{
+   background-color: #494d64;
+   padding-left: 2px;
+   
+   margin: 2px;
+   margin-left: 5px;
+   margin-right: 5px;
+   border-radius: 5px;
+   min-width: 400px;
+   min-height: 65px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+}
+
+.ai_label{
+   font-size: 42px;
+   font-weight: bold;
+   margin-bottom: 7px;
+
+}
+
+.chat_icon{
+   margin-right: 10px;
+}
+
+.save_clear_item{
+   background-color: #494d64;
+   padding-left: 5px;
+   /*margin: 5px;*/
+   margin-left: 5px;
+   margin-right: 5px;
+   border-radius: 5px;
+   min-width: 200px;
+   min-height: 65px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+}
+
+.save_clear_item:hover{
+   background-color:#b7bdf8;
+   
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+  
+  
+}
+
+.save_clear_item:active{
+   background-color: #b7bdf8;
+  
+   transition: all 0.0s linear;
+   box-shadow: 0px 0px 0px black;
+  
 }

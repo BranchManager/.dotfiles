@@ -5,7 +5,7 @@ const WINDOW_NAME = "applauncher"
 
 const rev = Variable(false)
 const keymode = Variable("on-demand")
-//thus function gets called in the shell like: ags -r "myfunc(true)" but handles the open and close of lthe launcher
+//thus function gets called in the shell like: ags -r "on_close_launcher(true)" but handles the open and close of lthe launcher
 globalThis.on_close_launcher = (open) => {
     console.log("global var")
    
@@ -13,7 +13,7 @@ globalThis.on_close_launcher = (open) => {
     if(open){
         keymode.value = "exclusive"
         App.openWindow("launcherr")
-        Utils.timeout(500, () =>{
+        Utils.timeout(200, () =>{
             rev.value = true
             print(rev.value)
 
@@ -23,6 +23,7 @@ globalThis.on_close_launcher = (open) => {
         keymode.value = "non"
         rev.value = false
         App.closeWindow("launcherr")
+        print("closing launcher")
         print(rev.value)
     }
 }
@@ -153,7 +154,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
 export const launcher_revealer = Widget.Revealer({
     revealChild: rev.bind(),
-    transitionDuration: 500,
+    transitionDuration: 100,
     transition: 'slide_right',
     child: Widget.Box({
         
@@ -173,7 +174,7 @@ export function applauncher_box(monitor = 0){
     //const widget_box = (monitor = 2) => 
         return Widget.Window({
         monitor,
-        anchor: ['left' ],
+        anchor: ['left','top' ],
         name: "launcherr", //+ monitor.toString(),
         layer: 'overlay',
         keymode: keymode.bind(),
@@ -207,26 +208,4 @@ export function applauncher_box(monitor = 0){
     })
 }
 
-// there needs to be only one instance
-// export const applauncher = Widget.Window({
-//     anchor: ["bottom"],
-//     layer: "overlay",
-//     monitor: 2,
-//     name: WINDOW_NAME,
-//     // setup: self => self.keybind("Escape", () => {
-//     //     App.closeWindow(WINDOW_NAME)
-//     // }),
-//     visible: true,
-//     keymode: "exclusive",
-//     child:
-    
-//     // Widget.Box({
-//     //     css:"min-width: 200px; min-height: 200px;",
-//     //     child: Widget.Label({css:"min-width: 200px; min-height: 200px;",label:"TEST"})
-//     // })
-//     Applauncher({
-//         width: 500,
-//         height: 500,
-//         spacing: 12,
-//     }),
-// })
+//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

@@ -5,6 +5,7 @@ import { create_my_bar } from './Bar/MainBar.js';
 import NotificationPopups from "./Notifications/aylurspopups__redo.js"
 import { power_widget } from './power_menu.js';
 import { applauncher_box } from './applauncher.js';
+import { GPT_box } from './sGPT.js';
 
 const GLib = imports.gi.GLib;
 
@@ -73,7 +74,13 @@ App.config({windows: [create_my_bar(1)]})
 //App.config({windows: [power_box(2)]})
 App.config({windows: [applauncher_box(2)],
     closeWindowDelay: {
-        "launcherr": 2000,
+        "launcherr": 200,
+    },
+})
+
+App.config({windows: [GPT_box(2)],
+    closeWindowDelay: {
+        "GPT": 200,
     },
 })
 

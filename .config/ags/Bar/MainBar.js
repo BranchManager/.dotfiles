@@ -27,7 +27,7 @@ const endWidget = () =>Widget.Box({
 const main_icon_and_workspaces = (monitor = 0) => Widget.Box({
     vertical: false,
     spacing: 5,
-    children: [fedora_button(), create_workspace_indicator(monitor)]
+    children: [ai_button(),fedora_button(), create_workspace_indicator(monitor)]
 
 })
 
@@ -50,7 +50,7 @@ export function create_my_bar(monitor = 0){
         name: 'ggg' + monitor.toString(), // this name has to be unique
         anchor: ['top', 'left', 'right'],
         className: 'my_bar',
-        layer: 'overlay',
+        layer: 'top',
         exclusivity: 'exclusive',
         child: main_box,
          //Widget.Label({ label: date.bind() })
@@ -59,11 +59,28 @@ export function create_my_bar(monitor = 0){
  
 }
 
+function ai_button(){
+    return Widget.Button({
+        className: 'ai_button',
+        child: ai_icon(),
+        hexpand: false,
+        
+    }).hook(App, (self,windowName,visible) => {
 
+        self.onClicked = () => {
+            print("THE NAME OF THE WINDOW")
+            print(windowName)
+            on_close_launcher(false)
+            open_close_gpt(true)
+        }
+
+    }, 'window-toggled')
+}
 
 
 function fedora_button(){
     return Widget.Button({
+        className: 'fedora_button',
         child: fedora_icon(),
         hexpand: false,
         
@@ -72,10 +89,25 @@ function fedora_button(){
         self.onClicked = () => {
             print("THE NAME OF THE WINDOW")
             print(windowName)
+            open_close_gpt(false)
+            on_close_launcher(true)
+            
         }
 
     }, 'window-toggled')
 }
+function ai_icon(){
+    return Widget.Icon({
+    hexpand: true,
+    hpack: 'start',
+    name: 'fedora',
+    visible: true,
+    className: 'fedora_icon',
+    icon: 'lavendar_brain',
+    //css: 'color: green;',
+})
+}
+
 
 function fedora_icon(){
         return Widget.Icon({
