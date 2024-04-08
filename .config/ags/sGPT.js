@@ -5,7 +5,7 @@ let homeDirectory = GLib.get_home_dir();
 //import {rev} from './vars.js'
 const WINDOW_NAME = "applauncher"
 
-const rev = Variable(true)
+const reveal = Variable(true)
 const keymode = Variable("on-demand")
 const chat_blocks = Variable([])
 
@@ -15,18 +15,22 @@ globalThis.open_close_gpt = (open) => {
 
     if(open){
         keymode.value = "exclusive"
-        App.openWindow("launcherr")
+        App.openWindow("GPT")
+        reveal.value = true
         Utils.timeout(200, () =>{
-            rev.value = true
-            print(rev.value)
+            reveal.value = true
+            print(reveal.value)
+            print("OPENING GPT")
 
         })
         
     }else{
-        keymode.value = "non"
-        rev.value = false
-        App.closeWindow("launcherr")
-        print(rev.value)
+        //keymode.value = "none"
+        reveal.value = false
+        Utils.timeout(200, () =>{
+            App.closeWindow("GPT")
+        })
+        print(reveal.value)
     }
 }
 
@@ -291,6 +295,25 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
         })
     })
 
+    const close_button = Widget.Button({
+        className: "ai_close_button",
+        
+        on_clicked: () => {
+            open_close_gpt(false)
+            // const convo = chat_blocks.value.map(item => item.children[1].label).join("\n")
+            // Utils.execAsync([`${App.configDir}/scripts/save_convo.sh`, `${convo}`])
+            // .then((res) => {console.log(res)})
+            // .catch((err) => {console.log(err)})
+        },
+        child:Widget.Box({
+            hpack: "center",
+            child: Widget.Label({
+                css:"font-size: 30px; font-weight: bold;",
+                label: "Close",
+            })
+        })
+    })
+
     const clear_n_save_buttons = Widget.Box({
         vertical: false,
         children: [clear_button,save_button]
@@ -302,8 +325,16 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
         children: [
             Ai_label,
             entry,
-            convo_box,
+            Widget.Scrollable({
+                className: "launcher_list",
+                hscroll: "never",
+                css: `min-width: ${width}px;`
+                    + `min-height: ${height}px;`,
+
+                child: convo_box,
+            }),
             clear_n_save_buttons,
+            close_button,
             
             
             // wrap the list in a scrollable
@@ -323,7 +354,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
 
 export const gpt_revealer = Widget.Revealer({
-    revealChild: rev.bind(),
+    revealChild: reveal.bind(),
     transitionDuration: 100,
     transition: 'slide_right',
     child: Widget.Box({
@@ -331,8 +362,8 @@ export const gpt_revealer = Widget.Revealer({
         vertical: true,
         className: 'alt_main_background',
         child: Applauncher({
-            width: 340,
-            height: 1000,
+            width: 400,
+            height: 500,
             spacing: 12,
         }),
         //children: [search_header(),AppsList()]

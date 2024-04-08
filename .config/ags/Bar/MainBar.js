@@ -71,7 +71,9 @@ function ai_button(){
             print("THE NAME OF THE WINDOW")
             print(windowName)
             on_close_launcher(false)
-            open_close_gpt(true)
+            //Utils.timeout(100, () =>{
+                open_close_gpt(true)
+           //})
         }
 
     }, 'window-toggled')

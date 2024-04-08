@@ -898,7 +898,7 @@ macchiato_base: #24273a;
    padding-bottom: 5px;*/
    border-radius: 5px;
    min-width: 400px;
-   min-height: 1000px;
+   min-height: 500px;
    /*padding-left: 10px;*/
    /*min-height: 35px;*/
 }
@@ -1021,6 +1021,39 @@ macchiato_base: #24273a;
 }
 
 .save_clear_item:active{
+   background-color: #b7bdf8;
+  
+   transition: all 0.0s linear;
+   box-shadow: 0px 0px 0px black;
+  
+}
+
+.ai_close_button{
+   background-color: #1e1e2e;
+   padding-left: 5px;
+   /*margin: 5px;*/
+   margin-left: 5px;
+   margin-right: 5px;
+   margin-top: 5px;
+   border-radius: 5px;
+   min-width: 200px;
+   min-height: 50px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+}
+
+.ai_close_button:hover{
+   background-color:#b7bdf8;
+   
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+  
+  
+}
+
+.ai_close_button:active{
    background-color: #b7bdf8;
   
    transition: all 0.0s linear;

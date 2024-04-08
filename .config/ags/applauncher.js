@@ -20,9 +20,11 @@ globalThis.on_close_launcher = (open) => {
         })
         
     }else{
-        keymode.value = "non"
+        keymode.value = "none"
         rev.value = false
-        App.closeWindow("launcherr")
+        Utils.timeout(200, () =>{
+            App.closeWindow("launcherr")
+        })
         print("closing launcher")
         print(rev.value)
     }
@@ -120,6 +122,25 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
         ]
     })
 
+    const close_button = Widget.Button({
+        className: "ai_close_button",
+        
+        on_clicked: () => {
+            on_close_launcher(false)
+            // const convo = chat_blocks.value.map(item => item.children[1].label).join("\n")
+            // Utils.execAsync([`${App.configDir}/scripts/save_convo.sh`, `${convo}`])
+            // .then((res) => {console.log(res)})
+            // .catch((err) => {console.log(err)})
+        },
+        child:Widget.Box({
+            hpack: "center",
+            child: Widget.Label({
+                css:"font-size: 30px; font-weight: bold;",
+                label: "Close",
+            })
+        })
+    })
+
     return Widget.Box({
         vertical: true,
         //css: `margin: ${spacing * 2}px;`,
@@ -134,6 +155,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
                     + `min-height: ${height}px;`,
                 child: list,
             }),
+            close_button
         ],
         setup: self => self.hook(App, (_, windowName, visible) => {
             if (windowName !== WINDOW_NAME)
