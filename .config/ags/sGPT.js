@@ -5,17 +5,20 @@ let homeDirectory = GLib.get_home_dir();
 //import {rev} from './vars.js'
 const WINDOW_NAME = "applauncher"
 
-const reveal = Variable(true)
+const reveal = Variable(false)
 const keymode = Variable("on-demand")
 const chat_blocks = Variable([])
 
-globalThis.open_close_gpt = (open) => {
+//thus function gets called in the shell like: ags -r "open_close_gpt(true)" but handles the open and close of lthe launcher
+globalThis.open_close_gpt = (open,monitor) => {
     console.log("global var")
    
 
     if(open){
         keymode.value = "exclusive"
-        App.openWindow("GPT")
+        App.openWindow("GPT"+ monitor.toString()),
+        print("OPENING GPT ON MONITOR")
+        print(monitor)
         reveal.value = true
         Utils.timeout(200, () =>{
             reveal.value = true
@@ -25,10 +28,12 @@ globalThis.open_close_gpt = (open) => {
         })
         
     }else{
-        //keymode.value = "none"
+        
         reveal.value = false
         Utils.timeout(200, () =>{
-            App.closeWindow("GPT")
+            App.closeWindow("GPT0")
+            App.closeWindow("GPT1")
+            App.closeWindow("GPT2")
         })
         print(reveal.value)
     }
@@ -373,10 +378,14 @@ export const gpt_revealer = Widget.Revealer({
 
 export function GPT_box(monitor = 0){
     //const widget_box = (monitor = 2) => 
+        const monitor_name = "GPT"+ monitor.toString()
+        print("MONITOR NAME") 
+        print("monitorsin Range^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: " + monitor_name)
+
         return Widget.Window({
         monitor,
         anchor: ['left','top' ],
-        name: "GPT", //+ monitor.toString(),
+        name: monitor_name, // this name has to be unique
         layer: 'overlay',
         keymode: keymode.bind(),
         

@@ -123,6 +123,7 @@ export const bottom_revealer = Widget.Revealer({
 //     })
 // }
 
+//cannot be a function cause Ineed reference to the revealer
 export const main_widget = Widget.Revealer({
     revealChild: false,
     transition: 'slide_left',

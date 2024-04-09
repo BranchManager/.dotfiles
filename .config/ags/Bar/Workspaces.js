@@ -1,24 +1,7 @@
 const hyprland = await Service.import('hyprland')
 
 export function create_workspace_indicator(monitor) {
-    // const WorkspaceIndicator = Widget.Box({
-    //   className: 'workspace_indicator',
-    //   vertical: false,
-    //   spacing: 4,
-    //   children: Array.from({ length: 10 }).map((_, i) =>
-    //     Widget.Button({
-    //       className: 'workspace',
-    //       hpack: 'center',
-    //       label: `${i}`,
-    //       cursor: 'pointer',
-    //       onPrimaryClick: () => HyprlandService.message(`dispatch workspace ${i + 1}`),
-    //       setup: self => self.hook(HyprlandService, () => self.children.forEach(btn => {
-    //         btn.visible = HyprlandService.workspaces.some(ws => ws.id === btn.attribute);
-    //     })),
-    //     })
-        
-    //   )
-    // })
+  
 
     const WorkspaceIndicator = Widget.EventBox({
       onScrollUp: () => dispatch('+1'),

@@ -27,7 +27,7 @@ const endWidget = () =>Widget.Box({
 const main_icon_and_workspaces = (monitor = 0) => Widget.Box({
     vertical: false,
     spacing: 5,
-    children: [ai_button(),fedora_button(), create_workspace_indicator(monitor)]
+    children: [ai_button(monitor),fedora_button(), create_workspace_indicator(monitor)]
 
 })
 
@@ -59,7 +59,7 @@ export function create_my_bar(monitor = 0){
  
 }
 
-function ai_button(){
+function ai_button(monitor){
     return Widget.Button({
         className: 'ai_button',
         child: ai_icon(),
@@ -69,10 +69,10 @@ function ai_button(){
 
         self.onClicked = () => {
             print("THE NAME OF THE WINDOW")
-            print(windowName)
+            print(App.windowName)
             on_close_launcher(false)
             //Utils.timeout(100, () =>{
-                open_close_gpt(true)
+                open_close_gpt(true,monitor)
            //})
         }
 

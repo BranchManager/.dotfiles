@@ -1,17 +1,21 @@
 
 App.addIcons(`${App.configDir}/assets`)
+import Gdk from "gi://Gdk"
 import { main_widget } from './Bar/MainWidget.js';
 import { create_my_bar } from './Bar/MainBar.js';
 import NotificationPopups from "./Notifications/aylurspopups__redo.js"
 import { power_widget } from './power_menu.js';
 import { applauncher_box } from './applauncher.js';
 import { GPT_box } from './sGPT.js';
+import { Volume_Shortcut_Indicator } from './VolumeShortcut.js';
 
 const GLib = imports.gi.GLib;
 
 
 function widget_box(monitor = 0){
 //const widget_box = (monitor = 2) => 
+
+    print("monitor #####################################: " + monitor)    
     return Widget.Window({
     monitor,
     anchor: ['top','right' ],
@@ -56,34 +60,52 @@ function power_box(monitor = 0){
 
 
 
-// Utils.timeout(100, () => Utils.notify({
-//     appName: "Branch Managers",
-//     summary: "Branch Managers Dots",
-//     iconName: "info-symbolic",
-//     body: "Lorem ipsum dolor sit amet, qui minim labore adipisicing "
-//         + "minim sint cillum sint consectetur cupidatat.",
-//     actions: {
-//         "Cool": () => print("pressed Cool"),
-//     },
-// }))
+Utils.timeout(100, () => Utils.notify({
+    appName: "Branch Managers",
+    summary: "Branch Managers Dots",
+    iconName: "info-symbolic",
+    body: "Lorem ipsum dolor sit amet, qui minim labore adipisicing "
+        + "minim sint cillum sint consectetur cupidatat.",
+    actions: {
+        "Cool": () => print("pressed Cool"),
+    },
+}))
+export function forMonitors(widget) {
+    const n = Gdk.Display.get_default()?.get_n_monitors() || 1
+    return range(n, 0).map(widget).flat(1)
+   
+    
+}
 
+/**
+ * @returns [start...length]
+ */
+export function range(length, start = 1) {
+    return Array.from({ length }, (_, i) => i + start)
+}
 
-App.config({windows: [create_my_bar(2)]})
-App.config({windows: [create_my_bar(0)]})
-App.config({windows: [create_my_bar(1)]})
+App.config({windows: [Volume_Shortcut_Indicator(2)]})
+App.config({ windows: ()=>[...forMonitors(create_my_bar)]})
+//App.config({ windows: ()=>[...forMonitors(NotificationPopups)]})
+
+//App.config({ windows: ()=>[...forMonitors(widget_box)]})
+// App.config({windows: [create_my_bar(2)]})
+// App.config({windows: [create_my_bar(0)]})
+// App.config({windows: [create_my_bar(1)]})
+
 //App.config({windows: [power_box(2)]})
 
 
-App.config({windows: [GPT_box(2)],
+//App.config({windows: [GPT_box(2)],})
+//App.config({ windows: ()=>[...forMonitors(GPT_box)]})
+App.config({ windows:[GPT_box(1)]})
+// App.config({ windows:[GPT_box(1)]})
+// App.config({ windows:[GPT_box(2)]})
+App.config({windows: [applauncher_box(2)],})
 
-})
+App.config({windows: [widget_box(1)]})
 
-App.config({windows: [applauncher_box(2)],
- 
-})
-
-//App.config({windows: [widget_box(1)]})
-App.config({windows: [widget_box(2)]})
+App.config({windows: [widget_box(0)]})
 App.config({
     //style: App.configDir + "/style.css",
     windows: [

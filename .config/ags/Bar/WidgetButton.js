@@ -9,7 +9,7 @@ import { get_quote_of_the_day } from '../quote_of_the_day.js';
 import { power_widget, get_uptime } from '../power_menu.js';
 
 //export function WidgetButton() {
-const volume_indicator = Widget.Icon({
+const volume_indicator = () => Widget.Icon({
     
     clssName: audio.bind("volume").as(a => {
         return "audio_button_icon_widbutton"
@@ -115,7 +115,7 @@ export const WidgetButton = () => Widget.Box({
             vertical: false,
             spacing: 5,
             children: [
-                volume_indicator,
+                volume_indicator(),
                 NotificationIndicator(),
                 
                 NetworkIndicator()
