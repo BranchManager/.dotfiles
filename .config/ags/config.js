@@ -8,6 +8,7 @@ import { power_widget } from './power_menu.js';
 import { applauncher_box } from './applauncher.js';
 import { GPT_box } from './sGPT.js';
 import { Volume_Shortcut_Indicator } from './VolumeShortcut.js';
+import { get_main_monitor } from "./Select_main_monitor.js";
 
 const GLib = imports.gi.GLib;
 
@@ -84,32 +85,24 @@ export function range(length, start = 1) {
     return Array.from({ length }, (_, i) => i + start)
 }
 
-App.config({windows: [Volume_Shortcut_Indicator(2)]})
+
 App.config({ windows: ()=>[...forMonitors(create_my_bar)]})
-//App.config({ windows: ()=>[...forMonitors(NotificationPopups)]})
+//App.config({ windows: ()=>[...forMonitors(Volume_Shortcut_Indicator)]})
 
-//App.config({ windows: ()=>[...forMonitors(widget_box)]})
-// App.config({windows: [create_my_bar(2)]})
-// App.config({windows: [create_my_bar(0)]})
-// App.config({windows: [create_my_bar(1)]})
+let monitor = get_main_monitor()
+print("MAIN MONITOR: 88888888888888888888888888888888888888888" + monitor)
 
-//App.config({windows: [power_box(2)]})
+App.config({ windows:[GPT_box(monitor)]})
+App.config({windows: [applauncher_box(monitor)],})
+App.config({windows: [Volume_Shortcut_Indicator(monitor)]})
+
+App.config({windows: [widget_box(monitor)]})
 
 
-//App.config({windows: [GPT_box(2)],})
-//App.config({ windows: ()=>[...forMonitors(GPT_box)]})
-App.config({ windows:[GPT_box(1)]})
-// App.config({ windows:[GPT_box(1)]})
-// App.config({ windows:[GPT_box(2)]})
-App.config({windows: [applauncher_box(2)],})
-
-App.config({windows: [widget_box(1)]})
-
-App.config({windows: [widget_box(0)]})
-App.config({
-    //style: App.configDir + "/style.css",
-    windows: [
-        NotificationPopups(2),
-    ],
-})
+// App.config({
+//     //style: App.configDir + "/style.css",
+//     windows: [
+//         NotificationPopups(2),
+//     ],
+// })
 // App.config({windows: [widget_box(2)]})

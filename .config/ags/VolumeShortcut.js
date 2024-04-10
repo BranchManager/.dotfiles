@@ -96,6 +96,18 @@ const volume_revealer = Widget.Revealer({
     })
 })
 
+const main_box = () => Widget.Box({
+             
+    homogeneous: false,
+    vertical: false,
+    vpack: "end",
+    hpack: "start",
+
+    css: `background-color: rgba(0,0,0,0); padding: 0.1px;`,
+
+    child: volume_revealer,
+}) 
+
 export const Volume_Shortcut_Indicator = (monitor = 0) => {
 
     print("Volume_Indicator")
@@ -103,20 +115,10 @@ export const Volume_Shortcut_Indicator = (monitor = 0) => {
     return Widget.Window({
         monitor,
         anchor: ['bottom' ],
-        name: "volume_indicator", 
+        name: "volume_indicator"+ monitor.toString(), 
         layer: 'overlay',
 
-       child: Widget.Box({
-             
-                homogeneous: false,
-                vertical: false,
-                vpack: "end",
-                hpack: "start",
-            
-                css: `background-color: rgba(0,0,0,0); padding: 0.1px;`,
-            
-                child: volume_revealer,
-        }) 
+       child: main_box(),
 
     })
 }
