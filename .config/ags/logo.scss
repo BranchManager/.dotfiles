@@ -8,6 +8,14 @@ $macchiato_base: #24273a;*/
 mocha_crust: #11111b;
 macchiato_base: #24273a;
 */ 
+
+.tinted_background{
+   background-color: rgba(17, 17, 27, 0.5);
+   /*#11111b;*/
+   min-width: 300rem;
+   min-height: 300rem;
+
+}
 .tooltip{
    background-color: #11111b;
 }
@@ -711,12 +719,20 @@ macchiato_base: #24273a;
  }
  /****************************** Quote of the day ********************************/
 
+ .qotd_fullview_outline{
+   background-color: #45475a;
+   
+   border-radius: 10px;
+   padding: 10px;
+  
+  /* margin-right: 7px;*/
+ }
  .quote_of_the_day_main_box{
    background-color:  #1e1e2e;
    min-width: 250px;
    min-height: 90px;
    border-radius: 10px;
-   margin-top: 10px;
+   /*margin-top: 10px;*/
 
  }
 

@@ -8,7 +8,9 @@ import { power_widget } from './power_menu.js';
 import { applauncher_box } from './applauncher.js';
 import { GPT_box } from './sGPT.js';
 import { Volume_Shortcut_Indicator } from './VolumeShortcut.js';
+//import {quote_of_the_day_fullview} from './quote_of_the_day.js';
 import { get_main_monitor } from "./Select_main_monitor.js";
+import { quote_of_the_day_fullview } from "./quote_of_the_day.js";
 
 const GLib = imports.gi.GLib;
 
@@ -39,7 +41,32 @@ function widget_box(monitor = 0){
 
     })  //Widget.Label({ label: date.bind() })
 })}
+function make_tinted_background(monitor = 0){
+    return Widget.Window({
+        monitor,
+        visible: false,
+        name: "tinted_background" ,
+        keymode: 'on-demand',
+        layer: 'top',
+        child: Widget.Box({
+            className: 'tinted_background',
+        
+        
+        hpack: 'center',
+        vpack: 'center',
 
+        }),
+
+        setup: self => self.keybind("Escape", () => {
+            print("REVEALER")
+            App.closeWindow("tinted_background")
+            App.closeWindow("quote_of_the_day")
+            power_widget.revealChild = false;
+
+            
+        }),
+    })
+}
 function power_box(monitor = 0){
     return Widget.Window({
         monitor,
@@ -95,7 +122,9 @@ print("MAIN MONITOR: 88888888888888888888888888888888888888888" + monitor)
 App.config({ windows:[GPT_box(monitor)]})
 App.config({windows: [applauncher_box(monitor)],})
 App.config({windows: [Volume_Shortcut_Indicator(monitor)]})
-
+App.config({windows: [quote_of_the_day_fullview(monitor)]})
+App.config({windows: [make_tinted_background(monitor)]})
+App.config({windows: [power_box(monitor)]})
 App.config({windows: [widget_box(monitor)]})
 
 

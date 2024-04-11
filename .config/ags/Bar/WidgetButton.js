@@ -127,8 +127,16 @@ export const WidgetButton = () => Widget.Box({
         className: 'power_button',
         child: Widget.Icon({icon: 'power-red', size: 20}),
         onClicked: () => {
-            get_uptime(),
-           power_widget.revealChild = !power_widget.revealChild
+            
+            if (power_widget.revealChild) {
+                power_widget.revealChild = false;
+                App.closeWindow('tinted_background');
+            } else {
+                get_uptime()
+                App.openWindow('tinted_background');
+                power_widget.revealChild = true;
+            }
+           //power_widget.revealChild = !power_widget.revealChild
         }
     })]
 })

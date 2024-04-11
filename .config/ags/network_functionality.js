@@ -163,47 +163,50 @@ function get_access_points(){
     var wifi_icon = ''
     var device_array = []
     //get the list of wifi devices
-    device_list = Utils.exec('nmcli dev wifi list')
-    var device_list_lines = device_list.split('\n')
+    
+    
     devices.value = [Widget.Label({css: 'color: black', label: 'loading...'})]
+    //device_list = Utils.exec('nmcli dev wifi list')
+    Utils.execAsync('nmcli dev wifi list').then(device_list => {
+        var device_list_lines = device_list.split('\n')
+        for (var i = 0; i < device_list_lines.length; i++){
+            if (i != 0 ){
+                var device_info = device_list_lines[i].split(/\s+/)
+                if (device_info[2] != '--'){
+                    if (parseInt(device_info[7]) < 25)
+                        wifi_icon = '󰤟'
+                    else if (parseInt(device_info[7]) < 50)
+                        wifi_icon = '󰤢'
+                    else if (parseInt(device_info[7]) < 75)
+                        wifi_icon = '󰤥'
+                    else
+                        wifi_icon = '󰤨'
 
-    for (var i = 0; i < device_list_lines.length; i++){
-        if (i != 0 ){
-            var device_info = device_list_lines[i].split(/\s+/)
-            if (device_info[2] != '--'){
-                if (parseInt(device_info[7]) < 25)
-                    wifi_icon = '󰤟'
-                else if (parseInt(device_info[7]) < 50)
-                    wifi_icon = '󰤢'
-                else if (parseInt(device_info[7]) < 75)
-                    wifi_icon = '󰤥'
-                else
-                    wifi_icon = '󰤨'
+                        //For each device make a box with the all the device info and functionallity
+                        //the Star here means that it us currently connected
+                    if (device_info[0] == '*'){
+                        var connected_device = make_device_box('wifi_connected','Disconnect',device_info[2],wifi_icon,device_info[9])
+                    }else{
+                        //else the device is not connected and we want to show a button that says connect
 
-                    //For each device make a box with the all the device info and functionallity
-                    //the Star here means that it us currently connected
-                if (device_info[0] == '*'){
-                    var connected_device = make_device_box('wifi_connected','Disconnect',device_info[2],wifi_icon,device_info[9])
-                }else{
-                    //else the device is not connected and we want to show a button that says connect
+                        var connected_device = make_device_box('wifi_not_connected','Connect',device_info[2],wifi_icon,device_info[9])
+                        print(Widget.Label({css: 'color: black', label: device_info[0]}))
+                    }
 
-                    var connected_device = make_device_box('wifi_not_connected','Connect',device_info[2],wifi_icon,device_info[9])
-                    print(Widget.Label({css: 'color: black', label: device_info[0]}))
+                    device_array.push(connected_device) //adding a device to the array so that it can show up in the box
+    
                 }
 
-                device_array.push(connected_device) //adding a device to the array so that it can show up in the box
- 
+
             }
-
-
         }
-    }
-    //for some reason I have to use a timeout to get the value to update so we wait 100ms
-    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
-        
-        devices.value = device_array
+        //for some reason I have to use a timeout to get the value to update so we wait 100ms
+        //GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
+            
+            devices.value = device_array
 
-    });
+    // });
+    }).catch(val => { devices.value = [Widget.Label({css: 'color: black', label: 'No devices detected'})]})
   
 
 }
