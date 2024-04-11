@@ -76,7 +76,26 @@ const AppItem = app => Widget.Button({
     }),
 })
 
+function reduce_gpt_response(str, maxWidthChars){
+    let lines = [];
 
+    while (str.length > 30) {
+        let subStr = str.substring(0, 30);
+        let lastSpace = subStr.lastIndexOf(" ");
+        lines.push(str.substring(0, lastSpace));
+        str = str.substring(lastSpace + 1);
+    }
+
+    // Add the remaining string to the lines if it's less than 30 characters
+    if (str.length > 0) {
+        lines.push(str);
+    }
+
+    // Join the lines into a single string with newlines between them
+    let result = lines.join('\n');
+    return result;
+
+}
 
 const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
@@ -101,7 +120,9 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
             //const query = query_box(res)gpt
             //chat_blocks.value = chat_blocks.value.concat(query)
-            response.children[1].label = res
+
+            //response.children[1].maxWidthChars = 25
+            response.children[1].label = res //reduce_gpt_response(res, 25)
         
             
             //chat_blocks.value = res.split("\n")
@@ -150,13 +171,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
     // list of application buttons
     let applications = query("").map(AppItem)
 
-    // container holding the buttons
-    const list  = Widget.Box({
-        
-        vertical: true,
-        children: applications,
-        spacing,
-    })
+
 
     const query_box = (text) => {
         return Widget.Box({
@@ -169,10 +184,12 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
                 
                 Widget.Label({
                 wrap: true,
+                useMarkup: true,
                 maxWidthChars: 50,
                 label: text,
                 xalign: 0,
                 vpack: "center",
+                hpack: "start",
                 //truncate: "end",
             })]
         })
@@ -181,6 +198,8 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
     const response_box = (text) => {
         return Widget.Box({
+            hexpand: false,
+            vexpand: false,
             className: "gpt_response",
             children: [Widget.Icon({
                 className: "chat_icon",
@@ -193,6 +212,9 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
                     maxWidthChars: 50,
                     label: text,
                     xalign: 0,
+                    hexpand: false,
+                    vexpand: false,
+                    hpack: "start",
                     vpack: "center",
                     //truncate: "end",
                 }),
@@ -202,10 +224,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
     }
 
     // repopulate the box, so the most frequent apps are on top of the list
-    function repopulate() {
-        applications = query("").map(AppItem)
-        list.children = applications
-    }
+  
 
     const Ai_label = Widget.Box({
         hpack: "center",
