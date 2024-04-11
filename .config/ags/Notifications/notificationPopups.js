@@ -24,9 +24,9 @@ export default function Notification(notification) {
       print(notification.Icon)
       return `background-image: url("${notification.image}")`
     }else if(notification.urgency == "critical"){
-      return `background-image: url("${App.configDir + '/assets/frappe-red-important-notification.svg'}")`
+      return `background-repeat: no-repeat; background-image: url("${App.configDir + '/assets/frappe-red-important-notification.svg'}")`
     }else{
-      return `background-image: url("${App.configDir + '/assets/Frappe-Sky-notification.svg'}")`
+      return `background-repeat: no-repeat; background-image: url("${App.configDir + '/assets/Frappe-Sky-notification.svg'}")`
     }
   }
 

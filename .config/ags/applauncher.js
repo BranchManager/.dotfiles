@@ -4,7 +4,7 @@ const { query } = await Service.import("applications")
 const WINDOW_NAME = "applauncher"
 
 const rev = Variable(false)
-const keymode = Variable("on-demand")
+const keymode = Variable("exclusive")
 //thus function gets called in the shell like: ags -r "on_close_launcher(true)" but handles the open and close of lthe launcher
 globalThis.on_close_launcher = (open) => {
     console.log("global var")
@@ -95,7 +95,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
                 hexpand: true,
                // css: `margin-bottom: ${spacing}px;`,
                className: "launcher_input",
-
+                
                 // to launch the first item on Enter
                 on_accept: () => {
                     // make sure we only consider visible (searched for) applications
