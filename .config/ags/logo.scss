@@ -302,15 +302,15 @@ macchiato_base: #24273a;
    border-radius: 5px; /*0px 0px 10px 10px; */
    /*min-height: 200px;*/
    min-width: 100px;
-   margin: 0px 5px 5px 5px;
+   margin: 5px 5px 5px 5px;
 }
 
 .bluetooth_devices_box_outliner{
    background-color: #949cbb;
    margin: 0px 5px 5px 5px;
-   padding-bottom: 5px;
-   border-bottom-right-radius: 5px;
-   border-bottom-left-radius: 5px;
+   
+   border-bottom-right-radius: 10px;
+   border-bottom-left-radius: 10px;
 }
 
 
@@ -765,6 +765,7 @@ macchiato_base: #24273a;
    min-width: 250px;
    min-height: 90px;
    border-radius: 10px;
+   margin-left: 2px;
    /*margin-top: 10px;*/
 
  }

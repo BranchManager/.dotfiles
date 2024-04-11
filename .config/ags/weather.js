@@ -21,8 +21,8 @@ export function get_weather(){
         forcast_icon.value = forcast[6]; 
         location.value = forcast[7]
 
-        var ss = forcast[4]
-        var sr = forcast[5]
+        var sr = forcast[4]
+        var ss = forcast[5]
 
         if (ss.charAt(0) === '0') { //remove leading 0
             ss = ss.slice(1);
