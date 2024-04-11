@@ -299,10 +299,18 @@ macchiato_base: #24273a;
 
    /*This is so that the Devices header box is flush with this one
    and the border radius is not rounded on the top  */
-   border-radius: 0px 0px 10px 10px; 
+   border-radius: 5px; /*0px 0px 10px 10px; */
    /*min-height: 200px;*/
-   min-width: 200px;
+   min-width: 100px;
    margin: 0px 5px 5px 5px;
+}
+
+.bluetooth_devices_box_outliner{
+   background-color: #949cbb;
+   margin: 0px 5px 5px 5px;
+   padding-bottom: 5px;
+   border-bottom-right-radius: 5px;
+   border-bottom-left-radius: 5px;
 }
 
 
@@ -317,7 +325,7 @@ macchiato_base: #24273a;
    background-color: #949cbb;
    border-radius: 10px 10px 0px 0px;
    color:#4c4f69;
-   min-width: 200px;
+   min-width: 100px;
    margin: 5px 5px 0px 5px;
    
   
@@ -338,6 +346,9 @@ macchiato_base: #24273a;
    border-radius: 50px;
    /*box-shadow: 5px 1px 7px rgba(30, 102, 245, 0.9), 1px 7px 7px rgba(30, 102, 245, 0.8);*/
    margin: 5px;
+   
+   padding-left:5px;
+   padding-right:5px;
 }
 
 .bluetooth_device_connected_true{
@@ -347,13 +358,35 @@ macchiato_base: #24273a;
    border-radius: 50px;
    /*box-shadow: 5px 1px 7px rgba(30, 102, 245, 0.9), 1px 7px 7px rgba(30, 102, 245, 0.8);*/
    margin: 5px;
+   padding-left:5px;
+   padding-right:5px;
 }
+
+.bluetooth_device_connected_false:hover{
+   box-shadow: 1px 1px 3px rgba(30, 102, 245, 0.9), 1px 1px 3px rgba(30, 102, 245, 0.8);
+  
+}
+.bluetooth_device_connected_true:hover{
+   box-shadow: 1px 1px 3px rgba(30, 102, 245, 0.9), 1px 1px 3px rgba(30, 102, 245, 0.8);
+  
+}
+
+.bluetooth_device_connected_false:active{
+   box-shadow: 0px 0px 0px rgba(30, 102, 245, 0.9), 0px 0px 0px rgba(30, 102, 245, 0.8);
+  
+}
+.bluetooth_device_connected_true:active{
+   box-shadow: 0px 0px 0px rgba(30, 102, 245, 0.9), 0px 0px 0px rgba(30, 102, 245, 0.8);
+  
+}
+
+
 .device_background_1{
    background-color: #24273a;
    /*margin: 0px 0px 5px 0px;*/
 }
 .device_label_len{
-   min-width: 332px;
+   min-width: 1px;
 }
 .device_is_bottom{
    border-radius: 0px 0px 10px 0px;

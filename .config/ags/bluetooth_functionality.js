@@ -89,58 +89,68 @@ export var bluetooth_revealer =
         vertical: true,
         children: [Widget.Box({
            
-           hpack: 'end',
-            vertical: false,
-            child: Widget.Switch({
-                active: check_blue()[1],
-                className: 'bluetooth_toggle_slider',
-                onActivate: () =>{bluetooth.toggle()},
-            })
+            hpack: 'end',
+                vertical: false,
+                child: Widget.Switch({
+                    active: check_blue()[1],
+                    className: 'bluetooth_toggle_slider',
+                    onActivate: () =>{bluetooth.toggle()},
+                })
 
-        }),
-        Widget.Box({
-            vertical: true,
-           child: box_header,
+            }),
+            Widget.Box({
+                vertical: true,
+            child: box_header,
 
-        }),
-        Widget.Box({
-            vertical: true,
-         
-            className: 'bluetooth_devices_box',
-
-            //This setup will loop through all the devices that have been paired and display them
-            setup: self => self.hook(bluetooth, self => {
-
-                //item is the index of the device in the list
-                self.children = bluetooth.devices.map(({ icon_name, name,connected },item) => Widget.Box([
-
-                    //The icon ofr one of the devices (To be honest I do not know whwere the icon is coming from) I got this some of 
-                    //this setup code from the ags wiki
-                    Widget.Icon({classNames:[ 'device_background_'+String(item%2),'device_icon_is_'+(item+1 == 
-                        bluetooth.devices.length ? 'bottom': 'top')], icon: icon_name + '-symbolic'}),
+            }),
+            Widget.Box({
+                    className: 'bluetooth_devices_box_outliner',
+                    child: Widget.Box({
+                        hexpand: true,
+                        
+                        vertical: true,
                     
-                    
-                    Widget.Box({
-                        tooltipText: 'click to connect',
-            
-                        vertical: false,
-                       hpack: 'end',
-                       className: 'device_background_'+String(item%2), //every other device will have a different background color
-                       
-                        child: Widget.Button({
-                            hpack: 'end',
-                            className: 'bluetooth_device_connected_'+String(connected),
-                            onClicked: () => connect_to_device(bluetooth.devices[item]),
+                        className: 'bluetooth_devices_box',
+
+                        //This setup will loop through all the devices that have been paired and display them
+                        setup: self => self.hook(bluetooth, self => {
+
+                            //item is the index of the device in the list
+                            self.children = bluetooth.devices.map(({ icon_name, name,connected },item) => Widget.Box([
+
+                                //The icon ofr one of the devices (To be honest I do not know whwere the icon is coming from) I got this some of 
+                                //this setup code from the ags wiki
+                                Widget.Icon({//classNames:[ 'device_background_'+String(item%2),'device_icon_is_'+(item+1 == bluetooth.devices.length ? 'bottom': 'top')],
+                                icon: icon_name + '-symbolic'}),
+                                
+                                
+                                Widget.Box({
+                                    tooltipText: 'click to connect',
+                        
+                                    vertical: false,
+                                hpack: 'Center',
+                                //className: 'device_background_'+String(item%2), //every other device will have a different background color
+                                
+                                    child: Widget.Button({
+                                        hpack: 'Center',
+                                        className: 'bluetooth_device_connected_'+String(connected),
+                                        onClicked: () => connect_to_device(bluetooth.devices[item]),
+                                        child: Widget.Label({label: connected ? 'Disconnect': 'Connect to device'})
+                                    })
+                                }),
+                                //This is just the name of lthe device
+                                //Depending on if the device is the last one in the list we will add rounded corners to the bottom
+                                Widget.Label({xalign: 0,
+                                    maxWidthChars: 24 , 
+                                    //classNames: ['device_background_'+String(item%2),'device_label_len','device_is_'+(item+1 == bluetooth.devices.length ? 'bottom': 'top')],
+                                    label: name
+                                }),
+                            
+                            ]))
                         })
                     }),
-                    //This is just the name of lthe device
-                    //Depending on if the device is the last one in the list we will add rounded corners to the bottom
-                    Widget.Label({xalign: 0, maxWidthChars: 24 , classNames: ['device_background_'+String(item%2),'device_label_len','device_is_'+(item+1 == 
-                        bluetooth.devices.length ? 'bottom': 'top')],label: name}),
-                   
-               ]))
-           })
-        }),]
+            })        
+        ]
         
     })
         
