@@ -10,15 +10,15 @@ const keymode = Variable("on-demand")
 const chat_blocks = Variable([])
 
 //thus function gets called in the shell like: ags -r "open_close_gpt(true)" but handles the open and close of lthe launcher
-globalThis.open_close_gpt = (open,monitor) => {
+globalThis.open_close_gpt = (open) => {
     console.log("global var")
    
 
     if(open){
         keymode.value = "exclusive"
-        App.openWindow("GPT"+ monitor.toString()),
+        App.openWindow("GPT"),
         print("OPENING GPT ON MONITOR")
-        print(monitor)
+        
         reveal.value = true
         Utils.timeout(200, () =>{
             reveal.value = true
@@ -397,7 +397,7 @@ export const gpt_revealer = Widget.Revealer({
 
 export function GPT_box(monitor = 0){
     //const widget_box = (monitor = 2) => 
-        const monitor_name = "GPT"+ monitor.toString()
+        const monitor_name = "GPT"
         print("MONITOR NAME") 
         print("monitorsin Range^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: " + monitor_name)
 

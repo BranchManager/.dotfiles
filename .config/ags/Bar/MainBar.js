@@ -72,7 +72,7 @@ function ai_button(monitor){
             print(App.windowName)
             on_close_launcher(false)
             //Utils.timeout(100, () =>{
-                open_close_gpt(true,monitor)
+                open_close_gpt(true)
            //})
         }
 
