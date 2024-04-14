@@ -37,7 +37,7 @@ function widget_box(monitor = 0){
         css: `background-color: rgba(0,0,0,0); padding: 0.1px;`,
       
         //chang the below to a function and change the variable to a functin to have it appear on multiple monitors
-        child: main_widget(monitor),
+        child: main_widget,//(monitor),
 
     })  //Widget.Label({ label: date.bind() })
 })}

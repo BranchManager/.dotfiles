@@ -92,7 +92,7 @@ const profile_and_sysmonitors = () => Widget.Box({
     children: [Profile_box(), system_monitors()],
 })
 
-const quicksettings_main_box = (monitor) => Widget.Box({
+const quicksettings_main_box = () => Widget.Box({
     vertical: true,
     
     className: 'quicksettings_main_box',
@@ -103,7 +103,7 @@ const quicksettings_main_box = (monitor) => Widget.Box({
             children: [bluetooth_button(), NetworkIndicator(), bluelightfilter_button(), Notification_button(), Audio_button()],
         }),
         /*revealer*/ //TODO : remove bluetooth_box it is for testing
-        main_volume_and_mic_sliders(),bluetooth_revealer(),network_revealer(monitor),notification_revealer(),audio_revealer(),
+        main_volume_and_mic_sliders(),bluetooth_revealer(),network_revealer(),notification_revealer(),audio_revealer(),
         
     ],
    //children: [],
@@ -190,8 +190,8 @@ function pick_monitor(monitor){
 }
 
 //cannot be a function cause Ineed reference to the revealer
-export const main_widget = (monitor) => Widget.Revealer({
-    revealChild: widgetrev.bind(),//pick_monitor(monitor).bind(),//false,
+export const main_widget = Widget.Revealer({
+    revealChild: false, //widgetrev.bind(),//pick_monitor(monitor).bind(),//false,
     transition: 'slide_left',
     name: 'revealed_box',
     transitionDuration: 200,
@@ -201,7 +201,7 @@ export const main_widget = (monitor) => Widget.Revealer({
         
         vertical: true,
         className: 'main_background',
-        children: [profile_and_sysmonitors(),drive_monitor(),quicksettings_main_box(monitor),bottom_revealer()],
+        children: [profile_and_sysmonitors(),drive_monitor(),quicksettings_main_box(),bottom_revealer()],
     })
 
 })

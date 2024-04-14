@@ -70,7 +70,7 @@ function ai_button(monitor){
         self.onClicked = () => {
             print("THE NAME OF THE WINDOW")
             print(App.windowName)
-            on_close_launcher(false)
+            on_close_launcher(false,monitor)
             //Utils.timeout(100, () =>{
                 open_close_gpt(true,monitor)
            //})

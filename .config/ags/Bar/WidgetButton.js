@@ -100,18 +100,18 @@ export const WidgetButton = (monitor) => Widget.Box({
         onPrimaryClick:  () => {
 
             // console.log('Button clicked');
-            reveal_widets(monitor)
-            // if (main_widget.revealChild) {
-            //     main_widget.revealChild = false;
-            //     console.log('revealChild set to false');
-            //     console.log(main_widget.revealChild)
-            // } else {
-            //     main_widget.revealChild = true; //This will reveal the main_widget
-            //     get_weather();
-            //     get_quote_of_the_day()
-            //     console.log('revealChild set to true');
-            //     console.log(main_widget.revealChild)
-            // }
+            //reveal_widets(monitor)
+            if (main_widget.revealChild) {
+                main_widget.revealChild = false;
+                console.log('revealChild set to false');
+                console.log(main_widget.revealChild)
+            } else {
+                main_widget.revealChild = true; //This will reveal the main_widget
+                get_weather();
+                get_quote_of_the_day()
+                console.log('revealChild set to true');
+                console.log(main_widget.revealChild)
+            }
         },
         child:Widget.Box({
             vertical: false,

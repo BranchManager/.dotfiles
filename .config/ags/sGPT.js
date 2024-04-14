@@ -18,52 +18,37 @@ const chat_blocks = Variable([])
 globalThis.open_close_gpt = (open,monitor) => {
     console.log("global var")
    
-    function close_gpt(revealer){
+    function close_gpt(){
         //App.closeWindow("launcherr"+monitor.toString())
-        revealer.value = false
+        reveal.value = false
         Utils.timeout(200, () =>{
-            App.closeWindow("GPT"+monitor.toString())
-            print(revealer.value)
+            App.closeWindow("GPT")
+            //print(revealer.value)
         })
 
     }
 
-    function timeout_and_reveal(revealer){
+    function timeout_and_reveal(){
         on_close_launcher(false,monitor)
         Utils.timeout(200, () =>{
-            revealer.value = true
-            print(revealer.value)
+            reveal.value = true
+            print(reveal.value)
 
         })
     }
 
     if(!open){
-        close_gpt(gptrev0)
-        close_gpt(gptrev1)
-        close_gpt(gptrev2)
-        close_gpt(gptrev3)
-        close_gpt(gptrev4)
+        close_gpt()
+       
        // on_close_launcher(false,monitor)
     }else if(open){
         keymode.value = "exclusive"
-        App.openWindow("GPT"+monitor.toString())
+        App.openWindow("GPT")
         //App.openWindow("launcherr2")
         //const launcher = App.getWindow("launcherr1")
        // launcher.child.child.
-       switch(monitor){
-            case 0:
-                timeout_and_reveal(gptrev0)
-                break;
-            case 1:
-                timeout_and_reveal(gptrev1)
-                break;
-            case 2:
-                timeout_and_reveal(gptrev2)
-                break;
-            case 3:
-                timeout_and_reveal(gptrev3)
-                break;
-       }
+       timeout_and_reveal()
+    
 
 
     }
@@ -438,7 +423,7 @@ function pick_monitor(monitor){
 
 
 export const gpt_revealer = (monitor) => Widget.Revealer({
-    revealChild: pick_monitor(monitor).bind(),
+    revealChild: reveal.bind(),//pick_monitor(monitor).bind(),
     transitionDuration: 100,
     transition: 'slide_right',
     child: Widget.Box({
@@ -456,9 +441,9 @@ export const gpt_revealer = (monitor) => Widget.Revealer({
 
 })
 
-export function GPT_box(monitor = 0){
+export function GPT_box(monitor){
     //const widget_box = (monitor = 2) => 
-        const monitor_name = "GPT"+monitor.toString()
+        const monitor_name = "GPT"
         print("MONITOR NAME") 
         print("monitorsin Range^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: " + monitor_name)
 
