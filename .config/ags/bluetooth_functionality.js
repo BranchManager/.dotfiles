@@ -10,6 +10,7 @@ const bluetooth_icon_off = 'frappe-crust-no-bluetooth'
 import { bottom_reveal_func, bottom_revealer } from "./Bar/MainWidget.js"
 
 var quicksettings_reveal = false;
+const btreveal = Variable(false)
 
 // this function check if bluetooth is enabled and returns the status used for the icon and the switch
 function check_blue(){
@@ -38,10 +39,11 @@ function check_blue(){
 export function bluetooth_reveal_func(is_other_app_calling_me){
 
     if (is_other_app_calling_me){
-        bluetooth_revealer.revealChild = false;
+        //bluetooth_revealer.revealChild = false;
+        btreveal.value = false;
         
     } else if (!is_other_app_calling_me){
-        bottom_revealer.revealChild = true;
+       // bottom_revealer.revealChild = true;
         network_reveal_func(true);
         notification_reveal_func(true);
         audio_reveal_func(true);
@@ -49,7 +51,8 @@ export function bluetooth_reveal_func(is_other_app_calling_me){
         console.log('reveal_func');
         //bottom_revealer.revealChild = true;
         bottom_reveal_func(true);
-        bluetooth_revealer.revealChild = !bluetooth_revealer.revealChild
+        //bluetooth_revealer.revealChild = !bluetooth_revealer.revealChild
+        btreveal.value = !btreveal.value
 
         // if (bluetooth_revealer.revealChild) {
         //     bluetooth_revealer.revealChild = false;
@@ -71,19 +74,19 @@ function connect_to_device(device){
 }
 
 // The devices label for the list of devices
-const header = Widget.Label({ xalign: 0, className: 'bluetooth_device_header', label: 'Devices',})
-const box_header = Widget.Box({
+const header = () => Widget.Label({ xalign: 0, className: 'bluetooth_device_header', label: 'Devices',})
+const box_header = () => Widget.Box({
     vertical: false,
     
     className: 'bluetooth_device_header',
-    child: header,
+    child: header(),
 })
 
 //This will reveal the header defined above and the list of devices
-export var bluetooth_revealer = 
+export var bluetooth_revealer = () => {
     
-    Widget.Revealer({
-    revealChild: false, 
+    return Widget.Revealer({
+    revealChild: btreveal.bind(),//false, 
     child: Widget.Box({
 
         vertical: true,
@@ -100,7 +103,7 @@ export var bluetooth_revealer =
             }),
             Widget.Box({
                 vertical: true,
-            child: box_header,
+            child: box_header(),
 
             }),
             Widget.Box({
@@ -128,11 +131,11 @@ export var bluetooth_revealer =
                                     tooltipText: 'click to connect',
                         
                                     vertical: false,
-                                hpack: 'Center',
+                                hpack: 'center',
                                 //className: 'device_background_'+String(item%2), //every other device will have a different background color
                                 
                                     child: Widget.Button({
-                                        hpack: 'Center',
+                                       hpack: 'center',
                                         className: 'bluetooth_device_connected_'+String(connected),
                                         onClicked: () => connect_to_device(bluetooth.devices[item]),
                                         child: Widget.Label({label: connected ? 'Disconnect': 'Connect to device'})
@@ -155,6 +158,7 @@ export var bluetooth_revealer =
     })
         
 })
+}
 
 // This is the main bluetooth button that reveal all the devices and the switch
 export const bluetooth_button = () => Widget.Button({

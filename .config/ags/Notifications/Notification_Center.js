@@ -5,10 +5,12 @@ import {bluetooth_reveal_func } from "../bluetooth_functionality.js";
 import {  audio_reveal_func } from "../audio.js";
 import { bottom_revealer, bottom_reveal_func } from "../Bar/MainWidget.js";
 
+const notifreaveal = Variable(false)
+
 export function notification_reveal_func(is_other_app_calling_mell){
 
     if (is_other_app_calling_mell){
-        notification_revealer.revealChild = false;
+        notifreaveal.value = false;
         //bottom_revelaer.revealChild = true;
         bottom_reveal_func(true);
 
@@ -26,10 +28,10 @@ export function notification_reveal_func(is_other_app_calling_mell){
 
         //quicksettings_reveal = false;
         console.log('reveal_func');
-        reveal = !notification_revealer.revealChild
+        reveal = !notifreaveal.value
         console.log(reveal)
         bottom_reveal_func(!reveal)
-        notification_revealer.revealChild = reveal
+        notifreaveal.value = reveal
         
     }
 }
@@ -61,8 +63,8 @@ function NoNotification() {
     })
   }
 
-export const notification_revealer = Widget.Revealer({
-    revealChild: false, 
+export const notification_revealer = () => Widget.Revealer({
+    revealChild: notifreaveal.bind(),//false, 
     child: Widget.Box({
         //hpack: 'end',
         vertical: true,

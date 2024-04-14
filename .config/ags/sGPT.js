@@ -6,38 +6,97 @@ let homeDirectory = GLib.get_home_dir();
 const WINDOW_NAME = "applauncher"
 
 const reveal = Variable(false)
+const gptrev0 = Variable(false)
+const gptrev1 = Variable(false)
+const gptrev2 = Variable(false)
+const gptrev3 = Variable(false)
+const gptrev4 = Variable(false)
 const keymode = Variable("on-demand")
 const chat_blocks = Variable([])
 
 //thus function gets called in the shell like: ags -r "open_close_gpt(true)" but handles the open and close of lthe launcher
-globalThis.open_close_gpt = (open) => {
+globalThis.open_close_gpt = (open,monitor) => {
     console.log("global var")
    
-
-    if(open){
-        keymode.value = "exclusive"
-        App.openWindow("GPT"),
-        print("OPENING GPT ON MONITOR")
-        
-        reveal.value = true
+    function close_gpt(revealer){
+        //App.closeWindow("launcherr"+monitor.toString())
+        revealer.value = false
         Utils.timeout(200, () =>{
-            reveal.value = true
-            print(reveal.value)
-            print("OPENING GPT")
+            App.closeWindow("GPT"+monitor.toString())
+            print(revealer.value)
+        })
 
-        })
-        
-    }else{
-        
-        reveal.value = false
-        Utils.timeout(200, () =>{
-            App.closeWindow("GPT0")
-            App.closeWindow("GPT1")
-            App.closeWindow("GPT2")
-        })
-        print(reveal.value)
     }
+
+    function timeout_and_reveal(revealer){
+        on_close_launcher(false,monitor)
+        Utils.timeout(200, () =>{
+            revealer.value = true
+            print(revealer.value)
+
+        })
+    }
+
+    if(!open){
+        close_gpt(gptrev0)
+        close_gpt(gptrev1)
+        close_gpt(gptrev2)
+        close_gpt(gptrev3)
+        close_gpt(gptrev4)
+       // on_close_launcher(false,monitor)
+    }else if(open){
+        keymode.value = "exclusive"
+        App.openWindow("GPT"+monitor.toString())
+        //App.openWindow("launcherr2")
+        //const launcher = App.getWindow("launcherr1")
+       // launcher.child.child.
+       switch(monitor){
+            case 0:
+                timeout_and_reveal(gptrev0)
+                break;
+            case 1:
+                timeout_and_reveal(gptrev1)
+                break;
+            case 2:
+                timeout_and_reveal(gptrev2)
+                break;
+            case 3:
+                timeout_and_reveal(gptrev3)
+                break;
+       }
+
+
+    }
+ 
 }
+// globalThis.open_close_gpt = (open) => {
+//     console.log("global var")
+   
+
+//     if(open){
+//         keymode.value = "exclusive"
+//         App.openWindow("GPT"),
+//         print("OPENING GPT ON MONITOR")
+        
+//         reveal.value = true
+//         Utils.timeout(200, () =>{
+//             reveal.value = true
+//             print(reveal.value)
+//             print("OPENING GPT")
+
+//         })
+        
+//     }else{
+        
+//         reveal.value = false
+//         Utils.timeout(200, () =>{
+//             App.closeWindow("GPT0")
+//             App.closeWindow("GPT1")
+//             App.closeWindow("GPT2")
+//         })
+//         print(reveal.value)
+//     }
+// }
 
 
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
@@ -76,28 +135,9 @@ const AppItem = app => Widget.Button({
     }),
 })
 
-function reduce_gpt_response(str, maxWidthChars){
-    let lines = [];
 
-    while (str.length > 30) {
-        let subStr = str.substring(0, 30);
-        let lastSpace = subStr.lastIndexOf(" ");
-        lines.push(str.substring(0, lastSpace));
-        str = str.substring(lastSpace + 1);
-    }
 
-    // Add the remaining string to the lines if it's less than 30 characters
-    if (str.length > 0) {
-        lines.push(str);
-    }
-
-    // Join the lines into a single string with newlines between them
-    let result = lines.join('\n');
-    return result;
-
-}
-
-const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
+const Applauncher = ({ width = 500, height = 500, spacing = 12, monitor = 0 }) => {
 
 
     function run_gpt(text){
@@ -127,7 +167,12 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
             
             //chat_blocks.value = res.split("\n")
         })
-        .catch((err) => {console.log("ERRRRRRRRR");console.log(err)})
+        .catch((err) => {
+            console.log("ERRRRRRRRR");
+            console.log(err)
+            response.children[1].label = err
+        
+        })
     
     }
 
@@ -323,7 +368,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
         className: "ai_close_button",
         
         on_clicked: () => {
-            open_close_gpt(false)
+            open_close_gpt(false,monitor)
             // const convo = chat_blocks.value.map(item => item.children[1].label).join("\n")
             // Utils.execAsync([`${App.configDir}/scripts/save_convo.sh`, `${convo}`])
             // .then((res) => {console.log(res)})
@@ -375,10 +420,25 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 }
 
 // there needs to be only one instance
+function pick_monitor(monitor){
+
+    switch(monitor){
+        case 0:
+            return gptrev0
+        case 1:
+            return gptrev1
+        case 2:
+            return gptrev2
+        case 3:
+            return gptrev3
+        case 4:
+            return gptrev4
+    }
+}
 
 
-export const gpt_revealer = Widget.Revealer({
-    revealChild: reveal.bind(),
+export const gpt_revealer = (monitor) => Widget.Revealer({
+    revealChild: pick_monitor(monitor).bind(),
     transitionDuration: 100,
     transition: 'slide_right',
     child: Widget.Box({
@@ -389,6 +449,7 @@ export const gpt_revealer = Widget.Revealer({
             width: 400,
             height: 500,
             spacing: 12,
+            monitor: monitor
         }),
         //children: [search_header(),AppsList()]
     })
@@ -397,7 +458,7 @@ export const gpt_revealer = Widget.Revealer({
 
 export function GPT_box(monitor = 0){
     //const widget_box = (monitor = 2) => 
-        const monitor_name = "GPT"
+        const monitor_name = "GPT"+monitor.toString()
         print("MONITOR NAME") 
         print("monitorsin Range^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: " + monitor_name)
 
@@ -420,7 +481,7 @@ export function GPT_box(monitor = 0){
             css: `background-color: rgba(0,0,0,0); padding: 0.1px;`,
           
             //chang the below to a function and change the variable to a functin to have it appear on multiple monitors
-            child: gpt_revealer,
+            child: gpt_revealer(monitor),
     
         }) , //Widget.Label({ label: date.bind() })
         setup: self => self.keybind("Escape", () => {
@@ -430,7 +491,7 @@ export function GPT_box(monitor = 0){
             //gpt_revealer.revealChild = false;
             //self.keymode = 'none'
            
-            open_close_gpt(false)
+            open_close_gpt(false,monitor)
            
            
         })

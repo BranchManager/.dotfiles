@@ -10,7 +10,7 @@ App.applyCss(`${App.configDir}/Bar/bar.css`)
 
 const GLib = imports.gi.GLib;
 
-const endWidget = () =>Widget.Box({
+const endWidget = (monitor) =>Widget.Box({
     vertical: false,
     hpack: 'end',
     children: [sysTray(),
@@ -19,7 +19,7 @@ const endWidget = () =>Widget.Box({
             orientation: 1,
            
         }),
-        WidgetButton()]
+        WidgetButton(monitor)]
 })
 
 
@@ -27,7 +27,7 @@ const endWidget = () =>Widget.Box({
 const main_icon_and_workspaces = (monitor = 0) => Widget.Box({
     vertical: false,
     spacing: 5,
-    children: [ai_button(monitor),fedora_button(), create_workspace_indicator(monitor)]
+    children: [ai_button(monitor),fedora_button(monitor), create_workspace_indicator(monitor)]
 
 })
 
@@ -40,7 +40,7 @@ export function create_my_bar(monitor = 0){
         
         startWidget: main_icon_and_workspaces(monitor),//create_workspace_indicator(monitor),
         centerWidget: new_date(), //Widget.Label({ label: count.toString()}),
-        endWidget: endWidget()//sysTray(),//fedora_button(),
+        endWidget: endWidget(monitor)//sysTray(),//fedora_button(),
         //endWidget: NetworkIndicator(),
         
 
@@ -72,7 +72,7 @@ function ai_button(monitor){
             print(App.windowName)
             on_close_launcher(false)
             //Utils.timeout(100, () =>{
-                open_close_gpt(true)
+                open_close_gpt(true,monitor)
            //})
         }
 
@@ -80,7 +80,7 @@ function ai_button(monitor){
 }
 
 
-function fedora_button(){
+function fedora_button(monitor){
     return Widget.Button({
         className: 'fedora_button',
         child: fedora_icon(),
@@ -91,8 +91,8 @@ function fedora_button(){
         self.onClicked = () => {
             print("THE NAME OF THE WINDOW")
             print(windowName)
-            open_close_gpt(false)
-            on_close_launcher(true)
+            open_close_gpt(false,monitor)
+            on_close_launcher(true,monitor)
             
         }
 

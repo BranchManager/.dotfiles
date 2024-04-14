@@ -3,7 +3,7 @@
 const network = await Service.import('network')
 const audio = await Service.import('audio')
 const NotificationService = await Service.import('notifications')
-import { main_widget } from './MainWidget.js';
+import { main_widget, reveal_widets} from './MainWidget.js';
 import { get_weather} from '../weather.js'
 import { get_quote_of_the_day } from '../quote_of_the_day.js';
 import { power_widget, get_uptime } from '../power_menu.js';
@@ -92,24 +92,26 @@ function NetworkIndicator() {
 
 
 
-export const WidgetButton = () => Widget.Box({
+export const WidgetButton = (monitor) => Widget.Box({
     vertical: false,
     spacing: 5,
     children: [Widget.Button({
         className: 'Widget_button_box',
         onPrimaryClick:  () => {
-            console.log('Button clicked');
-            if (main_widget.revealChild) {
-                main_widget.revealChild = false;
-                console.log('revealChild set to false');
-                console.log(main_widget.revealChild)
-            } else {
-                main_widget.revealChild = true; //This will reveal the main_widget
-                get_weather();
-                get_quote_of_the_day()
-                console.log('revealChild set to true');
-                console.log(main_widget.revealChild)
-            }
+
+            // console.log('Button clicked');
+            reveal_widets(monitor)
+            // if (main_widget.revealChild) {
+            //     main_widget.revealChild = false;
+            //     console.log('revealChild set to false');
+            //     console.log(main_widget.revealChild)
+            // } else {
+            //     main_widget.revealChild = true; //This will reveal the main_widget
+            //     get_weather();
+            //     get_quote_of_the_day()
+            //     console.log('revealChild set to true');
+            //     console.log(main_widget.revealChild)
+            // }
         },
         child:Widget.Box({
             vertical: false,

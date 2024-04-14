@@ -42,7 +42,7 @@ export function get_weather(){
     return temp
 }
 
-const sunrise_box = Widget.Box({
+const sunrise_box = () => Widget.Box({
     vertical: true,
     hpack: 'start',
     hexpand: true,
@@ -60,7 +60,7 @@ const sunrise_box = Widget.Box({
 
 })
 
-const sunset_box = Widget.Box({
+const sunset_box = () => Widget.Box({
     vertical: true,
     hpack: 'end',
     hexpand: true,
@@ -119,8 +119,8 @@ export const weather = () => Widget.Box({
         hexpand: true,
         vertical: false,
         children:[
-            sunrise_box,
-            sunset_box
+            sunrise_box(),
+            sunset_box()
 
         ]
 

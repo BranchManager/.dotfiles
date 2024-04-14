@@ -12,7 +12,7 @@ const lock  = () => Widget.Button({
         //yes button for lock
          yes_no_revealer.child.children[1].children[0].onClicked = () => {power_widget.revealChild = false; Utils.exec('hyprlock')} 
         //no button for lock
-        yes_no_revealer.child.children[1].children[1].onClicked = () => { power_widget.revealChild = false;}
+        yes_no_revealer.child.children[1].children[1].onClicked = () => { App.closeWindow("tinted_background"); power_widget.revealChild = false;}
        
    }
 })
@@ -29,7 +29,7 @@ const logout  = () => Widget.Button({
         //yes button for logout
         yes_no_revealer.child.children[1].children[0].onClicked = () => {Utils.exec('hyprctl dispatch exit')}
         //no button for logout
-        yes_no_revealer.child.children[1].children[1].onClicked = () => { power_widget.revealChild = false; }
+        yes_no_revealer.child.children[1].children[1].onClicked = () => { App.closeWindow("tinted_background");power_widget.revealChild = false; }
        
    }
 })
@@ -43,8 +43,8 @@ const restart  = () => Widget.Button({
     onClicked: () => { 
         yes_no_revealer.revealChild = true; 
         yes_no_revealer.child.children[1].children[0].child.label= 'restart?';
-         yes_no_revealer.child.children[1].children[0].onClicked = () => {Utils.exec('systemctl restart')}
-        yes_no_revealer.child.children[1].children[1].onClicked = () => { power_widget.revealChild = false;}
+         yes_no_revealer.child.children[1].children[0].onClicked = () => {Utils.exec('systemctl reboot')}
+        yes_no_revealer.child.children[1].children[1].onClicked = () => { App.closeWindow("tinted_background");power_widget.revealChild = false;}
        
    }
 })
@@ -59,7 +59,7 @@ const sleep  = () => Widget.Button({
         yes_no_revealer.revealChild = true; 
         yes_no_revealer.child.children[1].children[0].child.label = 'Sleep?';
          yes_no_revealer.child.children[1].children[0].onClicked = () => {Utils.exec('systemctl suspend')}
-        yes_no_revealer.child.children[1].children[1].onClicked = () => { power_widget.revealChild = false;}
+        yes_no_revealer.child.children[1].children[1].onClicked = () => { App.closeWindow("tinted_background");power_widget.revealChild = false;}
        
    }
 })
@@ -73,7 +73,7 @@ const power_button = () => Widget.Button({
          yes_no_revealer.revealChild = true; 
          yes_no_revealer.child.children[1].children[0].child.label = 'Power Off?';
          yes_no_revealer.child.children[1].children[0].onClicked = () => {Utils.exec('systemctl poweroff')}
-        yes_no_revealer.child.children[1].children[1].onClicked = () => { power_widget.revealChild = false;}
+        yes_no_revealer.child.children[1].children[1].onClicked = () => { App.closeWindow("tinted_background");power_widget.revealChild = false;}
         
     }
 })

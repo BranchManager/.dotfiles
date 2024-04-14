@@ -5,9 +5,24 @@ import { bluetooth_reveal_func } from "./bluetooth_functionality.js";
 import { notification_reveal_func } from "./Notifications/Notification_Center.js";
 import {  audio_reveal_func } from "./audio.js";
 
+import Gdk from "gi://Gdk"
+
+
 const network = await Service.import('network')
 const bluetooth = await Service.import('bluetooth')
-const devices = Variable([Widget.Label({label: 'no devices detected'})]) //devices changes besed on the devices detected
+// const n = Gdk.Display.get_default()?.get_n_monitors()
+// const all_monitors = []
+// for(let i = 0; i < n; i++){
+//     print("This is the number of monitors: " + n)
+//     const dev = Variable([Widget.Label({label: 'no devices detected'})])
+//     all_monitors.push(dev)
+// }
+const devices = Variable([])//Variable([Widget.Label({label: 'no devices detected'})]) //devices changes besed on the devices detected
+// const devices1 = Variable([Widget.Label({label: 'no devices detected'})])
+// const devices2 = Variable([Widget.Label({label: 'no devices detected'})])
+// const devices3 = Variable([Widget.Label({label: 'no devices detected'})])
+// const devices4 = Variable([Widget.Label({label: 'no devices detected'})])
+
 const GLib = imports.gi.GLib;
 
 var network_quicksettings_reveal = false;
@@ -16,12 +31,15 @@ var device_list;
 console.log("This is the network connectivity")
 console.log(network.connectivity)
 
+const netrevealer = Variable(false)
+
 // This function will reveal or close the wifi section depending wheere it is called from
 //For example if bluetooth calls this function then it will close the wifi section
 export function network_reveal_func(is_other_app_calling_me){
 
     if (is_other_app_calling_me){
-        network_revealer.revealChild = false;
+        //network_revealer.revealChild = false;
+        netrevealer.value = false
       
         
     //if the network is calling this function then reveal the section
@@ -35,7 +53,8 @@ export function network_reveal_func(is_other_app_calling_me){
         get_access_points()
         network_quicksettings_reveal = false;
         console.log('reveal_func');
-        network_revealer.revealChild = !network_revealer.revealChild
+        //network_revealer.revealChild = !network_revealer.revealChild
+        netrevealer.value = !netrevealer.value
         // if (network_revealer.revealChild) {
         //     network_revealer.revealChild = false;
 
@@ -73,12 +92,12 @@ const WifiIndicator = () => Widget.Button({
 
     
 })
-const header = Widget.Label({ xalign: 0, className: 'bluetooth_device_header', label: 'Access Points',})
-const box_header = Widget.Box({
+const header  = () => Widget.Label({ xalign: 0, className: 'bluetooth_device_header', label: 'Access Points',})
+const box_header = () => Widget.Box({
     vertical: false,
     
     className: 'bluetooth_device_header',
-    child: header,
+    child: header(),
 })
 
 
@@ -153,7 +172,10 @@ function make_device_box(button_class, button_label, ssid, connection,sec){
     
 }
 
+const loading_label = () => {
 
+    return Widget.Label({css: 'color: black', label: 'loading...'})
+}
 function get_access_points(){
 
 
@@ -164,8 +186,12 @@ function get_access_points(){
     var device_array = []
     //get the list of wifi devices
     
-    
-    devices.value = [Widget.Label({css: 'color: black', label: 'loading...'})]
+    //for(let i = 0; i < n; i++){
+        //all_monitors[i].value = [loading_label()]
+        const loading = loading_label()
+       devices.value = devices.value.concat(loading)//[loading]
+    //}
+    //devices.value = [loading_label()]
     //device_list = Utils.exec('nmcli dev wifi list')
     Utils.execAsync('nmcli dev wifi list').then(device_list => {
         var device_list_lines = device_list.split('\n')
@@ -202,30 +228,59 @@ function get_access_points(){
         }
         //for some reason I have to use a timeout to get the value to update so we wait 100ms
         //GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
-            
-            devices.value = device_array
+            //for(let i = 0; i < n; i++){
+                //all_monitors[i].value = device_array
+               devices.value = device_array
+            //}
+
+            //return device_array
 
     // });
-    }).catch(val => { devices.value = [Widget.Label({css: 'color: black', label: 'No devices detected'})]})
+    }).catch(val => { 
+        //devices.value = [Widget.Label({css: 'color: black', label: 'No devices detected'})]
+        for(let i = 0; i < n; i++){
+            all_monitors[i].value = [Widget.Label({css: 'color: black', label: 'No devices detected'})]
+           //devices.value = device_array
+        }
+    
+    })
   
 
 }
 
-
-const wifi_access_points = Widget.Box({
+function choose_device_var(monitor){
+    print("This is monitor: " + monitor)
+    print(all_monitors[monitor].value[0].label)
+    return all_monitors[monitor]
+    // switch(monitor){
+    //     case 0:
+    //         return devices0
+    //     case 1:
+    //         return devices1
+    //     case 2:
+    //         return devices2
+    //     case 3:
+    //         return devices3
+    //     case 4:
+    //         return devices4
+        
+    // }
+}
+const wifi_access_points = (monitor) => Widget.Box({
     vertical: true,
     //hpack: 'endy',
     hexpand: true,
     vpack: 'center',
     className: 'accesspoints_forground_box',
-    children: devices.bind()  //This variable will change dynamically
+    children: devices.bind(),  //This variable will change dynamically
+    
 
 
 })
 
 // This export is the revealer under the quick settings widget
-export var network_revealer = Widget.Revealer({
-    revealChild: false, 
+export var network_revealer = (monitor) => Widget.Revealer({
+    revealChild: netrevealer.bind(),//false, 
     child: Widget.Box({
 
         vertical: true,
@@ -242,7 +297,7 @@ export var network_revealer = Widget.Revealer({
          }),
          Widget.Box({
             vertical: true,
-           child: box_header,
+           child: box_header(),
 
         }),
         Widget.Box({
@@ -251,7 +306,7 @@ export var network_revealer = Widget.Revealer({
             vpack: 'center',
             hexpand: false,
             className: 'accesspoints_background_box',
-            child: wifi_access_points
+            child: wifi_access_points(monitor)
         })]
     }),
 

@@ -4,34 +4,70 @@ const { query } = await Service.import("applications")
 const WINDOW_NAME = "applauncher"
 
 const rev = Variable(false)
+const rev0 = Variable(false)
+const rev1 = Variable(false)
+const rev2 = Variable(false)
+const rev3 = Variable(false)
+const rev4 = Variable(false)
 const keymode = Variable("exclusive")
 //thus function gets called in the shell like: ags -r "on_close_launcher(true)" but handles the open and close of lthe launcher
-globalThis.on_close_launcher = (open) => {
+globalThis.on_close_launcher = (open,monitor) => {
     console.log("global var")
    
-
-    if(open){
-        keymode.value = "exclusive"
-        App.openWindow("launcherr")
+    function close_launcher(revealer){
+        //App.closeWindow("launcherr"+monitor.toString())
+        revealer.value = false
         Utils.timeout(200, () =>{
-            rev.value = true
-            print(rev.value)
+            App.closeWindow("launcherr"+monitor.toString())
+            print(revealer.value)
+        })
 
-        })
-        
-    }else{
-        keymode.value = "none"
-        rev.value = false
-        Utils.timeout(200, () =>{
-            App.closeWindow("launcherr")
-        })
-        print("closing launcher")
-        print(rev.value)
     }
+
+    function timeout_and_reveal(revealer){
+        open_close_gpt(false,monitor)
+        Utils.timeout(200, () =>{
+            revealer.value = true
+            print(revealer.value)
+
+        })
+    }
+
+    if(!open){
+        close_launcher(rev0)
+        close_launcher(rev1)
+        close_launcher(rev2)
+        close_launcher(rev3)
+        close_launcher(rev4)
+        //open_close_gpt(false,monitor)
+    }else if(open){
+        keymode.value = "exclusive"
+        App.openWindow("launcherr"+monitor.toString())
+        //App.openWindow("launcherr2")
+        //const launcher = App.getWindow("launcherr1")
+       // launcher.child.child.
+       switch(monitor){
+            case 0:
+                timeout_and_reveal(rev0)
+                break;
+            case 1:
+                timeout_and_reveal(rev1)
+                break;
+            case 2:
+                timeout_and_reveal(rev2)
+                break;
+            case 3:
+                timeout_and_reveal(rev3)
+                break;
+       }
+
+
+    }
+ 
 }
 
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
-const AppItem = app => Widget.Button({
+const AppItem = (app,monitor) => Widget.Button({
     className: "app_item",
 
     //if we click on an app to open
@@ -41,7 +77,7 @@ const AppItem = app => Widget.Button({
         // App.getWindow("launcherr").keymode = 'none'
         // launcher_revealer.revealChild = false
         // App.closeWindow("launcherr")
-        on_close_launcher(false)
+        on_close_launcher(false, monitor)
 
     },
     attribute: { app },
@@ -63,9 +99,12 @@ const AppItem = app => Widget.Button({
     }),
 })
 
-const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
+const Applauncher = ({ width = 500, height = 500, spacing = 12,monitor = 0 }) => {
+
+    print("APPLAUNCHER")
+    //print(monitor)
     // list of application buttons
-    let applications = query("").map(AppItem)
+    let applications = query("").map((app) => AppItem(app,monitor))
 
     // container holding the buttons
     const list = Widget.Box({
@@ -77,7 +116,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 
     // repopulate the box, so the most frequent apps are on top of the list
     function repopulate() {
-        applications = query("").map(AppItem)
+        applications = query("").map((app) => AppItem(app,monitor))
         list.children = applications
     }
 
@@ -109,7 +148,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
                             // App.getWindow("launcherr").keymode = 'none'
                             // launcher_revealer.revealChild = false
                             // App.closeWindow("launcherr")
-                            on_close_launcher(false)
+                            on_close_launcher(false,monitor)
                             //applications[0].attribute.app.launch()
                         }
                 },
@@ -126,7 +165,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
         className: "ai_close_button",
         
         on_clicked: () => {
-            on_close_launcher(false)
+            on_close_launcher(false,monitor)
             // const convo = chat_blocks.value.map(item => item.children[1].label).join("\n")
             // Utils.execAsync([`${App.configDir}/scripts/save_convo.sh`, `${convo}`])
             // .then((res) => {console.log(res)})
@@ -172,11 +211,49 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 }
 
 // there needs to be only one instance
+function pick_monitor(monitor){
+
+    switch(monitor){
+        case 0:
+            return rev0
+        case 1:
+            return rev1
+        case 2:
+            return rev2
+        case 3:
+            return rev3
+        case 4:
+            return rev4
+    }
+    // if(monitor == 0){
+    //     return rev0
+    // }else if(monitor == 1){
+    //     return rev2
+    // }else{
+    //     return rev3
+    // }
+}
 
 
-export const launcher_revealer = Widget.Revealer({
-    revealChild: rev.bind(),
+export const launcher_revealer = (monitor) => Widget.Revealer({
+    revealChild: pick_monitor(monitor).bind(),
+    
+    // rev.bind().as(value => {
+        
+    //     if(monitor == 1 && value){
+    //         print("MONITOR rev1")
+    //         print(monitor)
+    //         rev1.value = true
+    //         return rev1.value
+    //     }else if(monitor == 2 && value){
+    //         print("MONITOR rev2")
+    //         print(monitor)
+    //         rev2.value = true
+    //         return rev2.value
+    //     }
+    // }),
     transitionDuration: 100,
+    css: "min-width: 300px; min-height: 300px; background-color: red",
     transition: 'slide_right',
     child: Widget.Box({
         
@@ -186,6 +263,7 @@ export const launcher_revealer = Widget.Revealer({
             width: 340,
             height: 1000,
             spacing: 12,
+            monitor: monitor
         }),
         //children: [search_header(),AppsList()]
     })
@@ -197,7 +275,7 @@ export function applauncher_box(monitor = 0){
         return Widget.Window({
         monitor,
         anchor: ['left','top' ],
-        name: "launcherr", //+ monitor.toString(),
+        name: "launcherr" + monitor.toString(),
         layer: 'overlay',
         keymode: keymode.bind(),
         
@@ -213,7 +291,7 @@ export function applauncher_box(monitor = 0){
             css: `background-color: rgba(0,0,0,0); padding: 0.1px;`,
           
             //chang the below to a function and change the variable to a functin to have it appear on multiple monitors
-            child: launcher_revealer,
+           child: launcher_revealer(monitor),
     
         }) , //Widget.Label({ label: date.bind() })
         setup: self => self.keybind("Escape", () => {
@@ -223,7 +301,7 @@ export function applauncher_box(monitor = 0){
             //launcher_revealer.revealChild = false;
             //self.keymode = 'none'
            
-            on_close_launcher(false)
+            on_close_launcher(false,monitor)
            
            
         })

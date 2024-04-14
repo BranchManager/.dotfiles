@@ -13,7 +13,7 @@ import { get_main_monitor } from "./Select_main_monitor.js";
 import { quote_of_the_day_fullview } from "./quote_of_the_day.js";
 
 const GLib = imports.gi.GLib;
-
+//sexport const all_monitors = []
 
 function widget_box(monitor = 0){
 //const widget_box = (monitor = 2) => 
@@ -37,7 +37,7 @@ function widget_box(monitor = 0){
         css: `background-color: rgba(0,0,0,0); padding: 0.1px;`,
       
         //chang the below to a function and change the variable to a functin to have it appear on multiple monitors
-        child: main_widget,
+        child: main_widget(monitor),
 
     })  //Widget.Label({ label: date.bind() })
 })}
@@ -114,18 +114,30 @@ export function range(length, start = 1) {
 
 
 App.config({ windows: ()=>[...forMonitors(create_my_bar)]})
+App.config({ windows: ()=>[...forMonitors(applauncher_box)]})
 //App.config({ windows: ()=>[...forMonitors(Volume_Shortcut_Indicator)]})
+
+// for(i = 0; i < Gdk.Display.get_default()?.get_n_monitors(); i++){
+//     const mon = Variable([])
+//     all_monitors.concat(mon)
+// }
 
 let monitor = get_main_monitor()
 print("MAIN MONITOR: 88888888888888888888888888888888888888888" + monitor)
 
+
+// App.config({windows: [applauncher_box(0)],})
+// App.config({windows: [applauncher_box(1)],})
+// App.config({windows: [applauncher_box(2)],})
 App.config({ windows:[GPT_box(monitor)]})
-App.config({windows: [applauncher_box(monitor)],})
+App.config({windows: [widget_box(monitor)]})
 App.config({windows: [Volume_Shortcut_Indicator(monitor)]})
 App.config({windows: [quote_of_the_day_fullview(monitor)]})
 App.config({windows: [make_tinted_background(monitor)]})
 App.config({windows: [power_box(monitor)]})
-App.config({windows: [widget_box(monitor)]})
+
+
+
 
 
 // App.config({

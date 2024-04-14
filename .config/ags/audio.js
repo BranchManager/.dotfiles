@@ -4,10 +4,12 @@ import {  bluetooth_reveal_func} from './bluetooth_functionality.js'
 import { notification_reveal_func } from "./Notifications/Notification_Center.js";
 
 //This function handles the audio reveal and closing of the audio reveal
+const audioreveal = Variable(false)
 export function audio_reveal_func(is_other_app_calling_me){
 
     if(is_other_app_calling_me){
-        audio_revealer.revealChild = false;
+        //audio_revealer.revealChild = false;
+        audioreveal.value = false;
 
     }else if (!is_other_app_calling_me){
 
@@ -15,7 +17,8 @@ export function audio_reveal_func(is_other_app_calling_me){
         notification_reveal_func(true);
         network_reveal_func(true)
 
-       audio_revealer.revealChild = !audio_revealer.revealChild
+       //audio_revealer.revealChild = !audio_revealer.revealChild
+       audioreveal.value = !audioreveal.value
          
     }
 
@@ -112,8 +115,8 @@ function SinkItem(stream,is_speaker){
     })
 }
 
-export var audio_revealer = Widget.Revealer({
-    revealChild: false,
+export var audio_revealer = () => Widget.Revealer({
+    revealChild: audioreveal.bind(),//false,
 
     child: Widget.Box({
         
