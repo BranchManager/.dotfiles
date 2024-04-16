@@ -1,15 +1,16 @@
-import {weather, get_weather} from '../weather.js'
-import { get_quote_of_the_day,quote_of_the_day } from '../quote_of_the_day.js';
-import { main_widget } from '../Bar/MainWidget.js';
+/*
+*
+* This file is responsible for creating the main bar that will be displayed on the top of the screen
+* It will contain the date, the workspace indicator, the AI and Fedora buttons, and the system tray and widget button
+*
+*/
 import { create_workspace_indicator } from './Workspaces.js';
 import { sysTray } from './Tray.js';
 import { WidgetButton } from './WidgetButton.js';
 
 App.applyCss(`${App.configDir}/Bar/bar.css`)
 
-
-const GLib = imports.gi.GLib;
-
+//This function creates the end widget that contains the system tray and the widget button
 const endWidget = (monitor) =>Widget.Box({
     vertical: false,
     hpack: 'end',

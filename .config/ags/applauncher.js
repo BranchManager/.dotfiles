@@ -261,7 +261,7 @@ export const launcher_revealer = (monitor) => Widget.Revealer({
         className: 'alt_main_background',
         child: Applauncher({
             width: 340,
-            height: 1000,
+            height: 800,
             spacing: 12,
             monitor: monitor
         }),

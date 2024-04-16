@@ -135,7 +135,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12, monitor = 0 }) =
         const response = response_box("Thinking...")
         chat_blocks.value = chat_blocks.value.concat(response)
         
-        Utils.execAsync([`${App.configDir}/scripts/sgpt.sh`, `${text}`])
+        Utils.execAsync([`python3`,`${App.configDir}/scripts/rag_client.py`, `${text}`])
         
         .then((res) => {
             //create a chat box dynamically wiht the results from the gpt

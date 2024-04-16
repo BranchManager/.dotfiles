@@ -22,17 +22,17 @@ macchiato_base: #24273a;
 
  /*.my_bar{
     
-    padding-bottom: 50px;
+    padding-bottom: 3.125rem;
 
  }*/
  .my_widget_box{
     background-color: red;
     
-    /*padding-top: 100px;*/
+    /*padding-top: 6.25rem;*/
  }
 
  .profile_name{
-      font-size: 12px;
+      font-size:0.75rem;
       font-weight: bold;
       /*padding: 0;
       margin: 0;*/
@@ -41,17 +41,17 @@ macchiato_base: #24273a;
 .profile_box{
    /*background-color: $macchiato_base;*/
    background-color: #24273a;
-   border-radius: 10px;
-   padding: 5px;
-   box-shadow: 5px 5px 2px black;
+   border-radius:0.625rem;
+   padding:0.313rem;
+   box-shadow: 0.313rem 0.313rem 0.125rem black;
 }
  .profile_image{
-    background-size: 90px 80px;
+    background-size:5.625rem 5rem;
     background-image: url('/home/branchmanager/Pictures/profile_pic/blackguy_anime.jpg');
     background-repeat: no-repeat;
-    border-radius: 10px; 
-    min-height: 80px; 
-    min-width: 80px;
+    border-radius:0.625rem; 
+    min-height:5rem; 
+    min-width:5rem;
  }
  .position {
     padding: 0;
@@ -60,37 +60,37 @@ macchiato_base: #24273a;
  /*.my_slider trough{
       
     background-color: blue;
-    min-width: 10px; 
-    min-height: 20px;
-    font-size: 20px;
+    min-width:0.625rem; 
+    min-height:1.25rem;
+    font-size:1.25rem;
  }*/
 /***************************** system monitor bar ******************************/
  .my_slider trough{
    background-color: #45475a;
-   border-radius: 5px;
-   min-height: 14px;
+   border-radius:0.313rem;
+   min-height:0.875rem;
    background-size: 15%;
  }
 
  /*.my_slider highlight{
     background-color: red; 
  
-    min-width: 20px; 
-    font-size: 20px;
+    min-width:1.25rem; 
+    font-size:1.25rem;
  }*/
 .my_slider{
 
-   min-height: 14px;
-   border-radius: 0px;
-   min-height: 14px;
-   min-width: 230px;
+   min-height:0.875rem;
+   border-radius:0rem;
+   min-height:0.875rem;
+   min-width: 14.375rem;
 
 }
 .my_slider progress{
  
-   min-height: 14px;
-   border-radius: 5px;
-   min-height: 14px;
+   min-height:0.875rem;
+   border-radius:0.313rem;
+   min-height:0.875rem;
 
 }
  .my_slider_cpu progress{
@@ -117,82 +117,82 @@ macchiato_base: #24273a;
  }*/
 
 .system_bar_icon_cpu_temp{
-   margin-left: -10px;
-   margin-bottom: -15px;
+   margin-left: -0.625rem;
+   margin-bottom: -0.938rem;
    
 }
 
  .system_monitor_bar_box{
-   min-width: 200px; 
+   min-width:12.5rem; 
    background-color: #313244;
-   padding: 8px;
-   margin-left: 10px;
-   border-radius: 10px;
+   padding: 0.5rem;
+   margin-left:0.625rem;
+   border-radius:0.625rem;
 }
 
 .system_bar_icon_gpu{
-   font-size: 20px;
-   padding-right: 2px; 
-   margin-left: -2px;
+   font-size:1.25rem;
+   padding-right:0.125rem; 
+   margin-left: -0.125rem;
    
 }
 .system_bar_icon_ram{
-   font-size: 20px;
-   margin-left: -5px;
-   margin-bottom: -15px;
+   font-size:1.25rem;
+   margin-left: -0.313rem;
+   margin-bottom: -0.938rem;
    
 }
 
 .system_bar_icon_cpu{
-   font-size: 12px;
-   margin-bottom: -15px;
-   padding-right: 7px;
+   font-size:0.75rem;
+   margin-bottom: -0.938rem;
+   padding-right:0.438rem;
    
 }
 
 .system_harddrive_icon{
-   font-size: 20px;
-   margin: -35px;
-   padding-top: 15px;
-   margin-right: -10px;
+   font-size:1.25rem;
+   margin: -2.188rem;
+   padding-top: 0.938rem;
+   margin-right: -0.625rem;
    /*margin-bottom: 10;*/
    
 }
 
 .harddrive_circular_progress{
-   font-size: 6px; 
+   font-size: 0.375rem; 
    color: #7287fd;
-   margin-left: 10px;
+   margin-left:0.625rem;
    background-color: #45475a;
    
 }
 
 .system_monitor_harddrive_box{
-   min-width: 200px; 
-   padding-left:300px;
+   min-width:12.5rem; 
+   padding-left:18.75rem;
   /* background-color: #313244;*/
-   padding: 8px;
-   margin-left: 0px;
-   border-radius: 10px;
-   margin-top: 10px;
-   /*box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);*/
+   padding: 0.5rem;
+   margin-left:0rem;
+   border-radius:0.625rem;
+   margin-top:0.625rem;
+   /*box-shadow:0.313rem 0.063rem 0.438rem rgba(0, 0, 0, 0.5),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.8);*/
 }
 
 .harddrive_labels{
-   margin-right: 5px;
+   margin-right:0.313rem;
 }
 /***************************** quick settings bar ******************************/
 .quicksettingstest {
    background-color: white;
-   min-height: 500px;
-   min-width: 100px;
-   margin: 5px;
-   border-radius: 10px;
+   min-height: 31.25rem;
+   min-width: 6.25rem;
+   margin:0.313rem;
+   border-radius:0.625rem;
 }
 
 .quick_setting_button_box:active{
 
-   box-shadow: 0px 0px 0px;
+   box-shadow:0rem 0rem 0rem;
 }
 
 .quick_setting_button_box:hover{
@@ -205,42 +205,42 @@ macchiato_base: #24273a;
    background-color: #232634;
 }
 .device_box{
-   margin: 2px;
+   margin:0.125rem;
 }
 .wifi_connected{
    background-color: #a6da95	;
-   padding: 1px 5px;
-   margin: 2px;
-   border-radius: 10px;
+   padding:0.063rem 0.313rem;
+   margin:0.125rem;
+   border-radius:0.625rem;
    color: #6e738d;
 }
 
 .wifi_not_connected{
    background-color: #eed49f;
-   padding: 1px 5px;
-   margin: 2px;
-   border-radius: 10px;
+   padding:0.063rem 0.313rem;
+   margin:0.125rem;
+   border-radius:0.625rem;
    color: #6e738d;
 
 }
 .accesspoints_background_box{
    background-color: #949cbb;
-   min-width: 200px;
-   margin: 5px;
-   margin-top: 0px;
-   border-bottom-left-radius: 10px;
-   border-bottom-right-radius: 10px;
-   /*min-height: 200px;&*/
+   min-width:12.5rem;
+   margin:0.313rem;
+   margin-top:0rem;
+   border-bottom-left-radius:0.625rem;
+   border-bottom-right-radius:0.625rem;
+   /*min-height:12.5rem;&*/
 
 }
 .accesspoints_forground_box{
    background-color: #45475a;
-   border-radius: 10px;
-   margin: 10px;
+   border-radius:0.625rem;
+   margin:0.625rem;
 }
 .wifi_quick_setting_button_box:active{
 
-   box-shadow: 0px 0px 0px;
+   box-shadow:0rem 0rem 0rem;
 }
 .wifi_quick_setting_button_box:hover{
    background-color: #949cbb;
@@ -248,48 +248,48 @@ macchiato_base: #24273a;
 }
 
 .wifi_quick_setting_button_box{
-   min-height: 50px;
-   min-width: 50px;
+   min-height: 3.125rem;
+   min-width: 3.125rem;
    background-color: #45475a;
    transition: background-color 0.2s linear;
-   border-radius: 10px;
-   margin: 5px;
-   padding: 5px;
-   box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.1), 1px 7px 7px rgba(0, 0, 0, 0.3);
+   border-radius:0.625rem;
+   margin:0.313rem;
+   padding:0.313rem;
+   box-shadow:0.125rem 0.063rem 0.188rem rgba(0, 0, 0, 0.1),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.3);
 
 }
 /************************************ bluetooth ********************************/
 .bluetooth_toggle_slider slider{
    background-color: #e6e9ef;
-   min-height: 20px;
+   min-height:1.25rem;
    
-   min-width: 20px;
-   border-radius: 10px;
+   min-width:1.25rem;
+   border-radius:0.625rem;
 }
 
 .bluetooth_toggle_slider {
    background-color: #232634;
-   min-height: 1px;
-   min-width: 1px;
-   border-radius: 10px;
-   font-size: 0px;
-   margin: 5px;   
+   min-height:0.063rem;
+   min-width:0.063rem;
+   border-radius:0.625rem;
+   font-size:0rem;
+   margin:0.313rem;   
 }
 
 .quicksettings_main_box{
    background-color: #313244;
-   min-width: 200px;
-   min-height: 50px;
-   border-radius: 10px;
+   min-width:12.5rem;
+   min-height: 3.125rem;
+   border-radius:0.625rem;
 }
 .quick_setting_button_box{
-   min-height: 50px;
-   min-width: 50px;
+   min-height: 3.125rem;
+   min-width: 3.125rem;
    background-color: #45475a;
    transition: background-color 0.2s linear;
-   border-radius: 10px;
-   margin: 5px;
-   box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.1), 1px 7px 7px rgba(0, 0, 0, 0.3);
+   border-radius:0.625rem;
+   margin:0.313rem;
+   box-shadow:0.125rem 0.063rem 0.188rem rgba(0, 0, 0, 0.1),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.3);
 
 }
 
@@ -299,130 +299,130 @@ macchiato_base: #24273a;
 
    /*This is so that the Devices header box is flush with this one
    and the border radius is not rounded on the top  */
-   border-radius: 5px; /*0px 0px 10px 10px; */
-   /*min-height: 200px;*/
-   min-width: 100px;
-   margin: 5px 5px 5px 5px;
+   border-radius:0.313rem; /*0px0rem 0.625rem 0.625rem; */
+   /*min-height:12.5rem;*/
+   min-width: 6.25rem;
+   margin:0.313rem 0.313rem 0.313rem 0.313rem;
 }
 
 .bluetooth_devices_box_outliner{
    background-color: #949cbb;
-   margin: 0px 5px 5px 5px;
+   margin:0rem 0.313rem 0.313rem 0.313rem;
    
-   border-bottom-right-radius: 10px;
-   border-bottom-left-radius: 10px;
+   border-bottom-right-radius:0.625rem;
+   border-bottom-left-radius:0.625rem;
 }
 
 
 .bluetooth_button_icon_nobt{
-   margin-bottom: -35px;
-   margin-left: -15px;
-   margin-right: -15px;
+   margin-bottom: -2.188rem;
+   margin-left: -0.938rem;
+   margin-right: -0.938rem;
    
 }
 
 .bluetooth_device_header{
    background-color: #949cbb;
-   border-radius: 10px 10px 0px 0px;
+   border-radius:0.625rem 0.625rem 0rem 0rem;
    color:#4c4f69;
-   min-width: 100px;
-   margin: 5px 5px 0px 5px;
+   min-width: 6.25rem;
+   margin:0.313rem 0.313rem 0rem 0.313rem;
    
   
 }
 
 .device0{
    color: blue;
-   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   box-shadow:0.313rem 0.063rem 0.438rem rgba(0, 0, 0, 0.5),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.8);
    
 }
 .device1{
    color: red;
 }
 .bluetooth_device_connected_false{
-   min-height: 10px;
-   min-width: 10px;
+   min-height:0.625rem;
+   min-width:0.625rem;
    background-color: #a5adcb	;
-   border-radius: 50px;
-   /*box-shadow: 5px 1px 7px rgba(30, 102, 245, 0.9), 1px 7px 7px rgba(30, 102, 245, 0.8);*/
-   margin: 5px;
+   border-radius: 3.125rem;
+   /*box-shadow:0.313rem 0.063rem 0.438rem rgba(30, 102, 245, 0.9),0.063rem 0.438rem 0.438rem rgba(30, 102, 245, 0.8);*/
+   margin:0.313rem;
    
-   padding-left:5px;
-   padding-right:5px;
+   padding-left:0.313rem;
+   padding-right:0.313rem;
 }
 
 .bluetooth_device_connected_true{
-   min-height: 10px;
-   min-width: 10px;
+   min-height:0.625rem;
+   min-width:0.625rem;
    background-color: #1e66f5	;
-   border-radius: 50px;
-   /*box-shadow: 5px 1px 7px rgba(30, 102, 245, 0.9), 1px 7px 7px rgba(30, 102, 245, 0.8);*/
-   margin: 5px;
-   padding-left:5px;
-   padding-right:5px;
+   border-radius: 3.125rem;
+   /*box-shadow:0.313rem 0.063rem 0.438rem rgba(30, 102, 245, 0.9),0.063rem 0.438rem 0.438rem rgba(30, 102, 245, 0.8);*/
+   margin:0.313rem;
+   padding-left:0.313rem;
+   padding-right:0.313rem;
 }
 
 .bluetooth_device_connected_false:hover{
-   box-shadow: 1px 1px 3px rgba(30, 102, 245, 0.9), 1px 1px 3px rgba(30, 102, 245, 0.8);
+   box-shadow:0.063rem 0.063rem 0.188rem rgba(30, 102, 245, 0.9),0.063rem 0.063rem 0.188rem rgba(30, 102, 245, 0.8);
   
 }
 .bluetooth_device_connected_true:hover{
-   box-shadow: 1px 1px 3px rgba(30, 102, 245, 0.9), 1px 1px 3px rgba(30, 102, 245, 0.8);
+   box-shadow:0.063rem 0.063rem 0.188rem rgba(30, 102, 245, 0.9),0.063rem 0.063rem 0.188rem rgba(30, 102, 245, 0.8);
   
 }
 
 .bluetooth_device_connected_false:active{
-   box-shadow: 0px 0px 0px rgba(30, 102, 245, 0.9), 0px 0px 0px rgba(30, 102, 245, 0.8);
+   box-shadow:0rem 0rem 0rem rgba(30, 102, 245, 0.9),0rem 0rem 0rem rgba(30, 102, 245, 0.8);
   
 }
 .bluetooth_device_connected_true:active{
-   box-shadow: 0px 0px 0px rgba(30, 102, 245, 0.9), 0px 0px 0px rgba(30, 102, 245, 0.8);
+   box-shadow:0rem 0rem 0rem rgba(30, 102, 245, 0.9),0rem 0rem 0rem rgba(30, 102, 245, 0.8);
   
 }
 
 
 .device_background_1{
    background-color: #24273a;
-   /*margin: 0px 0px 5px 0px;*/
+   /*margin:0rem 0rem 0.313rem 0rem;*/
 }
 .device_label_len{
-   min-width: 1px;
+   min-width:0.063rem;
 }
 .device_is_bottom{
-   border-radius: 0px 0px 10px 0px;
+   border-radius:0rem 0rem 0.625rem 0rem;
 
 }
 
 .device_icon_is_bottom{
-   border-radius: 0px 0px 0px 10px;
+   border-radius:0rem 0rem 0rem 0.625rem;
 
 }
 /***************************** Blue light filter ******************************/
 .blue_light_filter_box{
-   margin-right: 5px;
-   margin-left: 5px;
+   margin-right:0.313rem;
+   margin-left:0.313rem;
 }
 /**************************** Main Background *********************************/
 .main_background{
    /*background-color: black;*/
-   /*padding-top: 100px;*/
+   /*padding-top: 6.25rem;*/
    all: unset;
-   padding: 10px;
-   border-radius: 10px;
-   margin: 10px 20px 20px 10px;
+   padding:0.625rem;
+   border-radius:0.625rem;
+   margin:0.625rem 1.25rem 1.25rem 0.625rem;
    background-color: #11111b;
-   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   box-shadow:0.313rem 0.063rem 0.438rem rgba(0, 0, 0, 0.5),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.8);
 }
 
 .alt_main_background{
    /*background-color: black;*/
-   /*padding-top: 100px;*/
+   /*padding-top: 6.25rem;*/
    all: unset;
-   padding: 10px;
-   border-radius: 10px;
-   margin: 10px 20px 20px 10px;
+   padding:0.625rem;
+   border-radius:0.625rem;
+   margin:0.625rem 1.25rem 1.25rem 0.625rem;
    background-color: #11111b;
-   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   box-shadow:0.313rem 0.063rem 0.438rem rgba(0, 0, 0, 0.5),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.8);
 }
 
 
@@ -431,24 +431,24 @@ macchiato_base: #24273a;
 .primary_popup_background{
    /*background-color: #11111b;*/
   background-color: #45475a;
-   margin:  15px; /*the space around the box*/
-   padding: 5px; /*the grey padding around the box*/
-   min-width: 300px;
-   min-height: 50px;
-   border-radius: 10px;
-   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   margin:  0.938rem; /*the space around the box*/
+   padding:0.313rem; /*the grey padding around the box*/
+   min-width: 18.75rem;
+   min-height: 3.125rem;
+   border-radius:0.625rem;
+   box-shadow:0.313rem 0.063rem 0.438rem rgba(0, 0, 0, 0.5),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.8);
 }
 .secondary_popup_background{
-   /*min-width: 200px;
-   min-height: 50px;*/
-   min-width: 325px;
-   border-radius: 10px;
+   /*min-width:12.5rem;
+   min-height: 3.125rem;*/
+   min-width: 20.313rem;
+   border-radius:0.625rem;
    background-color: #11111b;
    
 }
 
 .appname_notification{
-   font-size: 14px;
+   font-size:0.875rem;
    color:#b7bdf8;
    font-weight: bold;
 }
@@ -459,216 +459,216 @@ macchiato_base: #24273a;
 .notification_body{
 
    color: #eff1f5;
-   font-size: 12px;
+   font-size:0.75rem;
 
 }
 
 .icon{
    background-position: center;
-   background-size: 100px;
+   background-size: 6.25rem;
    /*background-color:  black;*/
-   min-width: 100px;
-   min-height: 100px;
+   min-width: 6.25rem;
+   min-height: 6.25rem;
 }
 
 .notification_label{
    color: #99d1db;
    font-weight: bold;
-   /*margin-top: 3px;
-   margin-left: -14px;*/
-   /*padding-left: 5px;*/
-   margin-left: 10px;
-   margin-right: -7px;
+   /*margin-top: 0.188rem;
+   margin-left: -10.25rem;*/
+   /*padding-left:0.313rem;*/
+   margin-left:0.625rem;
+   margin-right: -0.438rem;
 }
 
 .notification_label_dnd{
    color: #99d1db;
    font-weight: bold;
-   padding-left: 10px;
-   margin-right: -3px;
+   padding-left:0.625rem;
+   margin-right: -0.188rem;
    
    
 }
 
 .notification_icon_dnd{
-   padding-right: 7px;
-   /*padding-left: 7px;*/
+   padding-right:0.438rem;
+   /*padding-left:0.438rem;*/
   
 }
 .notification_icon{
-   padding: 7px;
-   margin-left: -3px;
-   margin-bottom: -5px;
+   padding:0.438rem;
+   margin-left: -0.188rem;
+   margin-bottom: -0.313rem;
 }
 .notification_icon_dnd_none{
-   padding-right: 7px;
-   padding-left: 11px;
+   padding-right:0.438rem;
+   padding-left: 0.688rem;
   
 }
 .notification_icon_none{
-   padding: 7px;
-   margin-left: -3px;
-   margin-bottom: -5px;
+   padding:0.438rem;
+   margin-left: -0.188rem;
+   margin-bottom: -0.313rem;
 }
 
 .notification_clear_button {
    background-color: #4c4f69;
-   border-radius: 5px;
-   /*padding: 5px;*/
-   padding-left: 3px;
-   padding-right: 3px;
-   margin: 5px;
+   border-radius:0.313rem;
+   /*padding:0.313rem;*/
+   padding-left: 0.188rem;
+   padding-right: 0.188rem;
+   margin:0.313rem;
    transition: background-color 0.2s linear;
 }
 
 .notification_clear_button:hover{
-   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   box-shadow:0.313rem 0.063rem 0.438rem rgba(0, 0, 0, 0.5),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.8);
    background-color: #949cbb;
 
 }
 
 .notification_clear_button:active{
 
-   box-shadow: 0px 0px 0px;
+   box-shadow:0rem 0rem 0rem;
 }
 
 .notification_center_box_background{
    background-color: #6e738d;
-   min-width: 200px;
-   margin: 5px;
-   margin-top: 0px;
-   border-radius: 10px;
-   border-radius: 10px;
+   min-width:12.5rem;
+   margin:0.313rem;
+   margin-top:0rem;
+   border-radius:0.625rem;
+   border-radius:0.625rem;
 }
 
 .notif_action_button{
    background-color: #4c4f69;
-   border-radius: 5px;
-   /*padding: 5px;*/
-   padding-left: 3px;
-   padding-right: 3px;
-   margin: 5px;
+   border-radius:0.313rem;
+   /*padding:0.313rem;*/
+   padding-left: 0.188rem;
+   padding-right: 0.188rem;
+   margin:0.313rem;
    transition: background-color 0.2s linear;
 }
 
 .notif_action_button:hover{
-   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   box-shadow:0.313rem 0.063rem 0.438rem rgba(0, 0, 0, 0.5),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.8);
    background-color: #949cbb;
 }
 
 .notif_action_button:active{
 
-   box-shadow: 0px 0px 0px;
+   box-shadow:0rem 0rem 0rem;
 }
 
 .notification_close_button{
    background-color: #e64553;
-   border-radius: 5px;
-   padding-left: 5px;
-   padding-right: 5px;
-   margin: 5px;
+   border-radius:0.313rem;
+   padding-left:0.313rem;
+   padding-right:0.313rem;
+   margin:0.313rem;
    transition: background-color 0.2s linear;
 
 }
 
 .notification_close_button:hover{
-   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   box-shadow:0.313rem 0.063rem 0.438rem rgba(0, 0, 0, 0.5),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.8);
    background-color: #e78284;
 }
 
 .notification_close_button:active{
 
-   box-shadow: 0px 0px 0px;
+   box-shadow:0rem 0rem 0rem;
 }
 
 .notification_close_button_label{
-   font-size: 24px;
+   font-size: 1.5rem;
    font-weight: bold;
-   margin-top: -5px;
-   margin-bottom: -3px;
+   margin-top: -0.313rem;
+   margin-bottom: -0.188rem;
 }
 /*****************************Volume ********************************/
 .audio_button_icon{
-   padding: 5px;
-   padding-left: 6px;
-   padding-right: 6px;
+   padding:0.313rem;
+   padding-left: 0.375rem;
+   padding-right: 0.375rem;
    color: #8aadf4;
 }
 
 .audio_button_icon_muted{
-   padding: 5px;
-   padding-left: 6px;
-   padding-right: 6px;
+   padding:0.313rem;
+   padding-left: 0.375rem;
+   padding-right: 0.375rem;
    color: #232634
 }
 .audio_main_slider{
-   min-width: 200px;
+   min-width:12.5rem;
 }
 
 .audio_main_slider {
-   min-width: 200px;
+   min-width:12.5rem;
 }
 .audio_main_slider slider{
    background-color: white;
-   min-height: 12px;
-   min-width: 12px;
-   border-radius: 5px;
+   min-height:0.75rem;
+   min-width:0.75rem;
+   border-radius:0.313rem;
 }
 .audio_main_slider trough{
    background-color: #232634;
-   min-width: 320px;
-   /*min-height: 8px;*/
+   min-width: 20rem;
+   /*min-height: 0.5rem;*/
    
-   border-radius: 5px;
+   border-radius:0.313rem;
 }
 .audio_main_slider highlight{
    background-color: #a6d189;
-   min-height: 8px;
-   /*min-width: 8px;*/
-   border-radius: 5px;
+   min-height: 0.5rem;
+   /*min-width: 0.5rem;*/
+   border-radius:0.313rem;
    
 }
 
 .main_volume_background{
    /*background-color: #45475a;*/
-   min-width: 200px;
-   min-height: 25px;
-   border-radius: 5px;
+   min-width:12.5rem;
+   min-height: 1.563rem;
+   border-radius:0.313rem;
 
 
-   /*margin: 2px;*/
+   /*margin:0.125rem;*/
 }
 
 .volume_label{
-   font-size: 24px;
-   margin-left: 10px;
-   margin-top: 3px;
+   font-size: 1.5rem;
+   margin-left:0.625rem;
+   margin-top: 0.188rem;
 }
 
 .volume_revealer_box{
    background-color: #737994;
-   margin: 7px;
-   border-radius: 5px;
+   margin:0.438rem;
+   border-radius:0.313rem;
 }
 
 .sep{
    background-color: #292c3c;
-   min-width: 150px;
-   min-height: 1px;
-   margin-right: 30px;
-   /*margin-left: 30px;*/
+   min-width:9.375rem;
+   min-height:0.063rem;
+   margin-right: 1.875rem;
+   /*margin-left: 1.875rem;*/
 }
 
 .volume_active_sink{
    background-color: #a6da95;
-   min-width: 20px;
-   padding-right: 5px;
-   border-radius: 3px;
+   min-width:1.25rem;
+   padding-right:0.313rem;
+   border-radius: 0.188rem;
 }
 
 .volume_unactive_sink{
-   min-width: 20px;
-   padding-right: 5px;
+   min-width:1.25rem;
+   padding-right:0.313rem;
    transition: background-color 0.2s linear;
    
    background-color: #292c3c;
@@ -684,13 +684,13 @@ macchiato_base: #24273a;
 }
 .pavucontrol_box{
    background-color: #45475a;
-   border-top-left-radius: 3px;
-   min-width: 20px;
-   padding-right: 5px;
-   /*margin-top: 3px;
-   margin-right: 5px;*/
+   border-top-left-radius: 0.188rem;
+   min-width:1.25rem;
+   padding-right:0.313rem;
+   /*margin-top: 0.188rem;
+   margin-right:0.313rem;*/
    transition: background-color 0.2s linear;
-   /*box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);*/
+   /*box-shadow:0.313rem 0.063rem 0.438rem rgba(0, 0, 0, 0.5),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.8);*/
 }
 
 .pavucontrol_box:hover{
@@ -704,25 +704,25 @@ macchiato_base: #24273a;
 
 .microphone_box{
    background-color: #737994;
-   margin: 7px;
-   border-radius: 5px;
-   /*padding-top: 10px;*/
+   margin:0.438rem;
+   border-radius:0.313rem;
+   /*padding-top:0.625rem;*/
 }
 
 /*****************************Calendar anc clock********************************/
 
 .calendar_main_box {
    background-color: #181926;
-   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
-   margin-top: 10px;
-   min-width: 200px;
-   border-radius: 5px;
+   box-shadow:0.313rem 0.063rem 0.438rem rgba(0, 0, 0, 0.5),0.063rem 0.438rem 0.438rem rgba(0, 0, 0, 0.8);
+   margin-top:0.625rem;
+   min-width:12.5rem;
+   border-radius:0.313rem;
 }
 
 .calendar{
    font-family: Product Sans;
-   font-size: 14px;
-   min-width: 200px;
+   font-size:0.875rem;
+   min-width:12.5rem;
    padding: 0rem 0.2rem 0rem; 
 }
 
@@ -734,20 +734,20 @@ macchiato_base: #24273a;
 
  .hours_clock_label{
 
-   font-size: 84px;
-   margin-bottom: -20px;
-   margin-left: 10px;
+   font-size: 5.25rem;
+   margin-bottom: -1.25rem;
+   margin-left:0.625rem;
  }
 
  /****************************** Weather ********************************/
 
  .weather_main_box{
    background-color: #45475a;
-   min-width: 70px;
-   min-height: 120px;
-   border-radius: 10px;
-   margin-top: 10px;
-  /* margin-right: 7px;*/
+   min-width:4.375rem;
+   min-height:7.5rem;
+   border-radius:0.625rem;
+   margin-top:0.625rem;
+  /* margin-right:0.438rem;*/
 
  }
  /****************************** Quote of the day ********************************/
@@ -755,40 +755,40 @@ macchiato_base: #24273a;
  .qotd_fullview_outline{
    background-color: #45475a;
    
-   border-radius: 10px;
-   padding: 10px;
+   border-radius:0.625rem;
+   padding:0.625rem;
   
-  /* margin-right: 7px;*/
+  /* margin-right:0.438rem;*/
  }
  .quote_of_the_day_main_box{
    background-color:  #1e1e2e;
-   min-width: 250px;
-   min-height: 90px;
-   border-radius: 10px;
-   margin-left: 2px;
-   /*margin-top: 10px;*/
+   min-width:15.625rem;
+   min-height:5.625rem;
+   border-radius:0.625rem;
+   margin-left:0.125rem;
+   /*margin-top:0.625rem;*/
 
  }
 
 
  .qotd{
-   font-size: 16px;
-   margin-top: 10px;
+   font-size:1rem;
+   margin-top:0.625rem;
    font-family: "Ubuntu Nerd Font";
  }
 
  .author{
-   font-size: 16px;
+   font-size:1rem;
    font-weight: bold;
-   margin-bottom: 10px;
+   margin-bottom:0.625rem;
  }
 
  .quote_separator{
    background-color: whitesmoke;
-   min-width: 150px;
-   min-height: 1px;
-   margin-right: 10px;
-   margin-left: 10px;
+   min-width:9.375rem;
+   min-height:0.063rem;
+   margin-right:0.625rem;
+   margin-left:0.625rem;
 
  }
 
@@ -797,12 +797,12 @@ macchiato_base: #24273a;
    all:unset;
    background-color: rgba(0, 0, 0, 0.5); 
 	background-position: center;
-	margin-top: 10px;
+	margin-top:0.625rem;
 	background-size: cover;
-	min-height: 150px;
-	min-width: 220px;
-   border-top-left-radius: 5px;
-   border-bottom-left-radius: 5px;
+	min-height:9.375rem;
+	min-width: 21.25rem;
+   border-top-left-radius:0.313rem;
+   border-bottom-left-radius:0.313rem;
 }
 .player_tint{
    background-color: rgba(0, 0, 0, 0.5); 
@@ -810,8 +810,8 @@ macchiato_base: #24273a;
 
  .mpris_img{
 
-   min-height: 60px;
-   min-width: 60px;
+   min-height: 3.75rem;
+   min-width: 3.75rem;
  }
 
  .player scale.position {
@@ -820,17 +820,17 @@ macchiato_base: #24273a;
 }
 
 .player scale.position trough {
-   min-height: 12px;
+   min-height:0.75rem;
    background-color: #45475a;
-   margin-right: 5px;
-   margin-left: 5px;
-   border-radius: 5px;
+   margin-right:0.313rem;
+   margin-left:0.313rem;
+   border-radius:0.313rem;
 }
 
 .player scale.position highlight {
    background-color:  	#ed8796;
 
-   border-radius: 5px;
+   border-radius:0.313rem;
    
 }
 
@@ -839,11 +839,11 @@ macchiato_base: #24273a;
 }
 
 .media_volume_box{
-   margin-top: 10px;
+   margin-top:0.625rem;
    background-color: #45475a;
-   min-width: 30px;
-   min-height: 50px;
-   border-radius: 5px;
+   min-width: 1.875rem;
+   min-height: 3.125rem;
+   border-radius:0.313rem;
 
 
    
@@ -851,37 +851,37 @@ macchiato_base: #24273a;
 
 .player_volume_slider slider{
    background-color: white;
-   min-height: 0px;
-   min-width: 0px;
-   border-radius: 5px;
+   min-height:0rem;
+   min-width:0rem;
+   border-radius:0.313rem;
 }
 .player_volume_slider trough{
    background-color: #232634;
-   min-width: 10px;
-   min-height: 150px;
-   margin-top: 5px;
-   margin-bottom: 5px;
-   /*min-height: 8px;*/
+   min-width:0.625rem;
+   min-height:9.375rem;
+   margin-top:0.313rem;
+   margin-bottom:0.313rem;
+   /*min-height: 0.5rem;*/
    
-   border-radius: 5px;
+   border-radius:0.313rem;
 }
 .player_volume_slider highlight{
    background-color: #ca9ee6;
-   min-width: 10px;
-   min-height: 1px;
-   /*min-width: 8px;*/
-   border-radius: 5px;
+   min-width:0.625rem;
+   min-height:0.063rem;
+   /*min-width: 0.5rem;*/
+   border-radius:0.313rem;
    
 }
 
 .artist{
-   font-size: 18px;
+   font-size: 1.125rem;
    font-weight: bold;
 }
 
 .play-pause{
-   padding-left: 7px;
-   padding-right: 7px;
+   padding-left:0.438rem;
+   padding-right:0.438rem;
 }
 
 .shuffle-enabled{
@@ -900,78 +900,78 @@ macchiato_base: #24273a;
 
 /****************************** Launcher/ gpt ********************************/
 .search_icon{
-   font-size: 24px;
+   font-size: 1.5rem;
    background-color: #494d64;
-   min-width: 35px;
-   /*margin: 5px;*/
-   padding-right: 5px;
-   border-top-left-radius:5px ;
-   border-bottom-left-radius:5px ;
-   margin-right: 5px;
-   margin-left: 5px;
+   min-width: 2.188rem;
+   /*margin:0.313rem;*/
+   padding-right:0.313rem;
+   border-top-left-radius:0.313rem ;
+   border-bottom-left-radius:0.313rem ;
+   margin-right:0.313rem;
+   margin-left:0.313rem;
 }
 
 .launch_header{
    background-color: #494d64;
-   min-width: 400px;
+   min-width: 25rem;
 
-   /*min-height: 200px;*/
+   /*min-height:12.5rem;*/
 }
 
 .launcher_input{
    background-color: #6e738d;
-   padding-left: 5px;
-   border-top-right-radius:5px ;
-   border-bottom-right-radius:5px ;
-   margin-right: 5px;
-   /*padding-left: 10px;*/
-   /*min-height: 35px;*/
+   padding-left:0.313rem;
+   border-top-right-radius:0.313rem ;
+   border-bottom-right-radius:0.313rem ;
+   margin-right:0.313rem;
+   /*padding-left:0.625rem;*/
+   /*min-height: 2.188rem;*/
 }
 
 .launcher_list{
    background-color: #6e738d;
    
-   margin: 5px;
-   padding-top: 5px;
-   padding-bottom: 5px;
-   border-radius: 5px;
-   min-width: 400px;
-   /*padding-left: 10px;*/
-   /*min-height: 35px;*/
+   margin:0.313rem;
+   padding-top:0.313rem;
+   padding-bottom:0.313rem;
+   border-radius:0.313rem;
+   min-width: 25rem;
+   /*padding-left:0.625rem;*/
+   /*min-height: 2.188rem;*/
 }
 
 .convo_box{
    background-color: #6e738d;
    
-   margin: 5px;
-   /*padding-top: 5px;
-   padding-bottom: 5px;*/
-   border-radius: 5px;
-   min-width: 400px;
-   min-height: 500px;
-   /*padding-left: 10px;*/
-   /*min-height: 35px;*/
+   margin:0.313rem;
+   /*padding-top:0.313rem;
+   padding-bottom:0.313rem;*/
+   border-radius:0.313rem;
+   min-width: 25rem;
+   min-height: 4.063rem;
+   /*padding-left:0.625rem;*/
+   /*min-height: 2.188rem;*/
 }
 .app_item{
    background-color: #494d64;
-   padding-left: 5px;
-   /*margin: 5px;*/
-   margin-left: 5px;
-   margin-right: 5px;
-   border-radius: 5px;
-   min-width: 400px;
-   min-height: 65px;
-   /*padding-left: 10px;*/
-   /*min-height: 35px;*/
+   padding-left:0.313rem;
+   /*margin:0.313rem;*/
+   margin-left:0.313rem;
+   margin-right:0.313rem;
+   border-radius:0.313rem;
+   min-width: 25rem;
+   min-height: 4.063rem;
+   /*padding-left:0.625rem;*/
+   /*min-height: 2.188rem;*/
    transition: all 0.2s linear;
-   box-shadow: 2px 2px 4px black;
+   box-shadow:0.125rem 0.125rem 0.25rem black;
 }
 
 .app_item:hover{
    background-color:#b7bdf8;
    
    transition: all 0.2s linear;
-   box-shadow: 2px 2px 4px black;
+   box-shadow:0.125rem 0.125rem 0.25rem black;
   
   
 }
@@ -980,92 +980,92 @@ macchiato_base: #24273a;
    background-color: #b7bdf8;
   
    transition: all 0.0s linear;
-   box-shadow: 0px 0px 0px black;
+   box-shadow:0rem 0rem 0rem black;
   
 }
 
 
 .app{
    background-color: red;
-   min-height: 50px;
-   min-width: 50px;
+   min-height: 3.125rem;
+   min-width: 3.125rem;
 }
 
 .apps{
    background-color: black;
-   min-height: 300px;
-   min-width: 50px;
+   min-height: 18.75rem;
+   min-width: 3.125rem;
 }
 
 .app{
    background-color: pink;
-   min-height: 50px;
-   min-width: 50px;
+   min-height: 3.125rem;
+   min-width: 3.125rem;
 }
 
 .gpt_response{
    background-color:#232634;
-   padding-left: 2px;
+   padding-left:0.125rem;
    
-   margin: 2px;
-   margin-left: 5px;
-   margin-right: 5px;
-   border-radius: 5px;
-   min-width: 400px;
-   min-height: 65px;
-   /*padding-left: 10px;*/
-   /*min-height: 35px;*/
+   margin:0.125rem;
+   margin-left:0.313rem;
+   margin-right:0.313rem;
+   border-radius:0.313rem;
+   min-width: 25rem;
+   min-height: 4.063rem;
+   /*padding-left:0.625rem;*/
+   /*min-height: 2.188rem;*/
    transition: all 0.2s linear;
-   box-shadow: 2px 2px 4px black;
+   box-shadow:0.125rem 0.125rem 0.25rem black;
 }
 
 .gpt_query{
    background-color: #494d64;
-   padding-left: 2px;
+   padding-left:0.125rem;
    
-   margin: 2px;
-   margin-left: 5px;
-   margin-right: 5px;
-   border-radius: 5px;
-   min-width: 400px;
-   min-height: 65px;
-   /*padding-left: 10px;*/
-   /*min-height: 35px;*/
+   margin:0.125rem;
+   margin-left:0.313rem;
+   margin-right:0.313rem;
+   border-radius:0.313rem;
+   min-width: 25rem;
+   min-height: 4.063rem;
+   /*padding-left:0.625rem;*/
+   /*min-height: 2.188rem;*/
    transition: all 0.2s linear;
-   box-shadow: 2px 2px 4px black;
+   box-shadow:0.125rem 0.125rem 0.25rem black;
 }
 
 .ai_label{
-   font-size: 42px;
+   font-size: 2.625rem;
    font-weight: bold;
-   margin-bottom: 7px;
+   margin-bottom:0.438rem;
 
 }
 
 .chat_icon{
-   margin-right: 10px;
+   margin-right:0.625rem;
 }
 
 .save_clear_item{
    background-color: #494d64;
-   padding-left: 5px;
-   /*margin: 5px;*/
-   margin-left: 5px;
-   margin-right: 5px;
-   border-radius: 5px;
-   min-width: 200px;
-   min-height: 65px;
-   /*padding-left: 10px;*/
-   /*min-height: 35px;*/
+   padding-left:0.313rem;
+   /*margin:0.313rem;*/
+   margin-left:0.313rem;
+   margin-right:0.313rem;
+   border-radius:0.313rem;
+   min-width:12.5rem;
+   min-height: 4.063rem;
+   /*padding-left:0.625rem;*/
+   /*min-height: 2.188rem;*/
    transition: all 0.2s linear;
-   box-shadow: 2px 2px 4px black;
+   box-shadow:0.125rem 0.125rem 0.25rem black;
 }
 
 .save_clear_item:hover{
    background-color:#b7bdf8;
    
    transition: all 0.2s linear;
-   box-shadow: 2px 2px 4px black;
+   box-shadow:0.125rem 0.125rem 0.25rem black;
   
   
 }
@@ -1074,31 +1074,31 @@ macchiato_base: #24273a;
    background-color: #b7bdf8;
   
    transition: all 0.0s linear;
-   box-shadow: 0px 0px 0px black;
+   box-shadow:0rem 0rem 0rem black;
   
 }
 
 .ai_close_button{
    background-color: #1e1e2e;
-   padding-left: 5px;
-   /*margin: 5px;*/
-   margin-left: 5px;
-   margin-right: 5px;
-   margin-top: 5px;
-   border-radius: 5px;
-   min-width: 200px;
-   min-height: 50px;
-   /*padding-left: 10px;*/
-   /*min-height: 35px;*/
+   padding-left:0.313rem;
+   /*margin:0.313rem;*/
+   margin-left:0.313rem;
+   margin-right:0.313rem;
+   margin-top:0.313rem;
+   border-radius:0.313rem;
+   min-width:12.5rem;
+   min-height: 3.125rem;
+   /*padding-left:0.625rem;*/
+   /*min-height: 2.188rem;*/
    transition: all 0.2s linear;
-   box-shadow: 2px 2px 4px black;
+   box-shadow:0.125rem 0.125rem 0.25rem black;
 }
 
 .ai_close_button:hover{
    background-color:#b7bdf8;
    
    transition: all 0.2s linear;
-   box-shadow: 2px 2px 4px black;
+   box-shadow:0.125rem 0.125rem 0.25rem black;
   
   
 }
@@ -1107,51 +1107,51 @@ macchiato_base: #24273a;
    background-color: #b7bdf8;
   
    transition: all 0.0s linear;
-   box-shadow: 0px 0px 0px black;
+   box-shadow:0rem 0rem 0rem black;
   
 }
 
 /****************************** Volume indicator on bottom ********************************/
 .volume_indicator_bg{
-   min-width: 335px;
-   min-height: 50px;
-   margin: 5px;
-   border-radius: 5px;
+   min-width: 32.188rem;
+   min-height: 3.125rem;
+   margin:0.313rem;
+   border-radius:0.313rem;
    background-color: #45475a;
 }
 
 
 
 .audio_shortcut_slider {
-   min-width: 200px;
+   min-width:12.5rem;
    
 }
 /*.audio_shortcut_slider slider{
    background-color: white;
-   min-height: 12px;
-   min-width: 12px;
-   border-radius: 5px;
+   min-height:0.75rem;
+   min-width:0.75rem;
+   border-radius:0.313rem;
 }*/
 .audio_shortcut_slider trough{
    background-color: #232634;
-   min-width: 320px;
+   min-width: 20rem;
    
-   /*min-height: 8px;*/
+   /*min-height: 0.5rem;*/
    
-   border-radius: 5px;
+   border-radius:0.313rem;
 }
 .audio_shortcut_slider highlight{
    background-color: #a6d189;
-   min-height: 30px;
-   /*min-width: 8px;*/
-   border-radius: 5px;
+   min-height: 1.875rem;
+   /*min-width: 0.5rem;*/
+   border-radius:0.313rem;
    
 }
 
 .audio_shortcut_icon{
-   padding: 5px;
-   padding-left: 6px;
-   padding-right: 6px;
+   padding:0.313rem;
+   padding-left: 0.375rem;
+   padding-right: 0.375rem;
    color: #7f849c;
 }
 

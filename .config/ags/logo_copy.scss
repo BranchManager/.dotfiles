@@ -1,0 +1,1157 @@
+* { all : unset;
+   font-family: "Iosevka Nerd Font";
+}
+/*$mocha_crust: #11111b;
+$macchiato_base: #24273a;*/
+
+/*
+mocha_crust: #11111b;
+macchiato_base: #24273a;
+*/ 
+
+.tinted_background{
+   background-color: rgba(17, 17, 27, 0.5);
+   /*#11111b;*/
+   min-width: 300rem;
+   min-height: 300rem;
+
+}
+.tooltip{
+   background-color: #11111b;
+}
+
+ /*.my_bar{
+    
+    padding-bottom: 50px;
+
+ }*/
+ .my_widget_box{
+    background-color: red;
+    
+    /*padding-top: 100px;*/
+ }
+
+ .profile_name{
+      font-size: 12px;
+      font-weight: bold;
+      /*padding: 0;
+      margin: 0;*/
+      /*padding-top: 3;*/
+ }
+.profile_box{
+   /*background-color: $macchiato_base;*/
+   background-color: #24273a;
+   border-radius: 10px;
+   padding: 5px;
+   box-shadow: 5px 5px 2px black;
+}
+ .profile_image{
+    background-size: 90px 80px;
+    background-image: url('/home/branchmanager/Pictures/profile_pic/blackguy_anime.jpg');
+    background-repeat: no-repeat;
+    border-radius: 10px; 
+    min-height: 80px; 
+    min-width: 80px;
+ }
+ .position {
+    padding: 0;
+    margin-bottom: .3em;
+}
+ /*.my_slider trough{
+      
+    background-color: blue;
+    min-width: 10px; 
+    min-height: 20px;
+    font-size: 20px;
+ }*/
+/***************************** system monitor bar ******************************/
+ .my_slider trough{
+   background-color: #45475a;
+   border-radius: 5px;
+   min-height: 14px;
+   background-size: 15%;
+ }
+
+ /*.my_slider highlight{
+    background-color: red; 
+ 
+    min-width: 20px; 
+    font-size: 20px;
+ }*/
+.my_slider{
+
+   min-height: 14px;
+   border-radius: 0px;
+   min-height: 14px;
+   min-width: 230px;
+
+}
+.my_slider progress{
+ 
+   min-height: 14px;
+   border-radius: 5px;
+   min-height: 14px;
+
+}
+ .my_slider_cpu progress{
+    background-color: rgb(4, 165, 229); 
+    
+ }
+
+ .my_slider_ram progress{
+   background-color: #81c8be;
+ }
+
+ .my_slider_gpu  progress{
+   background-color: #8aadf4;
+}
+
+.my_slider_cpu_temp progress{
+   background-color: #209fb5;
+}	
+
+ /*.my_slider slider{
+  
+    all: unset;
+    
+ }*/
+
+.system_bar_icon_cpu_temp{
+   margin-left: -10px;
+   margin-bottom: -15px;
+   
+}
+
+ .system_monitor_bar_box{
+   min-width: 200px; 
+   background-color: #313244;
+   padding: 8px;
+   margin-left: 10px;
+   border-radius: 10px;
+}
+
+.system_bar_icon_gpu{
+   font-size: 20px;
+   padding-right: 2px; 
+   margin-left: -2px;
+   
+}
+.system_bar_icon_ram{
+   font-size: 20px;
+   margin-left: -5px;
+   margin-bottom: -15px;
+   
+}
+
+.system_bar_icon_cpu{
+   font-size: 12px;
+   margin-bottom: -15px;
+   padding-right: 7px;
+   
+}
+
+.system_harddrive_icon{
+   font-size: 20px;
+   margin: -35px;
+   padding-top: 15px;
+   margin-right: -10px;
+   /*margin-bottom: 10;*/
+   
+}
+
+.harddrive_circular_progress{
+   font-size: 6px; 
+   color: #7287fd;
+   margin-left: 10px;
+   background-color: #45475a;
+   
+}
+
+.system_monitor_harddrive_box{
+   min-width: 200px; 
+   padding-left:300px;
+  /* background-color: #313244;*/
+   padding: 8px;
+   margin-left: 0px;
+   border-radius: 10px;
+   margin-top: 10px;
+   /*box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);*/
+}
+
+.harddrive_labels{
+   margin-right: 5px;
+}
+/***************************** quick settings bar ******************************/
+.quicksettingstest {
+   background-color: white;
+   min-height: 500px;
+   min-width: 100px;
+   margin: 5px;
+   border-radius: 10px;
+}
+
+.quick_setting_button_box:active{
+
+   box-shadow: 0px 0px 0px;
+}
+
+.quick_setting_button_box:hover{
+   /*background-color: #949cbb;*/
+   background-color: #737994;
+
+}
+/************************************ wifi ********************************/
+.wifi_password_entry_box{
+   background-color: #232634;
+}
+.device_box{
+   margin: 2px;
+}
+.wifi_connected{
+   background-color: #a6da95	;
+   padding: 1px 5px;
+   margin: 2px;
+   border-radius: 10px;
+   color: #6e738d;
+}
+
+.wifi_not_connected{
+   background-color: #eed49f;
+   padding: 1px 5px;
+   margin: 2px;
+   border-radius: 10px;
+   color: #6e738d;
+
+}
+.accesspoints_background_box{
+   background-color: #949cbb;
+   min-width: 200px;
+   margin: 5px;
+   margin-top: 0px;
+   border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px;
+   /*min-height: 200px;&*/
+
+}
+.accesspoints_forground_box{
+   background-color: #45475a;
+   border-radius: 10px;
+   margin: 10px;
+}
+.wifi_quick_setting_button_box:active{
+
+   box-shadow: 0px 0px 0px;
+}
+.wifi_quick_setting_button_box:hover{
+   background-color: #949cbb;
+
+}
+
+.wifi_quick_setting_button_box{
+   min-height: 50px;
+   min-width: 50px;
+   background-color: #45475a;
+   transition: background-color 0.2s linear;
+   border-radius: 10px;
+   margin: 5px;
+   padding: 5px;
+   box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.1), 1px 7px 7px rgba(0, 0, 0, 0.3);
+
+}
+/************************************ bluetooth ********************************/
+.bluetooth_toggle_slider slider{
+   background-color: #e6e9ef;
+   min-height: 20px;
+   
+   min-width: 20px;
+   border-radius: 10px;
+}
+
+.bluetooth_toggle_slider {
+   background-color: #232634;
+   min-height: 1px;
+   min-width: 1px;
+   border-radius: 10px;
+   font-size: 0px;
+   margin: 5px;   
+}
+
+.quicksettings_main_box{
+   background-color: #313244;
+   min-width: 200px;
+   min-height: 50px;
+   border-radius: 10px;
+}
+.quick_setting_button_box{
+   min-height: 50px;
+   min-width: 50px;
+   background-color: #45475a;
+   transition: background-color 0.2s linear;
+   border-radius: 10px;
+   margin: 5px;
+   box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.1), 1px 7px 7px rgba(0, 0, 0, 0.3);
+
+}
+
+.bluetooth_devices_box{
+
+   background-color: #51576d;
+
+   /*This is so that the Devices header box is flush with this one
+   and the border radius is not rounded on the top  */
+   border-radius: 5px; /*0px 0px 10px 10px; */
+   /*min-height: 200px;*/
+   min-width: 100px;
+   margin: 5px 5px 5px 5px;
+}
+
+.bluetooth_devices_box_outliner{
+   background-color: #949cbb;
+   margin: 0px 5px 5px 5px;
+   
+   border-bottom-right-radius: 10px;
+   border-bottom-left-radius: 10px;
+}
+
+
+.bluetooth_button_icon_nobt{
+   margin-bottom: -35px;
+   margin-left: -15px;
+   margin-right: -15px;
+   
+}
+
+.bluetooth_device_header{
+   background-color: #949cbb;
+   border-radius: 10px 10px 0px 0px;
+   color:#4c4f69;
+   min-width: 100px;
+   margin: 5px 5px 0px 5px;
+   
+  
+}
+
+.device0{
+   color: blue;
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   
+}
+.device1{
+   color: red;
+}
+.bluetooth_device_connected_false{
+   min-height: 10px;
+   min-width: 10px;
+   background-color: #a5adcb	;
+   border-radius: 50px;
+   /*box-shadow: 5px 1px 7px rgba(30, 102, 245, 0.9), 1px 7px 7px rgba(30, 102, 245, 0.8);*/
+   margin: 5px;
+   
+   padding-left:5px;
+   padding-right:5px;
+}
+
+.bluetooth_device_connected_true{
+   min-height: 10px;
+   min-width: 10px;
+   background-color: #1e66f5	;
+   border-radius: 50px;
+   /*box-shadow: 5px 1px 7px rgba(30, 102, 245, 0.9), 1px 7px 7px rgba(30, 102, 245, 0.8);*/
+   margin: 5px;
+   padding-left:5px;
+   padding-right:5px;
+}
+
+.bluetooth_device_connected_false:hover{
+   box-shadow: 1px 1px 3px rgba(30, 102, 245, 0.9), 1px 1px 3px rgba(30, 102, 245, 0.8);
+  
+}
+.bluetooth_device_connected_true:hover{
+   box-shadow: 1px 1px 3px rgba(30, 102, 245, 0.9), 1px 1px 3px rgba(30, 102, 245, 0.8);
+  
+}
+
+.bluetooth_device_connected_false:active{
+   box-shadow: 0px 0px 0px rgba(30, 102, 245, 0.9), 0px 0px 0px rgba(30, 102, 245, 0.8);
+  
+}
+.bluetooth_device_connected_true:active{
+   box-shadow: 0px 0px 0px rgba(30, 102, 245, 0.9), 0px 0px 0px rgba(30, 102, 245, 0.8);
+  
+}
+
+
+.device_background_1{
+   background-color: #24273a;
+   /*margin: 0px 0px 5px 0px;*/
+}
+.device_label_len{
+   min-width: 1px;
+}
+.device_is_bottom{
+   border-radius: 0px 0px 10px 0px;
+
+}
+
+.device_icon_is_bottom{
+   border-radius: 0px 0px 0px 10px;
+
+}
+/***************************** Blue light filter ******************************/
+.blue_light_filter_box{
+   margin-right: 5px;
+   margin-left: 5px;
+}
+/**************************** Main Background *********************************/
+.main_background{
+   /*background-color: black;*/
+   /*padding-top: 100px;*/
+   all: unset;
+   padding: 10px;
+   border-radius: 10px;
+   margin: 10px 20px 20px 10px;
+   background-color: #11111b;
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+}
+
+.alt_main_background{
+   /*background-color: black;*/
+   /*padding-top: 100px;*/
+   all: unset;
+   padding: 10px;
+   border-radius: 10px;
+   margin: 10px 20px 20px 10px;
+   background-color: #11111b;
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+}
+
+
+
+/*************************Notifications **********************************/
+.primary_popup_background{
+   /*background-color: #11111b;*/
+  background-color: #45475a;
+   margin:  15px; /*the space around the box*/
+   padding: 5px; /*the grey padding around the box*/
+   min-width: 300px;
+   min-height: 50px;
+   border-radius: 10px;
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+}
+.secondary_popup_background{
+   /*min-width: 200px;
+   min-height: 50px;*/
+   min-width: 325px;
+   border-radius: 10px;
+   background-color: #11111b;
+   
+}
+
+.appname_notification{
+   font-size: 14px;
+   color:#b7bdf8;
+   font-weight: bold;
+}
+.summary{
+   color: #eff1f5;
+}
+
+.notification_body{
+
+   color: #eff1f5;
+   font-size: 12px;
+
+}
+
+.icon{
+   background-position: center;
+   background-size: 100px;
+   /*background-color:  black;*/
+   min-width: 100px;
+   min-height: 100px;
+}
+
+.notification_label{
+   color: #99d1db;
+   font-weight: bold;
+   /*margin-top: 3px;
+   margin-left: -14px;*/
+   /*padding-left: 5px;*/
+   margin-left: 10px;
+   margin-right: -7px;
+}
+
+.notification_label_dnd{
+   color: #99d1db;
+   font-weight: bold;
+   padding-left: 10px;
+   margin-right: -3px;
+   
+   
+}
+
+.notification_icon_dnd{
+   padding-right: 7px;
+   /*padding-left: 7px;*/
+  
+}
+.notification_icon{
+   padding: 7px;
+   margin-left: -3px;
+   margin-bottom: -5px;
+}
+.notification_icon_dnd_none{
+   padding-right: 7px;
+   padding-left: 11px;
+  
+}
+.notification_icon_none{
+   padding: 7px;
+   margin-left: -3px;
+   margin-bottom: -5px;
+}
+
+.notification_clear_button {
+   background-color: #4c4f69;
+   border-radius: 5px;
+   /*padding: 5px;*/
+   padding-left: 3px;
+   padding-right: 3px;
+   margin: 5px;
+   transition: background-color 0.2s linear;
+}
+
+.notification_clear_button:hover{
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   background-color: #949cbb;
+
+}
+
+.notification_clear_button:active{
+
+   box-shadow: 0px 0px 0px;
+}
+
+.notification_center_box_background{
+   background-color: #6e738d;
+   min-width: 200px;
+   margin: 5px;
+   margin-top: 0px;
+   border-radius: 10px;
+   border-radius: 10px;
+}
+
+.notif_action_button{
+   background-color: #4c4f69;
+   border-radius: 5px;
+   /*padding: 5px;*/
+   padding-left: 3px;
+   padding-right: 3px;
+   margin: 5px;
+   transition: background-color 0.2s linear;
+}
+
+.notif_action_button:hover{
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   background-color: #949cbb;
+}
+
+.notif_action_button:active{
+
+   box-shadow: 0px 0px 0px;
+}
+
+.notification_close_button{
+   background-color: #e64553;
+   border-radius: 5px;
+   padding-left: 5px;
+   padding-right: 5px;
+   margin: 5px;
+   transition: background-color 0.2s linear;
+
+}
+
+.notification_close_button:hover{
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   background-color: #e78284;
+}
+
+.notification_close_button:active{
+
+   box-shadow: 0px 0px 0px;
+}
+
+.notification_close_button_label{
+   font-size: 24px;
+   font-weight: bold;
+   margin-top: -5px;
+   margin-bottom: -3px;
+}
+/*****************************Volume ********************************/
+.audio_button_icon{
+   padding: 5px;
+   padding-left: 6px;
+   padding-right: 6px;
+   color: #8aadf4;
+}
+
+.audio_button_icon_muted{
+   padding: 5px;
+   padding-left: 6px;
+   padding-right: 6px;
+   color: #232634
+}
+.audio_main_slider{
+   min-width: 200px;
+}
+
+.audio_main_slider {
+   min-width: 200px;
+}
+.audio_main_slider slider{
+   background-color: white;
+   min-height: 12px;
+   min-width: 12px;
+   border-radius: 5px;
+}
+.audio_main_slider trough{
+   background-color: #232634;
+   min-width: 320px;
+   /*min-height: 8px;*/
+   
+   border-radius: 5px;
+}
+.audio_main_slider highlight{
+   background-color: #a6d189;
+   min-height: 8px;
+   /*min-width: 8px;*/
+   border-radius: 5px;
+   
+}
+
+.main_volume_background{
+   /*background-color: #45475a;*/
+   min-width: 200px;
+   min-height: 25px;
+   border-radius: 5px;
+
+
+   /*margin: 2px;*/
+}
+
+.volume_label{
+   font-size: 24px;
+   margin-left: 10px;
+   margin-top: 3px;
+}
+
+.volume_revealer_box{
+   background-color: #737994;
+   margin: 7px;
+   border-radius: 5px;
+}
+
+.sep{
+   background-color: #292c3c;
+   min-width: 150px;
+   min-height: 1px;
+   margin-right: 30px;
+   /*margin-left: 30px;*/
+}
+
+.volume_active_sink{
+   background-color: #a6da95;
+   min-width: 20px;
+   padding-right: 5px;
+   border-radius: 3px;
+}
+
+.volume_unactive_sink{
+   min-width: 20px;
+   padding-right: 5px;
+   transition: background-color 0.2s linear;
+   
+   background-color: #292c3c;
+}
+
+.volume_unactive_sink:hover{
+   background-color: #949cbb;
+}
+
+.volume_unactive_sink:active{
+   background-color: #292c3c;
+   transition: background-color 0.0s linear;
+}
+.pavucontrol_box{
+   background-color: #45475a;
+   border-top-left-radius: 3px;
+   min-width: 20px;
+   padding-right: 5px;
+   /*margin-top: 3px;
+   margin-right: 5px;*/
+   transition: background-color 0.2s linear;
+   /*box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);*/
+}
+
+.pavucontrol_box:hover{
+   background-color: #949cbb;
+}
+
+.pavucontrol_box:active{
+   background-color: #45475a;
+   transition: background-color 0.0s linear;
+}
+
+.microphone_box{
+   background-color: #737994;
+   margin: 7px;
+   border-radius: 5px;
+   /*padding-top: 10px;*/
+}
+
+/*****************************Calendar anc clock********************************/
+
+.calendar_main_box {
+   background-color: #181926;
+   box-shadow: 5px 1px 7px rgba(0, 0, 0, 0.5), 1px 7px 7px rgba(0, 0, 0, 0.8);
+   margin-top: 10px;
+   min-width: 200px;
+   border-radius: 5px;
+}
+
+.calendar{
+   font-family: Product Sans;
+   font-size: 14px;
+   min-width: 200px;
+   padding: 0rem 0.2rem 0rem; 
+}
+
+
+.calendar.highlight {
+   padding: 0rem;
+}
+
+
+ .hours_clock_label{
+
+   font-size: 84px;
+   margin-bottom: -20px;
+   margin-left: 10px;
+ }
+
+ /****************************** Weather ********************************/
+
+ .weather_main_box{
+   background-color: #45475a;
+   min-width: 70px;
+   min-height: 120px;
+   border-radius: 10px;
+   margin-top: 10px;
+  /* margin-right: 7px;*/
+
+ }
+ /****************************** Quote of the day ********************************/
+
+ .qotd_fullview_outline{
+   background-color: #45475a;
+   
+   border-radius: 10px;
+   padding: 10px;
+  
+  /* margin-right: 7px;*/
+ }
+ .quote_of_the_day_main_box{
+   background-color:  #1e1e2e;
+   min-width: 250px;
+   min-height: 90px;
+   border-radius: 10px;
+   margin-left: 2px;
+   /*margin-top: 10px;*/
+
+ }
+
+
+ .qotd{
+   font-size: 16px;
+   margin-top: 10px;
+   font-family: "Ubuntu Nerd Font";
+ }
+
+ .author{
+   font-size: 16px;
+   font-weight: bold;
+   margin-bottom: 10px;
+ }
+
+ .quote_separator{
+   background-color: whitesmoke;
+   min-width: 150px;
+   min-height: 1px;
+   margin-right: 10px;
+   margin-left: 10px;
+
+ }
+
+ /****************************** Mpris ********************************/
+.player{
+   all:unset;
+   background-color: rgba(0, 0, 0, 0.5); 
+	background-position: center;
+	margin-top: 10px;
+	background-size: cover;
+	min-height: 150px;
+	min-width: 220px;
+   border-top-left-radius: 5px;
+   border-bottom-left-radius: 5px;
+}
+.player_tint{
+   background-color: rgba(0, 0, 0, 0.5); 
+}
+
+ .mpris_img{
+
+   min-height: 60px;
+   min-width: 60px;
+ }
+
+ .player scale.position {
+   padding: 0;
+   margin-bottom: .3em;
+}
+
+.player scale.position trough {
+   min-height: 12px;
+   background-color: #45475a;
+   margin-right: 5px;
+   margin-left: 5px;
+   border-radius: 5px;
+}
+
+.player scale.position highlight {
+   background-color:  	#ed8796;
+
+   border-radius: 5px;
+   
+}
+
+.player scale.position slider {
+   all: unset;
+}
+
+.media_volume_box{
+   margin-top: 10px;
+   background-color: #45475a;
+   min-width: 30px;
+   min-height: 50px;
+   border-radius: 5px;
+
+
+   
+}
+
+.player_volume_slider slider{
+   background-color: white;
+   min-height: 0px;
+   min-width: 0px;
+   border-radius: 5px;
+}
+.player_volume_slider trough{
+   background-color: #232634;
+   min-width: 10px;
+   min-height: 150px;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   /*min-height: 8px;*/
+   
+   border-radius: 5px;
+}
+.player_volume_slider highlight{
+   background-color: #ca9ee6;
+   min-width: 10px;
+   min-height: 1px;
+   /*min-width: 8px;*/
+   border-radius: 5px;
+   
+}
+
+.artist{
+   font-size: 18px;
+   font-weight: bold;
+}
+
+.play-pause{
+   padding-left: 7px;
+   padding-right: 7px;
+}
+
+.shuffle-enabled{
+   color: #a6da95;
+}
+
+.loop-track{
+   color: #a6da95;
+}
+
+.loop-playlist-album{
+   color:  	#40a02b;
+}
+
+
+
+/****************************** Launcher/ gpt ********************************/
+.search_icon{
+   font-size: 24px;
+   background-color: #494d64;
+   min-width: 35px;
+   /*margin: 5px;*/
+   padding-right: 5px;
+   border-top-left-radius:5px ;
+   border-bottom-left-radius:5px ;
+   margin-right: 5px;
+   margin-left: 5px;
+}
+
+.launch_header{
+   background-color: #494d64;
+   min-width: 400px;
+
+   /*min-height: 200px;*/
+}
+
+.launcher_input{
+   background-color: #6e738d;
+   padding-left: 5px;
+   border-top-right-radius:5px ;
+   border-bottom-right-radius:5px ;
+   margin-right: 5px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+}
+
+.launcher_list{
+   background-color: #6e738d;
+   
+   margin: 5px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   border-radius: 5px;
+   min-width: 400px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+}
+
+.convo_box{
+   background-color: #6e738d;
+   
+   margin: 5px;
+   /*padding-top: 5px;
+   padding-bottom: 5px;*/
+   border-radius: 5px;
+   min-width: 400px;
+   min-height: 500px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+}
+.app_item{
+   background-color: #494d64;
+   padding-left: 5px;
+   /*margin: 5px;*/
+   margin-left: 5px;
+   margin-right: 5px;
+   border-radius: 5px;
+   min-width: 400px;
+   min-height: 65px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+}
+
+.app_item:hover{
+   background-color:#b7bdf8;
+   
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+  
+  
+}
+
+.app_item:active{
+   background-color: #b7bdf8;
+  
+   transition: all 0.0s linear;
+   box-shadow: 0px 0px 0px black;
+  
+}
+
+
+.app{
+   background-color: red;
+   min-height: 50px;
+   min-width: 50px;
+}
+
+.apps{
+   background-color: black;
+   min-height: 300px;
+   min-width: 50px;
+}
+
+.app{
+   background-color: pink;
+   min-height: 50px;
+   min-width: 50px;
+}
+
+.gpt_response{
+   background-color:#232634;
+   padding-left: 2px;
+   
+   margin: 2px;
+   margin-left: 5px;
+   margin-right: 5px;
+   border-radius: 5px;
+   min-width: 400px;
+   min-height: 65px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+}
+
+.gpt_query{
+   background-color: #494d64;
+   padding-left: 2px;
+   
+   margin: 2px;
+   margin-left: 5px;
+   margin-right: 5px;
+   border-radius: 5px;
+   min-width: 400px;
+   min-height: 65px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+}
+
+.ai_label{
+   font-size: 42px;
+   font-weight: bold;
+   margin-bottom: 7px;
+
+}
+
+.chat_icon{
+   margin-right: 10px;
+}
+
+.save_clear_item{
+   background-color: #494d64;
+   padding-left: 5px;
+   /*margin: 5px;*/
+   margin-left: 5px;
+   margin-right: 5px;
+   border-radius: 5px;
+   min-width: 200px;
+   min-height: 65px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+}
+
+.save_clear_item:hover{
+   background-color:#b7bdf8;
+   
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+  
+  
+}
+
+.save_clear_item:active{
+   background-color: #b7bdf8;
+  
+   transition: all 0.0s linear;
+   box-shadow: 0px 0px 0px black;
+  
+}
+
+.ai_close_button{
+   background-color: #1e1e2e;
+   padding-left: 5px;
+   /*margin: 5px;*/
+   margin-left: 5px;
+   margin-right: 5px;
+   margin-top: 5px;
+   border-radius: 5px;
+   min-width: 200px;
+   min-height: 50px;
+   /*padding-left: 10px;*/
+   /*min-height: 35px;*/
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+}
+
+.ai_close_button:hover{
+   background-color:#b7bdf8;
+   
+   transition: all 0.2s linear;
+   box-shadow: 2px 2px 4px black;
+  
+  
+}
+
+.ai_close_button:active{
+   background-color: #b7bdf8;
+  
+   transition: all 0.0s linear;
+   box-shadow: 0px 0px 0px black;
+  
+}
+
+/****************************** Volume indicator on bottom ********************************/
+.volume_indicator_bg{
+   min-width: 335px;
+   min-height: 50px;
+   margin: 5px;
+   border-radius: 5px;
+   background-color: #45475a;
+}
+
+
+
+.audio_shortcut_slider {
+   min-width: 200px;
+   
+}
+/*.audio_shortcut_slider slider{
+   background-color: white;
+   min-height: 12px;
+   min-width: 12px;
+   border-radius: 5px;
+}*/
+.audio_shortcut_slider trough{
+   background-color: #232634;
+   min-width: 320px;
+   
+   /*min-height: 8px;*/
+   
+   border-radius: 5px;
+}
+.audio_shortcut_slider highlight{
+   background-color: #a6d189;
+   min-height: 30px;
+   /*min-width: 8px;*/
+   border-radius: 5px;
+   
+}
+
+.audio_shortcut_icon{
+   padding: 5px;
+   padding-left: 6px;
+   padding-right: 6px;
+   color: #7f849c;
+}
+
