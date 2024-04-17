@@ -103,8 +103,8 @@ export const bottom_revealer = () => Widget.Revealer({
 
 
 //cannot be a function cause Ineed reference to the revealer
-export const main_widget = Widget.Revealer({
-    revealChild: false, 
+export const main_widget = (monitor) => Widget.Revealer({
+    revealChild: pick_monitor(monitor).bind(), //widgetrev.bind(),//pick_monitor(monitor).bind(),//false,
     transition: 'slide_left',
     name: 'revealed_box',
     transitionDuration: 200,

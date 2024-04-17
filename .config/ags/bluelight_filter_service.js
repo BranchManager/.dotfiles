@@ -44,8 +44,7 @@ class BluelightFilterService extends Service {
             this.icon = this.#icon_off
         }
         this.#onChange()
-        print('this is the running 1')
-        print(this.#running)
+       
 
     }
 

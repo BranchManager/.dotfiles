@@ -24,20 +24,18 @@ export function audio_reveal_func(is_other_app_calling_me){
 
 }
 
+//put everything in a box that houses the button that indicates if the sink is in use or not and also alows the user to change the sink
+    //Also put the description of the sink right next to the button
 function SinkItem(stream,is_speaker){
 
+    //This function is used to determine if the sink is in use or not
+    //If the sink is in use then we are going to return a checkmark in the button in which will do nothing when clicked
+    //If the sink is not in use then we are going to return a dash in the button in which will allow the user to change the sink
     function get_sink_icon(){
 
         
         var device_type;
         
-        //This if statment establishing if we are dealing with speakers or microphones
-        // if(is_speaker){
-        //     device_type = audio.speaker
-        // }else{
-        //     device_type = audio.microphone
-        
-        // }
         device_type = audio.speaker
         if (stream.name == device_type.name){
             
@@ -54,6 +52,7 @@ function SinkItem(stream,is_speaker){
                 }else{
                     self.child.label = "-"
                     self.className = "volume_unactive_sink"
+                    //on click we are going to change the sink to itself
                     self.onClicked = () => {
                         if(is_speaker)
                             audio.speaker = stream
@@ -80,6 +79,8 @@ function SinkItem(stream,is_speaker){
                 }else{
                     self.child.label = "-"
                     self.className = "volume_unactive_sink"
+
+                    //on click we are going to change the sink to the sink that was clicked
                     self.onClicked = () => {
                         if(is_speaker)
                             audio.speaker = stream
@@ -93,7 +94,8 @@ function SinkItem(stream,is_speaker){
         
     }
 
-    //put everything in a box
+    //put everything in a box that houses the button that indicates if the sink is in use or not and also alows the user to change the sink
+    //Also put the description of the sink right next to the button
     return Widget.Box({
         vertical:true,
         children:[Widget.Box({
@@ -147,7 +149,7 @@ export var audio_revealer = () => Widget.Revealer({
                     Widget.Separator({className:'sep', orientation:0}),
                     Widget.Box({
                         vertical: true,
-                        children: audio.bind("speakers").as(a => a.map((item) => SinkItem(item,true))),//a => a.map(SinkItem)),
+                        children: audio.bind("speakers").as(a => a.map((item) => SinkItem(item,true))),
                     }),
                 ]
             }),

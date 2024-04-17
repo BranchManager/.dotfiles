@@ -1,3 +1,4 @@
+// Htis handles the mpris and mesi widget that pop up when watching media
 const mpris = await Service.import("mpris")
 const players = mpris.bind("players")
 
@@ -19,17 +20,10 @@ function lengthStr(length) {
 function Player(player) {
     
 
-    const img = Widget.Box({
-        class_name: "mpris_img",
-        vpack: "start",
-        css: player.bind("cover_path").transform(p => `
-            background-image: url('${p}');
-        `),
-    })
 
     const title = Widget.Label({
         class_name: "title",
-        //wrap: true,
+
         truncate: 'end',
         maxWidthChars: 40,
         hpack: "start",
@@ -79,8 +73,8 @@ function Player(player) {
         label: player.bind("length").transform(lengthStr),
     })
 
-    const icon = Widget.Icon({ //TODO: ADD CORRECT ICONS
-        //class_name: "icon",
+    const app_icon = Widget.Icon({ 
+        
         margin: 5,
         hexpand: true,
         vexpand: true,
@@ -90,8 +84,7 @@ function Player(player) {
         tooltip_text: player.identity || "",
         icon: player.bind("entry").transform(entry => {
             const name = `${entry}-symbolic`
-            console.log(name)
-            console.log("NAME**************")
+          
             return Utils.lookUpIcon(name) ? name : FALLBACK_ICON
         }),
     })
@@ -121,13 +114,13 @@ function Player(player) {
             }else{
                 return false
             }
-        }),//player.bind("shuffle_status"),
+        }),
         child: Widget.Icon({
             class_name: Utils.watch(player.loopStatus == "Track"?"loop-track" : player.loopStatus == "Playlist" ? "loop-playlist-album":"", player, () => {
                 print("loop status n shit")
                 print(player.loopStatus)
                 var classname
-                //var classname = player.loopStatus ? "":"None" ? "loop-track":"Track" ? "loop-playlist-album":"Playlist"
+                
                 if(player.loopStatus == "None"){
                     classname = ""
                 }else if(player.loopStatus == "Track"){
@@ -151,7 +144,7 @@ function Player(player) {
             }else{
                 return false
             }
-        }),//player.bind("shuffle_status"),
+        }),
         child: Widget.Icon({
             class_name: Utils.watch(player.shuffleStatus ? "shuffle-enabled" : "", player, () => {
                 if (player.shuffleStatus == true)
@@ -191,17 +184,14 @@ function Player(player) {
         inverted: true,
         vertical: true,
         on_change: ({ value }) => player.volume = value,
-        visible: player.volume >= 0,//players.as(p => p.volume >= 0),
+        visible: player.volume >= 0,
         value: player.bind("volume"),
         setup: self => {
             const update = () => {
                 self.visible = player.volume >= 0
             }
-            console.log("volume")
-            console.log(player.volume)
-            console.log(player.name)
+            
             self.hook(player, update)
-            //self.poll(1000, update)
         },
     })
 
@@ -215,7 +205,7 @@ function Player(player) {
                         background-image: url('${p}');
                     `),
                 },
-                //img,
+               
                 Widget.Box(
                     {
                         className: "player_tint",
@@ -235,11 +225,11 @@ function Player(player) {
                                 artist,
                             ]
                         }),
-                        icon,
+                        app_icon,
                         
                         ]
                     }),
-                //     artist,
+                
                     Widget.Box({ vexpand: true }),
                     positionSlider,
                     Widget.CenterBox({
@@ -255,19 +245,12 @@ function Player(player) {
                     }),
                 )
             ),Widget.Box({
-                //visible: false,//player.volume >= 0,
+                
                 vertical:true,
-                className: player.volume >= 0 ? "media_volume_box":"", //if we can interact with the volume slider, we want to show the box
+                className: player.volume >= 0 ? "media_volume_box":"", 
                 child: volume,
-                //visible: players.as(p => p.volume >= 0),
-                setup: self => {
-                    
-                    console.log("volume2")
-                    console.log(player.volume)
-                    console.log(player.name)
-                    //self.hook(player, update)
-                    //self.poll(1000, update)
-                },
+               
+        
             })
         ]
     })

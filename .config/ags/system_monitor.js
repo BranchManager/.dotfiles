@@ -19,7 +19,7 @@ const ram = Variable(0, {
         .split(/\s+/)
         .splice(1, 2))],
 })
-
+/****************************************Get cpu Temp ******************* */
 function get_cpu_temp(){
 
     //try to get the cpu temp with Tccd1
@@ -53,8 +53,7 @@ const cpu_temp = Variable(0, {
 })
 
 
-//drive_space()
-//get_cpu_temp()
+
 /*************************repeatedly call amdtop and get the average of the Edgen Junction and memory temp on the gpu*/
 // dependency required: amdgpu_top
 function get_gpu_temp(){
@@ -79,7 +78,7 @@ const gpu = Variable(0, {
     poll: [2000,get_gpu_temp],
 })
 /**************************************Get drive space********************** */
-// returns the two biggest drives moounted on the system
+// returns the two biggest drives moounted on the system (assuming that a second drive is mounted)
 //may need to eventually take into account flash drives
 const drive_space = () => {
 
@@ -171,7 +170,7 @@ make_drive_space_widgets()
 /***************************************Widget boxes below****************************8 */
 const cpu_monitor = () => Widget.Box({
 
-    //css: 'background-color: red;',
+   
     spacing: 0,
     vertical: false,
     children: [
@@ -251,7 +250,7 @@ const cpu_temp_monitor = () => Widget.Box({
 
 const gpu_monitor = () => Widget.Box({
 
-    //css: 'background-color: red;',
+    
     spacing: 0,
     vertical: false,
     children: [
@@ -278,7 +277,6 @@ const gpu_monitor = () => Widget.Box({
 export function drive_monitor(){
     
     const drive_monitors = Widget.Box({
-        //css: 'min-width: 1px; min-height: 50px; border-radius: 10px;',
         vertical: false,
         vpack: 'start',
         className: 'system_monitor_harddrive_box',
@@ -293,7 +291,6 @@ export function drive_monitor(){
 
 export function system_monitors(){
     const system_monitor = Widget.Box({
-        //css: 'min-width: 1px; min-height: 50px; border-radius: 10px;',
         vertical: true,
         vpack: 'start',
         className: 'system_monitor_bar_box',

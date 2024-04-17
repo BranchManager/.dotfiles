@@ -7,7 +7,7 @@ import {  audio_reveal_func } from "./audio.js";
 const bluetooth = await Service.import('bluetooth')
 const bluetooth_icon_on = 'lattet-blue-bluetooth'
 const bluetooth_icon_off = 'frappe-crust-no-bluetooth'
-import { bottom_reveal_func, bottom_revealer } from "./Bar/MainWidget.js"
+import { bottom_reveal_func } from "./Bar/MainWidget.js"
 
 var quicksettings_reveal = false;
 const btreveal = Variable(false)
@@ -39,28 +39,19 @@ function check_blue(){
 export function bluetooth_reveal_func(is_other_app_calling_me){
 
     if (is_other_app_calling_me){
-        //bluetooth_revealer.revealChild = false;
         btreveal.value = false;
         
     } else if (!is_other_app_calling_me){
-       // bottom_revealer.revealChild = true;
         network_reveal_func(true);
         notification_reveal_func(true);
         audio_reveal_func(true);
         quicksettings_reveal = false;
         console.log('reveal_func');
-        //bottom_revealer.revealChild = true;
+       
         bottom_reveal_func(true);
-        //bluetooth_revealer.revealChild = !bluetooth_revealer.revealChild
+     
         btreveal.value = !btreveal.value
 
-        // if (bluetooth_revealer.revealChild) {
-        //     bluetooth_revealer.revealChild = false;
-
-        // } else {
-        // bluetooth_revealer.revealChild = true;
-
-        // }
     }
 }
 
@@ -123,7 +114,7 @@ export var bluetooth_revealer = () => {
 
                                 //The icon ofr one of the devices (To be honest I do not know whwere the icon is coming from) I got this some of 
                                 //this setup code from the ags wiki
-                                Widget.Icon({//classNames:[ 'device_background_'+String(item%2),'device_icon_is_'+(item+1 == bluetooth.devices.length ? 'bottom': 'top')],
+                                Widget.Icon({
                                 icon: icon_name + '-symbolic'}),
                                 
                                 
@@ -145,7 +136,6 @@ export var bluetooth_revealer = () => {
                                 //Depending on if the device is the last one in the list we will add rounded corners to the bottom
                                 Widget.Label({xalign: 0,
                                     maxWidthChars: 24 , 
-                                    //classNames: ['device_background_'+String(item%2),'device_label_len','device_is_'+(item+1 == bluetooth.devices.length ? 'bottom': 'top')],
                                     label: name
                                 }),
                             
