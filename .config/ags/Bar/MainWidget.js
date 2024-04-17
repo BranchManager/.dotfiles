@@ -1,4 +1,5 @@
-
+const AccountsService = imports.gi.AccountsService;
+const GLib = imports.gi.GLib;
 App.addIcons(`${App.configDir}/assets/weather_icons`)
 App.applyCss(`${App.configDir}/logo.scss`)
 
@@ -19,6 +20,22 @@ const widgetrev2 = Variable(false)
 const widgetrev3 = Variable(false)
 const widgetrev4 = Variable(false)
 const bottomrevealer = Variable(true)
+
+function get_avatar(){
+
+
+    /// Get the user's account
+    let user = AccountsService.UserManager.get_default().get_user(GLib.get_user_name());
+
+    
+    const { iconFile, realName, userName } = AccountsService.UserManager
+        .get_default().list_users()[0]
+        
+   
+    //This is the path to the user's avatar in /var/lib/AccountsService/icons/<username>
+    //NOTE: the username is the iconitself
+    return `background-image: url('${iconFile}');`
+}
 
 //called in widgetbutton.js
 export function reveal_widets(monitor){
@@ -67,6 +84,7 @@ const Profile_box = () => Widget.Box({
         Widget.Box({
             // hpack: 'center',
             // vpack: 'end',
+            css: get_avatar(),//`background-image: url('/home/branchmanager/Pictures/profile_pic/blackguy_anime.jpg');`,
             className: 'profile_image',
             name: "profile_image",
         }),

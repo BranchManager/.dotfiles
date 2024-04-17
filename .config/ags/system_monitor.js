@@ -22,13 +22,14 @@ const ram = Variable(0, {
 
 function get_cpu_temp(){
 
+    //try to get the cpu temp with Tccd1
     try{
         var cpu_temp = Utils.exec('sensors').split('\n')
             .find(line => line.includes('Tccd1'))
             .split(/\s+/)[1]
             .match(/\d+/)[0];
     }catch{
-        //console.error('No cpu temp detected with Tccd1, trying Tctl')
+        //if that fails try to get the cpu temp with Package id 0 which I assume most pcs will have
         try{
             var cpu_temp = Utils.exec('sensors').split('\n')
                 .find(line => line.includes('Package id 0'))
