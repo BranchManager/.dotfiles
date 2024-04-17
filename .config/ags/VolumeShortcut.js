@@ -1,4 +1,4 @@
-/* This file handles the volume indicator when using the shortcuts */
+/* This file handles the volume indicator when using the keybinding shortcuts */
 const audio = await Service.import('audio')
 
 const reveal = Variable(false)

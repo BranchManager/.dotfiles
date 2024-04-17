@@ -132,22 +132,16 @@ const uptime = Widget.Label({
     hexpand: true,
     hpack: 'center',
     css: ' margin-left: 10px; margin-right: 3px;',
-    //label:Utils.exec("uptime -p")
 })
 const power_buttons = Widget.Box({
-   //className: 'quick_setting_power_button',
    vertical: false,
-    //spacing: 5,
     children: [
         power_button(),
         sleep(),
         restart(),
         logout(),
         lock(),
-        // restart_button(),
-        // logout_button(),
-        // suspend_button(),
-        // lock_button(),
+   
     ]
 })
 
