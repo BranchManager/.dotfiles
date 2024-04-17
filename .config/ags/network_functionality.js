@@ -4,11 +4,12 @@
 import { bluetooth_reveal_func } from "./bluetooth_functionality.js";
 import { notification_reveal_func } from "./Notifications/Notification_Center.js";
 import {  audio_reveal_func } from "./audio.js";
-
-import Gdk from "gi://Gdk"
-
-
 const network = await Service.import('network')
+
+const tf = network.wifi.enabled
+const wifi_enabled = Variable(true)
+
+
 const bluetooth = await Service.import('bluetooth')
 // const n = Gdk.Display.get_default()?.get_n_monitors()
 // const all_monitors = []
@@ -49,10 +50,11 @@ export function network_reveal_func(is_other_app_calling_me){
         bluetooth_reveal_func(true);
         notification_reveal_func(true);
         audio_reveal_func(true)
-
+        
+        //print(network.wifi.enabled)
         get_access_points()
-        network_quicksettings_reveal = false;
-        console.log('reveal_func');
+       // network_quicksettings_reveal = false;
+        //console.log('reveal_func');
         //network_revealer.revealChild = !network_revealer.revealChild
         netrevealer.value = !netrevealer.value
         // if (network_revealer.revealChild) {
@@ -145,8 +147,9 @@ function make_device_box(button_class, button_label, ssid, connection,sec){
         Widget.Box({ vertical: false, children: [
             Widget.Label({css: 'padding-right: 5px; color: #cad3f5', label: connection}),
             Widget.Button({
-                className: 'device_box',
-                child: Widget.Label( {className: button_class, label: button_label}),
+                //className: 'device_box',
+                className: button_class,
+                child: Widget.Label( { label: button_label}),
                 
                 onClicked: () => {
                     if (button_label == 'Connect'){
@@ -174,7 +177,24 @@ function make_device_box(button_class, button_label, ssid, connection,sec){
 
 const loading_label = () => {
 
-    return Widget.Label({css: 'color: black', label: 'loading...'})
+    return Widget.Label({css: 'color: white', label: 'Scanning...'})
+}
+
+const No_devices_label = () => {
+
+    return Widget.Label({css: 'color: white', label: 'No Devices'})
+}
+function delay_access_points(){
+    devices.value = []
+    const loading = loading_label()
+    devices.value = devices.value.concat(loading)
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 4000, () => {
+        print('This message is printed after 1 second');
+        
+        get_access_points()
+        return GLib.SOURCE_REMOVE; // Returning this removes the timeout event
+    });
+
 }
 function get_access_points(){
 
@@ -184,16 +204,19 @@ function get_access_points(){
   
     var wifi_icon = ''
     var device_array = []
+    devices.value = []
     //get the list of wifi devices
     
     //for(let i = 0; i < n; i++){
         //all_monitors[i].value = [loading_label()]
-        const loading = loading_label()
-       devices.value = devices.value.concat(loading)//[loading]
-    //}
-    //devices.value = [loading_label()]
-    //device_list = Utils.exec('nmcli dev wifi list')
+    const loading = loading_label()
+    devices.value = devices.value.concat(loading)//[loading]
+    print("Is Wifi enabled: ")
+    print(network.wifi.enabled)
+
     Utils.execAsync('nmcli dev wifi list').then(device_list => {
+        print("Device List")
+        print(device_list)
         var device_list_lines = device_list.split('\n')
         for (var i = 0; i < device_list_lines.length; i++){
             if (i != 0 ){
@@ -230,7 +253,15 @@ function get_access_points(){
         //GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
             //for(let i = 0; i < n; i++){
                 //all_monitors[i].value = device_array
-               devices.value = device_array
+                if (device_array.length > 0){
+                    devices.value = device_array
+                }else{
+                    if(network.wifi.enabled == false){
+                        devices.value = [Widget.Label({css: 'color: black', label: 'Wifi is disabled'})]
+                    }else{
+                        devices.value = [No_devices_label()]
+                    }
+                }
             //}
 
             //return device_array
@@ -240,6 +271,8 @@ function get_access_points(){
         //devices.value = [Widget.Label({css: 'color: black', label: 'No devices detected'})]
         for(let i = 0; i < n; i++){
             all_monitors[i].value = [Widget.Label({css: 'color: black', label: 'No devices detected'})]
+            print("ERRRRRRR")
+            print(val)
            //devices.value = device_array
         }
     
@@ -248,25 +281,8 @@ function get_access_points(){
 
 }
 
-function choose_device_var(monitor){
-    print("This is monitor: " + monitor)
-    print(all_monitors[monitor].value[0].label)
-    return all_monitors[monitor]
-    // switch(monitor){
-    //     case 0:
-    //         return devices0
-    //     case 1:
-    //         return devices1
-    //     case 2:
-    //         return devices2
-    //     case 3:
-    //         return devices3
-    //     case 4:
-    //         return devices4
-        
-    // }
-}
-const wifi_access_points = (monitor) => Widget.Box({
+
+const wifi_access_points = () => Widget.Box({
     vertical: true,
     //hpack: 'endy',
     hexpand: true,
@@ -277,9 +293,33 @@ const wifi_access_points = (monitor) => Widget.Box({
 
 
 })
+const revealed_access_points = () => Widget.Revealer({
+            
+    revealChild: wifi_enabled.bind(),
 
+        child:Widget.Box({
+            vertical: true,
+            children:[Widget.Box({
+                vertical: true,
+                child: box_header(),
+
+                }),
+                //Widget.Revealer({
+                //    revealChild: wifi_enabled.bind(),
+                    //child: 
+                Widget.Box({
+                    //hpack: 'center',
+                    vertical: false,
+                    vpack: 'center',
+                    hexpand: false,
+                    className: 'accesspoints_background_box',
+                    child: wifi_access_points()
+                })
+            ]
+        })
+    })
 // This export is the revealer under the quick settings widget
-export var network_revealer = (monitor) => Widget.Revealer({
+export var network_revealer = () => Widget.Revealer({
     revealChild: netrevealer.bind(),//false, 
     child: Widget.Box({
 
@@ -289,25 +329,88 @@ export var network_revealer = (monitor) => Widget.Revealer({
             hpack: 'end',
              vertical: false,
              child: Widget.Switch({
-                 active: false, 
+                 active: network.wifi.enabled, 
                  className: 'bluetooth_toggle_slider',
-                onActivate: () =>{network.toggleWifi()},
+                 onActivate:({active})=>{
+                    // print(active)
+                    // print(network.wifi.enabled)
+                    
+                    // active = network.wifi.enabled
+                    // print(active)
+                    // print(network.wifi.enabled)
+                    
+                    // wifi_enabled.value = network.wifi.enabled
+                    //network.wifi.enabled = !network.wifi.enabled
+                    //network.toggleWifi()
+                    if (network.wifi.enabled == true){
+                        network.wifi.enabled = false
+                        get_access_points()
+                    }else{
+                        
+                        network.wifi.enabled = true
+                        delay_access_points()
+                        
+                      
+                        
+                    }
+                    //netrevealer.value = !netrevealer.value
+                    //print(typeof wifi_enabled.value)
+
+                    // if(network.wifi.enabled == true){
+                    //     print(wifi_enabled.value)
+                    //     print(network.wifi.enabled)
+                    //     get_access_points()
+                    //     netrevealer.value = false
+                    //     netrevealer.value = true
+                    //     wifi_enabled.value = true
+                    // }else{
+                    //     print(wifi_enabled.value)
+                    //     print(network.wifi.enabled)
+                    //     get_access_points()
+                    //     netrevealer.value = false
+                    //     netrevealer.value = true
+                    //     wifi_enabled.value = true
+                    // }
+
+                 }
+                // onActivate: () =>{
+                //     network.toggleWifi()
+                //     print(network.wifi.enabled)
+                //     wifi_enabled.value = network.wifi.enabled
+                //     if(wifi_enabled.value == true){
+                //         get_access_points()
+                //     }
+                // },
              })
  
          }),
-         Widget.Box({
-            vertical: true,
-           child: box_header(),
+         Widget.Revealer({
+            
+            revealChild: wifi_enabled.bind(),
 
-        }),
-        Widget.Box({
-            //hpack: 'center',
-            vertical: false,
-            vpack: 'center',
-            hexpand: false,
-            className: 'accesspoints_background_box',
-            child: wifi_access_points(monitor)
-        })]
+                child:Widget.Box({
+                    vertical: true,
+                    children:[Widget.Box({
+                        vertical: true,
+                        child: box_header(),
+
+                        }),
+                        //Widget.Revealer({
+                        //    revealChild: wifi_enabled.bind(),
+                            //child: 
+                        Widget.Box({
+                            //hpack: 'center',
+                            vertical: false,
+                            vpack: 'center',
+                            hexpand: false,
+                            className: 'accesspoints_background_box',
+                            child: wifi_access_points()
+                        })
+                    ]
+                })
+            })
+         //})
+        ]
     }),
 
 })

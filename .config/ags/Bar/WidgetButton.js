@@ -3,7 +3,7 @@
 const network = await Service.import('network')
 const audio = await Service.import('audio')
 const NotificationService = await Service.import('notifications')
-import { main_widget, reveal_widets} from './MainWidget.js';
+import { main_widget} from './MainWidget.js';
 import { get_weather} from '../weather.js'
 import { get_quote_of_the_day } from '../quote_of_the_day.js';
 import { power_widget, get_uptime } from '../power_menu.js';
