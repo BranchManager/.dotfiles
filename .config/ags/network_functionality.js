@@ -17,7 +17,11 @@ const bluetooth = await Service.import('bluetooth')
 //     const dev = Variable([Widget.Label({label: 'no devices detected'})])
 //     all_monitors.push(dev)
 // }
-const devices = Variable([])//Variable([Widget.Label({label: 'no devices detected'})]) //devices changes besed on the devices detected
+const devices = Variable([])
+
+
+
+//Variable([Widget.Label({label: 'no devices detected'})]) //devices changes besed on the devices detected
 // const devices1 = Variable([Widget.Label({label: 'no devices detected'})])
 // const devices2 = Variable([Widget.Label({label: 'no devices detected'})])
 // const devices3 = Variable([Widget.Label({label: 'no devices detected'})])
@@ -92,13 +96,11 @@ const WifiIndicator = () => Widget.Button({
 
     
 })
-    const header  = () => Widget.Label({ xalign: 0, className: 'bluetooth_device_header', label: 'Access Points',})
-    const box_header = () => Widget.Box({
-        vertical: false,
-        
-        className: 'bluetooth_device_header',
-        child: header(),
-    })
+/*****mak function */
+function wifi_access_points(){
+    const wifi_devices = Variable([])
+
+    
 
 
 
@@ -189,7 +191,7 @@ const WifiIndicator = () => Widget.Button({
         //for(let i = 0; i < n; i++){
             //all_monitors[i].value = [loading_label()]
             const loading = loading_label()
-        devices.value = devices.value.concat(loading)//[loading]
+        wifi_devices.value = wifi_devices.value.concat(loading)//[loading]
         //}
         //devices.value = [loading_label()]
         //device_list = Utils.exec('nmcli dev wifi list')
@@ -230,7 +232,7 @@ const WifiIndicator = () => Widget.Button({
             //GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
                 //for(let i = 0; i < n; i++){
                     //all_monitors[i].value = device_array
-                devices.value = device_array
+                wifi_devices.value = device_array
                 //}
 
                 //return device_array
@@ -266,17 +268,28 @@ const WifiIndicator = () => Widget.Button({
             
         // }
     }
-    const wifi_access_points = (monitor) => Widget.Box({
+    //const wifi_access_points = (monitor) => Widget.Box({
+        return Widget.Box({
         vertical: true,
         //hpack: 'endy',
         hexpand: true,
         vpack: 'center',
         className: 'accesspoints_forground_box',
-        children: devices.bind(),  //This variable will change dynamically
+        children: wifi_devices.bind(),  //This variable will change dynamically
         
 
 
     })
+}
+
+const header  = () => Widget.Label({ xalign: 0, className: 'bluetooth_device_header', label: 'Access Points',})
+const box_header = () => Widget.Box({
+    vertical: false,
+    
+    className: 'bluetooth_device_header',
+    child: header(),
+})
+//end function maybe
 
     // This export is the revealer under the quick settings widget
 export var network_revealer = (monitor) => Widget.Revealer({
