@@ -25,7 +25,8 @@ export const Calender_and_clock = () => Widget.Box({
     }),
 
     Widget.Box({
-        hexpand: false,
+        hexpand: true,
+        hpack: "center",
         vertical: true,
         children: [
             Widget.Label({

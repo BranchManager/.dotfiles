@@ -322,6 +322,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12, monitor = 0 }) =
     })
 
     const clear_button = Widget.Button({
+        hexpand: true,
         className: "save_clear_item",
         label: "Clear convo",
         on_clicked: () => chat_blocks.value = [],
@@ -333,6 +334,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12, monitor = 0 }) =
     })
 
     const save_button = Widget.Button({
+        hexpand: true,
         className: "save_clear_item",
         label: "Save convo",
         on_clicked: () => {
