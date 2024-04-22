@@ -5,31 +5,13 @@ import { bluetooth_reveal_func } from "./bluetooth_functionality.js";
 import { notification_reveal_func } from "./Notifications/Notification_Center.js";
 import {  audio_reveal_func } from "./audio.js";
 
-import Gdk from "gi://Gdk"
-
 
 const network = await Service.import('network')
-const bluetooth = await Service.import('bluetooth')
-// const n = Gdk.Display.get_default()?.get_n_monitors()
-// const all_monitors = []
-// for(let i = 0; i < n; i++){
-//     print("This is the number of monitors: " + n)
-//     const dev = Variable([Widget.Label({label: 'no devices detected'})])
-//     all_monitors.push(dev)
-// }
-const devices = Variable([])//Variable([Widget.Label({label: 'no devices detected'})]) //devices changes besed on the devices detected
-// const devices1 = Variable([Widget.Label({label: 'no devices detected'})])
-// const devices2 = Variable([Widget.Label({label: 'no devices detected'})])
-// const devices3 = Variable([Widget.Label({label: 'no devices detected'})])
-// const devices4 = Variable([Widget.Label({label: 'no devices detected'})])
 
-const GLib = imports.gi.GLib;
+const devices = Variable([])
 
 var network_quicksettings_reveal = false;
-var device_list;
 
-console.log("This is the network connectivity")
-console.log(network.connectivity)
 
 const netrevealer = Variable(false)
 
@@ -53,21 +35,15 @@ export function network_reveal_func(is_other_app_calling_me){
         get_access_points()
         network_quicksettings_reveal = false;
         console.log('reveal_func');
-        //network_revealer.revealChild = !network_revealer.revealChild
+      
         netrevealer.value = !netrevealer.value
-        // if (network_revealer.revealChild) {
-        //     network_revealer.revealChild = false;
-
-        // } else {
-        //     network_revealer.revealChild = true;
-
-        // }
+ 
     }
 }
 
 const WiredIndicator = () => Widget.Box({
     className: 'wifi_quick_setting_button_box',
-    //onClicked: () => network_reveal_func(false),
+  
     child: Widget.Icon({
         size: 50,
         icon: network.wired.bind('icon_name'),
@@ -76,11 +52,6 @@ const WiredIndicator = () => Widget.Box({
     
 })
 
-
-// Widget.Icon({
-//     icon: network.wired.bind('icon_name'),
-    
-// })
 
 const WifiIndicator = () => Widget.Button({
     className: 'wifi_quick_setting_button_box',
@@ -114,18 +85,14 @@ function make_device_box(button_class, button_label, ssid, connection,sec){
 
     function connect_to_wifi_device(widget,ssid, password, sec){
         if(sec == 'WPA2' || sec == 'WPA3' || sec == 'WPA' || sec == 'WEP'){
-            print('nmcli dev wifi connect ' + ssid + ' password \"' + password + '\"')
             password_revealer.child.text = 'Connecting...'
-            print('nmcli dev wifi connect ' + ssid + ' password ' + password )
             Utils.execAsync('nmcli dev wifi connect ' + ssid + ' password ' + password )
                 .then(val => {password_revealer.child.text = "Connected!"; print(val + password)})
                 .catch(val =>{password_revealer.child.text = val; print(val)})    
   
         }else{
             //TODO: Test this probably never going to be used
-            
             password_revealer.child.text = 'Connecting...'
-            print('nmcli dev wifi connect ' + ssid)
         }
     }
     const password_revealer = Widget.Revealer({revealChild: false, 
@@ -150,16 +117,14 @@ function make_device_box(button_class, button_label, ssid, connection,sec){
                 
                 onClicked: () => {
                     if (button_label == 'Connect'){
-                        print("This is the connected status: ")
-                        print(connection)
+                      
                         password_revealer.revealChild = true
                     }else{
-                        print(connection)
-                        print("disconnecting chump")
+                      
                         Utils.execAsync('nmcli con down ' + ssid)
                         .then(val => {print(val)})
                         .catch(val =>{print(val)})
-                    }//print('disconnecting'),
+                    }
                 }
             }),
             Widget.Label({css: 'padding-right: 5px; color: #cad3f5', xalign: 200, label: ssid}),
@@ -174,7 +139,7 @@ function make_device_box(button_class, button_label, ssid, connection,sec){
 
 const loading_label = () => {
 
-    return Widget.Label({css: 'color: black', label: 'loading...'})
+    return Widget.Label({css: 'color: black', label: 'Scanning...'})
 }
 function get_access_points(){
 
@@ -184,94 +149,80 @@ function get_access_points(){
   
     var wifi_icon = ''
     var device_array = []
+    devices.value = []
     //get the list of wifi devices
-    
+    if (network.wifi.enabled == false) {
+        devices.value = [Widget.Label({css: 'color: black', label: 'Wifi Off'})]
+        return
+    }
     //for(let i = 0; i < n; i++){
         //all_monitors[i].value = [loading_label()]
+
+    if(network.wifi.enabled == true){
         const loading = loading_label()
-       devices.value = devices.value.concat(loading)//[loading]
-    //}
-    //devices.value = [loading_label()]
-    //device_list = Utils.exec('nmcli dev wifi list')
-    Utils.execAsync('nmcli dev wifi list').then(device_list => {
-        var device_list_lines = device_list.split('\n')
-        for (var i = 0; i < device_list_lines.length; i++){
-            if (i != 0 ){
-                var device_info = device_list_lines[i].split(/\s+/)
-                if (device_info[2] != '--'){
-                    if (parseInt(device_info[7]) < 25)
-                        wifi_icon = '󰤟'
-                    else if (parseInt(device_info[7]) < 50)
-                        wifi_icon = '󰤢'
-                    else if (parseInt(device_info[7]) < 75)
-                        wifi_icon = '󰤥'
-                    else
-                        wifi_icon = '󰤨'
+        devices.value = [loading]//devices.value.concat(loading)//[loading]
+        //}
+        //devices.value = [loading_label()]
+        //device_list = Utils.exec('nmcli dev wifi list')
+        //Utils.timeout(300, () =>{
+            Utils.execAsync('nmcli dev wifi list').then(device_list => {
+                var device_list_lines = device_list.split('\n')
+                for (var i = 0; i < device_list_lines.length; i++){
+                    if (i != 0 ){
+                        var device_info = device_list_lines[i].split(/\s+/)
+                        if (device_info[2] != '--'){
+                            if (parseInt(device_info[7]) < 25)
+                                wifi_icon = '󰤟'
+                            else if (parseInt(device_info[7]) < 50)
+                                wifi_icon = '󰤢'
+                            else if (parseInt(device_info[7]) < 75)
+                                wifi_icon = '󰤥'
+                            else
+                                wifi_icon = '󰤨'
 
-                        //For each device make a box with the all the device info and functionallity
-                        //the Star here means that it us currently connected
-                    if (device_info[0] == '*'){
-                        var connected_device = make_device_box('wifi_connected','Disconnect',device_info[2],wifi_icon,device_info[9])
-                    }else{
-                        //else the device is not connected and we want to show a button that says connect
+                                //For each device make a box with the all the device info and functionallity
+                                //the Star here means that it us currently connected
+                            if (device_info[0] == '*'){
+                                var connected_device = make_device_box('wifi_connected','Disconnect',device_info[2],wifi_icon,device_info[9])
+                            }else{
+                                //else the device is not connected and we want to show a button that says connect
 
-                        var connected_device = make_device_box('wifi_not_connected','Connect',device_info[2],wifi_icon,device_info[9])
-                        print(Widget.Label({css: 'color: black', label: device_info[0]}))
+                                var connected_device = make_device_box('wifi_not_connected','Connect',device_info[2],wifi_icon,device_info[9])
+                            }
+
+                            device_array.push(connected_device) //adding a device to the array so that it can show up in the box
+            
+                        }
+
+
                     }
-
-                    device_array.push(connected_device) //adding a device to the array so that it can show up in the box
-    
                 }
+               
+                devices.value = device_array
+              
+            }).catch(val => { 
+                
+                for(let i = 0; i < n; i++){
+                    all_monitors[i].value = [Widget.Label({css: 'color: black', label: 'No devices detected'})]
+                
+                }
+            
+            })
+    }
 
-
-            }
-        }
-        //for some reason I have to use a timeout to get the value to update so we wait 100ms
-        //GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
-            //for(let i = 0; i < n; i++){
-                //all_monitors[i].value = device_array
-               devices.value = device_array
-            //}
-
-            //return device_array
-
-    // });
-    }).catch(val => { 
-        //devices.value = [Widget.Label({css: 'color: black', label: 'No devices detected'})]
-        for(let i = 0; i < n; i++){
-            all_monitors[i].value = [Widget.Label({css: 'color: black', label: 'No devices detected'})]
-           //devices.value = device_array
-        }
-    
-    })
   
 
 }
 
-function choose_device_var(monitor){
-    print("This is monitor: " + monitor)
-    print(all_monitors[monitor].value[0].label)
-    return all_monitors[monitor]
-    // switch(monitor){
-    //     case 0:
-    //         return devices0
-    //     case 1:
-    //         return devices1
-    //     case 2:
-    //         return devices2
-    //     case 3:
-    //         return devices3
-    //     case 4:
-    //         return devices4
-        
-    // }
-}
+
 const wifi_access_points = (monitor) => Widget.Box({
     vertical: true,
     //hpack: 'endy',
     hexpand: true,
     vpack: 'center',
     className: 'accesspoints_forground_box',
+
+    
     children: devices.bind(),  //This variable will change dynamically
     
 
@@ -280,28 +231,19 @@ const wifi_access_points = (monitor) => Widget.Box({
 
 // This export is the revealer under the quick settings widget
 export var network_revealer = (monitor) => Widget.Revealer({
-    revealChild: netrevealer.bind(),//false, 
+    revealChild: netrevealer.bind(),
     child: Widget.Box({
 
         vertical: true,
-        children: [Widget.Box({
-           
-            hpack: 'end',
-             vertical: false,
-             child: Widget.Switch({
-                 active: false, 
-                 className: 'bluetooth_toggle_slider',
-                onActivate: () =>{network.toggleWifi()},
-             })
+        children: [
  
-         }),
          Widget.Box({
             vertical: true,
            child: box_header(),
 
         }),
         Widget.Box({
-            //hpack: 'center',
+          
             vertical: false,
             vpack: 'center',
             hexpand: false,

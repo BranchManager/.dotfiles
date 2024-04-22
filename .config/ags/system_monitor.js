@@ -177,7 +177,7 @@ const cpu_monitor = () => Widget.Box({
 
             Widget.Icon({
             vpack: 'center',
-            hexpand: false,
+            hexpand: true,
             visible: true,
             size: 20,
             classNames:['system_bar_icon_cpu'],
@@ -204,7 +204,7 @@ const ram_monitor = () => Widget.Box({
 
             Widget.Icon({
             vpack: 'center',
-            hexpand: false,
+            hexpand: true,
             visible: true,
             size: 30,
             classNames:['system_bar_icon_ram'],
@@ -230,7 +230,7 @@ const cpu_temp_monitor = () => Widget.Box({
 
             Widget.Icon({
             vpack: 'center',
-            hexpand: false,
+            hexpand: true,
             visible: true,
             size: 35,
             classNames:['system_bar_icon_cpu_temp'],
@@ -257,7 +257,7 @@ const gpu_monitor = () => Widget.Box({
 
             Widget.Icon({
             vpack: 'center',
-            hexpand: false,
+            hexpand: true,
             visible: true,
             size: 25,
             className: 'system_bar_icon_gpu',
