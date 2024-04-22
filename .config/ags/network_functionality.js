@@ -31,8 +31,7 @@ export function network_reveal_func(is_other_app_calling_me){
         bluetooth_reveal_func(true);
         notification_reveal_func(true);
         audio_reveal_func(true)
-        
-        //print(network.wifi.enabled)
+
         get_access_points()
         network_quicksettings_reveal = false;
         console.log('reveal_func');
@@ -64,9 +63,6 @@ const WifiIndicator = () => Widget.Button({
 
     
 })
-/*****mak function */
-
-
 const header  = () => Widget.Label({ xalign: 0, className: 'bluetooth_device_header', label: 'Access Points',})
 const box_header = () => Widget.Box({
     vertical: false,
@@ -74,7 +70,6 @@ const box_header = () => Widget.Box({
     className: 'bluetooth_device_header',
     child: header(),
 })
-//end function maybe
 
 
 

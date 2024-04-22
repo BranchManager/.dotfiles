@@ -32,7 +32,7 @@ function widget_box(monitor = 0){
         hpack: "start",
         css: `background-color: rgba(0,0,0,0); padding: 0.1px;`,
       
-        child: main_widget(monitor),
+        child: main_widget,
 
     }) 
 })}
@@ -120,13 +120,10 @@ App.config({ windows: ()=>[...forMonitors(applauncher_box)]})
 
 //this will get the main monitor as defined in the hyprland config
 let monitor = get_main_monitor()
-App.config({windows: [widget_box(2)]})
-App.config({windows: [widget_box(1)]})
-App.config({windows: [widget_box(0)]})
 
 //Put the correct windows on the main monitor
 App.config({ windows:[GPT_box(monitor)]})
-//App.config({windows: [widget_box(monitor)]})
+App.config({windows: [widget_box(monitor)]})
 App.config({windows: [Volume_Shortcut_Indicator(monitor)]})
 App.config({windows: [quote_of_the_day_fullview(monitor)]})
 App.config({windows: [make_tinted_background(monitor)]})
