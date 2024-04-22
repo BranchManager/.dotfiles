@@ -83,6 +83,7 @@ const quicksettings_main_box = () => Widget.Box({
 })
 
 
+
 //revelas bottom widgets if notifications arent being displayed
 export function bottom_reveal_func(reveal){
    
