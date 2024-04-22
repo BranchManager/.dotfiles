@@ -127,17 +127,7 @@ const quicksettings_main_box = () => Widget.Box({
    //children: [],
 })
 
-// function fedora_icon(){
-//     return Widget.Icon({
-//     hexpand: true,
-//     hpack: 'start',
-//     name: 'fedora',
-//     visible: true,
-//     className: 'fedora_icon',
-//     icon: 'fedora-symbolic',
-//     //css: 'color: green;',
-// })
-// }
+
 
 //revelas bottom widgets if notifications arent being displayed
 export function bottom_reveal_func(reveal){
