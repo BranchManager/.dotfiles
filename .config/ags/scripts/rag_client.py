@@ -39,7 +39,7 @@ pool = Pool(processes=1)
 result = pool.apply_async(receive)
 
 try:
-    response = result.get(timeout=7)  # Set a timeout of 5 seconds
+    response = result.get(timeout=10)  # Set a timeout of 5 seconds
     print(response)
 except TimeoutError:
     print('recv() took too long check that rag_server.py is running',file=sys.stderr)

@@ -1,14 +1,23 @@
+# The Branch Manager Dots
 
-# This README is a work in progress
+**_NOTE:_** These are my current Dotfiles on Fedora. They will be kept up to date so long as I am using Hyprland and the tools in use stay updated.  I will probably even add some features and tweaks in the future. Feel free to make PRs and and issues and I may get to them. However this will not be my focus. These dots can be a bit buggy but should mostly function as intended and nothing that makes them unusable. Bugs and things will be fixed slowly as time goes on but my main focus will be on other projects namely game development.  If you have any questions feel free to ask me. There are some things I may have overlooked putting in the readme
 
 # preview of my desktop
 
-![desktop](https://github.com/BranchManager/.dotfiles/blob/main/Pictures/desktop_showcase.png)
+![](https://github.com/BranchManager/.dotfiles/blob/main/Pictures/desktop_showcase.png)
+![](https://raw.githubusercontent.com/BranchManager/.dotfiles/Fedora/Pictures/showcase6.png)
+
+![](https://raw.githubusercontent.com/BranchManager/.dotfiles/Fedora/Pictures/showcase5.png)
+
+![](https://raw.githubusercontent.com/BranchManager/.dotfiles/Fedora/Pictures/showcase2.png)
+
+![](https://raw.githubusercontent.com/BranchManager/.dotfiles/Fedora/Pictures/showcase3.png)
+
+![](https://raw.githubusercontent.com/BranchManager/.dotfiles/Fedora/Pictures/showcase4.png)
 _____________________________________________________________
 
 ## Color Theme is Catppuccin
-
-**_NOTE:_** Things may need to be done according to what distor you have. I also started with a wayland gnome environent and then switched to hyprland so some things may be different.
+https://github.com/catppuccin/catppuccin
 
 #  Fedora Setup
 
@@ -24,7 +33,7 @@ curl -sS https://starship.rs/install.sh | sh
 ## Dependencies 
 ```bash
 
-sudo dnf -y install hyprland hypridle hyprlock hyprpaper tailscale dmenu pavucontrol btop libnotify rofi bluez blueman sddm waybar slurp opensc pkgconf wlsunset install gtk3-install gtk-layer-shell-devel file-devel pango-devel gdk-pixbuf2-devel cairo-devel libgcc gcc glibc-devel pkgconf opensc amdgpu_top python3-devel libwebp-devel gcc-c++ wayland-protocols-devel cmake ninja-build && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo dnf -y install hyprland hypridle neofetch hyprlock hyprpaper tailscale dmenu pavucontrol btop libnotify rofi bluez blueman sddm waybar slurp opensc pkgconf wlsunset install gtk3-install gtk-layer-shell-devel file-devel pango-devel gdk-pixbuf2-devel cairo-devel libgcc gcc glibc-devel pkgconf opensc amdgpu_top python3-devel libwebp-devel gcc-c++ wayland-protocols-devel cmake ninja-build && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
   
   

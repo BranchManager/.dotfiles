@@ -10,6 +10,7 @@ import { GPT_box } from './sGPT.js';
 import { Volume_Shortcut_Indicator } from './VolumeShortcut.js';
 import { get_main_monitor } from "./Select_main_monitor.js";
 import { quote_of_the_day_fullview } from "./quote_of_the_day.js";
+import aylurspopups__redo from "./Notifications/aylurspopups__redo.js"
 
 
 //This is the main window for the Widget Box
@@ -122,6 +123,7 @@ App.config({ windows: ()=>[...forMonitors(applauncher_box)]})
 let monitor = get_main_monitor()
 
 //Put the correct windows on the main monitor
+App.config({ windows: [aylurspopups__redo(monitor)]})
 App.config({ windows:[GPT_box(monitor)]})
 App.config({windows: [widget_box(monitor)]})
 App.config({windows: [Volume_Shortcut_Indicator(monitor)]})

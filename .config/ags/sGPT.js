@@ -44,9 +44,7 @@ globalThis.open_close_gpt = (open,monitor) => {
     }else if(open){
         keymode.value = "exclusive"
         App.openWindow("GPT")
-        //App.openWindow("launcherr2")
-        //const launcher = App.getWindow("launcherr1")
-       // launcher.child.child.
+      
        timeout_and_reveal()
     
 
@@ -54,34 +52,7 @@ globalThis.open_close_gpt = (open,monitor) => {
     }
  
 }
-// globalThis.open_close_gpt = (open) => {
-//     console.log("global var")
-   
 
-//     if(open){
-//         keymode.value = "exclusive"
-//         App.openWindow("GPT"),
-//         print("OPENING GPT ON MONITOR")
-        
-//         reveal.value = true
-//         Utils.timeout(200, () =>{
-//             reveal.value = true
-//             print(reveal.value)
-//             print("OPENING GPT")
-
-//         })
-        
-//     }else{
-        
-//         reveal.value = false
-//         Utils.timeout(200, () =>{
-//             App.closeWindow("GPT0")
-//             App.closeWindow("GPT1")
-//             App.closeWindow("GPT2")
-//         })
-//         print(reveal.value)
-//     }
-// }
 
 
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
@@ -289,26 +260,10 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12, monitor = 0 }) =
                 on_accept: ({text}) => {
                     print("THIS IS THE APP LAUNCHED GPT")
                     run_gpt(text)
-                    // make sure we only consider visible (searched for) applications
-                    // const results = applications.filter((item) => item.visible);
-                    //     if (results[0]) {
-                    //         //App.toggleWindow(WINDOW_NAME)
-                    //         print("THIS IS THE APP LAUNCHED")
-                    //         print(applications[0].attribute.app.name)
-                    //         print(results[0].attribute.app.name)
-                    //         results[0].attribute.app.launch()
-                    //         // App.getWindow("launcherr").keymode = 'none'
-                    //         // gpt_revealer.revealChild = false
-                    //         // App.closeWindow("launcherr")
-                    //        // on_close_launcher(false)
-                    //         //applications[0].attribute.app.launch()
-                    //     }
+           
                 },
 
-                // filter out the list
-                // on_change: ({ text }) => applications.forEach(item => {
-                //     item.visible = item.attribute.app.match(text ?? "")
-                // }),
+
             })
         ]
     })
@@ -339,10 +294,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12, monitor = 0 }) =
         label: "Save convo",
         on_clicked: () => {
             savechat(chat_blocks.value)
-            // const convo = chat_blocks.value.map(item => item.children[1].label).join("\n")
-            // Utils.execAsync([`${App.configDir}/scripts/save_convo.sh`, `${convo}`])
-            // .then((res) => {console.log(res)})
-            // .catch((err) => {console.log(err)})
+  
         },
         child:Widget.Box({
             child: Widget.Label({
@@ -356,10 +308,7 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12, monitor = 0 }) =
         
         on_clicked: () => {
             open_close_gpt(false,monitor)
-            // const convo = chat_blocks.value.map(item => item.children[1].label).join("\n")
-            // Utils.execAsync([`${App.configDir}/scripts/save_convo.sh`, `${convo}`])
-            // .then((res) => {console.log(res)})
-            // .catch((err) => {console.log(err)})
+      
         },
         child:Widget.Box({
             hpack: "center",
@@ -392,15 +341,6 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12, monitor = 0 }) =
             clear_n_save_buttons,
             close_button,
             
-            
-            // wrap the list in a scrollable
-            // Widget.Scrollable({
-            //     className: "launcher_list",
-            //     hscroll: "never",
-            //     css: `min-width: ${width}px;`
-            //         + `min-height: ${height}px;`,
-            //     child: list,
-            // }),
         ],
  
     })
@@ -425,7 +365,7 @@ function pick_monitor(monitor){
 
 
 export const gpt_revealer = (monitor) => Widget.Revealer({
-    revealChild: reveal.bind(),//pick_monitor(monitor).bind(),
+    revealChild: reveal.bind(),
     transitionDuration: 100,
     transition: 'slide_right',
     child: Widget.Box({
@@ -444,7 +384,7 @@ export const gpt_revealer = (monitor) => Widget.Revealer({
 })
 
 export function GPT_box(monitor){
-    //const widget_box = (monitor = 2) => 
+  
         const monitor_name = "GPT"
         print("MONITOR NAME") 
         print("monitorsin Range^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^: " + monitor_name)
@@ -470,14 +410,11 @@ export function GPT_box(monitor){
             //chang the below to a function and change the variable to a functin to have it appear on multiple monitors
             child: gpt_revealer(monitor),
     
-        }) , //Widget.Label({ label: date.bind() })
+        }) , 
         setup: self => self.keybind("Escape", () => {
             print("REVEALER")
             print(gpt_revealer.revealChild)
             
-            //gpt_revealer.revealChild = false;
-            //self.keymode = 'none'
-           
             open_close_gpt(false,monitor)
            
            

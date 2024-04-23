@@ -5,7 +5,7 @@ NotificationsService.popupTimeout = 7000
 print("ags config dir")
 print(App.configDir)
 export default function Notification(notification) {
-
+  print('notification')
   
 
   function dissmissme(){

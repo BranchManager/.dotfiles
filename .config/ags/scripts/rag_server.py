@@ -18,6 +18,7 @@ from langchain_core.messages import HumanMessage
 
 #from langchain_core.runnables import RunnableParallel
 
+
 from multiprocessing.connection import Listener
 
 
@@ -33,15 +34,6 @@ print('connection accepted from', listener.last_accepted)
 llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.25)
 #model="gpt-3.5-turbo-0125"
 ACCESS_TOKEN = os.environ.get("OPENAI_API_KEY")
-# print(ACCESS_TOKEN)
-# loader = GithubFileLoader(
-#     repo="hyprwm/hyprland-wiki",  # the repo name
-#     access_token=ACCESS_TOKEN,
-#     github_api_url="https://api.github.com",
-#     file_filter=lambda file_path: file_path.endswith(
-#         ".md"
-#     ),  # load all markdowns files.
-# )
 
 loader = DirectoryLoader("/home/branchmanager/utls/hyprland-wiki/pages/",glob="**/*.md")
 print('here')

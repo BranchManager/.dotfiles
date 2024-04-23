@@ -131,16 +131,9 @@ const quicksettings_main_box = () => Widget.Box({
 
 //revelas bottom widgets if notifications arent being displayed
 export function bottom_reveal_func(reveal){
-    // if (bottom_revealer.revealChild){
-    //     bottom_revealer.revealChild = false;
-    // }else{
-    //     bottom_revealer.revealChild = true;
-    // }
-    //bottom_revealer.revealChild = reveal;
+
     bottomrevealer.value = reveal;
-    // console.log('bottom_reveal_func')
-    // console.log(bottom_revealer.revealChild)
-    // console.log(bottom_revealer.name)
+  
 }
 
 export const bottom_revealer = () => Widget.Revealer({
@@ -153,49 +146,8 @@ export const bottom_revealer = () => Widget.Revealer({
     })
 })
 
-// function fedora_button(){
-//     return Widget.Button({
-//         child: fedora_icon(),
-//         css: 'background-color: grey;',
-//         onPrimaryClick:  () => {
-//             console.log('Button clicked');
-//             if (main_widget.revealChild) {
-//                 main_widget.revealChild = false;
-//                 console.log('revealChild set to false');
-//                 console.log(main_widget.revealChild)
-//             } else {
-//                 main_widget.revealChild = true;
-//                 get_weather();
-//                 get_quote_of_the_day()
-//                 console.log('revealChild set to true');
-//                 console.log(main_widget.revealChild)
-//             }
-        
-//         }
-//     })
-// }
-function pick_monitor(monitor){
 
-    switch(monitor){
-        case 0:
-            return widgetrev0
-        case 1:
-            return widgetrev1
-        case 2:
-            return widgetrev2
-        case 3:
-            return widgetrev3
-        case 4:
-            return widgetrev4
-    }
-    // if(monitor == 0){
-    //     return rev0
-    // }else if(monitor == 1){
-    //     return rev2
-    // }else{
-    //     return rev3
-    // }
-}
+
 
 //cannot be a function cause Ineed reference to the revealer
 export const main_widget = Widget.Revealer({
@@ -214,25 +166,3 @@ export const main_widget = Widget.Revealer({
 
 })
 
-// function create_my_bar(monitor = 0){
-//     const main_box = Widget.CenterBox({
-        
-//         startWidget: fedora_button(),
-//         centerWidget: new_date, //Widget.Label({ label: count.toString()}),
-//         //endWidget: NetworkIndicator(),
-        
-
-//     })
-//     let win = Widget.Window({
-//         monitor,
-//         name: 'ggg', // this name has to be unique
-//         anchor: ['top', 'left', 'right'],
-//         className: 'my_bar',
-//         layer: 'overlay',
-//         exclusivity: 'exclusive',
-//         child: main_box,
-//          //Widget.Label({ label: date.bind() })
-//     })
-
- 
-// }

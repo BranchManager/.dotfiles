@@ -138,14 +138,15 @@ class weather_class:
         return [longitude,latitude, place]
     
     def set_key(self):
-        #print("setting key")
-        home_dir = os.path.expanduser("~")
-        with open(home_dir + '/.config/.keys', 'r') as file:
-             for line in file:
-                 if line.startswith('openweather'):
-                    #print(line)
-                    key = line.split(':')[1]
-                    return key.strip()
+        # #print("setting key")
+        # home_dir = os.path.expanduser("~")
+        # with open(home_dir + '/.config/.keys', 'r') as file:
+        #      for line in file:
+        #          if line.startswith('openweather'):
+        #             #print(line)
+        #             key = line.split(':')[1]
+        ACCESS_TOKEN = os.environ.get("WEATHER_KEY")
+        return ACCESS_TOKEN
                     #print("done")
               
                 

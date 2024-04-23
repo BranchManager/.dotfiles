@@ -53,6 +53,7 @@ function Animated(id) {
 
 function PopupList() {
     //const map: Map<number, ReturnType<typeof Animated>> = new Map
+    print("making list")
     const map = new Map()
     const box = Widget.Box({
         hpack: "end",
