@@ -4,7 +4,6 @@
 
 # preview of my desktop
 
-![](https://github.com/BranchManager/.dotfiles/blob/main/Pictures/desktop_showcase.png)
 ![](https://raw.githubusercontent.com/BranchManager/.dotfiles/Fedora/Pictures/showcase6.png)
 
 ![](https://raw.githubusercontent.com/BranchManager/.dotfiles/Fedora/Pictures/showcase5.png)
