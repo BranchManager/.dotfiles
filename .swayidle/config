@@ -1,2 +1,0 @@
-timeout 500 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
-timeout 750 'swaylock'
